@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  db:
+    image: kartoza/postgis
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: gis
+      POSTGRES_PASS: changeme1
+      POSTGRES_DBNAME: gis
+

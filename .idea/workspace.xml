@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7bd70817-bfe0-4e7b-86f2-0c4561d0bd85" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1ZBCfJUbdMothfAjV7CDuv0nzhq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7bd70817-bfe0-4e7b-86f2-0c4561d0bd85" name="Default Changelist" comment="" />
+      <created>1584303201258</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584303201258</updated>
+      <workItem from="1584303204055" duration="1969000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="278" y="35" width="810" height="680" key="#Inspections" timestamp="1584303764414">
+      <screen x="0" y="0" width="1366" height="742" />
+    </state>
+    <state x="278" y="35" width="810" height="680" key="#Inspections/0.0.1366.742@0.0.1366.742" timestamp="1584303764414" />
+    <state x="179" y="8" width="1007" height="733" key="SettingsEditor" timestamp="1584303327874">
+      <screen x="0" y="0" width="1366" height="742" />
+    </state>
+    <state x="179" y="8" width="1007" height="733" key="SettingsEditor/0.0.1366.742@0.0.1366.742" timestamp="1584303327874" />
+  </component>
+</project>
