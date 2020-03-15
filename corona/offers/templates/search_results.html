@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Hilfsangebote während der Corona-Krise</title>
+</head>
+<body>
+<h1>Suchergebnisse</h1>
+
+{% if object_list %}
+    <ul>
+        {% for offer in object_list %}
+            <li>
+                {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.title }} von {{ offer.user.get_full_name }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Leider konnten keine Angebote gefunden werden.</p>
+{% endif %}
+</body>
+</html>
