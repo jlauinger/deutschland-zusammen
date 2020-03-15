@@ -1,16 +1,18 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.gis.geos import Point
 from django.test import TestCase
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import make_aware
 
+from offers.helper import location_from_address
 from offers.models import Offer
 
 
 class OfferTestCase(TestCase):
     # distance is roughly 2800m
-    DARMSTADT_HOCHSCHULSTRASSE = Point(49.877212, 8.655164, srid=4326)
-    DARMSTADT_SMARAGDWEG = Point(49.872352, 8.680696, srid=4326)
+    DARMSTADT_HOCHSCHULSTRASSE = Point(49.877212, 8.655164, srid=settings.SRID)
+    DARMSTADT_SMARAGDWEG = Point(49.8723483, 8.6806331, srid=settings.SRID)
 
     THURSDAY_NOON = make_aware(datetime(year=2020, month=3, day=12, hour=12, minute=0))
     THURSDAY_AFTERNOON = make_aware(datetime(year=2020, month=3, day=12, hour=16, minute=12))
@@ -44,3 +46,9 @@ class OfferTestCase(TestCase):
 
         self.assertIn(offer_thursday, offers)
         self.assertNotIn(offer_friday, offers)
+
+    def test_address_to_point_resolution(self):
+        location = location_from_address('Smaragdweg 9, 64287 Darmstadt')
+
+        self.assertEquals(self.DARMSTADT_SMARAGDWEG.x, location.x)
+        self.assertEquals(self.DARMSTADT_SMARAGDWEG.y, location.y)
