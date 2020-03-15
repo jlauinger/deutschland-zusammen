@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>Hilfsangebote während der Corona-Krise</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>Suchergebnisse</h1>
 
 {% if object_list %}
@@ -18,5 +14,4 @@
 {% else %}
     <p>Leider konnten keine Angebote gefunden werden.</p>
 {% endif %}
-</body>
-</html>
+{% endblock %}
