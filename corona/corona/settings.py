@@ -129,3 +129,4 @@ STATIC_URL = '/static/'
 # Geography settings
 
 SRID = 4326
+NOMINATIM_USER_AGENT = "corona-hilfsangebote"
