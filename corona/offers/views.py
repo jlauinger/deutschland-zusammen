@@ -1,5 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.views.generic import FormView
+from django.views.generic import FormView, ListView
 
 from offers.forms import OfferSearchForm
 from offers.helper import location_from_address
@@ -22,3 +23,10 @@ class OfferSearchView(FormView):
         return render(self.request, 'search_results.html', {
             'object_list': self.get_queryset(form),
         })
+
+
+@login_required
+class OffersListView(ListView):
+    model = Offer
+
+

@@ -1,22 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hilfsangebote während der Corona-Krise</h1>
+    <h1>Hilfsangebote während der Corona-Krise</h1>
 
-<form method="POST" action="">
-    {% csrf_token %}
+    {% if user.is_authenticated %}
+        <p>
+            Hallo {{ user.username }}!
+            <a href="{% url 'logout' %}">Abmelden</a>
+        </p>
+        <p>
 
-    {{ form.where }}
-    {{ form.when }}
+        </p>
+    {% else %}
+        <p>
+            Du bist nicht angemeldet.
+            <a href="{% url 'login' %}">Anmelden</a>, um ein Hilfsangebot einzustellen!
+        </p>
+    {% endif %}
+    <hr />
 
-    <input type="submit" value="Suchen!" />
-</form>
+    <h2>Angebote finden:</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
 
-<script>
-    $(function () {
-        $("#id_when").datetimepicker({
-            format: 'd.m.Y H:i',
+        {{ form.where }}
+        {{ form.when }}
+
+        <input type="submit" value="Suchen!" />
+    </form>
+
+    <script>
+        $(function () {
+            $("#id_when").datetimepicker({
+                format: 'd.m.Y H:i',
+            });
         });
-    });
-</script>
+    </script>
 {% endblock %}
