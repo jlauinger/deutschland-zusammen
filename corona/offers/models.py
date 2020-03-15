@@ -50,3 +50,7 @@ class Offer(models.Model):
     @staticmethod
     def offers_in_range(query_location):
         return Offer.objects.annotate(distance=Distance('location', query_location)).filter(distance__lte=F('radius'))
+
+    @staticmethod
+    def offers_in_range_and_time(query_location, time):
+        return Offer.offers_in_range(query_location).filter(start_time__lte=time, end_time__gte=time)
