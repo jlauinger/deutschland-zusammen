@@ -2,13 +2,15 @@ from datetime import timedelta
 
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
+from django.contrib.gis.db.models.functions import Distance
+from django.db.models import F
 from django.utils.datetime_safe import datetime
-from django.utils.timezone import now
+from django.utils.timezone import now, make_aware
 
 
 def next_hour():
     n = now() + timedelta(hours=1)
-    return datetime(year=n.year, month=n.month, day=n.day, hour=n.hour)
+    return make_aware(datetime(year=n.year, month=n.month, day=n.day, hour=n.hour))
 
 
 def next_plus_1_hour():
@@ -44,3 +46,7 @@ class Offer(models.Model):
 
     def __str__(self):
         return '{} von {} am {}'.format(self.title, self.user.get_full_name(), self.start_time)
+
+    @staticmethod
+    def offers_in_range(query_location):
+        return Offer.objects.annotate(distance=Distance('location', query_location)).filter(distance__lte=F('radius'))
