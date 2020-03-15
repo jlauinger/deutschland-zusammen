@@ -1,0 +1,9 @@
+{% extends 'offers/base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <p>Bist du sicher, dass du "{{ object }}" löschen möchtest?</p>
+    <input type="submit" value="Ja, löschen!">
+</form>
+{% endblock %}

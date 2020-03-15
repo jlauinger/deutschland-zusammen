@@ -1,6 +1,6 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.views.generic import FormView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import FormView, ListView, DeleteView
 
 from offers.forms import OfferSearchForm
 from offers.helper import location_from_address
@@ -9,7 +9,7 @@ from offers.models import Offer
 
 class OfferSearchView(FormView):
     form_class = OfferSearchForm
-    template_name = 'home.html'
+    template_name = 'offers/home.html'
     success_url = ''
 
     @staticmethod
@@ -20,13 +20,18 @@ class OfferSearchView(FormView):
         return Offer.offers_in_range_and_time(location, time)
 
     def form_valid(self, form):
-        return render(self.request, 'search_results.html', {
+        return render(self.request, 'offers/search_results.html', {
             'object_list': self.get_queryset(form),
         })
 
 
-@login_required
 class OffersListView(ListView):
     model = Offer
 
+    def get_queryset(self):
+        return Offer.objects.filter(user=self.request.user)
 
+
+class DeleteOfferView(DeleteView):
+    model = Offer
+    success_url = reverse_lazy('offers')

@@ -1,0 +1,21 @@
+{% extends 'offers/base.html' %}
+
+{% block content %}
+    <h2>Angebote finden:</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        {{ form.where }}
+        {{ form.when }}
+
+        <input type="submit" value="Suchen!" />
+    </form>
+
+    <script>
+        $(function () {
+            $("#id_when").datetimepicker({
+                format: 'd.m.Y H:i',
+            });
+        });
+    </script>
+{% endblock %}
