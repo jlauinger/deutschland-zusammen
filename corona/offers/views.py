@@ -126,7 +126,6 @@ class SendMessageView(UpdateView):
 
     @staticmethod
     def send_message(user, message):
-        # Todo: proper testing and error handling
         send_mail(settings.CONTACT_MAIL_SUBJECT, message, settings.CONTACT_MAIL_FROM, [user.email], fail_silently=True)
 
 
