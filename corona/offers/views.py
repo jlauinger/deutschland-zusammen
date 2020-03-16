@@ -1,12 +1,13 @@
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import FormView, ListView, DeleteView, CreateView, UpdateView
+from django.views.generic import FormView, ListView, DeleteView, CreateView, UpdateView, TemplateView
 
-from offers.forms import OfferSearchForm, UserForm, OfferForm, ProviderProfileForm
+from offers.forms import OfferSearchForm, UserForm, OfferForm, ProviderProfileForm, SendMessageForm
 from offers.helper import location_from_address
 from offers.models import Offer, ProviderProfile
 
@@ -30,7 +31,7 @@ class AccountRegistrationView(FormView):
     @classmethod
     def register_user(cls, request, **kwargs):
         user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'],
-                                 first_name=kwargs['first_name'], last_name=kwargs['last_name'])
+                                        first_name=kwargs['first_name'], last_name=kwargs['last_name'])
         ProviderProfile.objects.create(user=user)
         return user
 
@@ -112,3 +113,22 @@ class OfferSearchView(FormView):
         return render(self.request, 'offers/search_results.html', {
             'object_list': self.get_queryset(form),
         })
+
+
+class SendMessageView(UpdateView):
+    model = User
+    form_class = SendMessageForm
+    template_name = 'offers/send_message.html'
+
+    def form_valid(self, form):
+        SendMessageView.send_message(form.instance, form.cleaned_data['message'])
+        return HttpResponseRedirect(reverse_lazy('message_sent'))
+
+    @staticmethod
+    def send_message(user, message):
+        # Todo: proper testing and error handling
+        send_mail(settings.CONTACT_MAIL_SUBJECT, message, settings.CONTACT_MAIL_FROM, [user.email], fail_silently=True)
+
+
+class MessageSentView(TemplateView):
+    template_name = 'offers/message_sent.html'

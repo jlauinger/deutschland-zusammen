@@ -138,3 +138,9 @@ MAPBOX_API_TOKEN = "pk.eyJ1IjoiamxhdWluZ2VyIiwiYSI6ImNrN3RzMWcyNjB3Z3IzbXFyZmZia
 
 LOGIN_REDIRECT_URL = '/offers'
 LOGOUT_REDIRECT_URL = '/'
+
+
+# Contact mail settings
+
+CONTACT_MAIL_FROM = 'noreply@corona.example'
+CONTACT_MAIL_SUBJECT = 'Neue Nachricht von Corona-Hilfsangebote'

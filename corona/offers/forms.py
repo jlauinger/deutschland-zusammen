@@ -11,6 +11,14 @@ class OfferSearchForm(forms.Form):
                                widget=forms.TextInput(attrs={'placeholder': 'Wann?'}))
 
 
+class SendMessageForm(forms.ModelForm):
+    message = forms.CharField(label='Nachricht', max_length=1000, widget=forms.Textarea())
+
+    class Meta:
+        model = User
+        fields = ['message']
+
+
 class OfferForm(forms.ModelForm):
     start_time = forms.DateTimeField(label='Verfügbar ab', input_formats=['%d.%m.%Y %H:%M'],
                                      widget=forms.TextInput(attrs={'placeholder': 'dd.mm.YYYY hh:mm'}))
