@@ -54,7 +54,7 @@ class ProviderProfile(models.Model):
 
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
-    location = models.PointField()
+    location = models.PointField(null=True, default=None)
     radius = models.IntegerField(choices=RADIUS_CHOICES, default=2000, verbose_name='Umkreis')
     address = models.CharField(max_length=150, blank=True, verbose_name='Adresse (Straße, Hausnummer)')
     city = models.CharField(max_length=100, blank=True, verbose_name='Stadt')
@@ -62,9 +62,17 @@ class ProviderProfile(models.Model):
     mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA', verbose_name='Fortbewegungsmittel')
     comment = models.TextField(blank=True, verbose_name='Kommentar')
 
+    phone = models.CharField(max_length=50, blank=True, verbose_name='Telefonnummer')
+    show_phone = models.BooleanField(default=False, verbose_name='Telefonnummer öffentlich anzeigen')
+    show_email = models.BooleanField(default=False, verbose_name='E-Mail-Adresse öffentlich anzeigen')
+
     def save(self, *args, **kwargs):
-        self.location = location_from_address("{}, {}".format(self.address, self.city))
+        if self.address and self.city:
+            self.location = location_from_address("{}, {}".format(self.address, self.city))
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return 'Profil für {}, {}, {}'.format(self.user.username, self.address, self.city)
 
 
 class Offer(models.Model):
@@ -85,7 +93,7 @@ class Offer(models.Model):
     end_time = models.DateTimeField(default=next_plus_1_hour, verbose_name='Verfügbar bis')
 
     def __str__(self):
-        return '{} bis {} von {}'.format(self.start_time, self.end_time.time, self.user.get_full_name())
+        return '{} bis {} von {}'.format(self.start_time, self.end_time.time(), self.user.get_full_name())
 
     @staticmethod
     def offers_in_range(query_location):

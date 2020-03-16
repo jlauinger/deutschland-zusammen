@@ -3,7 +3,8 @@
 {% block content %}
     <h2>Mein Anbieterprofil</h2>
 
-    <p><b>Ort:</b> {{ user.profile.address }}, {{ object.user.profile.city }}</p>
+    <p><b>Name:</b> {{ user.get_full_name }}</p>
+    <p><b>Ort:</b> {{ user.profile.address }}, {{ user.profile.city }}</p>
     <p><b>Umkreis:</b> {{ user.profile.get_radius_display }}</p>
     <p><b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}</p>
     <p><b>Kommentar:</b> {{ user.profile.comment }}</p>

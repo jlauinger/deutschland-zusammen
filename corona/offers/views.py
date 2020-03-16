@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -16,7 +17,8 @@ class AccountRegistrationView(FormView):
     success_url = reverse_lazy('offers')
 
     def form_valid(self, form):
-        AccountRegistrationView.register_user(self.request, **form.cleaned_data)
+        user = AccountRegistrationView.register_user(self.request, **form.cleaned_data)
+        login(self.request, user)
         return super().form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
@@ -27,8 +29,10 @@ class AccountRegistrationView(FormView):
 
     @classmethod
     def register_user(cls, request, **kwargs):
-        User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'],
+        user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'],
                                  first_name=kwargs['first_name'], last_name=kwargs['last_name'])
+        ProviderProfile.objects.create(user=user)
+        return user
 
 
 class EditProfileView(UpdateView):

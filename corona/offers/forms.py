@@ -25,7 +25,7 @@ class OfferForm(forms.ModelForm):
 class ProviderProfileForm(forms.ModelForm):
     class Meta:
         model = ProviderProfile
-        fields = ['address', 'city', 'radius']
+        fields = ['address', 'city', 'radius', 'phone', 'show_phone', 'show_email']
 
 
 class UserForm(forms.ModelForm):
