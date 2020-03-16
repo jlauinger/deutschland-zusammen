@@ -1,10 +1,33 @@
+from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import FormView, ListView, DeleteView, CreateView
 
-from offers.forms import OfferSearchForm
+from offers.forms import OfferSearchForm, UserForm
 from offers.helper import location_from_address
 from offers.models import Offer
+
+
+class AccountRegistrationView(FormView):
+    template_name = 'registration/registration.html'
+    form_class = UserForm
+    success_url = reverse_lazy('offers')
+
+    def form_valid(self, form):
+        AccountRegistrationView.register_user(self.request, **form.cleaned_data)
+        return super().form_valid(form)
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_active:
+            return HttpResponseRedirect(reverse_lazy('offers'))
+        else:
+            return super().dispatch(request, *args, **kwargs)
+
+    @classmethod
+    def register_user(cls, request, **kwargs):
+        User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'],
+                                 first_name=kwargs['first_name'], last_name=kwargs['last_name'])
 
 
 class OfferSearchView(FormView):
