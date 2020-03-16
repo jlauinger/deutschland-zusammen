@@ -20,6 +20,10 @@
                         <div class="mobility">Fortbewegungsmittel: <b>{{ offer.user.profile.get_mobility_display }}</b></div>
                         <div class="distance">Ungefähr <b>{{ offer.distance|rounded_distance }} Meter</b> von dir entfernt</div>
 
+                        {% if offer.user.profile.comment %}
+                            <div class="comment">{{ offer.user.profile.comment }}</div>
+                        {% endif %}
+
                         {% if offer.user.profile.show_phone %}
                             <div class="phone">Telefon: <b>{{ offer.user.profile.phone }}</b></div>
                         {% endif %}

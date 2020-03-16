@@ -84,6 +84,9 @@ body.bg-image {
 .search-results li .distance {
     padding-bottom: 1rem;
 }
+.search-results li .comment {
+    padding-bottom: 1rem;
+}
 .search-results li .message {
     padding-top: 1rem;
 }
