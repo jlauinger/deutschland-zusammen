@@ -1,11 +1,14 @@
 {% extends 'offers/base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
     <h2>Anbieterprofil bearbeiten</h2>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Speichern!">
+        {% bootstrap_form form %}
+        {% buttons %}
+            <input type="submit" value="Speichern!">
+        {% endbuttons %}
     </form>
 {% endblock %}

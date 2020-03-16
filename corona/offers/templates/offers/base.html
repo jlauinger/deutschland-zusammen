@@ -1,13 +1,20 @@
 {% load static %}
+{% load bootstrap4 %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Hilfsangebote während der Corona-Krise</title>
 
     <!-- jQuery -->
     <script src="{% static 'offers/jquery-3.4.1.slim.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 
     <!-- XDSoft DateTimePicker -->
     <link rel="stylesheet" href="{% static 'offers/jquery.datetimepicker.min.css' %}" />
@@ -17,34 +24,43 @@
     <link rel="stylesheet" href="{% static 'offers/leaflet.css' %}" />
     <script src="{% static 'offers/leaflet.js' %}"></script>
 
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{% static 'offers/styles.css' %}" />
 </head>
 <body>
-<h1>Hilfsangebote während der Corona-Krise</h1>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="{% url 'search' %}">
+            <img src="{% static 'offers/images/BMG_Logo.png' %}" height="100"
+                 class="d-inline-block align-top" alt="Bundesministerium für Gesundheit">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="{% url 'search' %}" class="nav-link">Suche</a></li>
+                    <li class="nav-item"><a href="{% url 'edit_profile' user.profile.id %}" class="nav-link">Profileinstellungen</a></li>
+                    <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">Mein Profil / Angebote</a></li>
+                    <li class="nav-item"><a href="{% url 'create_offer' %}" class="nav-link">Neues Angebot</a></li>
+                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Abmelden</a></li>
+                {% else %}
+                    <p>
+                        Du bist nicht angemeldet.
+                        <a href="{% url 'login' %}">Melde dich an</a> oder <a href="{% url 'register' %}">erstelle einen Account</a>,
+                        um ein Hilfsangebot einzustellen!
+                    </p>
+                    <p>
+                        <a href="{% url 'search' %}">Suche</a>
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
 
-{% if user.is_authenticated %}
-    <p>
-        Hallo {{ user.username }}!
-        <a href="{% url 'logout' %}">Abmelden</a>
-    </p>
-    <p>
-        <a href="{% url 'search' %}">Suche</a> &middot;
-        <a href="{% url 'edit_profile' user.profile.id %}">Profileinstellungen</a> &middot;
-        <a href="{% url 'profile' %}">Mein Profil / Angebote</a> &middot;
-        <a href="{% url 'create_offer' %}">Neues Angebot</a>
-    </p>
-{% else %}
-    <p>
-        Du bist nicht angemeldet.
-        <a href="{% url 'login' %}">Melde dich an</a> oder <a href="{% url 'register' %}">erstelle einen Account</a>,
-        um ein Hilfsangebot einzustellen!
-    </p>
-    <p>
-        <a href="{% url 'search' %}">Suche</a>
-    </p>
-{% endif %}
-<hr />
-
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
+</div>
 </body>
 </html>
