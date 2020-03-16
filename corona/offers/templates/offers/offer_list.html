@@ -1,14 +1,26 @@
 {% extends 'offers/base.html' %}
 
 {% block content %}
-    <h2>Meine Hilfsangebote</h2>
+    <h2>Mein Anbieterprofil</h2>
+
+    <p><b>Ort:</b> {{ user.profile.address }}, {{ object.user.profile.city }}</p>
+    <p><b>Umkreis:</b> {{ user.profile.get_radius_display }}</p>
+    <p><b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}</p>
+    <p><b>Kommentar:</b> {{ user.profile.comment }}</p>
+
+    <div id="map" style="height: 400px; width: 600px;"></div>
+
+    <a href="{% url 'edit_profile' user.profile.id %}">(Bearbeiten)</a>
+
+    <hr />
+
+    <h2>Angebotene Zeiten</h2>
 
     {% if object_list %}
         <ul>
             {% for offer in object_list %}
                 <li>
                     {{ offer.start_time }} bis {{ offer.end_time.time }}
-                    <a href="{% url 'offer_detail' offer.id %}">(Details)</a>
                     <a href="{% url 'delete_offer' offer.id %}">(Löschen)</a>
                 </li>
             {% endfor %}
@@ -16,4 +28,33 @@
     {% else %}
         <p>Du hast bisher keine Angebote erstellt.</p>
     {% endif %}
+
+    <a href="{% url 'create_offer' %}">Füge eine Zeit hinzu!</a>
+
+    <script type="text/javascript">
+        $(function() {
+            var lat = "{{ user.profile.location.x|stringformat:"f" }}";
+            var lon = "{{ user.profile.location.y|stringformat:"f" }}";
+
+            var map = L.map('map').setView([lat, lon], 14);
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: '{{ mapbox_api_token }}'
+            }).addTo(map);
+
+            L.marker([lat, lon]).addTo(map);
+
+            var circle = L.circle([lat, lon], {
+                color: 'blue',
+                fillColor: '#30f',
+                fillOpacity: 0.5,
+                radius: {{ user.profile.radius }}
+            }).addTo(map);
+        });
+    </script>
 {% endblock %}

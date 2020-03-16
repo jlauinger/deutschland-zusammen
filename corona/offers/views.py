@@ -64,6 +64,11 @@ class OffersListView(ListView):
     def get_queryset(self):
         return Offer.objects.filter(user=self.request.user)
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['mapbox_api_token'] = settings.MAPBOX_API_TOKEN
+        return data
+
 
 class DeleteOfferView(DeleteView):
     model = Offer
@@ -83,15 +88,3 @@ class CreateOfferView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-
-
-class OfferDetailView(DetailView):
-    model = Offer
-
-    def get_queryset(self):
-        return Offer.objects.filter(user=self.request.user)
-
-    def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        data['mapbox_api_token'] = settings.MAPBOX_API_TOKEN
-        return data
