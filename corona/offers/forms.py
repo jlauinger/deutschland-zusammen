@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from offers.models import Offer
+from offers.models import Offer, ProviderProfile
 
 
 class OfferSearchForm(forms.Form):
@@ -20,6 +20,12 @@ class OfferForm(forms.ModelForm):
     class Meta:
         model = Offer
         fields = ['start_time', 'end_time']
+
+
+class ProviderProfileForm(forms.ModelForm):
+    class Meta:
+        model = ProviderProfile
+        fields = ['address', 'city', 'radius']
 
 
 class UserForm(forms.ModelForm):

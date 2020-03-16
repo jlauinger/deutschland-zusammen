@@ -3,16 +3,16 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import FormView, ListView, DeleteView, CreateView, DetailView
+from django.views.generic import FormView, ListView, DeleteView, CreateView, DetailView, UpdateView
 
-from offers.forms import OfferSearchForm, UserForm, OfferForm
+from offers.forms import OfferSearchForm, UserForm, OfferForm, ProviderProfileForm
 from offers.helper import location_from_address
-from offers.models import Offer
+from offers.models import Offer, ProviderProfile
 
 
 class AccountRegistrationView(FormView):
-    template_name = 'registration/registration.html'
     form_class = UserForm
+    template_name = 'registration/registration.html'
     success_url = reverse_lazy('offers')
 
     def form_valid(self, form):
@@ -29,6 +29,15 @@ class AccountRegistrationView(FormView):
     def register_user(cls, request, **kwargs):
         User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'],
                                  first_name=kwargs['first_name'], last_name=kwargs['last_name'])
+
+
+class EditProfileView(UpdateView):
+    model = ProviderProfile
+    form_class = ProviderProfileForm
+    success_url = reverse_lazy('offers')
+
+    def get_queryset(self):
+        return ProviderProfile.objects.filter(user=self.request.user)
 
 
 class OfferSearchView(FormView):
@@ -73,7 +82,6 @@ class CreateOfferView(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        form.instance.location = location_from_address('{}, {}'.format(form.instance.address, form.instance.city))
         return super().form_valid(form)
 
 

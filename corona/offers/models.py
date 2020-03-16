@@ -7,6 +7,8 @@ from django.db.models import F
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import now, make_aware
 
+from offers.helper import location_from_address
+
 
 def next_hour():
     n = now() + timedelta(hours=1)
@@ -59,6 +61,10 @@ class ProviderProfile(models.Model):
 
     mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA', verbose_name='Fortbewegungsmittel')
     comment = models.TextField(blank=True, verbose_name='Kommentar')
+
+    def save(self, *args, **kwargs):
+        self.location = location_from_address("{}, {}".format(self.address, self.city))
+        super().save(*args, **kwargs)
 
 
 class Offer(models.Model):

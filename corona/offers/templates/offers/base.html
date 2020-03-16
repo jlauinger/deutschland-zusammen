@@ -14,7 +14,7 @@
     <script src="{% static 'offers/jquery.datetimepicker.full.min.js' %}"></script>
 
     <!-- Leaflet -->
-        <link rel="stylesheet" href="{% static 'offers/leaflet.css' %}" />
+    <link rel="stylesheet" href="{% static 'offers/leaflet.css' %}" />
     <script src="{% static 'offers/leaflet.js' %}"></script>
 
 </head>
@@ -28,7 +28,8 @@
     </p>
     <p>
         <a href="{% url 'search' %}">Suche</a> &middot;
-        <a href="{% url 'offers' %}">Meine Angebote</a> &middot;
+        <a href="{% url 'edit_profile' user.profile.id %}">Profileinstellungen</a> &middot;
+        <a href="{% url 'offers' %}">Mein Profil / Angebote</a> &middot;
         <a href="{% url 'create_offer' %}">Neues Angebot</a>
     </p>
 {% else %}
