@@ -65,6 +65,12 @@ class OfferSearchView(FormView):
 class OffersListView(ListView):
     model = Offer
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.profile.location is None:
+            return HttpResponseRedirect(reverse_lazy('edit_profile', args=[request.user.profile.id]))
+        else:
+            return super().dispatch(request, *args, **kwargs)
+
     def get_queryset(self):
         return Offer.objects.filter(user=self.request.user)
 
