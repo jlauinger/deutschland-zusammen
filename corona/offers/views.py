@@ -131,3 +131,7 @@ class SendMessageView(UpdateView):
 
 class MessageSentView(TemplateView):
     template_name = 'offers/message_sent.html'
+
+
+class SafetyInformationView(TemplateView):
+    template_name = 'offers/safety_information.html'
