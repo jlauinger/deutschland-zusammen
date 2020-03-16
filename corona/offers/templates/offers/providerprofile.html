@@ -1,40 +1,49 @@
 {% extends 'offers/base.html' %}
+{% load template_tags %}
 
 {% block content %}
     <div class="container">
-        <h2>Mein Anbieterprofil</h2>
+        <div class="row">
+            <div class="col">
+                <h3>Dein Profil:</h3>
 
-        <p><b>Name:</b> {{ user.get_full_name }}</p>
-        <p><b>Ort:</b> {{ user.profile.address }}, {{ user.profile.city }}</p>
-        <p><b>Umkreis:</b> {{ user.profile.get_radius_display }}</p>
-        <p><b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}</p>
-        <p><b>Kommentar:</b> {{ user.profile.comment }}</p>
-        <p><b>Telefonnummer:</b> {{ user.profile.phone }} (öffentlich: {{ user.profile.show_phone|yesno }})</p>
-        <p><b>E-Mail-Adresse:</b> {{ user.email }} (öffentlich: {{ user.profile.show_email|yesno }})</p>
+                <b>Name:</b> {{ user.get_full_name }}<br /><br />
 
-        <div id="map" style="height: 400px; width: 600px;"></div>
+                <b>Ort:</b> {{ user.profile.address }}, {{ user.profile.city }}<br />
+                <b>Umkreis:</b> {{ user.profile.get_radius_display }}<br />
+                <b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}<br /><br />
 
-        <a href="{% url 'edit_profile' user.profile.id %}">(Bearbeiten)</a>
+                <b>Kommentar:</b> {{ user.profile.comment }}<br /><br />
 
-        <hr />
+                <b>Telefonnummer:</b> {{ user.profile.phone }} (öffentlich: {{ user.profile.show_phone|yesno }})<br />
+                <b>E-Mail-Adresse:</b> {{ user.email }} (öffentlich: {{ user.profile.show_email|yesno }})<br /><br />
 
-        <h2>Angebotene Zeiten</h2>
+                <a href="{% url 'edit_profile' user.profile.id %}" class="btn btn-primary">Profil bearbeiten</a>
 
-        {% if object_list %}
-            <ul>
-                {% for offer in object_list %}
-                    <li>
-                        {{ offer.start_time }} bis {{ offer.end_time.time }}
-                        <a href="{% url 'delete_offer' offer.id %}">(Löschen)</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Du hast bisher keine Angebote erstellt.</p>
-        {% endif %}
+                <div class="padding-top-1"></div>
+                <div class="padding-top-1"></div>
+                <h3>Zu diesen Zeiten kannst du Hilfe anbieten:</h3>
 
-        <a href="{% url 'create_offer' %}">Füge eine Zeit hinzu!</a>
+                <div class="padding-top-1"></div>
+                {% if object_list %}
+                    <ul>
+                        {% for offer in object_list %}
+                            <li class="profile-offer-time">
+                                {{ offer.start_time }} bis {{ offer.end_time.time }}
+                                <a href="{% url 'delete_offer' offer.id %}" class="btn btn-sm btn-danger">Doch nicht</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Du hast bisher keine Angebote erstellt.</p>
+                {% endif %}
 
+                <a href="{% url 'create_offer' %}" class="btn btn-primary">Füge eine Zeit hinzu!</a>
+            </div>
+            <div class="col">
+                <div id="map" style="height: 600px; width: 100%;"></div>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript">
@@ -42,7 +51,9 @@
             var lat = "{{ user.profile.location.x|stringformat:"f" }}";
             var lon = "{{ user.profile.location.y|stringformat:"f" }}";
 
-            var map = L.map('map').setView([lat, lon], 14);
+            var initialZoom = {{ user.profile.radius|get_zoom }};
+
+            var map = L.map('map').setView([lat, lon], initialZoom);
 
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',

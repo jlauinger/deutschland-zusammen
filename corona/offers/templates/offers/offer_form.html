@@ -3,13 +3,13 @@
 
 {% block content %}
     <div class="container">
-        <h2>Neues Angebot</h2>
+        <h2>Zu dieser Zeit kann ich:</h2>
 
         <form method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-                <input type="submit" value="Abschicken!" class="btn btn-primary">
+                <input type="submit" value="Hinzufügen!" class="btn btn-primary">
             {% endbuttons %}
         </form>
 
