@@ -5,4 +5,4 @@ from offers.models import Offer
 
 @admin.register(Offer)
 class OfferAdmin(admin.OSMGeoAdmin):
-    list_display = ('title', 'user', 'start_time')
+    list_display = ('user', 'start_time', 'end_time')

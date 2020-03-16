@@ -28,24 +28,43 @@ class Offer(models.Model):
     """
 
     class Meta:
-        verbose_name = 'Hilfeangebot'
-        verbose_name_plural = 'Hilfeangebote'
+        verbose_name = 'Hilfsangebot'
+        verbose_name_plural = 'Hilfsangebote'
+
+    RADIUS_CHOICES = (
+        (1000, '1 km'),
+        (2000, '2 km'),
+        (3000, '3 km'),
+        (4000, '4 km'),
+        (5000, '5 km'),
+        (10000, '10 km'),
+        (20000, '20 km'),
+        (50000, '50 km'),
+    )
+
+    MOBILITY_CHOICES = (
+        ('NA', 'keine Angabe'),
+        ('FOOT', 'zu Fuß / ÖPNV'),
+        ('BIKE', 'Fahrrad'),
+        ('MOTOR_SCOOTER', 'Motorroller'),
+        ('CAR', 'Auto'),
+    )
 
     user = models.ForeignKey(User, related_name='offers', on_delete=models.CASCADE)
 
     location = models.PointField()
-    radius = models.IntegerField(default=1000)
-    address = models.CharField(max_length=150, blank=True)
-    city = models.CharField(max_length=100, blank=True)
+    radius = models.IntegerField(choices=RADIUS_CHOICES, default=2000, verbose_name='Umkreis')
+    address = models.CharField(max_length=150, blank=True, verbose_name='Adresse (Straße, Hausnummer)')
+    city = models.CharField(max_length=100, blank=True, verbose_name='Stadt')
 
-    start_time = models.DateTimeField(default=next_hour)
-    end_time = models.DateTimeField(default=next_plus_1_hour)
+    start_time = models.DateTimeField(default=next_hour, verbose_name='Verfügbar ab')
+    end_time = models.DateTimeField(default=next_plus_1_hour, verbose_name='Verfügbar bis')
 
-    title = models.CharField(max_length=100)
-    comment = models.TextField(blank=True)
+    mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA', verbose_name='Fortbewegungsmittel')
+    comment = models.TextField(blank=True, verbose_name='Kommentar')
 
     def __str__(self):
-        return '{} von {} am {}'.format(self.title, self.user.get_full_name(), self.start_time)
+        return '{} bis {} von {}'.format(self.start_time, self.end_time.time, self.user.get_full_name())
 
     @staticmethod
     def offers_in_range(query_location):

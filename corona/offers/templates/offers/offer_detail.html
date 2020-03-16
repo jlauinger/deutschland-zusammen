@@ -3,12 +3,12 @@
 {% block content %}
     <h2>Details zum Hilfsangebot</h2>
 
-    <p><b>Titel:</b> {{ object.title }}</p>
     <p><b>Kommentar:</b> {{ object.comment }}</p>
     <p><b>Beginnt am:</b> {{ object.start_time }}</p>
     <p><b>Endet am:</b> {{ object.end_time }}</p>
     <p><b>Ort:</b> {{ object.address }}, {{ object.city }}</p>
-    <p><b>Umkreis:</b> {{ object.radius }} Meter</p>
+    <p><b>Umkreis:</b> {{ object.get_radius_display }}</p>
+    <p><b>Fortbewegungsmittel:</b> {{ object.get_mobility_display }}</p>
 
     <div id="map" style="height: 400px; width: 600px;"></div>
 

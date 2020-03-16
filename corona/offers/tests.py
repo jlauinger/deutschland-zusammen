@@ -24,10 +24,8 @@ class OfferTestCase(TestCase):
         self.user = User.objects.create_user('user')
 
     def test_offers_in_reach_are_found(self):
-        offer_big_radius = Offer.objects.create(title='Angebot', user=self.user,
-                                                location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000)
-        offer_small_radius = Offer.objects.create(title='Angebot', user=self.user,
-                                                  location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=1)
+        offer_big_radius = Offer.objects.create(user=self.user, location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000)
+        offer_small_radius = Offer.objects.create(user=self.user, location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=1)
 
         offers = Offer.offers_in_range(self.DARMSTADT_SMARAGDWEG)
 
@@ -35,11 +33,9 @@ class OfferTestCase(TestCase):
         self.assertNotIn(offer_small_radius, offers)
 
     def test_offers_in_time_period_are_found(self):
-        offer_thursday = Offer.objects.create(title='Angebot', user=self.user,
-                                              location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
+        offer_thursday = Offer.objects.create(user=self.user, location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
                                               start_time=self.THURSDAY_NOON, end_time=self.THURSDAY_EVENING)
-        offer_friday = Offer.objects.create(title='Angebot', user=self.user,
-                                            location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
+        offer_friday = Offer.objects.create(user=self.user, location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
                                             start_time=self.FRIDAY_NOON, end_time=self.FRIDAY_EVENING)
 
         offers = Offer.offers_in_range_and_time(self.DARMSTADT_SMARAGDWEG, self.THURSDAY_AFTERNOON)

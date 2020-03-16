@@ -7,7 +7,7 @@
         <ul>
             {% for offer in object_list %}
                 <li>
-                    {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.title }} von {{ offer.user.get_full_name }}
+                    {{ offer.start_time }} bis {{ offer.end_time.time }}
                     <a href="{% url 'offer_detail' offer.id %}">(Details)</a>
                     <a href="{% url 'delete_offer' offer.id %}">(Löschen)</a>
                 </li>

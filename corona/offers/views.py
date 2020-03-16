@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import FormView, ListView, DeleteView, CreateView, DetailView
 
-from offers.forms import OfferSearchForm, UserForm
+from offers.forms import OfferSearchForm, UserForm, OfferForm
 from offers.helper import location_from_address
 from offers.models import Offer
 
@@ -66,7 +66,7 @@ class DeleteOfferView(DeleteView):
 
 class CreateOfferView(CreateView):
     model = Offer
-    fields = ['title', 'radius', 'address', 'city', 'start_time', 'end_time', 'comment']
+    form_class = OfferForm
 
     def get_success_url(self):
         return reverse_lazy('offer_detail', kwargs={'pk': self.object.pk})
