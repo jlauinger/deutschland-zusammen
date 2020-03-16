@@ -1,17 +1,17 @@
 {% extends 'offers/base.html' %}
 
 {% block content %}
-<h2>Suchergebnisse</h2>
+    <h2>Suchergebnisse</h2>
 
-{% if object_list %}
-    <ul>
-        {% for offer in object_list %}
-            <li>
-                {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.title }} von {{ offer.user.get_full_name }}
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Leider konnten keine Angebote gefunden werden.</p>
-{% endif %}
+    {% if object_list %}
+        <ul>
+            {% for offer in object_list %}
+                <li>
+                    {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.title }} von {{ offer.user.get_full_name }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Leider konnten keine Angebote gefunden werden.</p>
+    {% endif %}
 {% endblock %}

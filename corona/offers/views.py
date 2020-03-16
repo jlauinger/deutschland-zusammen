@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import FormView, ListView, DeleteView, CreateView
+from django.views.generic import FormView, ListView, DeleteView, CreateView, DetailView
 
 from offers.forms import OfferSearchForm, UserForm
 from offers.helper import location_from_address
@@ -69,3 +69,7 @@ class CreateOfferView(CreateView):
         form.instance.user = self.request.user
         form.instance.location = location_from_address('{}, {}'.format(form.instance.address, form.instance.city))
         return super().form_valid(form)
+
+
+class OfferDetailView(DetailView):
+    model = Offer

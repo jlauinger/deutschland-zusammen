@@ -1,0 +1,16 @@
+{% extends 'offers/base.html' %}
+
+{% block content %}
+    <h2>Details zum Hilfsangebot</h2>
+
+    <p><b>Titel:</b> {{ object.title }}</p>
+    <p><b>Kommentar:</b> {{ object.comment }}</p>
+    <p><b>Beginnt am:</b> {{ object.start_time }}</p>
+    <p><b>Endet am:</b> {{ object.end_time }}</p>
+    <p><b>Ort:</b> {{ object.address }}, {{ object.city }}</p>
+    <p><b>Umkreis:</b> {{ object.radius }} Meter</p>
+
+    <hr />
+
+    <a href="{% url 'delete_offer' object.id %}">(Löschen)</a>
+{% endblock %}

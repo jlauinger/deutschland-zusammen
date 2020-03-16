@@ -134,5 +134,5 @@ NOMINATIM_USER_AGENT = "corona-hilfsangebote"
 
 # Auth settings
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/offers'
 LOGOUT_REDIRECT_URL = '/'

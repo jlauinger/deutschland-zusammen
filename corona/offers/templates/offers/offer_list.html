@@ -1,18 +1,19 @@
 {% extends 'offers/base.html' %}
 
 {% block content %}
-<h2>Meine Hilfsangebote</h2>
+    <h2>Meine Hilfsangebote</h2>
 
-{% if object_list %}
-    <ul>
-        {% for offer in object_list %}
-            <li>
-                {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.title }} von {{ offer.user.get_full_name }}
-                <a href="{% url 'delete_offer' offer.id %}">(Löschen)</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Du hast bisher keine Angebote erstellt.</p>
-{% endif %}
+    {% if object_list %}
+        <ul>
+            {% for offer in object_list %}
+                <li>
+                    {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.title }} von {{ offer.user.get_full_name }}
+                    <a href="{% url 'offer_detail' offer.id %}">(Details)</a>
+                    <a href="{% url 'delete_offer' offer.id %}">(Löschen)</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Du hast bisher keine Angebote erstellt.</p>
+    {% endif %}
 {% endblock %}
