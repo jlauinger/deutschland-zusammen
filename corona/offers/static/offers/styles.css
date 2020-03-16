@@ -64,3 +64,27 @@ body.bg-image {
     vertical-align: top;
     padding: 5px;
 }
+
+.search-results {
+    list-style-type: none;
+    padding: 0;
+}
+.search-results li {
+    border: 1px solid #00dd1c;
+    background-color: #d9ffdd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.search-results li .name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.search-results li .time {
+    padding-bottom: 1rem;
+}
+.search-results li .distance {
+    padding-bottom: 1rem;
+}
+.search-results li .message {
+    padding-top: 1rem;
+}

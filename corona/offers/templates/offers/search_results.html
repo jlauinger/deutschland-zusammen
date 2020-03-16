@@ -1,26 +1,37 @@
 {% extends 'offers/base.html' %}
+{% load template_tags %}
 
 {% block content %}
     <div class="container">
-        <h2>Suchergebnisse</h2>
+        <h2>Deine Hilfe ist fast organisiert!</h2>
 
-        {% if object_list %}
-            <ul>
-                {% for offer in object_list %}
-                    <li>
-                        {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.user.get_full_name }}
-                        {% if offer.user.profile.show_phone %}
-                            <br />Telefon: {{ offer.user.profile.phone }}
-                        {% endif %}
-                        {% if offer.user.profile.show_email %}
-                            <br />E-Mail: {{ offer.user.email }}
-                        {% endif %}
-                        <br /><a href="{% url 'send_message' offer.user.id %}">Direkt eine Nachricht schreiben</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Leider konnten keine Angebote gefunden werden.</p>
-        {% endif %}
+        <p>
+            Die folgenden Menschen in deiner Nähe sind bereit dir zu helfen! Du musst nur noch anrufen oder eine
+            Nachricht schreiben.
+        </p>
+
+        <ul class="search-results">
+            {% for offer in object_list %}
+                <li>
+                    <div class="name">{{ offer.user.get_full_name }}</div>
+                    <div class="time">{{ offer.start_time }} bis {{ offer.end_time.time }}</div>
+
+                    <div class="mobility">Fortbewegungsmittel: <b>{{ offer.user.profile.get_mobility_display }}</b></div>
+                    <div class="distance">Ungefähr <b>{{ offer.distance|rounded_distance }} Meter</b> von dir entfernt</div>
+
+                    {% if offer.user.profile.show_phone %}
+                        <div class="phone">Telefon: <b>{{ offer.user.profile.phone }}</b></div>
+                    {% endif %}
+                    {% if offer.user.profile.show_email %}
+                        <div class="email">E-Mail: <b>{{ offer.user.email }}</b></div>
+                    {% endif %}
+                    <div class="message"><a href="{% url 'send_message' offer.user.id %}" class="btn btn-primary">
+                        Direkt eine Nachricht schreiben
+                    </a></div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'search' %}" class="btn btn-primary">Neue Suche</a>
     </div>
 {% endblock %}

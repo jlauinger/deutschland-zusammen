@@ -2,7 +2,6 @@ from django.conf import settings
 from django.contrib.gis.geos import Point
 from geopy import Nominatim
 
-
 DEFAULT_POINT = Point(49.877212, 8.655164, srid=settings.SRID)
 
 
