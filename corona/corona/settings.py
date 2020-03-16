@@ -131,6 +131,8 @@ STATIC_URL = '/static/'
 SRID = 4326
 NOMINATIM_USER_AGENT = "corona-hilfsangebote"
 
+MAPBOX_API_TOKEN = "pk.eyJ1IjoiamxhdWluZ2VyIiwiYSI6ImNrN3RzMWcyNjB3Z3IzbXFyZmZianRkZzAifQ.P0LQjvZ7G0dB9uNqs2r3YQ"
+
 
 # Auth settings
 

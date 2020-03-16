@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -59,6 +60,9 @@ class DeleteOfferView(DeleteView):
     model = Offer
     success_url = reverse_lazy('offers')
 
+    def get_queryset(self):
+        return Offer.objects.filter(user=self.request.user)
+
 
 class CreateOfferView(CreateView):
     model = Offer
@@ -73,3 +77,11 @@ class CreateOfferView(CreateView):
 
 class OfferDetailView(DetailView):
     model = Offer
+
+    def get_queryset(self):
+        return Offer.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['mapbox_api_token'] = settings.MAPBOX_API_TOKEN
+        return data
