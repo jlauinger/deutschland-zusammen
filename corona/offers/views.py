@@ -67,7 +67,9 @@ class DeleteOfferView(DeleteView):
 class CreateOfferView(CreateView):
     model = Offer
     fields = ['title', 'radius', 'address', 'city', 'start_time', 'end_time', 'comment']
-    success_url = reverse_lazy('offers')
+
+    def get_success_url(self):
+        return reverse_lazy('offer_detail', kwargs={'pk': self.object.pk})
 
     def form_valid(self, form):
         form.instance.user = self.request.user
