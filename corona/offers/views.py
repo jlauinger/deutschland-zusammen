@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import FormView, ListView, DeleteView
+from django.views.generic import FormView, ListView, DeleteView, CreateView
 
 from offers.forms import OfferSearchForm
 from offers.helper import location_from_address
@@ -35,3 +35,14 @@ class OffersListView(ListView):
 class DeleteOfferView(DeleteView):
     model = Offer
     success_url = reverse_lazy('offers')
+
+
+class CreateOfferView(CreateView):
+    model = Offer
+    fields = ['title', 'radius', 'address', 'city', 'start_time', 'end_time', 'comment']
+    success_url = reverse_lazy('offers')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.location = location_from_address('{}, {}'.format(form.instance.address, form.instance.city))
+        return super().form_valid(form)
