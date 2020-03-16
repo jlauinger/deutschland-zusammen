@@ -23,9 +23,13 @@ class OfferForm(forms.ModelForm):
 
 
 class ProviderProfileForm(forms.ModelForm):
+    first_name = forms.CharField(label='Vorname', max_length=100)
+    last_name = forms.CharField(label='Nachname', max_length=100)
+    email = forms.EmailField(label='E-Mail-Adresse', disabled=True, required=False)
+
     class Meta:
         model = ProviderProfile
-        fields = ['address', 'city', 'radius', 'phone', 'show_phone', 'show_email']
+        fields = ['first_name', 'last_name', 'address', 'city', 'radius', 'phone', 'show_phone', 'email', 'show_email']
 
 
 class UserForm(forms.ModelForm):

@@ -8,6 +8,8 @@
     <p><b>Umkreis:</b> {{ user.profile.get_radius_display }}</p>
     <p><b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}</p>
     <p><b>Kommentar:</b> {{ user.profile.comment }}</p>
+    <p><b>Telefonnummer:</b> {{ user.profile.phone }} (öffentlich: {{ user.profile.show_phone|yesno }})</p>
+    <p><b>E-Mail-Adresse:</b> {{ user.email }} (öffentlich: {{ user.profile.show_email|yesno }})</p>
 
     <div id="map" style="height: 400px; width: 600px;"></div>
 

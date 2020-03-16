@@ -11,39 +11,6 @@ from offers.helper import location_from_address
 from offers.models import Offer, ProviderProfile
 
 
-class AccountRegistrationView(FormView):
-    form_class = UserForm
-    template_name = 'registration/registration.html'
-    success_url = reverse_lazy('offers')
-
-    def form_valid(self, form):
-        user = AccountRegistrationView.register_user(self.request, **form.cleaned_data)
-        login(self.request, user)
-        return super().form_valid(form)
-
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_active:
-            return HttpResponseRedirect(reverse_lazy('offers'))
-        else:
-            return super().dispatch(request, *args, **kwargs)
-
-    @classmethod
-    def register_user(cls, request, **kwargs):
-        user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'],
-                                 first_name=kwargs['first_name'], last_name=kwargs['last_name'])
-        ProviderProfile.objects.create(user=user)
-        return user
-
-
-class EditProfileView(UpdateView):
-    model = ProviderProfile
-    form_class = ProviderProfileForm
-    success_url = reverse_lazy('offers')
-
-    def get_queryset(self):
-        return ProviderProfile.objects.filter(user=self.request.user)
-
-
 class OfferSearchView(FormView):
     form_class = OfferSearchForm
     template_name = 'offers/home.html'
@@ -62,8 +29,55 @@ class OfferSearchView(FormView):
         })
 
 
-class OffersListView(ListView):
+class AccountRegistrationView(FormView):
+    form_class = UserForm
+    template_name = 'registration/registration.html'
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        user = AccountRegistrationView.register_user(self.request, **form.cleaned_data)
+        login(self.request, user)
+        return super().form_valid(form)
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_active:
+            return HttpResponseRedirect(reverse_lazy('profile'))
+        else:
+            return super().dispatch(request, *args, **kwargs)
+
+    @classmethod
+    def register_user(cls, request, **kwargs):
+        user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'],
+                                 first_name=kwargs['first_name'], last_name=kwargs['last_name'])
+        ProviderProfile.objects.create(user=user)
+        return user
+
+
+class EditProfileView(UpdateView):
+    model = ProviderProfile
+    form_class = ProviderProfileForm
+    success_url = reverse_lazy('profile')
+
+    def get_queryset(self):
+        return ProviderProfile.objects.filter(user=self.request.user)
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['first_name'] = self.request.user.first_name
+        initial['last_name'] = self.request.user.last_name
+        initial['email'] = self.request.user.email
+        return initial
+
+    def form_valid(self, form):
+        self.request.user.first_name = form.cleaned_data['first_name']
+        self.request.user.last_name = form.cleaned_data['last_name']
+        self.request.user.save()
+        return super().form_valid(form)
+
+
+class ProfileView(ListView):
     model = Offer
+    template_name = 'offers/providerprofile.html'
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.profile.location is None:
@@ -82,7 +96,7 @@ class OffersListView(ListView):
 
 class DeleteOfferView(DeleteView):
     model = Offer
-    success_url = reverse_lazy('offers')
+    success_url = reverse_lazy('profile')
 
     def get_queryset(self):
         return Offer.objects.filter(user=self.request.user)
@@ -93,7 +107,7 @@ class CreateOfferView(CreateView):
     form_class = OfferForm
 
     def get_success_url(self):
-        return reverse_lazy('offer_detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('profile')
 
     def form_valid(self, form):
         form.instance.user = self.request.user

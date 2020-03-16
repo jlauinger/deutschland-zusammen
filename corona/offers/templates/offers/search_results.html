@@ -8,6 +8,12 @@
             {% for offer in object_list %}
                 <li>
                     {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.user.get_full_name }}
+                    {% if offer.user.profile.show_phone %}
+                        <br />Telefon: {{ offer.user.profile.phone }}
+                    {% endif %}
+                    {% if offer.user.profile.show_email %}
+                        <br />E-Mail: {{ offer.user.email }}
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
