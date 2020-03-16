@@ -37,7 +37,8 @@ class ProviderProfileForm(forms.ModelForm):
 
     class Meta:
         model = ProviderProfile
-        fields = ['first_name', 'last_name', 'address', 'city', 'radius', 'phone', 'show_phone', 'email', 'show_email']
+        fields = ['first_name', 'last_name', 'address', 'city', 'radius', 'mobility', 'phone', 'show_phone',
+                  'email', 'show_email', 'comment']
 
 
 class UserForm(forms.ModelForm):
