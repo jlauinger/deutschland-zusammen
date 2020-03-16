@@ -3,12 +3,12 @@
 {% block content %}
     <h2>Details zum Hilfsangebot</h2>
 
-    <p><b>Kommentar:</b> {{ object.comment }}</p>
+    <p><b>Kommentar:</b> {{ object.user.profile.comment }}</p>
     <p><b>Beginnt am:</b> {{ object.start_time }}</p>
     <p><b>Endet am:</b> {{ object.end_time }}</p>
-    <p><b>Ort:</b> {{ object.address }}, {{ object.city }}</p>
-    <p><b>Umkreis:</b> {{ object.get_radius_display }}</p>
-    <p><b>Fortbewegungsmittel:</b> {{ object.get_mobility_display }}</p>
+    <p><b>Ort:</b> {{ object.user.profile.address }}, {{ object.user.profile.city }}</p>
+    <p><b>Umkreis:</b> {{ object.user.profile.get_radius_display }}</p>
+    <p><b>Fortbewegungsmittel:</b> {{ object.user.profile.get_mobility_display }}</p>
 
     <div id="map" style="height: 400px; width: 600px;"></div>
 
@@ -18,8 +18,8 @@
 
     <script type="text/javascript">
         $(function() {
-            var lat = "{{ object.location.x|stringformat:"f" }}";
-            var lon = "{{ object.location.y|stringformat:"f" }}";
+            var lat = "{{ object.user.profile.location.x|stringformat:"f" }}";
+            var lon = "{{ object.user.profile.location.y|stringformat:"f" }}";
 
             var map = L.map('map').setView([lat, lon], 14);
 
@@ -38,7 +38,7 @@
                 color: 'blue',
                 fillColor: '#30f',
                 fillOpacity: 0.5,
-                radius: {{ object.radius }}
+                radius: {{ object.user.profile.radius }}
             }).addTo(map);
         });
     </script>

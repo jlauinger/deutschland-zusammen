@@ -17,19 +17,19 @@ def next_plus_1_hour():
     return next_hour() + timedelta(hours=1)
 
 
-class Offer(models.Model):
+class ProviderProfile(models.Model):
     """
-    An offer object is an offer by a logged-in user at some point with a radius, offering some help.
+    A provider profile is in a one-to-one relationship with a user. It extends the user profile with some settings that
+    are shared among the user's offers.
 
-    It can be found by anybody using the frontend search.
-    It can be managed by its logged-in owner user in the backend.
+    The user sets the location with some radius where they want to offer help.
 
     Radius is in meters.
     """
 
     class Meta:
-        verbose_name = 'Hilfsangebot'
-        verbose_name_plural = 'Hilfsangebote'
+        verbose_name = 'Anbieterprofil'
+        verbose_name_plural = 'Anbieterprofile'
 
     RADIUS_CHOICES = (
         (1000, '1 km'),
@@ -50,26 +50,41 @@ class Offer(models.Model):
         ('CAR', 'Auto'),
     )
 
-    user = models.ForeignKey(User, related_name='offers', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
     location = models.PointField()
     radius = models.IntegerField(choices=RADIUS_CHOICES, default=2000, verbose_name='Umkreis')
     address = models.CharField(max_length=150, blank=True, verbose_name='Adresse (Straße, Hausnummer)')
     city = models.CharField(max_length=100, blank=True, verbose_name='Stadt')
 
-    start_time = models.DateTimeField(default=next_hour, verbose_name='Verfügbar ab')
-    end_time = models.DateTimeField(default=next_plus_1_hour, verbose_name='Verfügbar bis')
-
     mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA', verbose_name='Fortbewegungsmittel')
     comment = models.TextField(blank=True, verbose_name='Kommentar')
+
+
+class Offer(models.Model):
+    """
+    An offer object is an offer by a logged-in user, offering some help.
+
+    It can be found by anybody using the frontend search.
+    It can be managed by its logged-in owner user in the backend.
+    """
+
+    class Meta:
+        verbose_name = 'Hilfsangebot'
+        verbose_name_plural = 'Hilfsangebote'
+
+    user = models.ForeignKey(User, related_name='offers', on_delete=models.CASCADE)
+
+    start_time = models.DateTimeField(default=next_hour, verbose_name='Verfügbar ab')
+    end_time = models.DateTimeField(default=next_plus_1_hour, verbose_name='Verfügbar bis')
 
     def __str__(self):
         return '{} bis {} von {}'.format(self.start_time, self.end_time.time, self.user.get_full_name())
 
     @staticmethod
     def offers_in_range(query_location):
-        return Offer.objects.annotate(distance=Distance('location', query_location))\
-            .filter(distance__lte=F('radius')).order_by('-distance')
+        return Offer.objects.annotate(distance=Distance('user__profile__location', query_location))\
+            .filter(distance__lte=F('user__profile__radius')).order_by('-distance')
 
     @staticmethod
     def offers_in_range_and_time(query_location, time):

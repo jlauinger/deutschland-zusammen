@@ -6,7 +6,7 @@ from django.utils.datetime_safe import datetime
 from django.utils.timezone import make_aware
 
 from offers.helper import location_from_address
-from offers.models import Offer
+from offers.models import Offer, ProviderProfile
 
 
 class OfferTestCase(TestCase):
@@ -21,11 +21,16 @@ class OfferTestCase(TestCase):
     FRIDAY_EVENING = make_aware(datetime(year=2020, month=3, day=13, hour=18, minute=0))
 
     def setUp(self):
-        self.user = User.objects.create_user('user')
+        self.big_radius_user = User.objects.create_user('big_radius_user')
+        self.small_radius_user = User.objects.create_user('small_radius_user')
+        self.big_radius_profile = ProviderProfile.objects.create(location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
+                                                                 user=self.big_radius_user)
+        self.small_radius_profile = ProviderProfile.objects.create(location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=1,
+                                                                   user=self.small_radius_user)
 
     def test_offers_in_reach_are_found(self):
-        offer_big_radius = Offer.objects.create(user=self.user, location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000)
-        offer_small_radius = Offer.objects.create(user=self.user, location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=1)
+        offer_big_radius = Offer.objects.create(user=self.big_radius_user)
+        offer_small_radius = Offer.objects.create(user=self.small_radius_user)
 
         offers = Offer.offers_in_range(self.DARMSTADT_SMARAGDWEG)
 
@@ -33,9 +38,9 @@ class OfferTestCase(TestCase):
         self.assertNotIn(offer_small_radius, offers)
 
     def test_offers_in_time_period_are_found(self):
-        offer_thursday = Offer.objects.create(user=self.user, location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
+        offer_thursday = Offer.objects.create(user=self.big_radius_user,
                                               start_time=self.THURSDAY_NOON, end_time=self.THURSDAY_EVENING)
-        offer_friday = Offer.objects.create(user=self.user, location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
+        offer_friday = Offer.objects.create(user=self.big_radius_user,
                                             start_time=self.FRIDAY_NOON, end_time=self.FRIDAY_EVENING)
 
         offers = Offer.offers_in_range_and_time(self.DARMSTADT_SMARAGDWEG, self.THURSDAY_AFTERNOON)

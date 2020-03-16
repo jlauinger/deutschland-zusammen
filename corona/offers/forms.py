@@ -16,12 +16,10 @@ class OfferForm(forms.ModelForm):
                                      widget=forms.TextInput(attrs={'placeholder': 'dd.mm.YYYY hh:mm'}))
     end_time = forms.DateTimeField(label='Verfügbar bis', input_formats=['%d.%m.%Y %H:%M'],
                                    widget=forms.TextInput(attrs={'placeholder': 'dd.mm.YYYY hh:mm'}))
-    comment = forms.CharField(label='Kommentar',
-                              widget=forms.Textarea(attrs={'placeholder': 'z.B. ich kann einkaufen gehen'}))
 
     class Meta:
         model = Offer
-        fields = ['radius', 'address', 'city', 'start_time', 'end_time', 'mobility', 'comment']
+        fields = ['start_time', 'end_time']
 
 
 class UserForm(forms.ModelForm):
