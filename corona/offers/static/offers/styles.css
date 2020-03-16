@@ -55,9 +55,8 @@ body.bg-image {
 }
 .search-form input {
     height: 60px;
-    width: 30%;
     font-size: 1.5rem;
-    padding: 10px;
+    padding: 10px 10px 10px 10px;
 }
 .search-form input[type=submit] {
     width: 150px;
@@ -91,4 +90,10 @@ body.bg-image {
 
 .profile-offer-time {
     padding-bottom: 1rem;
+}
+
+@media (min-width: 576px) {
+    .hidden-sm-up {
+        display: none;
+    }
 }

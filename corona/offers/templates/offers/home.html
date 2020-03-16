@@ -11,7 +11,9 @@
                 <form method="POST" action="">
                     {% csrf_token %}
                     {{ form.where }}
+                    <div class="hidden-sm-up padding-top-1"></div>
                     {{ form.when }}
+                    <div class="hidden-sm-up padding-top-1"></div>
                     <input type="submit" value="Suchen!" class="btn btn-primary">
                 </form>
             </div>
