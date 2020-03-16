@@ -2,13 +2,15 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <h2>Nachricht an Hilfsanbieter*in senden:</h2>
+    <div class="container">
+        <h2>Nachricht an Hilfsanbieter*in senden:</h2>
 
-    <form method="post">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% buttons %}
-            <input type="submit" value="Senden!">
-        {% endbuttons %}
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <input type="submit" value="Senden!">
+            {% endbuttons %}
+        </form>
+    </div>
 {% endblock %}

@@ -9,12 +9,9 @@
 
     <title>Hilfsangebote während der Corona-Krise</title>
 
-    <!-- jQuery -->
-    <script src="{% static 'offers/jquery-3.4.1.slim.min.js' %}"></script>
-
     <!-- Bootstrap -->
     {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    {% bootstrap_javascript jquery='full' %}
 
     <!-- XDSoft DateTimePicker -->
     <link rel="stylesheet" href="{% static 'offers/jquery.datetimepicker.min.css' %}" />
@@ -27,9 +24,9 @@
     <!-- Custom styles -->
     <link rel="stylesheet" href="{% static 'offers/styles.css' %}" />
 </head>
-<body>
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light">
+<body class="{% block bodyclass %}{% endblock %}">
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
         <a class="navbar-brand" href="{% url 'search' %}">
             <img src="{% static 'offers/images/BMG_Logo.png' %}" height="100"
                  class="d-inline-block align-top" alt="Bundesministerium für Gesundheit">
@@ -38,29 +35,29 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="navbar-nav">
+            <div class="nav navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-                    <li class="nav-item"><a href="{% url 'search' %}" class="nav-link">Suche</a></li>
-                    <li class="nav-item"><a href="{% url 'edit_profile' user.profile.id %}" class="nav-link">Profileinstellungen</a></li>
-                    <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">Mein Profil / Angebote</a></li>
-                    <li class="nav-item"><a href="{% url 'create_offer' %}" class="nav-link">Neues Angebot</a></li>
                     <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Abmelden</a></li>
+                    <li class="nav-item"><a href="{% url 'search' %}" class="nav-link">Suche</a></li>
+                    <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">Meine Angebote</a></li>
+                    <li class="nav-item"><a href="{% url 'create_offer' %}" class="btn btn-primary">Biete deine Hilfe an</a></li>
                 {% else %}
-                    <p>
-                        Du bist nicht angemeldet.
-                        <a href="{% url 'login' %}">Melde dich an</a> oder <a href="{% url 'register' %}">erstelle einen Account</a>,
-                        um ein Hilfsangebot einzustellen!
-                    </p>
-                    <p>
-                        <a href="{% url 'search' %}">Suche</a>
-                    </p>
+                    <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Anmelden</a></li>
+                    <li class="nav-item"><a href="{% url 'register' %}" class="btn btn-primary">Biete deine Hilfe an</a></li>
                 {% endif %}
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    {% block content %}
-    {% endblock %}
+{% block content %}
+{% endblock %}
+
+<footer>
+    <div class="container">
+        &copy; 2020 Die Entwickler &middot; <a href="#">Mithelfen</a> &middot; <a href="#">Corona-Informationen</a>
+    </div>
+</footer>
 </div>
 </body>
 </html>

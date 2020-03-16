@@ -1,20 +1,41 @@
 {% extends 'offers/base.html' %}
 {% load bootstrap4 %}
 
+{% block bodyclass %}bg-image{% endblock %}
+
 {% block content %}
-    <h2>Angebote finden:</h2>
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{ form.where }}
-        {{ form.when }}
-        <input type="submit" value="Suchen!">
-    </form>
+    <div class="container padding-top-1">
+        <div class="search-form">
+            <div class="inner-search">
+                <h2>Gemeinsam sind wir stark! Finde jetzt Unterstützung in der Corona-Krise</h2>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form.where }}
+                    {{ form.when }}
+                    <input type="submit" value="Suchen!" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script>
         $(function () {
             $("#id_when").datetimepicker({
                 format: 'd.m.Y H:i',
             });
+
+            var images = ['static/offers/images/bild-1.jpg', 'static/offers/images/bild-2.jpg',
+                'static/offers/images/bild-3.jpg', 'static/offers/images/bild-4.png']
+            var index = 0;
+            var period = 5000;
+
+            var cycle = function() {
+                index = (index + 1) % images.length;
+                $('body').css({'background-image': 'url("'+images[index]+'")'});
+                setTimeout(cycle, period);
+            };
+
+            setTimeout(cycle, period);
         });
     </script>
 {% endblock %}

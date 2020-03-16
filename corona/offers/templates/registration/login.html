@@ -1,10 +1,15 @@
 {% extends "offers/base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <input type="submit" value="Login">
+            {% endbuttons %}
+        </form>
+    </div>
 {% endblock %}

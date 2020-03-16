@@ -2,24 +2,26 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <h2>Neues Angebot</h2>
+    <div class="container">
+        <h2>Neues Angebot</h2>
 
-    <form method="post">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% buttons %}
-            <input type="submit" value="Abschicken!">
-        {% endbuttons %}
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <input type="submit" value="Abschicken!">
+            {% endbuttons %}
+        </form>
 
-    <script>
-        $(function () {
-            $("#id_start_time").datetimepicker({
-                format: 'd.m.Y H:i',
+        <script>
+            $(function () {
+                $("#id_start_time").datetimepicker({
+                    format: 'd.m.Y H:i',
+                });
+                $("#id_end_time").datetimepicker({
+                    format: 'd.m.Y H:i',
+                });
             });
-            $("#id_end_time").datetimepicker({
-                format: 'd.m.Y H:i',
-            });
-        });
-    </script>
+        </script>
+    </div>
 {% endblock %}

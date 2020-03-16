@@ -1,3 +1,66 @@
 html {
     height: 100.1%;
 }
+
+.padding-top-1 {
+    padding-top: 1rem;
+}
+.h-100 {
+    height: 100%;
+}
+
+footer {
+    height: 120px;
+    width: 100%;
+    padding: 2rem 0;
+    margin-top: 1rem;
+    background-color: #ddd;
+}
+body.bg-image footer {
+    position: absolute;
+    bottom: -120px;
+}
+
+.navbar {
+    width: 100%;
+}
+
+body {
+    min-height: 100%;
+    position: relative;
+}
+
+body.bg-image {
+    background-image: url('images/bild-1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar-light {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.search-form {
+    text-align: center;
+    padding-top: 100px;
+}
+.search-form .inner-search {
+    min-height: 400px;
+}
+.search-form h2 {
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+.search-form input {
+    height: 60px;
+    width: 30%;
+    font-size: 1.5rem;
+    padding: 10px;
+}
+.search-form input[type=submit] {
+    width: 150px;
+    vertical-align: top;
+    padding: 5px;
+}

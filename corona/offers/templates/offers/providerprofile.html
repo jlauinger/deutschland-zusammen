@@ -1,38 +1,41 @@
 {% extends 'offers/base.html' %}
 
 {% block content %}
-    <h2>Mein Anbieterprofil</h2>
+    <div class="container">
+        <h2>Mein Anbieterprofil</h2>
 
-    <p><b>Name:</b> {{ user.get_full_name }}</p>
-    <p><b>Ort:</b> {{ user.profile.address }}, {{ user.profile.city }}</p>
-    <p><b>Umkreis:</b> {{ user.profile.get_radius_display }}</p>
-    <p><b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}</p>
-    <p><b>Kommentar:</b> {{ user.profile.comment }}</p>
-    <p><b>Telefonnummer:</b> {{ user.profile.phone }} (öffentlich: {{ user.profile.show_phone|yesno }})</p>
-    <p><b>E-Mail-Adresse:</b> {{ user.email }} (öffentlich: {{ user.profile.show_email|yesno }})</p>
+        <p><b>Name:</b> {{ user.get_full_name }}</p>
+        <p><b>Ort:</b> {{ user.profile.address }}, {{ user.profile.city }}</p>
+        <p><b>Umkreis:</b> {{ user.profile.get_radius_display }}</p>
+        <p><b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}</p>
+        <p><b>Kommentar:</b> {{ user.profile.comment }}</p>
+        <p><b>Telefonnummer:</b> {{ user.profile.phone }} (öffentlich: {{ user.profile.show_phone|yesno }})</p>
+        <p><b>E-Mail-Adresse:</b> {{ user.email }} (öffentlich: {{ user.profile.show_email|yesno }})</p>
 
-    <div id="map" style="height: 400px; width: 600px;"></div>
+        <div id="map" style="height: 400px; width: 600px;"></div>
 
-    <a href="{% url 'edit_profile' user.profile.id %}">(Bearbeiten)</a>
+        <a href="{% url 'edit_profile' user.profile.id %}">(Bearbeiten)</a>
 
-    <hr />
+        <hr />
 
-    <h2>Angebotene Zeiten</h2>
+        <h2>Angebotene Zeiten</h2>
 
-    {% if object_list %}
-        <ul>
-            {% for offer in object_list %}
-                <li>
-                    {{ offer.start_time }} bis {{ offer.end_time.time }}
-                    <a href="{% url 'delete_offer' offer.id %}">(Löschen)</a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Du hast bisher keine Angebote erstellt.</p>
-    {% endif %}
+        {% if object_list %}
+            <ul>
+                {% for offer in object_list %}
+                    <li>
+                        {{ offer.start_time }} bis {{ offer.end_time.time }}
+                        <a href="{% url 'delete_offer' offer.id %}">(Löschen)</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Du hast bisher keine Angebote erstellt.</p>
+        {% endif %}
 
-    <a href="{% url 'create_offer' %}">Füge eine Zeit hinzu!</a>
+        <a href="{% url 'create_offer' %}">Füge eine Zeit hinzu!</a>
+
+    </div>
 
     <script type="text/javascript">
         $(function() {

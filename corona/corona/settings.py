@@ -137,7 +137,7 @@ MAPBOX_API_TOKEN = "pk.eyJ1IjoiamxhdWluZ2VyIiwiYSI6ImNrN3RzMWcyNjB3Z3IzbXFyZmZia
 
 # Auth settings
 
-LOGIN_REDIRECT_URL = '/offers'
+LOGIN_REDIRECT_URL = '/profile'
 LOGOUT_REDIRECT_URL = '/'
 
 

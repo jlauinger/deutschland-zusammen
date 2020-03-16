@@ -1,24 +1,26 @@
 {% extends 'offers/base.html' %}
 
 {% block content %}
-    <h2>Suchergebnisse</h2>
+    <div class="container">
+        <h2>Suchergebnisse</h2>
 
-    {% if object_list %}
-        <ul>
-            {% for offer in object_list %}
-                <li>
-                    {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.user.get_full_name }}
-                    {% if offer.user.profile.show_phone %}
-                        <br />Telefon: {{ offer.user.profile.phone }}
-                    {% endif %}
-                    {% if offer.user.profile.show_email %}
-                        <br />E-Mail: {{ offer.user.email }}
-                    {% endif %}
-                    <br /><a href="{% url 'send_message' offer.user.id %}">Direkt eine Nachricht schreiben</a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Leider konnten keine Angebote gefunden werden.</p>
-    {% endif %}
+        {% if object_list %}
+            <ul>
+                {% for offer in object_list %}
+                    <li>
+                        {{ offer.start_time }} bis {{ offer.end_time.time }}: {{ offer.user.get_full_name }}
+                        {% if offer.user.profile.show_phone %}
+                            <br />Telefon: {{ offer.user.profile.phone }}
+                        {% endif %}
+                        {% if offer.user.profile.show_email %}
+                            <br />E-Mail: {{ offer.user.email }}
+                        {% endif %}
+                        <br /><a href="{% url 'send_message' offer.user.id %}">Direkt eine Nachricht schreiben</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Leider konnten keine Angebote gefunden werden.</p>
+        {% endif %}
+    </div>
 {% endblock %}

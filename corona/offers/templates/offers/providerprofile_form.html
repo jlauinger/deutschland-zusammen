@@ -2,13 +2,15 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <h2>Anbieterprofil bearbeiten</h2>
+    <div class="container">
+        <h2>Anbieterprofil bearbeiten</h2>
 
-    <form method="post">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% buttons %}
-            <input type="submit" value="Speichern!">
-        {% endbuttons %}
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <input type="submit" value="Speichern!">
+            {% endbuttons %}
+        </form>
+    </div>
 {% endblock %}
