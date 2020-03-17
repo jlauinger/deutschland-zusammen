@@ -43,6 +43,18 @@
             };
 
             setTimeout(cycle, period);
+
+            // prefetch images
+            var curImg = new Image();
+            var prefetchNext = function(i) {
+                curImg.src = images[i];
+                curImg.onload = function() {
+                    if (i < images.length - 1) {
+                        prefetchNext(i+1);
+                    }
+                }
+            };
+            prefetchNext(1);
         });
     </script>
 {% endblock %}
