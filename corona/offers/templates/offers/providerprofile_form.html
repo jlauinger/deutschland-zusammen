@@ -3,7 +3,11 @@
 
 {% block content %}
     <div class="container">
-        <h2>Verrate uns noch ein paar Details</h2>
+        {% if form.address.value %}
+            <h2>Bearbeite dein Profil</h2>
+        {% else %}
+            <h2>Verrate uns noch ein paar Details</h2>
+        {% endif %}
 
         <form method="post">
             {% csrf_token %}

@@ -30,8 +30,7 @@ class AccountRegistrationView(FormView):
 
     @classmethod
     def register_user(cls, request, **kwargs):
-        user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'],
-                                        first_name=kwargs['first_name'], last_name=kwargs['last_name'])
+        user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'])
         ProviderProfile.objects.create(user=user)
         return user
 
