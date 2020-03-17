@@ -3,43 +3,74 @@
 
 {% block content %}
     <div class="container">
-        <h2>Deine Hilfe ist fast organisiert!</h2>
+        <div class="row">
+            <div class="col-sm">
+                {% if object_list %}
+                    <h2>Deine Hilfe ist fast organisiert!</h2>
+                    <p>
+                        Die folgenden Menschen in deiner Nähe sind bereit, dir zu helfen! Du musst nur noch anrufen oder eine
+                        Nachricht schreiben.
+                    </p>
+                    <ul class="search-results">
+                        {% for offer in object_list %}
+                            <li>
+                                <div class="name">{{ offer.user.get_full_name }}</div>
+                                <div class="time">{{ offer.start_time }} bis {{ offer.end_time.time }}</div>
 
-        <p>
-            Die folgenden Menschen in deiner Nähe sind bereit, dir zu helfen! Du musst nur noch anrufen oder eine
-            Nachricht schreiben.
-        </p>
+                                <div class="mobility">Fortbewegungsmittel: <b>{{ offer.user.profile.get_mobility_display }}</b></div>
+                                <div class="distance">Ungefähr <b>{{ offer.distance|rounded_distance }} Meter</b> von dir entfernt</div>
 
-        {% if object_list %}
-            <ul class="search-results">
-                {% for offer in object_list %}
-                    <li>
-                        <div class="name">{{ offer.user.get_full_name }}</div>
-                        <div class="time">{{ offer.start_time }} bis {{ offer.end_time.time }}</div>
+                                {% if offer.user.profile.comment %}
+                                    <div class="comment">{{ offer.user.profile.comment }}</div>
+                                {% endif %}
 
-                        <div class="mobility">Fortbewegungsmittel: <b>{{ offer.user.profile.get_mobility_display }}</b></div>
-                        <div class="distance">Ungefähr <b>{{ offer.distance|rounded_distance }} Meter</b> von dir entfernt</div>
+                                {% if offer.user.profile.show_phone %}
+                                    <div class="phone">Telefon: <b>{{ offer.user.profile.phone }}</b></div>
+                                {% endif %}
+                                {% if offer.user.profile.show_email %}
+                                    <div class="email">E-Mail: <b>{{ offer.user.email }}</b></div>
+                                {% endif %}
+                                <div class="message"><a href="{% url 'send_message' offer.user.id %}" class="btn btn-primary">
+                                    Direkt eine Nachricht schreiben
+                                </a></div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h2>Leider nichts gefunden...</h2>
+                    <p>
+                        Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner Adresse Straße und
+                        Stadt eingegeben? Schau doch rechts auf der Karte mal ob der Standort passt.
+                    </p>
+                {% endif %}
 
-                        {% if offer.user.profile.comment %}
-                            <div class="comment">{{ offer.user.profile.comment }}</div>
-                        {% endif %}
-
-                        {% if offer.user.profile.show_phone %}
-                            <div class="phone">Telefon: <b>{{ offer.user.profile.phone }}</b></div>
-                        {% endif %}
-                        {% if offer.user.profile.show_email %}
-                            <div class="email">E-Mail: <b>{{ offer.user.email }}</b></div>
-                        {% endif %}
-                        <div class="message"><a href="{% url 'send_message' offer.user.id %}" class="btn btn-primary">
-                            Direkt eine Nachricht schreiben
-                        </a></div>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Leider wurden keine Angebote in deiner Nähe gefunden. Probier es doch später nochmal.</p>
-        {% endif %}
-
-        <a href="{% url 'search' %}" class="btn btn-primary">Neue Suche</a>
+                <a href="{% url 'search' %}" class="btn btn-primary">Neue Suche</a>
+            </div>
+            <div class="col-sm">
+                <div id="map" style="height: 600px; width: 100%;"></div>
+            </div>
+        </div>
     </div>
+
+    <script type="text/javascript">
+        $(function() {
+            var lat = "{{ location.x|stringformat:"f" }}";
+            var lon = "{{ location.y|stringformat:"f" }}";
+
+            var initialZoom = 16;
+
+            var map = L.map('map').setView([lat, lon], initialZoom);
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: '{{ mapbox_api_token }}'
+            }).addTo(map);
+
+            L.marker([lat, lon]).addTo(map);
+        });
+    </script>
 {% endblock %}

@@ -102,15 +102,19 @@ class OfferSearchView(FormView):
     success_url = ''
 
     @staticmethod
-    def get_queryset(form):
+    def get_location_and_objects(form):
         location = location_from_address(form.cleaned_data['where'])
         time = form.cleaned_data['when']
 
-        return Offer.offers_in_range_and_time(location, time)
+        return location, Offer.offers_in_range_and_time(location, time)
 
     def form_valid(self, form):
+        location, objects = self.get_location_and_objects(form)
+
         return render(self.request, 'offers/search_results.html', {
-            'object_list': self.get_queryset(form),
+            'location': location,
+            'object_list': objects,
+            'mapbox_api_token': settings.MAPBOX_API_TOKEN
         })
 
 
