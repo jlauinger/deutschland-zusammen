@@ -76,7 +76,7 @@ class ProviderProfile(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return 'Profil für {}, {}, {}'.format(self.user.username, self.address, self.city)
+        return 'Profil für {}, {}'.format(self.user.username, self.address)
 
 
 class Offer(models.Model):
