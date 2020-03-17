@@ -1,5 +1,6 @@
 {% extends 'offers/base.html' %}
 {% load bootstrap4 %}
+{% load static %}
 
 {% block bodyclass %}bg-image{% endblock %}
 
@@ -11,17 +12,20 @@
 
                 <form method="POST" action="">
                     {% csrf_token %}
+
                     {{ form.where }}
+                    <a href="#" id="locate" class="">
+                        <img src="{% static 'offers/images/crosshair.png' %}" alt="Versuche mich zu orten"
+                            title="Versuche mich zu orten" />
+                    </a>
+
                     <div class="hidden-sm-up padding-top-1"></div>
+
                     {{ form.when }}
+
                     <div class="hidden-sm-up padding-top-1"></div>
                     <input type="submit" value="Suchen!" class="btn btn-primary">
                 </form>
-
-                <div class="padding-top-1"></div>
-                <a href="#" id="locate" class="btn btn-secondary">Versuche mich zu orten</a><br />
-
-                <a href="{% url 'register' %}" class="offer-link btn btn-secondary">Oder biete jetzt deine Hilfe an!</a>
             </div>
         </div>
     </div>
