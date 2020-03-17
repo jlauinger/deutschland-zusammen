@@ -137,8 +137,15 @@ class SendMessageView(UpdateView):
     form_class = SendMessageForm
     template_name = 'offers/send_message.html'
 
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['gender'] = 'X'
+        return initial
+
     def form_valid(self, form):
-        SendMessageView.send_message(form.instance, form.cleaned_data['message'])
+        SendMessageView.send_message(form.instance, form.cleaned_data['sender'], form.cleaned_data['email'],
+                                     form.cleaned_data['phone'], form.cleaned_data['gender'],
+                                     form.cleaned_data['message'])
         return HttpResponseRedirect(reverse_lazy('message_sent'))
 
     @staticmethod
