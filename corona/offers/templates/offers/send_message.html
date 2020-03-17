@@ -5,6 +5,11 @@
     <div class="container">
         <h2>Nachricht an Hilfsanbieter*in senden:</h2>
 
+        <p>
+            Denke daran, mindestens eine Kontaktmöglichkeit anzugeben, sonst kann dich dein*e Helfer*in nämlich
+            gar nicht erreichen!
+        </p>
+
         <form method="post">
             {% csrf_token %}
             {% bootstrap_form form %}

@@ -19,6 +19,14 @@ def next_plus_1_hour():
     return next_hour() + timedelta(hours=1)
 
 
+GENDERS = (
+    ('M', 'Männlich'),
+    ('F', 'Weiblich'),
+    ('D', 'Andere'),
+    ('X', 'Keine Angabe'),
+)
+
+
 class ProviderProfile(models.Model):
     """
     A provider profile is in a one-to-one relationship with a user. It extends the user profile with some settings that

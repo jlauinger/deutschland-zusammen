@@ -142,8 +142,29 @@ class SendMessageView(UpdateView):
         return HttpResponseRedirect(reverse_lazy('message_sent'))
 
     @staticmethod
-    def send_message(user, message):
-        send_mail(settings.CONTACT_MAIL_SUBJECT, message, settings.CONTACT_MAIL_FROM, [user.email], fail_silently=True)
+    def send_message(user, sender, sender_email, sender_phone, sender_gender, message):
+        body = """
+        Hallo {}!
+        
+        Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!
+        
+        Daten zur suchenden Person:
+        Name: {}
+        E-Mail: {}
+        Telefon: {}
+        Geschlecht: {}
+        
+        Nachricht:
+        {}
+        
+        ---
+        
+        Melde dich doch wenn du kannst schnellstmöglich zurück.
+        
+        Liebe Grüße
+        dein Team von deutschlandzusammen.de
+        """.format(user.first_name, sender, sender_email, sender_phone, sender_gender, message)
+        send_mail(settings.CONTACT_MAIL_SUBJECT, body, settings.CONTACT_MAIL_FROM, [user.email], fail_silently=True)
 
 
 class MessageSentView(TemplateView):

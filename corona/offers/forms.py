@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from offers.models import Offer, ProviderProfile
+from offers.models import Offer, ProviderProfile, GENDERS
 
 
 class OfferSearchForm(forms.Form):
@@ -12,11 +12,15 @@ class OfferSearchForm(forms.Form):
 
 
 class SendMessageForm(forms.ModelForm):
+    sender = forms.CharField(label='Dein Name', max_length=100, required=False)
+    email = forms.EmailField(label='Deine E-Mail-Adresse', max_length=100, required=False)
+    phone = forms.CharField(label='Deine Telefonnummer (optional)', max_length=100, required=False)
+    gender = forms.ChoiceField(label='Dein Geschlecht (optional)', choices=GENDERS, required=False)
     message = forms.CharField(label='Nachricht', max_length=1000, widget=forms.Textarea())
 
     class Meta:
         model = User
-        fields = ['message']
+        fields = ['sender', 'email', 'phone', 'gender', 'message']
 
 
 class OfferForm(forms.ModelForm):
