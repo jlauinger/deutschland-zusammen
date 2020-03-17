@@ -60,6 +60,12 @@ class ProviderProfile(models.Model):
         ('CAR', 'Auto'),
     )
 
+    NAME_VISIBILITY_CHOICES = (
+        ('FULL', 'Vor- und Nachname öffentlich'),
+        ('FIRST_NAME', 'Nur Vorname öffentlich'),
+        ('HIDDEN', 'Weder Vor- noch Nachname öffentlich'),
+    )
+
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
     location = models.PointField(null=True, default=None)
@@ -79,6 +85,8 @@ class ProviderProfile(models.Model):
     show_phone = models.BooleanField(default=False, verbose_name='Telefonnummer öffentlich anzeigen')
     show_email = models.BooleanField(default=False, verbose_name='E-Mail-Adresse öffentlich anzeigen')
     show_gender = models.BooleanField(default=False, verbose_name='Geschlecht öffentlich anzeigen')
+    name_visibility = models.CharField(choices=NAME_VISIBILITY_CHOICES, default='FIRST_NAME', max_length=50,
+                                       verbose_name='Öffentlichkeit deines Namens')
 
     def save(self, *args, **kwargs):
         if self.address:
@@ -87,6 +95,14 @@ class ProviderProfile(models.Model):
 
     def __str__(self):
         return 'Profil für {}, {}'.format(self.user.username, self.address)
+
+    def get_display_name(self):
+        if self.name_visibility == 'FULL':
+            return self.user.get_full_name()
+        elif self.name_visibility == 'FIRST_NAME':
+            return self.user.first_name
+        else:
+            return ""
 
 
 class Offer(models.Model):

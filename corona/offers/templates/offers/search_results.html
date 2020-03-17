@@ -14,7 +14,7 @@
                     <ul class="search-results">
                         {% for offer in object_list %}
                             <li>
-                                <div class="name">{{ offer.user.get_full_name }}</div>
+                                <div class="name">{{ offer.user.profile.get_display_name }}</div>
                                 <div class="time">
                                     {{ offer.date }}
                                     {% if offer.morning %}<br />Morgens{% endif %}

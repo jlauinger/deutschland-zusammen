@@ -18,7 +18,7 @@ class OfferTestCase(TestCase):
     FRIDAY = make_aware(datetime(year=2020, month=3, day=13))
 
     def setUp(self):
-        self.big_radius_user = User.objects.create_user('big_radius_user')
+        self.big_radius_user = User.objects.create_user('big_radius_user', first_name='Vorname Nachname')
         self.small_radius_user = User.objects.create_user('small_radius_user')
         self.big_radius_profile = ProviderProfile.objects.create(location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
                                                                  user=self.big_radius_user)
@@ -59,3 +59,15 @@ class OfferTestCase(TestCase):
         suggestions = address_autocomplete("Hochschulstr")
 
         self.assertIn('Hochschulstraße, Darmstadt', suggestions)
+
+    def test_name_visibility_has_an_effect(self):
+        user_full_name = User.objects.create_user('full-name', first_name='Vorname', last_name='Nachname')
+        user_first_name = User.objects.create_user('first-name', first_name='Vorname', last_name='Nachname')
+        user_hidden_name = User.objects.create_user('hidden-name', first_name='Vorname', last_name='Nachname')
+        profile_full_name = ProviderProfile.objects.create(user=user_full_name, name_visibility='FULL')
+        profile_first_name = ProviderProfile.objects.create(user=user_first_name, name_visibility='FIRST_NAME')
+        profile_hidden_name = ProviderProfile.objects.create(user=user_hidden_name, name_visibility='HIDDEN')
+
+        self.assertEquals(profile_full_name.get_display_name(), "Vorname Nachname")
+        self.assertEquals(profile_first_name.get_display_name(), "Vorname")
+        self.assertEquals(profile_hidden_name.get_display_name(), "")
