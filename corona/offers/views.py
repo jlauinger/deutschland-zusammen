@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.utils.timezone import now
 from django.views.generic import FormView, ListView, DeleteView, CreateView, UpdateView, TemplateView
 
 from offers.forms import OfferSearchForm, UserForm, OfferForm, ProviderProfileForm, SendMessageForm
@@ -91,6 +92,11 @@ class CreateOfferView(CreateView):
     def get_success_url(self):
         return reverse_lazy('profile')
 
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['date'] = now().__format__('%d.%m.%Y')
+        return initial
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -107,6 +113,11 @@ class OfferSearchView(FormView):
         date = form.cleaned_data['when']
 
         return location, Offer.offers_in_range_and_date(location, date)
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['when'] = now().__format__('%d.%m.%Y')
+        return initial
 
     def form_valid(self, form):
         location, objects = self.get_location_and_objects(form)

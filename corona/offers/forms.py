@@ -8,7 +8,7 @@ class OfferSearchForm(forms.Form):
     where = forms.CharField(label='where', max_length=100,
                             widget=forms.TextInput(attrs={'placeholder': 'Wo? (Straße und Ort)'}))
     when = forms.DateTimeField(label='when', input_formats=['%d.%m.%Y'],
-                               widget=forms.TextInput(attrs={'placeholder': 'Wann?'}))
+                               widget=forms.TextInput(attrs={'placeholder': 'Wann?', 'autocomplete': 'off'}))
 
 
 class SendMessageForm(forms.ModelForm):
@@ -21,7 +21,7 @@ class SendMessageForm(forms.ModelForm):
 
 class OfferForm(forms.ModelForm):
     date = forms.DateField(label='Datum', input_formats=['%d.%m.%Y'],
-                           widget=forms.TextInput(attrs={'placeholder': 'dd.mm.YYYY'}))
+                           widget=forms.TextInput(attrs={'placeholder': 'dd.mm.YYYY', 'autocomplete': 'off'}))
 
     class Meta:
         model = Offer
