@@ -4,11 +4,6 @@ register = template.Library()
 
 
 @register.filter
-def rounded_distance(distance):
-    return int(round(distance.m, -2))
-
-
-@register.filter
 def get_zoom(radius):
     if radius == 1000:
         return 14
