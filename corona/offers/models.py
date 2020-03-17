@@ -60,7 +60,12 @@ class ProviderProfile(models.Model):
     city = models.CharField(max_length=100, blank=True, verbose_name='Stadt')
 
     mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA', verbose_name='Fortbewegungsmittel')
-    comment = models.TextField(blank=True, verbose_name='Kommentar')
+    offers_shopping = models.BooleanField(default=False, verbose_name='Einkaufen')
+    offers_petsitting = models.BooleanField(default=False, verbose_name='Gassi gehen')
+    offers_fetching_drugs= models.BooleanField(default=False, verbose_name='Medikamente abholen')
+    offers_sending_mail = models.BooleanField(default=False, verbose_name='Briefe einwerfen')
+    offers_removing_trash = models.BooleanField(default=False, verbose_name='Müll wegbringen')
+    comment = models.TextField(blank=True, verbose_name='Sonstige Hilfestellungen oder Kommentare')
 
     phone = models.CharField(max_length=50, blank=True, verbose_name='Telefonnummer')
     show_phone = models.BooleanField(default=False, verbose_name='Telefonnummer öffentlich anzeigen')

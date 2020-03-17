@@ -20,9 +20,15 @@
                                 <div class="mobility">Fortbewegungsmittel: <b>{{ offer.user.profile.get_mobility_display }}</b></div>
                                 <div class="distance">Ungefähr <b>{{ offer.distance|rounded_distance }} Meter</b> von dir entfernt</div>
 
-                                {% if offer.user.profile.comment %}
-                                    <div class="comment">{{ offer.user.profile.comment }}</div>
-                                {% endif %}
+                                <div class="offer">
+                                    <b>{{ offer.user.first_name }} bietet an:</b><br />
+                                    {% if offer.user.profile.offers_shopping %}Einkaufen<br />{% endif %}
+                                    {% if offer.user.profile.offers_petsitting %}Gassi gehen<br />{% endif %}
+                                    {% if offer.user.profile.offers_fetching_drugs %}Medikamente abholen<br />{% endif %}
+                                    {% if offer.user.profile.offers_sending_mail %}Briefe einwerfen<br />{% endif %}
+                                    {% if offer.user.profile.offers_removing_trash %}Müll wegbringen<br />{% endif %}
+                                    {% if offer.user.profile.comment %}{{ offer.user.profile.comment }}{% endif %}
+                                </div>
 
                                 {% if offer.user.profile.show_phone %}
                                     <div class="phone">Telefon: <b>{{ offer.user.profile.phone }}</b></div>
