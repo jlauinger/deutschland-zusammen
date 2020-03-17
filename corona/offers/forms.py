@@ -36,14 +36,14 @@ class ProviderProfileForm(forms.ModelForm):
     first_name = forms.CharField(label='Vorname', max_length=100)
     last_name = forms.CharField(label='Nachname', max_length=100)
     email = forms.EmailField(label='E-Mail-Adresse', disabled=True, required=False)
-    address = forms.CharField(label='Adresse (Straße, Stadt)', max_length=200,
+    address = forms.CharField(label='Adresse (Straße, Stadt. Nicht öffentlich)', max_length=200,
                               widget=forms.TextInput(attrs={'autocomplete': 'off'}))
 
     class Meta:
         model = ProviderProfile
-        fields = ['first_name', 'last_name', 'address', 'radius', 'mobility', 'offers_shopping',
+        fields = ['first_name', 'last_name', 'name_visibility', 'address', 'radius', 'mobility', 'offers_shopping',
                   'offers_petsitting', 'offers_fetching_drugs', 'offers_sending_mail', 'offers_courier',
-                  'name_visibility', 'phone', 'show_phone', 'email', 'show_email', 'gender', 'show_gender',
+                  'phone', 'show_phone', 'email', 'show_email', 'gender', 'show_gender',
                   'comment']
 
 

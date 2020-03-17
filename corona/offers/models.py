@@ -69,10 +69,13 @@ class ProviderProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
     location = models.PointField(null=True, default=None)
-    radius = models.IntegerField(choices=RADIUS_CHOICES, default=2000, verbose_name='Umkreis')
-    address = models.CharField(max_length=200, blank=True, verbose_name='Adresse (Straße, Hausnummer, Stadt)')
+    radius = models.IntegerField(choices=RADIUS_CHOICES, default=2000,
+                                 verbose_name='Umkreis (nicht öffentlich)')
+    address = models.CharField(max_length=200, blank=True,
+                               verbose_name='Adresse (Straße, Stadt. Nicht öffentlich)')
 
-    mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA', verbose_name='Fortbewegungsmittel')
+    mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA',
+                                verbose_name='Fortbewegungsmittel (öffentlich sichtbar)')
     offers_shopping = models.BooleanField(default=False, verbose_name='Einkaufen')
     offers_petsitting = models.BooleanField(default=False, verbose_name='Gassi gehen')
     offers_fetching_drugs= models.BooleanField(default=False, verbose_name='Medikamente abholen')
