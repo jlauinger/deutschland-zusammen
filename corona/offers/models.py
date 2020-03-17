@@ -75,8 +75,10 @@ class ProviderProfile(models.Model):
     comment = models.TextField(blank=True, verbose_name='Sonstige Hilfestellungen oder Kommentare')
 
     phone = models.CharField(max_length=50, blank=True, verbose_name='Telefonnummer')
+    gender = models.CharField(choices=GENDERS, default='X', max_length=50, verbose_name='Geschlecht')
     show_phone = models.BooleanField(default=False, verbose_name='Telefonnummer öffentlich anzeigen')
     show_email = models.BooleanField(default=False, verbose_name='E-Mail-Adresse öffentlich anzeigen')
+    show_gender = models.BooleanField(default=False, verbose_name='Geschlecht öffentlich anzeigen')
 
     def save(self, *args, **kwargs):
         if self.address:

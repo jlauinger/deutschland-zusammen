@@ -11,8 +11,7 @@
                 <h4>Dein Standort</h4>
                 <p>
                     {{ user.profile.address }}<br />
-                    <b>Umkreis:</b> {{ user.profile.get_radius_display }}<br />
-                    <b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}
+                    <b>Umkreis:</b> {{ user.profile.get_radius_display }}
                 </p>
 
                 <h4>Dein Angebot</h4>
@@ -29,6 +28,12 @@
                 <p>
                     <b>Telefonnummer:</b> {{ user.profile.phone }} (öffentlich: <b>{{ user.profile.show_phone|yesno }})</b><br />
                     <b>E-Mail-Adresse:</b> {{ user.email }} (öffentlich: <b>{{ user.profile.show_email|yesno }})</b>
+                </p>
+
+                <h4>Zusätzliche Angaben zu dir</h4>
+                <p>
+                    <b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}<br />
+                    <b>Geschlecht:</b> {{ user.profile.get_gender_display }} (öffentlich: <b>{{ user.profile.show_gender|yesno }})</b>
                 </p>
 
                 <a href="{% url 'edit_profile' user.profile.id %}" class="btn btn-primary">Profil bearbeiten</a>

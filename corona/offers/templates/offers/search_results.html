@@ -24,6 +24,9 @@
                                 </div>
 
                                 <div class="mobility">Fortbewegungsmittel: <b>{{ offer.user.profile.get_mobility_display }}</b></div>
+                                {% if offer.user.profile.show_gender %}
+                                    <div class="gender">Geschlecht: {{ offer.user.profile.get_gender_display }}</div>
+                                {% endif %}
 
                                 <div class="offer">
                                     <b>{{ offer.user.first_name }} bietet an:</b><br />
