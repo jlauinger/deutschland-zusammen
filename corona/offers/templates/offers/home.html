@@ -8,6 +8,7 @@
         <div class="search-form">
             <div class="inner-search">
                 <h2>Deutschland steht zusammen. Finde Hilfe in der Corona-Krise</h2>
+
                 <form method="POST" action="">
                     {% csrf_token %}
                     {{ form.where }}
@@ -16,6 +17,8 @@
                     <div class="hidden-sm-up padding-top-1"></div>
                     <input type="submit" value="Suchen!" class="btn btn-primary">
                 </form>
+
+                <a href="{% url 'register' %}" class="offer-link btn btn-secondary">Oder biete jetzt deine Hilfe an!</a>
             </div>
         </div>
     </div>

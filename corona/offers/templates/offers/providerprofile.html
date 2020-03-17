@@ -4,7 +4,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-sm">
                 <h3>Dein Profil:</h3>
 
                 <b>Name:</b> {{ user.get_full_name }}<br /><br />
@@ -39,8 +39,11 @@
                 {% endif %}
 
                 <a href="{% url 'create_offer' %}" class="btn btn-primary">Füge eine Zeit hinzu!</a>
+
+                <div class="padding-top-1"></div>
+                <div class="padding-top-1"></div>
             </div>
-            <div class="col">
+            <div class="col-sm">
                 <div id="map" style="height: 600px; width: 100%;"></div>
             </div>
         </div>
