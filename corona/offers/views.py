@@ -2,14 +2,15 @@ from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.timezone import now
+from django.views import View
 from django.views.generic import FormView, ListView, DeleteView, CreateView, UpdateView, TemplateView
 
 from offers.forms import OfferSearchForm, UserForm, OfferForm, ProviderProfileForm, SendMessageForm
-from offers.helper import location_from_address
+from offers.helper import location_from_address, address_from_location
 from offers.models import Offer, ProviderProfile
 
 
@@ -149,3 +150,11 @@ class MessageSentView(TemplateView):
 
 class SafetyInformationView(TemplateView):
     template_name = 'offers/safety_information.html'
+
+
+class AddressFromLocationAjaxView(View):
+    def get(self, request):
+        lat = request.GET.get('lat')
+        lng = request.GET.get('lng')
+
+        return HttpResponse(address_from_location(lat, lng))

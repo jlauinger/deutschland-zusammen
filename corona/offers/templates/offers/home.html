@@ -18,6 +18,9 @@
                     <input type="submit" value="Suchen!" class="btn btn-primary">
                 </form>
 
+                <div class="padding-top-1"></div>
+                <a href="#" id="locate" class="btn btn-secondary">Versuche mich zu orten</a><br />
+
                 <a href="{% url 'register' %}" class="offer-link btn btn-secondary">Oder biete jetzt deine Hilfe an!</a>
             </div>
         </div>
@@ -25,11 +28,13 @@
 
     <script>
         $(function () {
+            // datepicker for when field
             $("#id_when").datetimepicker({
                 format: 'd.m.Y',
                 timepicker: false
             });
 
+            // image slideshow
             var images = ['static/offers/images/bild-1.jpg', 'static/offers/images/bild-2.jpg',
                 'static/offers/images/bild-3.jpg', 'static/offers/images/bild-4.jpg','static/offers/images/bild-5.jpg',
                 'static/offers/images/bild-6.jpg'
@@ -56,6 +61,42 @@
                 }
             };
             prefetchNext(1);
+
+            // geolocation for where field
+            $('#locate').click(function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function success (position) {
+                        updateWhereFieldWithAddress(position.coords.latitude, position.coords.longitude);
+                    }, function error (error) {
+                        switch(error.code) {
+                            case error.PERMISSION_DENIED:
+                                // do nothing
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                alert("Standortdaten sind nicht verfügbar.");
+                                break;
+                            case error.TIMEOUT:
+                                alert("Die Standortabfrage dauerte zu lange (Time-out).");
+                                break;
+                            case error.UNKNOWN_ERROR:
+                                alert("Unbekannter Fehler.");
+                                break;
+                        }
+
+                    });
+                } else {
+                    alert('Ihr Browser unterstützt keine Ortung.');
+                }
+            });
+
+            var updateWhereFieldWithAddress = function(lat, lng) {
+                $.get('ajax/address', {
+                    lat: lat,
+                    lng: lng
+                }, function (address) {
+                    $('#id_where').val(address);
+                });
+            };
         });
     </script>
 {% endblock %}
