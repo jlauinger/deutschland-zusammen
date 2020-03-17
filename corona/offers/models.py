@@ -56,8 +56,7 @@ class ProviderProfile(models.Model):
 
     location = models.PointField(null=True, default=None)
     radius = models.IntegerField(choices=RADIUS_CHOICES, default=2000, verbose_name='Umkreis')
-    address = models.CharField(max_length=150, blank=True, verbose_name='Adresse (Straße, Hausnummer)')
-    city = models.CharField(max_length=100, blank=True, verbose_name='Stadt')
+    address = models.CharField(max_length=200, blank=True, verbose_name='Adresse (Straße, Hausnummer, Stadt)')
 
     mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA', verbose_name='Fortbewegungsmittel')
     offers_shopping = models.BooleanField(default=False, verbose_name='Einkaufen')
@@ -72,8 +71,8 @@ class ProviderProfile(models.Model):
     show_email = models.BooleanField(default=False, verbose_name='E-Mail-Adresse öffentlich anzeigen')
 
     def save(self, *args, **kwargs):
-        if self.address and self.city:
-            self.location = location_from_address("{}, {}".format(self.address, self.city))
+        if self.address:
+            self.location = location_from_address(self.address)
         super().save(*args, **kwargs)
 
     def __str__(self):

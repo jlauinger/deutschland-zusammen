@@ -90,13 +90,31 @@
             });
 
             var updateWhereFieldWithAddress = function(lat, lng) {
-                $.get('ajax/address', {
+                $.get('{% url 'ajax_address' %}', {
                     lat: lat,
                     lng: lng
                 }, function (address) {
                     $('#id_where').val(address);
                 });
             };
+
+            // address autocomplete
+            var getAutocompleteOptions = function(query, callback) {
+                $.get('{% url 'ajax_autocomplete' %}', {
+                    q: query
+                }, function (response) {
+                    suggestions = JSON.parse(response);
+                    suggestions = suggestions.slice(0, Math.min(5, suggestions.length));
+                    callback(suggestions);
+                });
+            };
+
+            $('#id_where').autocomplete({
+                source: function(request, response) {
+                    getAutocompleteOptions(request.term, response)
+                },
+                minLength: 3
+            });
         });
     </script>
 {% endblock %}

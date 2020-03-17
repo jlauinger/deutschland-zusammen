@@ -10,4 +10,4 @@ class OfferAdmin(admin.ModelAdmin):
 
 @admin.register(ProviderProfile)
 class ProviderProfileAdmin(admin.OSMGeoAdmin):
-    list_display = ('user', 'address', 'city', 'radius', 'mobility')
+    list_display = ('user', 'address', 'radius', 'mobility')

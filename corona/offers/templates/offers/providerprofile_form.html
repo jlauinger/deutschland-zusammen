@@ -17,4 +17,25 @@
             {% endbuttons %}
         </form>
     </div>
+
+    <script>
+        $(function() {
+            var getAutocompleteOptions = function(query, callback) {
+                $.get('{% url 'ajax_autocomplete' %}', {
+                    q: query
+                }, function (response) {
+                    suggestions = JSON.parse(response);
+                    suggestions = suggestions.slice(0, Math.min(5, suggestions.length));
+                    callback(suggestions);
+                });
+            };
+
+            $('#id_address').autocomplete({
+                source: function(request, response) {
+                    getAutocompleteOptions(request.term, response)
+                },
+                minLength: 3
+            });
+        });
+    </script>
 {% endblock %}

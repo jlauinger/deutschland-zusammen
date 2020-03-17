@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import make_aware
 
-from offers.helper import location_from_address, address_from_location
+from offers.helper import location_from_address, address_from_location, address_autocomplete
 from offers.models import Offer, ProviderProfile
 
 
@@ -52,4 +52,10 @@ class OfferTestCase(TestCase):
     def test_point_to_address_resolution(self):
         address = address_from_location(self.DARMSTADT_SMARAGDWEG.x, self.DARMSTADT_SMARAGDWEG.y)
 
-        self.assertEquals('14, Smaragdweg, Edelsteinviertel, Darmstadt-Ost, Darmstadt, Hessen, 64287, Deutschland', address)
+        self.assertEquals('14, Smaragdweg, Edelsteinviertel, Darmstadt-Ost, Darmstadt, Hessen, 64287, Deutschland',
+                          address)
+
+    def test_address_autocomplete(self):
+        suggestions = address_autocomplete("Hochschulstr")
+
+        self.assertIn('Hochschulstraße, Darmstadt', suggestions)

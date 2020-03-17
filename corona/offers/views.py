@@ -1,3 +1,5 @@
+import json
+
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -10,7 +12,7 @@ from django.views import View
 from django.views.generic import FormView, ListView, DeleteView, CreateView, UpdateView, TemplateView
 
 from offers.forms import OfferSearchForm, UserForm, OfferForm, ProviderProfileForm, SendMessageForm
-from offers.helper import location_from_address, address_from_location
+from offers.helper import location_from_address, address_from_location, address_autocomplete
 from offers.models import Offer, ProviderProfile
 
 
@@ -158,3 +160,10 @@ class AddressFromLocationAjaxView(View):
         lng = request.GET.get('lng')
 
         return HttpResponse(address_from_location(lat, lng))
+
+
+class AddressAutocompleteAjaxView(View):
+    def get(self, request):
+        query = request.GET.get('q')
+
+        return HttpResponse(json.dumps(address_autocomplete(query)))

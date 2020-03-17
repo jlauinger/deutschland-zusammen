@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import path
 
 from offers.views import OfferSearchView, ProfileView, DeleteOfferView, CreateOfferView, EditProfileView, \
-    SendMessageView, MessageSentView, SafetyInformationView, AddressFromLocationAjaxView
+    SendMessageView, MessageSentView, SafetyInformationView, AddressFromLocationAjaxView, AddressAutocompleteAjaxView
 
 urlpatterns = [
     path('offers/new/', login_required(CreateOfferView.as_view()), name='create_offer'),
@@ -13,6 +13,7 @@ urlpatterns = [
     path('sent/', MessageSentView.as_view(), name='message_sent'),
     path('information/safety/', SafetyInformationView.as_view(), name='safety_information'),
     path('ajax/address/', AddressFromLocationAjaxView.as_view(), name='ajax_address'),
+    path('ajax/autocomplete/', AddressAutocompleteAjaxView.as_view(), name='ajax_autocomplete'),
     path('', OfferSearchView.as_view(), name='search'),
 ]
 
