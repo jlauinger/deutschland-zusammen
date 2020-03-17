@@ -4,7 +4,7 @@
     <div class="container">
         <form method="post">
             {% csrf_token %}
-            <p>Bist du sicher, dass du "{{ object }}" löschen möchtest?</p>
+            <p>Bist du sicher, dass du dein Angebot am "{{ object.date }}" löschen möchtest?</p>
             <input type="submit" value="Ja, löschen!" class="btn btn-danger">
         </form>
     </div>

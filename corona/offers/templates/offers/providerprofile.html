@@ -42,7 +42,11 @@
                     <ul>
                         {% for offer in object_list %}
                             <li class="profile-offer-time">
-                                {{ offer.start_time }} bis {{ offer.end_time.time }}
+                                {{ offer.date }}:
+                                {% if offer.morning %}Morgens {% endif %}
+                                {% if offer.noon %}Mittags {% endif %}
+                                {% if offer.afternoon %}Nachmittags {% endif %}
+                                {% if offer.evening %}Abends {% endif %}
                                 <a href="{% url 'delete_offer' offer.id %}" class="btn btn-sm btn-danger">Doch nicht</a>
                             </li>
                         {% endfor %}

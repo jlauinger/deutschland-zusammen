@@ -6,8 +6,8 @@ from offers.models import Offer, ProviderProfile
 
 class OfferSearchForm(forms.Form):
     where = forms.CharField(label='where', max_length=100,
-                            widget=forms.TextInput(attrs={'placeholder': 'Wo? (Straße, Ort)'}))
-    when = forms.DateTimeField(label='when', input_formats=['%d.%m.%Y %H:%M'],
+                            widget=forms.TextInput(attrs={'placeholder': 'Wo? (Straße und Ort)'}))
+    when = forms.DateTimeField(label='when', input_formats=['%d.%m.%Y'],
                                widget=forms.TextInput(attrs={'placeholder': 'Wann?'}))
 
 
@@ -20,14 +20,12 @@ class SendMessageForm(forms.ModelForm):
 
 
 class OfferForm(forms.ModelForm):
-    start_time = forms.DateTimeField(label='Verfügbar ab', input_formats=['%d.%m.%Y %H:%M'],
-                                     widget=forms.TextInput(attrs={'placeholder': 'dd.mm.YYYY hh:mm'}))
-    end_time = forms.DateTimeField(label='Verfügbar bis', input_formats=['%d.%m.%Y %H:%M'],
-                                   widget=forms.TextInput(attrs={'placeholder': 'dd.mm.YYYY hh:mm'}))
+    date = forms.DateField(label='Datum', input_formats=['%d.%m.%Y'],
+                           widget=forms.TextInput(attrs={'placeholder': 'dd.mm.YYYY'}))
 
     class Meta:
         model = Offer
-        fields = ['start_time', 'end_time']
+        fields = ['date', 'morning', 'noon', 'afternoon', 'evening']
 
 
 class ProviderProfileForm(forms.ModelForm):

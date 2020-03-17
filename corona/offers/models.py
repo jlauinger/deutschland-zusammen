@@ -94,11 +94,15 @@ class Offer(models.Model):
 
     user = models.ForeignKey(User, related_name='offers', on_delete=models.CASCADE)
 
-    start_time = models.DateTimeField(default=next_hour, verbose_name='Verfügbar ab')
-    end_time = models.DateTimeField(default=next_plus_1_hour, verbose_name='Verfügbar bis')
+    date = models.DateField(default=now, verbose_name='Datum')
+
+    morning = models.BooleanField(default=False, verbose_name='Morgens')
+    noon = models.BooleanField(default=False, verbose_name='Mittags')
+    afternoon = models.BooleanField(default=True, verbose_name='Nachmittags')
+    evening = models.BooleanField(default=False, verbose_name='Abends')
 
     def __str__(self):
-        return '{} bis {} von {}'.format(self.start_time, self.end_time.time(), self.user.get_full_name())
+        return '{} am {}'.format(self.user.get_full_name(), self.date)
 
     @staticmethod
     def offers_in_range(query_location):
@@ -106,5 +110,5 @@ class Offer(models.Model):
             .filter(distance__lte=F('user__profile__radius')).order_by('-distance')
 
     @staticmethod
-    def offers_in_range_and_time(query_location, time):
-        return Offer.offers_in_range(query_location).filter(start_time__lte=time, end_time__gte=time)
+    def offers_in_range_and_date(query_location, date):
+        return Offer.offers_in_range(query_location).filter(date=date)

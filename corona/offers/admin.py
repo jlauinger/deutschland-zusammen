@@ -5,7 +5,7 @@ from offers.models import Offer, ProviderProfile
 
 @admin.register(Offer)
 class OfferAdmin(admin.ModelAdmin):
-    list_display = ('user', 'start_time', 'end_time')
+    list_display = ('user', 'date', 'morning', 'noon', 'afternoon', 'evening')
 
 
 @admin.register(ProviderProfile)

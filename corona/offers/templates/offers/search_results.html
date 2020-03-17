@@ -15,7 +15,13 @@
                         {% for offer in object_list %}
                             <li>
                                 <div class="name">{{ offer.user.get_full_name }}</div>
-                                <div class="time">{{ offer.start_time }} bis {{ offer.end_time.time }}</div>
+                                <div class="time">
+                                    {{ offer.date }}
+                                    {% if offer.morning %}<br />Morgens{% endif %}
+                                    {% if offer.noon %}<br />Mittags{% endif %}
+                                    {% if offer.afternoon %}<br />Nachmittags{% endif %}
+                                    {% if offer.evening %}<br />Abends{% endif %}
+                                </div>
 
                                 <div class="mobility">Fortbewegungsmittel: <b>{{ offer.user.profile.get_mobility_display }}</b></div>
                                 <div class="distance">Ungefähr <b>{{ offer.distance|rounded_distance }} Meter</b> von dir entfernt</div>

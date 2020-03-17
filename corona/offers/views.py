@@ -104,9 +104,9 @@ class OfferSearchView(FormView):
     @staticmethod
     def get_location_and_objects(form):
         location = location_from_address(form.cleaned_data['where'])
-        time = form.cleaned_data['when']
+        date = form.cleaned_data['when']
 
-        return location, Offer.offers_in_range_and_time(location, time)
+        return location, Offer.offers_in_range_and_date(location, date)
 
     def form_valid(self, form):
         location, objects = self.get_location_and_objects(form)
