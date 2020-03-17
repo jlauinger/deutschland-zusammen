@@ -28,8 +28,11 @@
 
     <script>
         $(function () {
+            let whereField = $('#id_where');
+            let whenField = $('#id_when');
+
             // datepicker for when field
-            $("#id_when").datetimepicker({
+            whenField.datetimepicker({
                 format: 'd.m.Y',
                 timepicker: false
             });
@@ -108,8 +111,6 @@
                     callback(suggestions);
                 });
             };
-
-            let whereField = $('#id_where');
             whereField.autocomplete({
                 source: function(request, response) {
                     getAutocompleteOptions(request.term, response)
@@ -119,13 +120,20 @@
 
             // address local storage
             let LOCAL_STORAGE_LAST_QUERY = 'lastLocationQuery';
+            let LOCAL_STORAGE_LAST_DATE = 'lastDateQuery';
 
             whereField.change(function() {
                 localStorage.setItem(LOCAL_STORAGE_LAST_QUERY, $(this).val());
             });
-
             if(localStorage.getItem(LOCAL_STORAGE_LAST_QUERY)) {
                 whereField.val(localStorage.getItem(LOCAL_STORAGE_LAST_QUERY));
+
+            }
+            whenField.change(function() {
+                localStorage.setItem(LOCAL_STORAGE_LAST_DATE, $(this).val());
+            });
+            if (localStorage.getItem(LOCAL_STORAGE_LAST_DATE)) {
+                whenField.val(localStorage.getItem(LOCAL_STORAGE_LAST_DATE));
             }
         });
     </script>
