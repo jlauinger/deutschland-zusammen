@@ -21,7 +21,7 @@
                     Gassi gehen: <b>{{ user.profile.offers_petsitting|yesno }}</b><br />
                     Medikamente abholen: <b>{{ user.profile.offers_fetching_drugs|yesno }}</b><br />
                     Briefe einwerfen: <b>{{ user.profile.offers_sending_mail|yesno }}</b><br />
-                    Müll wegbringen: <b>{{ user.profile.offers_removing_trash|yesno }}</b>
+                    Kurierdienste: <b>{{ user.profile.offers_courier|yesno }}</b>
                     {% if user.profile.comment %}<br />Sonstiges: {{ user.profile.comment }}{% endif %}
                 </p>
 

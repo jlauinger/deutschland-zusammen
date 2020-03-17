@@ -64,7 +64,7 @@ class ProviderProfile(models.Model):
     offers_petsitting = models.BooleanField(default=False, verbose_name='Gassi gehen')
     offers_fetching_drugs= models.BooleanField(default=False, verbose_name='Medikamente abholen')
     offers_sending_mail = models.BooleanField(default=False, verbose_name='Briefe einwerfen')
-    offers_removing_trash = models.BooleanField(default=False, verbose_name='Müll wegbringen')
+    offers_courier = models.BooleanField(default=False, verbose_name='Kurierdienste')
     comment = models.TextField(blank=True, verbose_name='Sonstige Hilfestellungen oder Kommentare')
 
     phone = models.CharField(max_length=50, blank=True, verbose_name='Telefonnummer')
