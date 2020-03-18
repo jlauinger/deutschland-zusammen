@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tm4nzh33&pt64sp_wsmir02w7j1da=jf+6f$i2xpnn+m8or948'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['deutschlandzusammen.de', 'www.deutschlandzusammen.de']
+ALLOWED_HOSTS = ['localhost', 'deutschlandzusammen.de', 'www.deutschlandzusammen.de']
 
 
 # Application definition
@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'corona.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'koronadb',
-        'USER': 'koronadb',
-        'PASSWORD': '2vU8DyFpTedf54Z3Dkb3',
+        'NAME': 'gis' if DEBUG else 'koronadb',
+        'USER': 'gis' if DEBUG else 'koronadb',
+        'PASSWORD': 'changeme1' if DEBUG else '2vU8DyFpTedf54Z3Dkb3',
         'HOST': 'localhost',
         'PORT': '5432'
     }
@@ -127,7 +127,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/var/www/virtual/korona/html/static'
+if not DEBUG:
+    STATIC_ROOT = '/var/www/virtual/korona/html/static'
 
 
 # Geography settings
@@ -137,8 +138,9 @@ NOMINATIM_USER_AGENT = "corona-hilfsangebote"
 
 MAPBOX_API_TOKEN = "pk.eyJ1IjoiamxhdWluZ2VyIiwiYSI6ImNrN3RzMWcyNjB3Z3IzbXFyZmZianRkZzAifQ.P0LQjvZ7G0dB9uNqs2r3YQ"
 
-GDAL_LIBRARY_PATH = '/home/korona/lib/libgdal.so'
-GEOS_LIBRARY_PATH = '/home/korona/lib/libgeos_c.so'
+if not DEBUG:
+    GDAL_LIBRARY_PATH = '/home/korona/lib/libgdal.so'
+    GEOS_LIBRARY_PATH = '/home/korona/lib/libgeos_c.so'
 
 
 # Auth settings
@@ -155,11 +157,12 @@ CONTACT_MAIL_SUBJECT = 'Neue Nachricht von Corona-Hilfsangebote'
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025 if DEBUG else 587
 
-EMAIL_USE_TLS = False if DEBUG else True
+if not DEBUG:
+    EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = "" if DEBUG else "korona@spahr.uberspace.de"
-EMAIL_HOST_PASSWORD = "" if DEBUG else "FoqNEeX5YW9MmDizdQi6"
+    EMAIL_HOST_USER = "korona@spahr.uberspace.de"
+    EMAIL_HOST_PASSWORD =  "FoqNEeX5YW9MmDizdQi6"
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-SERVER_EMAIL = EMAIL_HOST_USER
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+    SERVER_EMAIL = EMAIL_HOST_USER
 
