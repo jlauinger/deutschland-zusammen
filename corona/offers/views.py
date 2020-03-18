@@ -174,24 +174,26 @@ class SendMessageView(UpdateView):
         return initial
 
     def form_valid(self, form):
+        body = settings.CONTACT_MAIL_BODY.format(form.instance.first_name,
+                                                 form.cleaned_data['sender'],
+                                                 form.cleaned_data['email'],
+                                                 form.cleaned_data['phone'],
+                                                 dict(form.fields['gender'].choices)[form.cleaned_data['gender']],
+                                                 form.cleaned_data['message'])
+
+        message = Message.objects.create(recipient=form.instance, sender_name=form.cleaned_data['sender'],
+                                         sender_email=form.cleaned_data['email'],
+                                         sender_phone=form.cleaned_data['phone'],
+                                         sender_gender=dict(form.fields['gender'].choices)[form.cleaned_data['gender']],
+                                         message=body,
+                                         date=now())
+
         try:
-            self.send_message(form.instance, form.cleaned_data['sender'], form.cleaned_data['email'],
-                              form.cleaned_data['phone'],
-                              dict(form.fields['gender'].choices)[form.cleaned_data['gender']],
-                              form.cleaned_data['message'])
+            message.send()
         except SMTPException:
             return HttpResponseRedirect(reverse_lazy('message_error'))
 
         return HttpResponseRedirect(reverse_lazy('message_sent'))
-
-    def send_message(self, user, sender, sender_email, sender_phone, sender_gender, message):
-        body = settings.CONTACT_MAIL_BODY.format(user.first_name, sender, sender_email, sender_phone, sender_gender,
-                                                 message)
-
-        Message.objects.create(recipient=user, sender_name=sender, sender_email=sender_email, sender_phone=sender_phone,
-                               sender_gender=sender_gender, message=message, date=now())
-
-        send_mail(settings.CONTACT_MAIL_SUBJECT, body, settings.CONTACT_MAIL_FROM, [user.email], fail_silently=False)
 
 
 class MessageSentView(TemplateView):

@@ -1,8 +1,10 @@
 from datetime import timedelta
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 from django.contrib.gis.db.models.functions import Distance
+from django.core.mail import send_mail
 from django.db.models import F
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import now, make_aware
@@ -167,3 +169,7 @@ class Message(models.Model):
 
     def __str__(self):
         return "Nachricht am {} von {} an {}".format(self.date, self.sender_name, self.recipient.get_full_name())
+
+    def send(self):
+        send_mail(settings.CONTACT_MAIL_SUBJECT, self.message, settings.CONTACT_MAIL_FROM, [self.recipient.email],
+                  fail_silently=False)
