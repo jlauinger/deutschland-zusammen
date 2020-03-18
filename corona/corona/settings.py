@@ -151,9 +151,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 # Contact mail settings
 
-CONTACT_MAIL_FROM = 'noreply@deutschlandzusammen.de'
-CONTACT_MAIL_SUBJECT = 'Neue Nachricht von Corona-Hilfsangebote'
-
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025 if DEBUG else 587
 
@@ -166,3 +163,23 @@ if not DEBUG:
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
     SERVER_EMAIL = EMAIL_HOST_USER
 
+CONTACT_MAIL_FROM = 'noreply@deutschlandzusammen.de'
+CONTACT_MAIL_SUBJECT = 'Neue Nachricht von Corona-Hilfsangebote'
+CONTACT_MAIL_BODY = """Hallo {}!
+
+Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!
+
+Daten zur suchenden Person:
+Name: {}
+E-Mail: {}
+Telefon: {}
+Geschlecht: {}
+
+Nachricht:
+{}
+
+Melde dich doch wenn du kannst schnellstmöglich zurück.
+
+Liebe Grüße
+dein Team von deutschlandzusammen.de
+"""

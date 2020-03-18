@@ -1,0 +1,16 @@
+{% extends 'offers/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Fehler beim Versenden der Nachricht!</h2>
+
+        <p>
+            Tut uns Leid, deine Nachricht konnte leider nicht versendet werden. Versuche es doch gleich nochmal, oder
+            kontaktiere uns unter support (at) deutschlandzusammen (punkt) de.
+        </p>
+
+        <a href="{% url 'search' %}" class="btn btn-primary">Zurück zur Startseite</a>
+
+        <div class="padding-top-1"></div>
+    </div>
+{% endblock %}

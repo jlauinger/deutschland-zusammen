@@ -1,5 +1,6 @@
 import json
 from datetime import timedelta
+from smtplib import SMTPException
 
 from django.conf import settings
 from django.contrib.auth import login
@@ -173,40 +174,28 @@ class SendMessageView(UpdateView):
         return initial
 
     def form_valid(self, form):
-        SendMessageView.send_message(form.instance, form.cleaned_data['sender'], form.cleaned_data['email'],
-                                     form.cleaned_data['phone'],
-                                     dict(form.fields['gender'].choices)[form.cleaned_data['gender']],
-                                     form.cleaned_data['message'])
+        try:
+            self.send_message(form.instance, form.cleaned_data['sender'], form.cleaned_data['email'],
+                              form.cleaned_data['phone'],
+                              dict(form.fields['gender'].choices)[form.cleaned_data['gender']],
+                              form.cleaned_data['message'])
+        except SMTPException:
+            return HttpResponseRedirect(reverse_lazy('message_error'))
+
         return HttpResponseRedirect(reverse_lazy('message_sent'))
 
-    @staticmethod
-    def send_message(user, sender, sender_email, sender_phone, sender_gender, message):
-        body = """
-Hallo {}!
-
-Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!
-
-Daten zur suchenden Person:
-Name: {}
-E-Mail: {}
-Telefon: {}
-Geschlecht: {}
-
-Nachricht:
-{}
-
----
-
-Melde dich doch wenn du kannst schnellstmöglich zurück.
-
-Liebe Grüße
-dein Team von deutschlandzusammen.de
-        """.format(user.first_name, sender, sender_email, sender_phone, sender_gender, message)
-        send_mail(settings.CONTACT_MAIL_SUBJECT, body, settings.CONTACT_MAIL_FROM, [user.email], fail_silently=True)
+    def send_message(self, user, sender, sender_email, sender_phone, sender_gender, message):
+        body = settings.CONTACT_MAIL_BODY.format(user.first_name, sender, sender_email, sender_phone, sender_gender,
+                                                 message)
+        send_mail(settings.CONTACT_MAIL_SUBJECT, body, settings.CONTACT_MAIL_FROM, [user.email], fail_silently=False)
 
 
 class MessageSentView(TemplateView):
     template_name = 'offers/message_sent.html'
+
+
+class MessageErrorView(TemplateView):
+    template_name = 'offers/message_error.html'
 
 
 class SafetyInformationView(TemplateView):
