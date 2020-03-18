@@ -1,0 +1,83 @@
+{% extends 'offers/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        {% if any_offers_exist %}
+            <h2>Zu diesen Zeiten kannst du Hilfe anbieten</h2>
+        {% else %}
+            <h2>Schritt 3: Wann kannst du Hilfe anbieten?</h2>
+        {% endif %}
+
+        <div class="padding-top-1"></div>
+
+        <p>Kreuze bitte mindestens eine Zeit an.</p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.management_form }}
+
+            <table class="timetable">
+                <tr class="heading">
+                    <th class="date">Datum</th>
+                    <th>Morgens</th>
+                    <th>Mittags</th>
+                    <th>Nachmittags</th>
+                    <th>Abends</th>
+                    <th class="fullday">Ganzer Tag</th>
+                </tr>
+
+                <tbody>
+                {% for form in form %}
+                    <tr>
+                        <td class="date">{{ form.id }}{{ form.date }}{{ form.date.value|date:'d. F' }}</td>
+                        <td>
+                            {{ form.morning }}
+                            <label for="{{ form.morning.id_for_label }}"></label>
+                        </td>
+                        <td>
+                            {{ form.noon }}
+                            <label for="{{ form.noon.id_for_label }}"></label>
+                        </td>
+                        <td>
+                            {{ form.afternoon }}
+                            <label for="{{ form.afternoon.id_for_label }}"></label>
+                        </td>
+                        <td>
+                            {{ form.evening }}
+                            <label for="{{ form.evening.id_for_label }}"></label>
+                        </td>
+                        <td class="fullday">
+                            <input type="checkbox" class="toggle-all" id="id_{{ form.prefix }}-toggle-all"
+                                   data-prefix="{{ form.prefix }}" />
+                            <label for="id_{{ form.prefix }}-toggle-all"></label>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="padding-top-1"></div>
+
+            <p>
+                Komm für spätere Zeiten bitte einfach demnächst wieder auf diese Seite, du kannst immer maximal zwei
+                Wochen im Voraus angeben dass du Zeit hast.
+            </p>
+
+            <input type="submit" class="btn btn-primary"
+                   value="{% if any_offers_exist %}Aktualisieren{% else %}Los geht's!{% endif %}">
+        </form>
+    </div>
+
+    <script>
+        $('.toggle-all').click(function() {
+            var prefix = $(this).data('prefix');
+            var state = $(this)[0].checked;
+            $('#id_' + prefix + '-morning').prop('checked', state);
+            $('#id_' + prefix + '-noon').prop('checked', state);
+            $('#id_' + prefix + '-afternoon').prop('checked', state);
+            $('#id_' + prefix + '-evening').prop('checked', state);
+        });
+    </script>
+{% endblock %}

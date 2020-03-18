@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.forms import formset_factory, modelformset_factory
 
 from offers.models import Offer, ProviderProfile, GENDERS
 
@@ -23,15 +24,6 @@ class SendMessageForm(forms.ModelForm):
         fields = ['sender', 'email', 'phone', 'gender', 'message']
 
 
-class OfferForm(forms.ModelForm):
-    date = forms.DateField(label='Datum', input_formats=['%d.%m.%Y'],
-                           widget=forms.TextInput(attrs={'placeholder': 'dd.mm.YYYY', 'autocomplete': 'off'}))
-
-    class Meta:
-        model = Offer
-        fields = ['date', 'morning', 'noon', 'afternoon', 'evening']
-
-
 class ProviderProfileForm(forms.ModelForm):
     first_name = forms.CharField(label='Vorname', max_length=100)
     last_name = forms.CharField(label='Nachname', max_length=100)
@@ -53,3 +45,22 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password', 'email')
+
+
+class OfferForm(forms.ModelForm):
+    date = forms.DateField(widget=forms.HiddenInput())
+
+    class Meta:
+        model = Offer
+        fields = ['date', 'morning', 'noon', 'afternoon', 'evening']
+
+
+class BaseOfferFormSet(forms.BaseModelFormSet):
+    def __iter__(self):
+        return iter(sorted(self.forms, key=lambda x: x['date'].value()))
+
+    def __getitem__(self, index):
+        return list(self)[index]
+
+
+OfferFormSet = modelformset_factory(Offer, form=OfferForm, formset=BaseOfferFormSet, min_num=14, max_num=14)

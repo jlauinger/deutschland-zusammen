@@ -1,4 +1,5 @@
 import json
+from datetime import timedelta
 
 from django.conf import settings
 from django.contrib.auth import login
@@ -9,9 +10,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.timezone import now
 from django.views import View
-from django.views.generic import FormView, ListView, DeleteView, CreateView, UpdateView, TemplateView
+from django.views.generic import FormView, ListView, UpdateView, TemplateView
 
-from offers.forms import OfferSearchForm, UserForm, OfferForm, ProviderProfileForm, SendMessageForm
+from offers.forms import OfferSearchForm, UserForm, ProviderProfileForm, SendMessageForm, OfferFormSet
 from offers.helper import location_from_address, address_from_location, address_autocomplete
 from offers.models import Offer, ProviderProfile
 
@@ -39,6 +40,30 @@ class AccountRegistrationView(FormView):
         return user
 
 
+class ProfileView(ListView):
+    model = Offer
+    template_name = 'offers/providerprofile.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.profile.location is None:
+            return HttpResponseRedirect(reverse_lazy('edit_profile', args=[request.user.profile.id]))
+        elif self.user_has_no_active_times():
+            return HttpResponseRedirect(reverse_lazy('offers'))
+        else:
+            return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return Offer.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['mapbox_api_token'] = settings.MAPBOX_API_TOKEN
+        return data
+
+    def user_has_no_active_times(self):
+        return not Offer.objects.filter(user=self.request.user).exists()
+
+
 class EditProfileView(UpdateView):
     model = ProviderProfile
     form_class = ProviderProfileForm
@@ -61,48 +86,44 @@ class EditProfileView(UpdateView):
         return super().form_valid(form)
 
 
-class ProfileView(ListView):
-    model = Offer
-    template_name = 'offers/providerprofile.html'
-
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.profile.location is None:
-            return HttpResponseRedirect(reverse_lazy('edit_profile', args=[request.user.profile.id]))
-        else:
-            return super().dispatch(request, *args, **kwargs)
+class OffersView(FormView):
+    template_name = 'offers/offers_list.html'
 
     def get_queryset(self):
         return Offer.objects.filter(user=self.request.user)
 
-    def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        data['mapbox_api_token'] = settings.MAPBOX_API_TOKEN
-        return data
-
-
-class DeleteOfferView(DeleteView):
-    model = Offer
-    success_url = reverse_lazy('profile')
-
-    def get_queryset(self):
-        return Offer.objects.filter(user=self.request.user)
-
-
-class CreateOfferView(CreateView):
-    model = Offer
-    form_class = OfferForm
-
-    def get_success_url(self):
-        return reverse_lazy('profile')
+    def get_form(self, form_class=None):
+        return OfferFormSet(queryset=self.get_queryset(), **self.get_form_kwargs())
 
     def get_initial(self):
-        initial = super().get_initial()
-        initial['date'] = now().__format__('%d.%m.%Y')
-        return initial
+        dates = [now() + timedelta(days=n) for n in range(14)]
+        return [{'date': date.date()} for date in dates if not self.get_queryset().filter(date=date).exists()]
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data()
+        context_data['any_offers_exist'] = self.any_offer_exists()
+        return context_data
+
+    def get_success_url(self):
+        return reverse_lazy('profile') if self.any_offer_exists() else reverse_lazy('offers')
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        for form in form:
+            if self.contains_any_active_time(form):
+                form.instance.user = self.request.user
+                form.save()
+            elif form.cleaned_data['id'] and form.instance.user == self.request.user:
+                form.instance.delete()
+
         return super().form_valid(form)
+
+    @staticmethod
+    def contains_any_active_time(form):
+        return form.cleaned_data['morning'] or form.cleaned_data['noon'] or \
+               form.cleaned_data['afternoon'] or form.cleaned_data['evening']
+
+    def any_offer_exists(self):
+        return self.get_queryset().exists()
 
 
 class OfferSearchView(FormView):

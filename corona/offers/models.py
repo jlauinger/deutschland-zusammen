@@ -126,7 +126,7 @@ class Offer(models.Model):
 
     morning = models.BooleanField(default=False, verbose_name='Morgens')
     noon = models.BooleanField(default=False, verbose_name='Mittags')
-    afternoon = models.BooleanField(default=True, verbose_name='Nachmittags')
+    afternoon = models.BooleanField(default=False, verbose_name='Nachmittags')
     evening = models.BooleanField(default=False, verbose_name='Abends')
 
     def __str__(self):

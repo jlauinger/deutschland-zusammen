@@ -46,8 +46,8 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Abmelden</a></li>
                     <li class="nav-item"><a href="{% url 'search' %}" class="nav-link">Suche</a></li>
-                    <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">Meine Angebote</a></li>
-                    <li class="nav-item"><a href="{% url 'create_offer' %}" class="btn btn-primary">Biete deine Hilfe an</a></li>
+                    <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">Dein Profil</a></li>
+                    <li class="nav-item"><a href="{% url 'offers' %}" class="btn btn-primary">Deine Zeiten</a></li>
                 {% else %}
                     <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Anmelden</a></li>
                     <li class="nav-item"><a href="{% url 'register' %}" class="btn btn-primary">Biete deine Hilfe an</a></li>

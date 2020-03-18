@@ -36,31 +36,24 @@
                     <b>Geschlecht:</b> {{ user.profile.get_gender_display }} (öffentlich: <b>{{ user.profile.show_gender|yesno }})</b>
                 </p>
 
-                <a href="{% url 'edit_profile' user.profile.id %}" class="btn btn-primary">Profil bearbeiten</a>
-
-                <div class="padding-top-1"></div>
-                <div class="padding-top-1"></div>
-                <h4>Zu diesen Zeiten kannst du Hilfe anbieten:</h4>
-
-                <div class="padding-top-1"></div>
+                <h4>Zu diesen Zeiten kannst du Hilfe anbieten</h4>
                 {% if object_list %}
-                    <ul>
+                    <p>
                         {% for offer in object_list %}
-                            <li class="profile-offer-time">
-                                {{ offer.date }}:
-                                {% if offer.morning %}Morgens {% endif %}
-                                {% if offer.noon %}Mittags {% endif %}
-                                {% if offer.afternoon %}Nachmittags {% endif %}
-                                {% if offer.evening %}Abends {% endif %}
-                                <a href="{% url 'delete_offer' offer.id %}" class="btn btn-sm btn-danger">Doch nicht</a>
-                            </li>
+                            {{ offer.date }}:
+                            {% if offer.morning %}Morgens {% endif %}
+                            {% if offer.noon %}Mittags {% endif %}
+                            {% if offer.afternoon %}Nachmittags {% endif %}
+                            {% if offer.evening %}Abends {% endif %}
+                            <br />
                         {% endfor %}
-                    </ul>
+                    </p>
                 {% else %}
                     <p>Du hast bisher keine Angebote erstellt.</p>
                 {% endif %}
 
-                <a href="{% url 'create_offer' %}" class="btn btn-primary">Füge eine Zeit hinzu!</a>
+                <a href="{% url 'edit_profile' user.profile.id %}" class="btn btn-primary">Bearbeite dein Profil</a>
+                <a href="{% url 'offers' %}" class="btn btn-primary">Bearbeite deine Zeiten</a>
 
                 <div class="padding-top-1"></div>
                 <div class="padding-top-1"></div>

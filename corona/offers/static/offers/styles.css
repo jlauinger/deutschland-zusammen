@@ -140,3 +140,46 @@ body.bg-image {
     background-color: red;
     color: white;
 }
+
+.timetable {
+    max-width: 100%;
+}
+.timetable td, .timetable th {
+    padding: 5px 10px;
+    text-align: center;
+}
+.timetable th {
+    border-bottom: 2px solid black;
+}
+.timetable .heading th {
+    background-color: #f7d100;
+}
+.timetable .date {
+    text-align: right;
+    border-right: 2px solid black;
+}
+.timetable .fullday {
+    border-left: 1px solid black;
+}
+.timetable tbody tr:nth-child(even) {
+    background-color: #f5edc4;
+}
+.timetable tbody tr:nth-child(odd) {
+    background-color: #f5f1dc;
+}
+.timetable input[type=checkbox] {
+    display: none;
+}
+.timetable input[type="checkbox"] + label::before {
+    width: 22px;
+    height: 18px;
+    background-image: url("https://boolie.org/wp-content/uploads/2017/11/unchecked.png");
+    display: block;
+    content: "";
+    float: left;
+    margin-top: 5px;
+}
+.timetable input[type="checkbox"]:checked+label::before {
+    background-image: url("https://boolie.org/wp-content/uploads/2017/11/checked.png");
+}
+
