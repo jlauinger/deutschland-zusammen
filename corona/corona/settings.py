@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tm4nzh33&pt64sp_wsmir02w7j1da=jf+6f$i2xpnn+m8or948'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['deutschlandzusammen.de', 'www.deutschlandzusammen.de']
 
 
 # Application definition
@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'corona.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'gis',
-        'USER': 'gis',
-        'PASSWORD': 'changeme1',
+        'NAME': 'koronadb',
+        'USER': 'koronadb',
+        'PASSWORD': '2vU8DyFpTedf54Z3Dkb3',
         'HOST': 'localhost',
         'PORT': '5432'
     }
@@ -127,6 +127,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '/var/www/virtual/korona/html/static'
+
 
 # Geography settings
 
@@ -134,6 +136,9 @@ SRID = 4326
 NOMINATIM_USER_AGENT = "corona-hilfsangebote"
 
 MAPBOX_API_TOKEN = "pk.eyJ1IjoiamxhdWluZ2VyIiwiYSI6ImNrN3RzMWcyNjB3Z3IzbXFyZmZianRkZzAifQ.P0LQjvZ7G0dB9uNqs2r3YQ"
+
+GDAL_LIBRARY_PATH = '/home/korona/lib/libgdal.so'
+GEOS_LIBRARY_PATH = '/home/korona/lib/libgeos_c.so'
 
 
 # Auth settings
@@ -144,7 +149,7 @@ LOGOUT_REDIRECT_URL = '/'
 
 # Contact mail settings
 
-CONTACT_MAIL_FROM = 'noreply@corona.example'
+CONTACT_MAIL_FROM = 'noreply@deutschlandzusammen.de'
 CONTACT_MAIL_SUBJECT = 'Neue Nachricht von Corona-Hilfsangebote'
 
 EMAIL_HOST = "localhost"
