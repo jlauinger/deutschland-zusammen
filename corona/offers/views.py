@@ -15,7 +15,7 @@ from django.views.generic import FormView, ListView, UpdateView, TemplateView, D
 
 from offers.forms import OfferSearchForm, UserForm, ProviderProfileForm, SendMessageForm, OfferFormSet
 from offers.helper import location_from_address, address_from_location, address_autocomplete
-from offers.models import Offer, ProviderProfile
+from offers.models import Offer, ProviderProfile, Message
 
 
 class AccountRegistrationView(FormView):
@@ -187,6 +187,10 @@ class SendMessageView(UpdateView):
     def send_message(self, user, sender, sender_email, sender_phone, sender_gender, message):
         body = settings.CONTACT_MAIL_BODY.format(user.first_name, sender, sender_email, sender_phone, sender_gender,
                                                  message)
+
+        Message.objects.create(recipient=user, sender_name=sender, sender_email=sender_email, sender_phone=sender_phone,
+                               sender_gender=sender_gender, message=message, date=now())
+
         send_mail(settings.CONTACT_MAIL_SUBJECT, body, settings.CONTACT_MAIL_FROM, [user.email], fail_silently=False)
 
 

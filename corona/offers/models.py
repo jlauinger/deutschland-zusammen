@@ -140,3 +140,30 @@ class Offer(models.Model):
     @staticmethod
     def offers_in_range_and_date(query_location, date):
         return Offer.offers_in_range(query_location).filter(date=date)
+
+
+class Message(models.Model):
+    """
+    A message is an (e-mail) message that an anonymous user sent to a logged-in user who put in an offer.
+
+    It is sent by mail to the logged-in user.
+    It is stored in database for future troubleshooting.
+    """
+
+    class Meta:
+        verbose_name = 'Gesendete Nachricht'
+        verbose_name_plural = 'Gesendete Nachrichten'
+
+    recipient = models.ForeignKey(User, related_name='received_messages', on_delete=models.CASCADE)
+
+    sender_name = models.CharField(max_length=100, blank=True)
+    sender_email = models.CharField(max_length=100, blank=True)
+    sender_phone = models.CharField(max_length=100, blank=True)
+    sender_gender = models.CharField(choices=GENDERS, max_length=50, default='X')
+
+    message = models.TextField(blank=True)
+
+    date = models.DateTimeField(default=now)
+
+    def __str__(self):
+        return "Nachricht am {} von {} an {}".format(self.date, self.sender_name, self.recipient.get_full_name())
