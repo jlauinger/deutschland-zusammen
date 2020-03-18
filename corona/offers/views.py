@@ -10,7 +10,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.timezone import now
 from django.views import View
-from django.views.generic import FormView, ListView, UpdateView, TemplateView
+from django.views.generic import FormView, ListView, UpdateView, TemplateView, DeleteView
 
 from offers.forms import OfferSearchForm, UserForm, ProviderProfileForm, SendMessageForm, OfferFormSet
 from offers.helper import location_from_address, address_from_location, address_autocomplete
@@ -38,6 +38,15 @@ class AccountRegistrationView(FormView):
         user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'])
         ProviderProfile.objects.create(user=user)
         return user
+
+
+class DeleteUserView(DeleteView):
+    model = User
+    success_url = reverse_lazy('search')
+    template_name = 'registration/user_confirm_delete.html'
+
+    def get_queryset(self):
+        return User.objects.filter(id=self.request.user.id)
 
 
 class ProfileView(ListView):
