@@ -3,3 +3,4 @@ psycopg2-binary
 geopy
 django-bootstrap4
 requests
+django-simple-captcha

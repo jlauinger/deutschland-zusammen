@@ -1,3 +1,4 @@
+from captcha.fields import CaptchaField
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import formset_factory, modelformset_factory
@@ -18,6 +19,7 @@ class SendMessageForm(forms.ModelForm):
     phone = forms.CharField(label='Deine Telefonnummer (optional)', max_length=100, required=False)
     gender = forms.ChoiceField(label='Dein Geschlecht (optional)', choices=GENDERS, required=False)
     message = forms.CharField(label='Nachricht', max_length=1000, widget=forms.Textarea())
+    captcha = CaptchaField(label='Captcha')
 
     class Meta:
         model = User
