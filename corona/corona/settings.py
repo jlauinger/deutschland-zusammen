@@ -146,3 +146,15 @@ LOGOUT_REDIRECT_URL = '/'
 
 CONTACT_MAIL_FROM = 'noreply@corona.example'
 CONTACT_MAIL_SUBJECT = 'Neue Nachricht von Corona-Hilfsangebote'
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025 if DEBUG else 587
+
+EMAIL_USE_TLS = False if DEBUG else True
+
+EMAIL_HOST_USER = "" if DEBUG else "korona@spahr.uberspace.de"
+EMAIL_HOST_PASSWORD = "" if DEBUG else "FoqNEeX5YW9MmDizdQi6"
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+
