@@ -160,8 +160,8 @@ EMAIL_PORT = 1025 if DEBUG else 587
 if not DEBUG:
     EMAIL_USE_TLS = True
 
-    EMAIL_HOST_USER = "korona@spahr.uberspace.de"
-    EMAIL_HOST_PASSWORD =  "FoqNEeX5YW9MmDizdQi6"
+    EMAIL_HOST_USER = 'noreply@deutschlandzusammen.de'
+    EMAIL_HOST_PASSWORD = 'FoqNEeX5YW9MmDizdQi6'
 
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
     SERVER_EMAIL = EMAIL_HOST_USER
