@@ -174,32 +174,33 @@ class SendMessageView(UpdateView):
 
     def form_valid(self, form):
         SendMessageView.send_message(form.instance, form.cleaned_data['sender'], form.cleaned_data['email'],
-                                     form.cleaned_data['phone'], form.cleaned_data['gender'],
+                                     form.cleaned_data['phone'],
+                                     dict(form.fields['gender'].choices)[form.cleaned_data['gender']],
                                      form.cleaned_data['message'])
         return HttpResponseRedirect(reverse_lazy('message_sent'))
 
     @staticmethod
     def send_message(user, sender, sender_email, sender_phone, sender_gender, message):
         body = """
-        Hallo {}!
-        
-        Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!
-        
-        Daten zur suchenden Person:
-        Name: {}
-        E-Mail: {}
-        Telefon: {}
-        Geschlecht: {}
-        
-        Nachricht:
-        {}
-        
-        ---
-        
-        Melde dich doch wenn du kannst schnellstmöglich zurück.
-        
-        Liebe Grüße
-        dein Team von deutschlandzusammen.de
+Hallo {}!
+
+Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!
+
+Daten zur suchenden Person:
+Name: {}
+E-Mail: {}
+Telefon: {}
+Geschlecht: {}
+
+Nachricht:
+{}
+
+---
+
+Melde dich doch wenn du kannst schnellstmöglich zurück.
+
+Liebe Grüße
+dein Team von deutschlandzusammen.de
         """.format(user.first_name, sender, sender_email, sender_phone, sender_gender, message)
         send_mail(settings.CONTACT_MAIL_SUBJECT, body, settings.CONTACT_MAIL_FROM, [user.email], fail_silently=True)
 
