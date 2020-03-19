@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-19 19:18+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: corona/settings.py:148
+msgid "Neue Nachricht von Corona-Hilfsangebote"
+msgstr ""
+
+#: corona/settings.py:149
+msgid ""
+"Hallo {}!\n"
+"\n"
+"Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!\n"
+"\n"
+"Daten zur suchenden Person:\n"
+"Name: {}\n"
+"E-Mail: {}\n"
+"Telefon: {}\n"
+"Geschlecht: {}\n"
+"\n"
+"Nachricht:\n"
+"{}\n"
+"\n"
+"Melde dich doch wenn du kannst schnellstmöglich zurück.\n"
+"\n"
+"Liebe Grüße\n"
+"dein Team von deutschlandzusammen.de\n"
+msgstr ""
+
+#: corona/settings.py:169
+msgid "Aktiviere deinen Account bei deutschlandzusammen.de"
+msgstr ""
+
+#: corona/settings.py:170
+msgid ""
+"\n"
+"Hallo {}!\n"
+"\n"
+"Bitte bestätige deine E-Mail-Adresse und aktiviere deinen Account bei "
+"deutschlandzusammen.de. Klicke dazu einfach\n"
+"auf den folgenden Link oder kopiere ihn in die Adressleiste deines "
+"Browsers:\n"
+"\n"
+"{}\n"
+"\n"
+"Bis du deinen Account aktiviert hast können deine Angebote nicht gefunden "
+"werden.\n"
+"\n"
+"Liebe Grüße\n"
+"dein Team von deutschlandzusammen.de\n"
+msgstr ""
