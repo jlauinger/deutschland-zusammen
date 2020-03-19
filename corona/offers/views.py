@@ -53,7 +53,7 @@ class ActivateAccountView(View):
             return render(self.request, 'registration/account_activation_failure.html')
 
     def activate_account(self, **kwargs):
-        queryset = ProviderProfile.objects.filter(id=kwargs['pk'], activation_token=kwargs['token'])
+        queryset = ProviderProfile.objects.filter(slug=kwargs['slug'], activation_token=kwargs['token'])
 
         if not queryset.exists():
             logout(self.request)
@@ -91,7 +91,7 @@ class ProfileView(ListView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.profile.location is None:
-            return HttpResponseRedirect(reverse_lazy('edit_profile', args=[request.user.profile.id]))
+            return HttpResponseRedirect(reverse_lazy('edit_profile', args=[request.user.profile.slug]))
         elif self.user_has_no_active_times():
             return HttpResponseRedirect(reverse_lazy('offers'))
         else:

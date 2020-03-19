@@ -67,7 +67,7 @@
                     <p>{% trans "Du hast bisher keine Angebote erstellt." %}</p>
                 {% endif %}
 
-                <a href="{% url 'edit_profile' user.profile.id %}" class="btn btn-primary">{% trans "Bearbeite dein Profil" %}</a>
+                <a href="{% url 'edit_profile' user.profile.slug %}" class="btn btn-primary">{% trans "Bearbeite dein Profil" %}</a>
                 <a href="{% url 'offers' %}" class="btn btn-primary">{% trans "Bearbeite deine Zeiten" %}</a>
                 <a href="{% url 'delete_user' user.id %}" class="btn btn-danger">{% trans "Profil löschen" %}</a>
 
