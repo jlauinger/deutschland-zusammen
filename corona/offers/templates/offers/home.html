@@ -3,52 +3,54 @@
 {% load static %}
 
 {% block content %}
-    <div class="bg-image">
-        <div class="container padding-top-1">
-            <div class="search-form">
-                <div class="inner-search">
-                    <h2>Deutschland steht zusammen. Finde Hilfe in der Corona-Krise</h2>
+<div class="bg-image">
+    <div class="container padding-top-1">
+        <div class="search-form">
+            <div class="inner-search">
+                <h2>{% trans "Deutschland steht zusammen. Finde Hilfe in der Corona-Krise" %}</h2>
 
-                    <form method="POST" action="">
-                        {% csrf_token %}
+                <form method="POST" action="">
+                    {% csrf_token %}
 
-                        {{ form.where }}
-                        <a href="#" id="locate">
-                            <img src="{% static 'offers/images/crosshair.png' %}" alt="Versuche mich zu orten"
-                                 title="Versuche mich zu orten" />
-                        </a>
+                    {{ form.where }}
+                    <a href="#" id="locate">
+                        <img src="{% static 'offers/images/crosshair.png' %}"
+                             alt="{% trans "Versuche mich zu orten" %}"
+                             title="{% trans "Versuche mich zu orten" %}" />
+                    </a>
 
-                        <div class="hidden-sm-up padding-top-1"></div>
+                    <div class="hidden-sm-up padding-top-1"></div>
 
-                        {{ form.when }}
-                        <a href="#" id="today">
-                            <img src="{% static 'offers/images/today-icon.png' %}" alt="Heute" title="Heute" />
-                        </a>
+                    {{ form.when }}
+                    <a href="#" id="today">
+                        <img src="{% static 'offers/images/today-icon.png' %}" alt="{% trans "Heute" %}"
+                        title="{% trans "Heute" %}" />
+                    </a>
 
-                        <div class="hidden-sm-up padding-top-1"></div>
-                        <input type="submit" value="Suchen!" class="btn btn-primary">
-                    </form>
-                </div>
+                    <div class="hidden-sm-up padding-top-1"></div>
+                    <input type="submit" value="{% trans "Suchen!" %}" class="btn btn-primary">
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="content-below-fold">
-        <div class="container centering">
-            <h2>Deutschland Zusammen</h2>
+<div class="content-below-fold">
+    <div class="container centering">
+        <h2>Deutschland Zusammen</h2>
 
-            <p>
-                Mit diesem Portal möchten wir helfenden und hilfesuchende Menschen die Möglichkeit geben einander zu
-                finden. In Zeiten wie diesen ist es besonders wichtig, dass wir alle ein Stück zusammenrücken, um uns
-                gegenseitig zu helfen. Wenn du Hilfe benötigst, gib oben einfach deinen Straßennamen und deinen Ort
-                (z.B. "Musterstraße Beispielstadt") an, sowie das Datum an dem du suchst. Sofern du in der Lage
-                bist, anderen Menschen deine Hilfe anzubieten, <br />
-                <a href="{% url 'register' %}">erstelle dir hier einen Account.</a>
-            </p>
-        </div>
+        <p>
+            Mit diesem Portal möchten wir helfenden und hilfesuchende Menschen die Möglichkeit geben einander zu
+            finden. In Zeiten wie diesen ist es besonders wichtig, dass wir alle ein Stück zusammenrücken, um uns
+            gegenseitig zu helfen. Wenn du Hilfe benötigst, gib oben einfach deinen Straßennamen und deinen Ort
+            (z.B. "Musterstraße Beispielstadt") an, sowie das Datum an dem du suchst. Sofern du in der Lage
+            bist, anderen Menschen deine Hilfe anzubieten, <br />
+            <a href="{% url 'register' %}">erstelle dir hier einen Account.</a>
+        </p>
     </div>
+</div>
 
-    <script>
+<script>
         $(function () {
             let whereField = $('#id_where');
             let whenField = $('#id_when');
@@ -106,19 +108,19 @@
                                 // do nothing
                                 break;
                             case error.POSITION_UNAVAILABLE:
-                                alert("Standortdaten sind nicht verfügbar.");
+                                alert({% trans "Standortdaten sind nicht verfügbar." %});
                                 break;
                             case error.TIMEOUT:
-                                alert("Die Standortabfrage dauerte zu lange (Time-out).");
+                                alert({% trans "Die Standortabfrage dauerte zu lange (Time-out)." %});
                                 break;
                             case error.UNKNOWN_ERROR:
-                                alert("Unbekannter Fehler.");
+                                alert({% trans "Unbekannter Fehler." %});
                                 break;
                         }
 
                     });
                 } else {
-                    alert('Ihr Browser unterstützt keine Ortung.');
+                    alert({% trans "Ihr Browser unterstützt keine Ortung." %});
                 }
             });
 

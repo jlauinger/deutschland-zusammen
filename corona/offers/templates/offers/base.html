@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Hilfsangebote während der Corona-Krise</title>
+    <title>{% trans "Hilfsangebote während der Corona-Krise" %}</title>
 
     <!-- Bootstrap -->
     {% bootstrap_css %}
@@ -30,13 +30,13 @@
 </head>
 <body class="{% block bodyclass %}{% endblock %}">
 
-<div class="prototype-note">Nicht-offizieller Prototyp, nicht vom BMG angeboten!</div>
+<div class="prototype-note">{% trans "Nicht-offizieller Prototyp, nicht vom BMG angeboten!" %}</div>
 
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{% url 'search' %}">
             <img src="{% static 'offers/images/BMG_Logo.png' %}" height="100"
-                 class="d-inline-block align-top" alt="Bundesministerium für Gesundheit">
+                 class="d-inline-block align-top" alt={% trans "Bundesministerium für Gesundheit" %}>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -44,13 +44,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="nav navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Abmelden</a></li>
-                    <li class="nav-item"><a href="{% url 'search' %}" class="nav-link">Suche</a></li>
-                    <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">Dein Profil</a></li>
-                    <li class="nav-item"><a href="{% url 'offers' %}" class="btn btn-primary">Deine Zeiten</a></li>
+                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">{% trans "Abmelden" %}</a></li>
+                    <li class="nav-item"><a href="{% url 'search' %}" class="nav-link">{% trans "Suche" %}</a></li>
+                    <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">{% trans "Dein Profil" %}</a></li>
+                    <li class="nav-item"><a href="{% url 'offers' %}" class="btn btn-primary">{% trans "Deine Zeiten" %}</a></li>
                 {% else %}
-                    <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Anmelden</a></li>
-                    <li class="nav-item"><a href="{% url 'register' %}" class="btn btn-primary">Biete deine Hilfe an</a></li>
+                    <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">{% trans "Anmelden" %}</a></li>
+                    <li class="nav-item"><a href="{% url 'register' %}" class="btn btn-primary">{% trans "Biete deine Hilfe an" %}</a></li>
                 {% endif %}
             </div>
         </div>
@@ -74,7 +74,7 @@
 
 <footer>
     <div class="container">
-        &copy; 2020 mach2media &middot; <a href="{% url 'safety_information' %}">Sicherheits-Informationen</a>
+        &copy; 2020 mach2media &middot; <a href="{% url 'safety_information' %}">{% trans "Sicherheits-Informationen" %}</a>
     </div>
 </footer>
 </div>

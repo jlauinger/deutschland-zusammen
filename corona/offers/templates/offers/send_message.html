@@ -3,18 +3,18 @@
 
 {% block content %}
     <div class="container">
-        <h2>Nachricht an Helfer*in senden:</h2>
+        <h2>{% trans "Nachricht an Helfer*in senden:" %}</h2>
 
         <p>
-            Denke daran, mindestens eine Kontaktmöglichkeit anzugeben, sonst kann dich dein*e Helfer*in nämlich
-            gar nicht erreichen!
+            {% trans "Denke daran, mindestens eine Kontaktmöglichkeit anzugeben, sonst kann dich dein*e Helfer*in nämlich
+            gar nicht erreichen!" %}
         </p>
 
         <form method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-                <input type="submit" value="Senden!" class="btn btn-primary">
+                <input type="submit" value={% trans "Senden!" %} class="btn btn-primary">
             {% endbuttons %}
         </form>
     </div>

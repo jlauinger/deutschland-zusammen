@@ -6,10 +6,10 @@
         <div class="row">
             <div class="col-sm">
                 {% if object_list %}
-                    <h2>Deine Hilfe ist fast organisiert!</h2>
+                    <h2>{% trans "Deine Hilfe ist fast organisiert!" %}</h2>
                     <p>
-                        Die folgenden Menschen in deiner Nähe sind bereit, dir zu helfen! Du musst nur noch anrufen oder eine
-                        Nachricht schreiben.
+                        {% trans "Die folgenden Menschen in deiner Nähe sind bereit, dir zu helfen! Du musst nur noch anrufen oder eine
+                        Nachricht schreiben." %}
                     </p>
                     <ul class="search-results">
                         {% for offer in object_list %}
@@ -17,48 +17,48 @@
                                 <div class="name">{{ offer.user.profile.get_display_name }}</div>
                                 <div class="time">
                                     {{ offer.date }}
-                                    {% if offer.morning %}<br />Morgens{% endif %}
-                                    {% if offer.noon %}<br />Mittags{% endif %}
-                                    {% if offer.afternoon %}<br />Nachmittags{% endif %}
-                                    {% if offer.evening %}<br />Abends{% endif %}
+                                    {% if offer.morning %}<br />{% trans "Morgens" %}{% endif %}
+                                    {% if offer.noon %}<br />{% trans "Mittags" %}{% endif %}
+                                    {% if offer.afternoon %}<br />{% trans "Nachmittags" %}{% endif %}
+                                    {% if offer.evening %}<br />{% trans "Abends" %}{% endif %}
                                 </div>
 
-                                <div class="mobility">Fortbewegungsmittel: <b>{{ offer.user.profile.get_mobility_display }}</b></div>
+                                <div class="mobility">{% trans "Fortbewegungsmittel:" %} <b>{{ offer.user.profile.get_mobility_display }}</b></div>
                                 {% if offer.user.profile.show_gender %}
-                                    <div class="gender">Geschlecht: {{ offer.user.profile.get_gender_display }}</div>
+                                    <div class="gender">{% trans "Geschlecht:" %} {{ offer.user.profile.get_gender_display }}</div>
                                 {% endif %}
 
                                 <div class="offer">
-                                    <b>{{ offer.user.first_name }} bietet an:</b><br />
-                                    {% if offer.user.profile.offers_shopping %}Einkaufen<br />{% endif %}
-                                    {% if offer.user.profile.offers_petsitting %}Gassi gehen<br />{% endif %}
-                                    {% if offer.user.profile.offers_fetching_drugs %}Medikamente abholen<br />{% endif %}
-                                    {% if offer.user.profile.offers_sending_mail %}Briefe einwerfen<br />{% endif %}
-                                    {% if offer.user.profile.offers_courier %}Kurierdienste<br />{% endif %}
+                                    <b>{{ offer.user.first_name }} {% trans "bietet an:" %}</b><br />
+                                    {% if offer.user.profile.offers_shopping %}{% trans "Einkaufen" %}<br />{% endif %}
+                                    {% if offer.user.profile.offers_petsitting %}{% trans "Gassi gehen" %}<br />{% endif %}
+                                    {% if offer.user.profile.offers_fetching_drugs %}{% trans "Medikamente abholen" %}<br />{% endif %}
+                                    {% if offer.user.profile.offers_sending_mail %}{% trans "Briefe einwerfen" %}<br />{% endif %}
+                                    {% if offer.user.profile.offers_courier %}{% trans "Kurierdienste" %}<br />{% endif %}
                                     {% if offer.user.profile.comment %}{{ offer.user.profile.comment }}{% endif %}
                                 </div>
 
                                 {% if offer.user.profile.show_phone %}
-                                    <div class="phone">Telefon: <b>{{ offer.user.profile.phone }}</b></div>
+                                    <div class="phone">{% trans "Telefon: <b>{{ offer.user.profile.phone }}</b></div>
                                 {% endif %}
                                 {% if offer.user.profile.show_email %}
-                                    <div class="email">E-Mail: <b>{{ offer.user.email }}</b></div>
+                                    <div class="email">{% trans "E-Mail: <b>{{ offer.user.email }}</b></div>
                                 {% endif %}
                                 <div class="send-message"><a href="{% url 'send_message' offer.user.id %}" class="btn btn-primary">
-                                    Direkt eine Nachricht schreiben
+                                    {% trans "Direkt eine Nachricht schreiben" %}
                                 </a></div>
                             </li>
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <h2>Leider nichts gefunden...</h2>
+                    <h2>{% trans "Leider nichts gefunden..." %}</h2>
                     <p>
-                        Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner Adresse Straße und
-                        Stadt eingegeben? Schau doch rechts auf der Karte mal ob der Standort passt.
+                        {% trans "Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner Adresse Straße und
+                        Stadt eingegeben? Schau doch rechts auf der Karte mal ob der Standort passt." %}
                     </p>
                 {% endif %}
 
-                <a href="{% url 'search' %}" class="btn btn-primary">Neue Suche</a>
+                <a href="{% url 'search' %}" class="btn btn-primary">{% trans "Neue Suche" %}</a>
                 <div class="padding-top-1"></div>
             </div>
             <div class="col-sm">

@@ -4,16 +4,16 @@
 {% block content %}
     <div class="container">
         {% if form.address.value %}
-            <h2>Bearbeite dein Profil</h2>
+            <h2>{% trans "Bearbeite dein Profil" %}</h2>
         {% else %}
-            <h2>Schritt 2: Verrate uns noch ein paar Details über dich</h2>
+            <h2>{% trans "Schritt 2: Verrate uns noch ein paar Details über dich" %}</h2>
         {% endif %}
 
         <form method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-                <input type="submit" value="Speichern!" class="btn btn-primary">
+                <input type="submit" value={% trans "Speichern!" class="btn btn-primary" %}>
             {% endbuttons %}
         </form>
     </div>

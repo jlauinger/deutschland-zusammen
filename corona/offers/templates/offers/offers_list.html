@@ -4,14 +4,14 @@
 {% block content %}
     <div class="container">
         {% if any_offers_exist %}
-            <h2>Zu diesen Zeiten kannst du Hilfe anbieten</h2>
+            <h2>{% trans "Zu diesen Zeiten kannst du Hilfe anbieten" %}</h2>
         {% else %}
-            <h2>Schritt 3: Wann kannst du Hilfe anbieten?</h2>
+            <h2>{% trans "Schritt 3: Wann kannst du Hilfe anbieten?" %}</h2>
         {% endif %}
 
         <div class="padding-top-1"></div>
 
-        <p>Kreuze bitte mindestens eine Zeit an.</p>
+        <p>{% trans "Kreuze bitte mindestens eine Zeit an." %}</p>
 
         <form method="post">
             {% csrf_token %}
@@ -20,12 +20,12 @@
 
             <table class="timetable">
                 <tr class="heading">
-                    <th class="date">Datum</th>
-                    <th>Morgens</th>
-                    <th>Mittags</th>
-                    <th>Nachmittags</th>
-                    <th>Abends</th>
-                    <th class="fullday">Ganzer Tag</th>
+                    <th class="date">{% trans "Datum" %}</th>
+                    <th>{% trans "Morgens" %}</th>
+                    <th>{% trans "Mittags" %}</th>
+                    <th>{% trans "Nachmittags" %}</th>
+                    <th>{% trans "Abends" %}</th>
+                    <th class="fullday">{% trans "Ganzer Tag" %}</th>
                 </tr>
 
                 <tbody>
@@ -61,12 +61,12 @@
             <div class="padding-top-1"></div>
 
             <p>
-                Komm für spätere Zeiten bitte einfach demnächst wieder auf diese Seite, du kannst immer maximal zwei
-                Wochen im Voraus angeben dass du Zeit hast.
+                {% trans "Komm für spätere Zeiten bitte einfach demnächst wieder auf diese Seite, du kannst immer maximal zwei
+                Wochen im Voraus angeben dass du Zeit hast." %}
             </p>
 
             <input type="submit" class="btn btn-primary"
-                   value="{% if any_offers_exist %}Aktualisieren{% else %}Los geht's!{% endif %}">
+                   value="{% if any_offers_exist %}Aktualisieren{% else %}{% trans "Los geht's!" %}{% endif %}">
         </form>
     </div>
 

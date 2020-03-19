@@ -2,11 +2,11 @@
 
 {% block content %}
     <div class="container">
-        <h2>Nachricht gesendet!</h2>
+        <h2>{% trans "Nachricht gesendet!" %}</h2>
 
-        <p>Bestimmt erhältst du bald eine Rückmeldung.</p>
+        <p>{% trans "Bestimmt erhältst du bald eine Rückmeldung." %}</p>
 
-        <a href="{% url 'search' %}" class="btn btn-primary">Zurück zur Startseite</a>
+        <a href="{% url 'search' %}" class="btn btn-primary">{% trans "Zurück zur Startseite" %}</a>
 
         <div class="padding-top-1"></div>
     </div>

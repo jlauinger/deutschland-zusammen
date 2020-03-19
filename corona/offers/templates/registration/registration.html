@@ -3,12 +3,12 @@
 
 {% block content %}
     <div class="container">
-        <h1>Schritt 1: Erstelle jetzt deinen Account</h1>
+        <h1>{% trans "Schritt 1: Erstelle jetzt deinen Account" %}</h1>
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-                <input type="submit" value="Registrieren!" class="btn btn-primary">
+                <input type="submit" value={% trans "Registrieren!" %} class="btn btn-primary">
             {% endbuttons %}
         </form>
     </div>

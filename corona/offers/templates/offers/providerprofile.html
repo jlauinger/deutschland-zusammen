@@ -20,53 +20,53 @@
                 <h2>{{ user.get_full_name }}</h2>
                 <p>{{ user.profile.get_name_visibility_display }}</p>
 
-                <h4>Dein Standort</h4>
+                <h4>{% trans "Dein Standort" %}</h4>
                 <p>
                     {{ user.profile.address }}<br />
                     <b>Umkreis:</b> {{ user.profile.get_radius_display }}
                 </p>
 
-                <h4>Dein Angebot</h4>
+                <h4>{% trans "Dein Angebot" %}</h4>
                 <p>
-                    Einkaufen: <b>{{ user.profile.offers_shopping|yesno }}</b><br />
-                    Gassi gehen: <b>{{ user.profile.offers_petsitting|yesno }}</b><br />
-                    Medikamente abholen: <b>{{ user.profile.offers_fetching_drugs|yesno }}</b><br />
-                    Briefe einwerfen: <b>{{ user.profile.offers_sending_mail|yesno }}</b><br />
-                    Kurierdienste: <b>{{ user.profile.offers_courier|yesno }}</b>
-                    {% if user.profile.comment %}<br />Sonstiges: {{ user.profile.comment }}{% endif %}
+                    {% trans "Einkaufen:" %} <b>{{ user.profile.offers_shopping|yesno }}</b><br />
+                    {% trans "Gassi gehen:" %} <b>{{ user.profile.offers_petsitting|yesno }}</b><br />
+                    {% trans "Medikamente abholen:" %} <b>{{ user.profile.offers_fetching_drugs|yesno }}</b><br />
+                    {% trans "Briefe einwerfen:" %} <b>{{ user.profile.offers_sending_mail|yesno }}</b><br />
+                    {% trans "Kurierdienste:" %} <b>{{ user.profile.offers_courier|yesno }}</b>
+                    {% if user.profile.comment %}<br />{% trans "Sonstiges:" %} {{ user.profile.comment }}{% endif %}
                 </p>
 
-                <h4>So erreichen dich Hilfesuchende</h4>
+                <h4>{% trans "So erreichen dich Hilfesuchende" %}</h4>
                 <p>
-                    <b>Telefonnummer:</b> {{ user.profile.phone }} (öffentlich: <b>{{ user.profile.show_phone|yesno }})</b><br />
-                    <b>E-Mail-Adresse:</b> {{ user.email }} (öffentlich: <b>{{ user.profile.show_email|yesno }})</b>
+                    <b>{% trans "Telefonnummer:" %}</b> {{ user.profile.phone }} (öffentlich: <b>{{ user.profile.show_phone|yesno }})</b><br />
+                    <b>{% trans "E-Mail-Adresse:" %}</b> {{ user.email }} (öffentlich: <b>{{ user.profile.show_email|yesno }})</b>
                 </p>
 
-                <h4>Zusätzliche Angaben zu dir</h4>
+                <h4>{% trans "Zusätzliche Angaben zu dir" %}</h4>
                 <p>
-                    <b>Fortbewegungsmittel:</b> {{ user.profile.get_mobility_display }}<br />
-                    <b>Geschlecht:</b> {{ user.profile.get_gender_display }} (öffentlich: <b>{{ user.profile.show_gender|yesno }})</b>
+                    <b>{% trans "Fortbewegungsmittel:" %}</b> {{ user.profile.get_mobility_display }}<br />
+                    <b>{% trans "Geschlecht:" %}</b> {{ user.profile.get_gender_display }} (öffentlich: <b>{{ user.profile.show_gender|yesno }})</b>
                 </p>
 
-                <h4>Zu diesen Zeiten kannst du Hilfe anbieten</h4>
+                <h4>{% trans "Zu diesen Zeiten kannst du Hilfe anbieten" %}</h4>
                 {% if object_list %}
                     <p>
                         {% for offer in object_list %}
                             {{ offer.date }}:
-                            {% if offer.morning %}Morgens {% endif %}
-                            {% if offer.noon %}Mittags {% endif %}
-                            {% if offer.afternoon %}Nachmittags {% endif %}
-                            {% if offer.evening %}Abends {% endif %}
+                            {% if offer.morning %}{% trans "Morgens" %} {% endif %}
+                            {% if offer.noon %}{% trans "Mittags" %} {% endif %}
+                            {% if offer.afternoon %}{% trans "Nachmittags" %} {% endif %}
+                            {% if offer.evening %}{% trans "Abends" %} {% endif %}
                             <br />
                         {% endfor %}
                     </p>
                 {% else %}
-                    <p>Du hast bisher keine Angebote erstellt.</p>
+                    <p>{% trans "Du hast bisher keine Angebote erstellt." %}</p>
                 {% endif %}
 
-                <a href="{% url 'edit_profile' user.profile.id %}" class="btn btn-primary">Bearbeite dein Profil</a>
-                <a href="{% url 'offers' %}" class="btn btn-primary">Bearbeite deine Zeiten</a>
-                <a href="{% url 'delete_user' user.id %}" class="btn btn-danger">Profil löschen</a>
+                <a href="{% url 'edit_profile' user.profile.id %}" class="btn btn-primary">{% trans "Bearbeite dein Profil" %}</a>
+                <a href="{% url 'offers' %}" class="btn btn-primary">{% trans "Bearbeite deine Zeiten" %}</a>
+                <a href="{% url 'delete_user' user.id %}" class="btn btn-danger">{% trans "Profil löschen" %}</a>
 
                 <div class="padding-top-1"></div>
                 <div class="padding-top-1"></div>
