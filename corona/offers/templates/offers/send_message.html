@@ -7,7 +7,10 @@
         <h2>{% trans "Nachricht an Helfer*in senden:" %}</h2>
 
         <p>
-            {% trans "Denke daran, mindestens eine Kontaktmöglichkeit anzugeben, sonst kann dich dein*e Helfer*in nämlich gar nicht erreichen!" %}
+            {% blocktrans %}
+            Denke daran, mindestens eine Kontaktmöglichkeit anzugeben, sonst kann dich dein*e Helfer*in nicht
+            erreichen!
+            {% endblocktrans %}
         </p>
 
         <form method="post">

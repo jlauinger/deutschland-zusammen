@@ -1,14 +1,17 @@
 {% extends 'offers/base.html' %}
+{% load i18n %}
 
 {% block content %}
     <div class="container">
-        <h2>Accountaktivierung fehlgeschlagen</h2>
+        <h2>{% trans "Accountaktivierung fehlgeschlagen" %}</h2>
 
         <p>
+            {% blocktrans %}
             Dieser Accountaktivierungslink war nicht korrekt. Hast du den Link aus der Mail vollständig kopiert oder
             direkt angeklickt?
+            {% endblocktrans %}
         </p>
 
-        <a href="{% url 'search' %}" class="btn btn-primary">Zur Startseite</a>
+        <a href="{% url 'search' %}" class="btn btn-primary">{% trans "Zur Startseite" %}</a>
     </div>
 {% endblock %}

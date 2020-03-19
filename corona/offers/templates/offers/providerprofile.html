@@ -26,7 +26,7 @@
                 <h4>{% trans "Dein Standort" %}</h4>
                 <p>
                     {{ user.profile.address }}<br />
-                    <b>Umkreis:</b> {{ user.profile.get_radius_display }}
+                    <b>{% trans "Umkreis" %}:</b> {{ user.profile.get_radius_display }}
                 </p>
 
                 <h4>{% trans "Dein Angebot" %}</h4>
@@ -41,14 +41,14 @@
 
                 <h4>{% trans "So erreichen dich Hilfesuchende" %}</h4>
                 <p>
-                    <b>{% trans "Telefonnummer:" %}</b> {{ user.profile.phone }} (öffentlich: <b>{{ user.profile.show_phone|yesno }})</b><br />
-                    <b>{% trans "E-Mail-Adresse:" %}</b> {{ user.email }} (öffentlich: <b>{{ user.profile.show_email|yesno }})</b>
+                    <b>{% trans "Telefonnummer:" %}</b> {{ user.profile.phone }} ({% trans "öffentlich" %}: <b>{{ user.profile.show_phone|yesno }})</b><br />
+                    <b>{% trans "E-Mail-Adresse:" %}</b> {{ user.email }} ({% trans "öffentlich" %}: <b>{{ user.profile.show_email|yesno }})</b>
                 </p>
 
                 <h4>{% trans "Zusätzliche Angaben zu dir" %}</h4>
                 <p>
                     <b>{% trans "Fortbewegungsmittel:" %}</b> {{ user.profile.get_mobility_display }}<br />
-                    <b>{% trans "Geschlecht:" %}</b> {{ user.profile.get_gender_display }} (öffentlich: <b>{{ user.profile.show_gender|yesno }})</b>
+                    <b>{% trans "Geschlecht:" %}</b> {{ user.profile.get_gender_display }} ({% trans "öffentlich" %}: <b>{{ user.profile.show_gender|yesno }})</b>
                 </p>
 
                 <h4>{% trans "Zu diesen Zeiten kannst du Hilfe anbieten" %}</h4>

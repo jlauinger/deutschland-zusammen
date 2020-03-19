@@ -1,5 +1,6 @@
 {% extends "offers/base.html" %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %}
     <div class="container">
@@ -8,7 +9,7 @@
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-                <input type="submit" value={% trans "Login" %} class="btn btn-primary">
+                <input type="submit" value="{% trans "Login" %}" class="btn btn-primary">
             {% endbuttons %}
         </form>
     </div>

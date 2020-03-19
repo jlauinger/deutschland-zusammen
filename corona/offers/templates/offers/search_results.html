@@ -9,7 +9,10 @@
                 {% if object_list %}
                     <h2>{% trans "Deine Hilfe ist fast organisiert!" %}</h2>
                     <p>
-                        {% trans "Die folgenden Menschen in deiner Nähe sind bereit, dir zu helfen! Du musst nur noch anrufen oder eine Nachricht schreiben." %}
+                        {% blocktrans %}
+                            Die folgenden Menschen in deiner Nähe sind bereit, dir zu helfen! Du musst nur noch anrufen
+                            oder eine Nachricht schreiben.
+                        {% endblocktrans %}
                     </p>
                     <ul class="search-results">
                         {% for offer in object_list %}
@@ -23,9 +26,14 @@
                                     {% if offer.evening %}<br />{% trans "Abends" %}{% endif %}
                                 </div>
 
-                                <div class="mobility">{% trans "Fortbewegungsmittel:" %} <b>{{ offer.user.profile.get_mobility_display }}</b></div>
+                                <div class="mobility">
+                                    {% trans "Fortbewegungsmittel:" %}
+                                    <b>{{ offer.user.profile.get_mobility_display }}</b>
+                                </div>
                                 {% if offer.user.profile.show_gender %}
-                                    <div class="gender">{% trans "Geschlecht:" %} {{ offer.user.profile.get_gender_display }}</div>
+                                    <div class="gender">
+                                        {% trans "Geschlecht:" %} {{ offer.user.profile.get_gender_display }}
+                                    </div>
                                 {% endif %}
 
                                 <div class="offer">
@@ -53,7 +61,10 @@
                 {% else %}
                     <h2>{% trans "Leider nichts gefunden..." %}</h2>
                     <p>
-                        {% trans "Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner Adresse Straße und Stadt eingegeben? Schau doch rechts auf der Karte mal ob der Standort passt." %}
+                        {% blocktrans %}
+                            Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner Adresse Straße und
+                            Stadt eingegeben? Schau doch rechts auf der Karte mal ob der Standort passt.
+                        {% endblocktrans %}
                     </p>
                 {% endif %}
 
