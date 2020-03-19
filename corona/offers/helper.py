@@ -55,3 +55,8 @@ def address_autocomplete(query):
 def create_activation_token():
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(64))
+
+
+def create_profile_slug():
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(20))

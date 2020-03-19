@@ -207,7 +207,7 @@ class OfferSearchView(FormView):
 
 
 class SendMessageView(UpdateView):
-    model = User
+    model = ProviderProfile
     form_class = SendMessageForm
     template_name = 'offers/send_message.html'
 
@@ -217,14 +217,14 @@ class SendMessageView(UpdateView):
         return initial
 
     def form_valid(self, form):
-        body = settings.CONTACT_MAIL_BODY.format(form.instance.first_name,
+        body = settings.CONTACT_MAIL_BODY.format(form.instance.user.first_name,
                                                  form.cleaned_data['sender'],
                                                  form.cleaned_data['email'],
                                                  form.cleaned_data['phone'],
                                                  dict(form.fields['gender'].choices)[form.cleaned_data['gender']],
                                                  form.cleaned_data['message'])
 
-        message = Message.objects.create(recipient=form.instance, sender_name=form.cleaned_data['sender'],
+        message = Message.objects.create(recipient=form.instance.user, sender_name=form.cleaned_data['sender'],
                                          sender_email=form.cleaned_data['email'],
                                          sender_phone=form.cleaned_data['phone'],
                                          sender_gender=dict(form.fields['gender'].choices)[form.cleaned_data['gender']],

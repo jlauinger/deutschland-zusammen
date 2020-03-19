@@ -11,7 +11,7 @@ from django.utils.datetime_safe import datetime
 from django.utils.timezone import now, make_aware
 from django.utils.translation import gettext as _
 
-from offers.helper import location_from_address, create_activation_token
+from offers.helper import location_from_address, create_activation_token, create_profile_slug
 
 
 def next_hour():
@@ -72,6 +72,7 @@ class ProviderProfile(models.Model):
 
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
+    slug = models.CharField(max_length=20, default=create_profile_slug, unique=True, verbose_name='ID-Token')
     activation_token = models.CharField(max_length=64, default=create_activation_token,
                                         verbose_name=_('Aktivierungsschlüssel'))
     activated = models.BooleanField(default=False, verbose_name=_('Aktiviert'))
