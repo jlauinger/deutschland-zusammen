@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 22:40+0000\n"
+"POT-Creation-Date: 2020-03-19 23:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,7 +65,7 @@ msgstr "Last name"
 msgid "E-Mail-Adresse"
 msgstr "E-mail address"
 
-#: offers/forms.py:34 offers/models.py:83
+#: offers/forms.py:34 offers/models.py:84
 msgid "Adresse (Straße, Stadt. Nicht öffentlich)"
 msgstr "Address (Street, city. Not public)"
 
@@ -125,116 +125,116 @@ msgstr "Only first name public"
 msgid "Weder Vor- noch Nachname öffentlich"
 msgstr "Neither first nor last name public"
 
-#: offers/models.py:76
+#: offers/models.py:77
 msgid "Aktivierungsschlüssel"
 msgstr "Activation token"
 
-#: offers/models.py:77
+#: offers/models.py:78
 msgid "Aktiviert"
 msgstr "Activated"
 
-#: offers/models.py:81
+#: offers/models.py:82
 msgid "Umkreis (nicht öffentlich)"
 msgstr "Offer radius (not public)"
 
-#: offers/models.py:86
+#: offers/models.py:87
 msgid "Fortbewegungsmittel (öffentlich sichtbar)"
 msgstr "Mobility (public)"
 
-#: offers/models.py:87 offers/templates/offers/providerprofile.html:34
+#: offers/models.py:88 offers/templates/offers/providerprofile.html:34
 #: offers/templates/offers/search_results.html:41
 msgid "Einkaufen"
 msgstr "Shopping"
 
-#: offers/models.py:88 offers/templates/offers/providerprofile.html:35
+#: offers/models.py:89 offers/templates/offers/providerprofile.html:35
 #: offers/templates/offers/search_results.html:42
 msgid "Gassi gehen"
 msgstr "Petsitting"
 
-#: offers/models.py:89 offers/templates/offers/providerprofile.html:36
+#: offers/models.py:90 offers/templates/offers/providerprofile.html:36
 #: offers/templates/offers/search_results.html:43
 msgid "Medikamente abholen"
 msgstr "Fetch medicine"
 
-#: offers/models.py:90 offers/templates/offers/providerprofile.html:37
+#: offers/models.py:91 offers/templates/offers/providerprofile.html:37
 #: offers/templates/offers/search_results.html:44
 msgid "Briefe einwerfen"
 msgstr "Submit mail"
 
-#: offers/models.py:91 offers/templates/offers/providerprofile.html:38
+#: offers/models.py:92 offers/templates/offers/providerprofile.html:38
 #: offers/templates/offers/search_results.html:45
 msgid "Kurierdienste"
 msgstr "Courier services"
 
-#: offers/models.py:92
+#: offers/models.py:93
 msgid "Sonstige Hilfestellungen oder Kommentare"
 msgstr "Other offers for help or comments"
 
-#: offers/models.py:94
+#: offers/models.py:95
 msgid "Telefonnummer"
 msgstr "Phone number"
 
-#: offers/models.py:95
+#: offers/models.py:96
 msgid "Geschlecht"
 msgstr "Gender"
 
-#: offers/models.py:96
+#: offers/models.py:97
 msgid "Telefonnummer öffentlich anzeigen"
 msgstr "Show phone number publicly"
 
-#: offers/models.py:97
+#: offers/models.py:98
 msgid "E-Mail-Adresse öffentlich anzeigen"
 msgstr "Show e-mail address publicly"
 
-#: offers/models.py:98
+#: offers/models.py:99
 msgid "Geschlecht öffentlich anzeigen"
 msgstr "Show gender publicly"
 
-#: offers/models.py:100
+#: offers/models.py:101
 msgid "Öffentlichkeit deines Namens"
 msgstr "Public visiblity of your name"
 
-#: offers/models.py:135
+#: offers/models.py:136
 msgid "Hilfsangebot"
 msgstr "Offer for help"
 
-#: offers/models.py:136
+#: offers/models.py:137
 msgid "Hilfsangebote"
 msgstr "Offers for help"
 
-#: offers/models.py:140 offers/templates/offers/offers_list.html:24
+#: offers/models.py:141 offers/templates/offers/offers_list.html:24
 msgid "Datum"
 msgstr "Date"
 
-#: offers/models.py:142 offers/templates/offers/offers_list.html:25
+#: offers/models.py:143 offers/templates/offers/offers_list.html:25
 #: offers/templates/offers/providerprofile.html:59
 #: offers/templates/offers/search_results.html:23
 msgid "Morgens"
 msgstr "Morning"
 
-#: offers/models.py:143 offers/templates/offers/offers_list.html:26
+#: offers/models.py:144 offers/templates/offers/offers_list.html:26
 #: offers/templates/offers/providerprofile.html:60
 #: offers/templates/offers/search_results.html:24
 msgid "Mittags"
 msgstr "Noon"
 
-#: offers/models.py:144 offers/templates/offers/offers_list.html:27
+#: offers/models.py:145 offers/templates/offers/offers_list.html:27
 #: offers/templates/offers/providerprofile.html:61
 #: offers/templates/offers/search_results.html:25
 msgid "Nachmittags"
 msgstr "Afternoon"
 
-#: offers/models.py:145 offers/templates/offers/offers_list.html:28
+#: offers/models.py:146 offers/templates/offers/offers_list.html:28
 #: offers/templates/offers/providerprofile.html:62
 #: offers/templates/offers/search_results.html:26
 msgid "Abends"
 msgstr "Evening"
 
-#: offers/models.py:170
+#: offers/models.py:171
 msgid "Gesendete Nachricht"
 msgstr "Sent message"
 
-#: offers/models.py:171
+#: offers/models.py:172
 msgid "Gesendete Nachrichten"
 msgstr "Sent messages"
 
@@ -327,23 +327,23 @@ msgstr ""
 "street and city into the field above and fill out the date on which you are "
 "searching. If you are able to offer your help,"
 
-#: offers/templates/offers/home.html:52
+#: offers/templates/offers/home.html:51
 msgid "erstelle dir hier einen Account"
 msgstr "create an account here"
 
-#: offers/templates/offers/home.html:115
+#: offers/templates/offers/home.html:114
 msgid "Standortdaten sind nicht verfügbar."
 msgstr "Location data unavailable."
 
-#: offers/templates/offers/home.html:118
+#: offers/templates/offers/home.html:117
 msgid "Die Standortabfrage dauerte zu lange (Time-out)."
 msgstr "Getting your location took too long (timeout)."
 
-#: offers/templates/offers/home.html:121
+#: offers/templates/offers/home.html:120
 msgid "Unbekannter Fehler."
 msgstr "Unknown error."
 
-#: offers/templates/offers/home.html:127
+#: offers/templates/offers/home.html:126
 msgid "Ihr Browser unterstützt keine Ortung."
 msgstr "Your browser is not capable of locating you."
 
@@ -382,8 +382,8 @@ msgid ""
 "Hier siehst du die Nachrichten, die du von Menschen erhalten hast die Hilfe "
 "suchen. Melde dich bitte möglichst schnell bei ihnen zurück."
 msgstr ""
-"These are the messages you received from people looking for help. Please contact "
-"them as soon as possible."
+"These are the messages you received from people looking for help. Please "
+"contact them as soon as possible."
 
 #: offers/templates/offers/messages.html:23
 msgid "Du hast bisher keine Nachrichten erhalten."

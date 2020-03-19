@@ -151,7 +151,7 @@ EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
 
 CONTACT_MAIL_FROM = 'noreply@deutschlandzusammen.de'
-CONTACT_MAIL_SUBJECT = _('Neue Nachricht von Corona-Hilfsangebote')
+CONTACT_MAIL_SUBJECT = _('Neue Nachricht von deutschlandzusammen.de')
 CONTACT_MAIL_BODY = _("""Hallo {}!
 
 Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!
