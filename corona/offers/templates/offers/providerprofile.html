@@ -1,14 +1,17 @@
 {% extends 'offers/base.html' %}
 {% load template_tags %}
+{% load i18n %}
 
 {% block content %}
     {% if not user.profile.activated %}
         <div class="messages">
             <div class="message error">
                 <div class="container">
+                    {% blocktrans %}
                     Dein Account ist noch nicht aktiviert. Bis du auf den Bestätigungslink, den wir dir per Mail geschickt haben
                     geklickt hast, sind deine Angebote nicht öffentlich sichtbar.
-                    <a href="{% url 'resend_activation_mail' %}">E-Mail erneut senden</a>
+                    {% endblocktrans %}
+                    <a href="{% url 'resend_activation_mail' %}">{% trans "E-Mail erneut senden" %}</a>
                 </div>
             </div>
         </div>

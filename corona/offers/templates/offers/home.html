@@ -1,6 +1,7 @@
 {% extends 'offers/base.html' %}
 {% load bootstrap4 %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="bg-image">
@@ -37,15 +38,18 @@
 
 <div class="content-below-fold">
     <div class="container centering">
-        <h2>Deutschland Zusammen</h2>
+        <h2>{% trans "Deutschland Zusammen" %}</h2>
 
         <p>
+            {% blocktrans %}
             Mit diesem Portal möchten wir helfenden und hilfesuchende Menschen die Möglichkeit geben einander zu
             finden. In Zeiten wie diesen ist es besonders wichtig, dass wir alle ein Stück zusammenrücken, um uns
             gegenseitig zu helfen. Wenn du Hilfe benötigst, gib oben einfach deinen Straßennamen und deinen Ort
             (z.B. "Musterstraße Beispielstadt") an, sowie das Datum an dem du suchst. Sofern du in der Lage
-            bist, anderen Menschen deine Hilfe anzubieten, <br />
-            <a href="{% url 'register' %}">erstelle dir hier einen Account.</a>
+            bist, anderen Menschen deine Hilfe anzubieten,
+            {% endblocktrans %}
+            <br />
+            <a href="{% url 'register' %}">{% trans "erstelle dir hier einen Account" %}.</a>
         </p>
     </div>
 </div>

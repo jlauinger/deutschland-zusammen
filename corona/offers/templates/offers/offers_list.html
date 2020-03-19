@@ -1,5 +1,6 @@
 {% extends 'offers/base.html' %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %}
     <div class="container">
@@ -61,12 +62,14 @@
             <div class="padding-top-1"></div>
 
             <p>
-                {% trans "Komm für spätere Zeiten bitte einfach demnächst wieder auf diese Seite, du kannst immer maximal zwei
-                Wochen im Voraus angeben dass du Zeit hast." %}
+                {% blocktrans %}
+                Komm für spätere Zeiten bitte einfach demnächst wieder auf diese Seite, du kannst immer maximal zwei
+                Wochen im Voraus angeben dass du Zeit hast.
+                {% endblocktrans %}
             </p>
 
             <input type="submit" class="btn btn-primary"
-                   value="{% if any_offers_exist %}Aktualisieren{% else %}{% trans "Los geht's!" %}{% endif %}">
+                   value="{% if any_offers_exist %}{% trans "Aktualisieren" %}{% else %}{% trans "Los geht's!" %}{% endif %}">
         </form>
     </div>
 
