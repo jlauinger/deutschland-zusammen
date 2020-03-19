@@ -24,10 +24,10 @@ def next_plus_1_hour():
 
 
 GENDERS = (
-    ('M', 'Männlich'),
-    ('F', 'Weiblich'),
-    ('D', 'Andere'),
-    ('X', 'Keine Angabe'),
+    ('M', _('Männlich')),
+    ('F', _('Weiblich')),
+    ('D', _('Andere')),
+    ('X', _('Keine Angabe')),
 )
 
 
@@ -42,8 +42,8 @@ class ProviderProfile(models.Model):
     """
 
     class Meta:
-        verbose_name = 'Anbieterprofil'
-        verbose_name_plural = 'Anbieterprofile'
+        verbose_name = _('Anbieterprofil')
+        verbose_name_plural = _('Anbieterprofile')
 
     RADIUS_CHOICES = (
         (1000, '1 km'),
@@ -57,47 +57,47 @@ class ProviderProfile(models.Model):
     )
 
     MOBILITY_CHOICES = (
-        ('NA', 'keine Angabe'),
-        ('FOOT', 'zu Fuß / ÖPNV'),
-        ('BIKE', 'Fahrrad'),
-        ('MOTOR_SCOOTER', 'Motorroller'),
-        ('CAR', 'Auto'),
+        ('NA', _('keine Angabe')),
+        ('FOOT', _('zu Fuß / ÖPNV')),
+        ('BIKE', _('Fahrrad')),
+        ('MOTOR_SCOOTER', _('Motorroller')),
+        ('CAR', _('Auto')),
     )
 
     NAME_VISIBILITY_CHOICES = (
-        ('FULL', 'Vor- und Nachname öffentlich'),
-        ('FIRST_NAME', 'Nur Vorname öffentlich'),
-        ('HIDDEN', 'Weder Vor- noch Nachname öffentlich'),
+        ('FULL', _('Vor- und Nachname öffentlich')),
+        ('FIRST_NAME', _('Nur Vorname öffentlich')),
+        ('HIDDEN', _('Weder Vor- noch Nachname öffentlich')),
     )
 
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
     activation_token = models.CharField(max_length=64, default=create_activation_token,
-                                        verbose_name='Aktivierungsschlüssel')
-    activated = models.BooleanField(default=False, verbose_name='Aktiviert')
+                                        verbose_name=_('Aktivierungsschlüssel'))
+    activated = models.BooleanField(default=False, verbose_name=_('Aktiviert'))
 
     location = models.PointField(null=True, default=None)
     radius = models.IntegerField(choices=RADIUS_CHOICES, default=2000,
-                                 verbose_name='Umkreis (nicht öffentlich)')
+                                 verbose_name=_('Umkreis (nicht öffentlich)'))
     address = models.CharField(max_length=200, blank=True,
-                               verbose_name='Adresse (Straße, Stadt. Nicht öffentlich)')
+                               verbose_name=_('Adresse (Straße, Stadt. Nicht öffentlich)'))
 
     mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA',
-                                verbose_name='Fortbewegungsmittel (öffentlich sichtbar)')
-    offers_shopping = models.BooleanField(default=False, verbose_name='Einkaufen')
-    offers_petsitting = models.BooleanField(default=False, verbose_name='Gassi gehen')
-    offers_fetching_drugs= models.BooleanField(default=False, verbose_name='Medikamente abholen')
-    offers_sending_mail = models.BooleanField(default=False, verbose_name='Briefe einwerfen')
-    offers_courier = models.BooleanField(default=False, verbose_name='Kurierdienste')
-    comment = models.TextField(blank=True, verbose_name='Sonstige Hilfestellungen oder Kommentare')
+                                verbose_name=_('Fortbewegungsmittel (öffentlich sichtbar)'))
+    offers_shopping = models.BooleanField(default=False, verbose_name=_('Einkaufen'))
+    offers_petsitting = models.BooleanField(default=False, verbose_name=_('Gassi gehen'))
+    offers_fetching_drugs= models.BooleanField(default=False, verbose_name=_('Medikamente abholen'))
+    offers_sending_mail = models.BooleanField(default=False, verbose_name=_('Briefe einwerfen'))
+    offers_courier = models.BooleanField(default=False, verbose_name=_('Kurierdienste'))
+    comment = models.TextField(blank=True, verbose_name=_('Sonstige Hilfestellungen oder Kommentare'))
 
-    phone = models.CharField(max_length=50, blank=True, verbose_name='Telefonnummer')
-    gender = models.CharField(choices=GENDERS, default='X', max_length=50, verbose_name='Geschlecht')
-    show_phone = models.BooleanField(default=False, verbose_name='Telefonnummer öffentlich anzeigen')
-    show_email = models.BooleanField(default=False, verbose_name='E-Mail-Adresse öffentlich anzeigen')
-    show_gender = models.BooleanField(default=False, verbose_name='Geschlecht öffentlich anzeigen')
+    phone = models.CharField(max_length=50, blank=True, verbose_name=_('Telefonnummer'))
+    gender = models.CharField(choices=GENDERS, default='X', max_length=50, verbose_name=_('Geschlecht'))
+    show_phone = models.BooleanField(default=False, verbose_name=_('Telefonnummer öffentlich anzeigen'))
+    show_email = models.BooleanField(default=False, verbose_name=_('E-Mail-Adresse öffentlich anzeigen'))
+    show_gender = models.BooleanField(default=False, verbose_name=_('Geschlecht öffentlich anzeigen'))
     name_visibility = models.CharField(choices=NAME_VISIBILITY_CHOICES, default='FIRST_NAME', max_length=50,
-                                       verbose_name='Öffentlichkeit deines Namens')
+                                       verbose_name=_('Öffentlichkeit deines Namens'))
 
     def __str__(self):
         return 'Profil für {}, {}'.format(self.user.username, self.address)
@@ -132,17 +132,17 @@ class Offer(models.Model):
     """
 
     class Meta:
-        verbose_name = 'Hilfsangebot'
-        verbose_name_plural = 'Hilfsangebote'
+        verbose_name = _('Hilfsangebot')
+        verbose_name_plural = _('Hilfsangebote')
 
     user = models.ForeignKey(User, related_name='offers', on_delete=models.CASCADE)
 
-    date = models.DateField(default=now, verbose_name='Datum')
+    date = models.DateField(default=now, verbose_name=_('Datum'))
 
-    morning = models.BooleanField(default=False, verbose_name='Morgens')
-    noon = models.BooleanField(default=False, verbose_name='Mittags')
-    afternoon = models.BooleanField(default=False, verbose_name='Nachmittags')
-    evening = models.BooleanField(default=False, verbose_name='Abends')
+    morning = models.BooleanField(default=False, verbose_name=_('Morgens'))
+    noon = models.BooleanField(default=False, verbose_name=_('Mittags'))
+    afternoon = models.BooleanField(default=False, verbose_name=_('Nachmittags'))
+    evening = models.BooleanField(default=False, verbose_name=_('Abends'))
 
     def __str__(self):
         return '{} am {}'.format(self.user.get_full_name(), self.date)
