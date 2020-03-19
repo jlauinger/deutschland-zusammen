@@ -12,20 +12,16 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'tm4nzh33&pt64sp_wsmir02w7j1da=jf+6f$i2xpnn+m8or948'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'deutschlandzusammen.de', 'www.deutschlandzusammen.de']
+ALLOWED_HOSTS = []
+
+HOST_NAME = 'http://localhost:8000'
 
 
 # Application definition
@@ -80,9 +76,9 @@ WSGI_APPLICATION = 'corona.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'gis' if DEBUG else 'koronadb',
-        'USER': 'gis' if DEBUG else 'koronadb',
-        'PASSWORD': 'changeme1' if DEBUG else '2vU8DyFpTedf54Z3Dkb3',
+        'NAME': 'gis',
+        'USER': 'gis',
+        'PASSWORD': 'changeme1',
         'HOST': 'localhost',
         'PORT': '5432'
     }
@@ -127,20 +123,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if not DEBUG:
-    STATIC_ROOT = '/var/www/virtual/korona/html/static'
-
 
 # Geography settings
 
 SRID = 4326
+
 NOMINATIM_USER_AGENT = "corona-hilfsangebote"
-
 MAPBOX_API_TOKEN = "pk.eyJ1IjoiamxhdWluZ2VyIiwiYSI6ImNrN3RzMWcyNjB3Z3IzbXFyZmZianRkZzAifQ.P0LQjvZ7G0dB9uNqs2r3YQ"
-
-if not DEBUG:
-    GDAL_LIBRARY_PATH = '/home/korona/lib/libgdal.so'
-    GEOS_LIBRARY_PATH = '/home/korona/lib/libgeos_c.so'
 
 
 # Auth settings
@@ -152,16 +141,7 @@ LOGOUT_REDIRECT_URL = '/'
 # Contact mail settings
 
 EMAIL_HOST = "localhost"
-EMAIL_PORT = 1025 if DEBUG else 587
-
-if not DEBUG:
-    EMAIL_USE_TLS = True
-
-    EMAIL_HOST_USER = 'noreply@deutschlandzusammen.de'
-    EMAIL_HOST_PASSWORD = 'FoqNEeX5YW9MmDizdQi6'
-
-    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-    SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_PORT = 1025
 
 CONTACT_MAIL_FROM = 'noreply@deutschlandzusammen.de'
 CONTACT_MAIL_SUBJECT = 'Neue Nachricht von Corona-Hilfsangebote'
@@ -184,7 +164,6 @@ Liebe Grüße
 dein Team von deutschlandzusammen.de
 """
 
-HOST_NAME = 'http://localhost:8000' if DEBUG else 'https://www.deutschlandzusammen.de'
 ACTIVATION_MAIL_FROM = 'noreply@deutschlandzusammen.de'
 ACTIVATION_MAIL_SUBJECT = 'Aktiviere deinen Account bei deutschlandzusammen.de'
 ACTIVATION_MAIL_BODY = """

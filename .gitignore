@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io
 
+settings_secrets.py
+
 ### OSX ###
 .DS_Store
 .AppleDouble
