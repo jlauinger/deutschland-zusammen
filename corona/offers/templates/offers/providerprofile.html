@@ -31,12 +31,12 @@
 
                 <h4>{% trans "Dein Angebot" %}</h4>
                 <p>
-                    {% trans "Einkaufen:" %} <b>{{ user.profile.offers_shopping|yesno }}</b><br />
-                    {% trans "Gassi gehen:" %} <b>{{ user.profile.offers_petsitting|yesno }}</b><br />
-                    {% trans "Medikamente abholen:" %} <b>{{ user.profile.offers_fetching_drugs|yesno }}</b><br />
-                    {% trans "Briefe einwerfen:" %} <b>{{ user.profile.offers_sending_mail|yesno }}</b><br />
-                    {% trans "Kurierdienste:" %} <b>{{ user.profile.offers_courier|yesno }}</b>
-                    {% if user.profile.comment %}<br />{% trans "Sonstiges:" %} {{ user.profile.comment }}{% endif %}
+                    {% trans "Einkaufen" %}: <b>{{ user.profile.offers_shopping|yesno }}</b><br />
+                    {% trans "Gassi gehen" %}: <b>{{ user.profile.offers_petsitting|yesno }}</b><br />
+                    {% trans "Medikamente abholen" %}: <b>{{ user.profile.offers_fetching_drugs|yesno }}</b><br />
+                    {% trans "Briefe einwerfen" %}: <b>{{ user.profile.offers_sending_mail|yesno }}</b><br />
+                    {% trans "Kurierdienste" %}: <b>{{ user.profile.offers_courier|yesno }}</b>
+                    {% if user.profile.comment %}<br />{% trans "Sonstiges" %}: {{ user.profile.comment }}{% endif %}
                 </p>
 
                 <h4>{% trans "So erreichen dich Hilfesuchende" %}</h4>

@@ -112,19 +112,19 @@
                                 // do nothing
                                 break;
                             case error.POSITION_UNAVAILABLE:
-                                alert({% trans "Standortdaten sind nicht verfügbar." %});
+                                alert("{% trans "Standortdaten sind nicht verfügbar." %}");
                                 break;
                             case error.TIMEOUT:
-                                alert({% trans "Die Standortabfrage dauerte zu lange (Time-out)." %});
+                                alert("{% trans "Die Standortabfrage dauerte zu lange (Time-out)." %}");
                                 break;
                             case error.UNKNOWN_ERROR:
-                                alert({% trans "Unbekannter Fehler." %});
+                                alert("{% trans "Unbekannter Fehler." %}");
                                 break;
                         }
 
                     });
                 } else {
-                    alert({% trans "Ihr Browser unterstützt keine Ortung." %});
+                    alert("{% trans "Ihr Browser unterstützt keine Ortung." %}");
                 }
             });
 
