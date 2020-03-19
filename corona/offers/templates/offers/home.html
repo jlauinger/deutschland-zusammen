@@ -14,14 +14,17 @@
                     {% csrf_token %}
 
                     {{ form.where }}
-                    <a href="#" id="locate" class="">
+                    <a href="#" id="locate">
                         <img src="{% static 'offers/images/crosshair.png' %}" alt="Versuche mich zu orten"
-                            title="Versuche mich zu orten" />
+                             title="Versuche mich zu orten" />
                     </a>
 
                     <div class="hidden-sm-up padding-top-1"></div>
 
                     {{ form.when }}
+                    <a href="#" id="today">
+                        <img src="{% static 'offers/images/today-icon.png' %}" alt="Heute" title="Heute" />
+                    </a>
 
                     <div class="hidden-sm-up padding-top-1"></div>
                     <input type="submit" value="Suchen!" class="btn btn-primary">
@@ -68,6 +71,14 @@
                 }
             };
             prefetchNext(1);
+
+            // set date to today button
+            $('#today').click(function () {
+                var date = new Date();
+                whenField.val((""+date.getDate()).padStart(2, "0") + "." + (""+(date.getMonth()+1)).padStart(2, "0") +
+                    "." + date.getFullYear());
+                return false;
+            });
 
             // geolocation for where field
             $('#locate').click(function() {

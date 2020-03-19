@@ -90,6 +90,20 @@ body.bg-image {
 .search-form #id_when {
     width: 320px;
 }
+.search-form #today {
+    margin-left: -64px;
+    margin-top: 15px;
+    vertical-align: middle;
+    height: 60px;
+    width: 60px;
+    border: 0;
+    display: inline-block;
+    padding: 0;
+}
+.search-form #today img {
+    width: 35px;
+    height: 35px;
+}
 .search-form #id_where {
     width: 320px;
     padding-right: 60px;
