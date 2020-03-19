@@ -9,7 +9,7 @@ from django.db.models import F
 from django.urls import reverse_lazy
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import now, make_aware
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from offers.helper import location_from_address, create_activation_token, create_profile_slug
 
