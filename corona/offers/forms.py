@@ -2,7 +2,7 @@ from captcha.fields import CaptchaField
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from offers.models import Offer, ProviderProfile, GENDERS
 
