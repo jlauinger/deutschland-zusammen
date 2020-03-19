@@ -119,7 +119,7 @@ class ProviderProfile(models.Model):
         activation_link = "{}{}".format(settings.HOST_NAME, reverse_lazy('activate_account',
                                                                          args=[self.id, self.activation_token]))
         body = settings.ACTIVATION_MAIL_BODY.format(self.user.first_name, activation_link)
-        send_mail(settings.ACTIVATION_MAIL_FROM, body, settings.ACTIVATION_MAIL_FROM, [self.user.email],
+        send_mail(settings.ACTIVATION_MAIL_SUBJECT, body, settings.ACTIVATION_MAIL_FROM, [self.user.email],
                   fail_silently=False)
 
 
