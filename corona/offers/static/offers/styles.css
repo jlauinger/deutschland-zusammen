@@ -20,6 +20,16 @@ footer {
     background-color: #ddd;
 }
 
+.language-switcher {
+    display: inline-block;
+    vertical-align: middle;
+}
+.language-switcher #id_language {
+    padding: 0 10px;
+    margin-top: 3px;
+    font-size: 0.8em;
+}
+
 .navbar {
     width: 100%;
 }

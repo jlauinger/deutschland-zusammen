@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/register', AccountRegistrationView.as_view(), name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path(r'captcha/', include('captcha.urls')),
+    path('captcha/', include('captcha.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', include('offers.urls')),
 ]

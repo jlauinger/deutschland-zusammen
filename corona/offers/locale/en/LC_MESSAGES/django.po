@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 21:58+0000\n"
+"POT-Creation-Date: 2020-03-19 22:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -277,10 +277,18 @@ msgstr "Login"
 msgid "Biete deine Hilfe an"
 msgstr "Offer your help"
 
-#: offers/templates/offers/base.html:78
+#: offers/templates/offers/base.html:79
 #: offers/templates/offers/safety_information.html:6
 msgid "Sicherheits-Informationen"
 msgstr "Safety Information"
+
+#: offers/templates/offers/base.html:85
+msgid "Switch language:"
+msgstr "Sprache ändern:"
+
+#: offers/templates/offers/base.html:96
+msgid "Sprache ändern"
+msgstr "Switch language"
 
 #: offers/templates/offers/home.html:11
 msgid "Deutschland steht zusammen. Finde Hilfe in der Corona-Krise"
@@ -426,7 +434,7 @@ msgstr "Your offer"
 
 #: offers/templates/offers/providerprofile.html:39
 msgid "Sonstiges"
-msgstr ""
+msgstr "Other"
 
 #: offers/templates/offers/providerprofile.html:42
 msgid "So erreichen dich Hilfesuchende"

@@ -75,9 +75,34 @@
 
 <footer>
     <div class="container">
-        &copy; 2020 mach2media &middot; <a href="{% url 'safety_information' %}">{% trans "Sicherheits-Informationen" %}</a>
+        &copy; 2020 mach2media &middot;
+        <a href="{% url 'safety_information' %}">{% trans "Sicherheits-Informationen" %}</a> &middot;
+
+        <div class="language-switcher">
+            <form action="{% url 'set_language' %}" method="post" class="form-inline" name="language-form">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                <label for="id_language">{% trans 'Switch language:' %}</label>&nbsp;
+                <select name="language" id="id_language" class="form-control input-sm w-initial">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="{% trans 'Sprache ändern' %}" class="btn btn-primary btn-sm">
+            </form>
+        </div>
     </div>
 </footer>
-</div>
+
+<script>
+    var languageForm = $("form[name='language-form']");
+    $(":submit", languageForm).hide();
+    $("select", languageForm).change(function(){languageForm.submit()});
+</script>
 </body>
 </html>
