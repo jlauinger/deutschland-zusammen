@@ -3,7 +3,7 @@ from django.urls import path
 
 from offers.views import OfferSearchView, ProfileView, EditProfileView, \
     SendMessageView, MessageSentView, SafetyInformationView, AddressFromLocationAjaxView, AddressAutocompleteAjaxView, \
-    OffersView, DeleteUserView, MessageErrorView, ActivateAccountView, ResendActivationMailView
+    OffersView, DeleteUserView, MessageErrorView, ActivateAccountView, ResendActivationMailView, MessagesView
 
 urlpatterns = [
     path('offers/', login_required(OffersView.as_view()), name='offers'),
@@ -11,6 +11,7 @@ urlpatterns = [
     path('profile/<int:pk>/edit/', login_required(EditProfileView.as_view()), name='edit_profile'),
     path('profile/<int:pk>/delete/', login_required(DeleteUserView.as_view()), name='delete_user'),
     path('profile/<int:pk>/message/', SendMessageView.as_view(), name='send_message'),
+    path('messages/', login_required(MessagesView.as_view()), name='messages'),
     path('message/sent/', MessageSentView.as_view(), name='message_sent'),
     path('message/error/', MessageErrorView.as_view(), name='message_error'),
     path('information/safety/', SafetyInformationView.as_view(), name='safety_information'),

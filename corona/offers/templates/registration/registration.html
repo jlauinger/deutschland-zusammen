@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="container">
-        <h1>{% trans "Schritt 1: Erstelle jetzt deinen Account" %}</h1>
+        <h2>{% trans "Schritt 1: Erstelle jetzt deinen Account" %}</h2>
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             {% bootstrap_form form %}

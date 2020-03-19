@@ -1,0 +1,26 @@
+{% extends 'offers/base.html' %}
+{% load template_tags %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+        <h2>{% trans "Empfangene Nachrichten" %}</h2>
+
+        {% if object_list %}
+            <p>
+                {% blocktrans trimmed %}
+                Hier siehst du die Nachrichten, die du von Menschen erhalten hast die Hilfe suchen. Melde dich bitte
+                möglichst schnell bei ihnen zurück.
+                {% endblocktrans %}
+            </p>
+            {% for message in object_list %}
+                <div class="received-message">
+                    <div class="date">{{ message.date }}</div>
+                    <div class="body">{{ message.message|linebreaks }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>{% trans "Du hast bisher keine Nachrichten erhalten." %}</p>
+        {% endif %}
+    </div>
+{% endblock %}

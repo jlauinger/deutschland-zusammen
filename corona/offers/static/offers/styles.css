@@ -237,3 +237,11 @@ body {
     background-image: url("https://boolie.org/wp-content/uploads/2017/11/checked.png");
 }
 
+.received-message {
+    border: 1px solid #00dd1c;
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+.received-message .date {
+    font-family: 'Courier', monospace;
+}

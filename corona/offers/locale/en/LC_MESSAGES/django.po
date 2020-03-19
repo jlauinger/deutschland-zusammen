@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 22:16+0000\n"
+"POT-Creation-Date: 2020-03-19 22:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,10 +46,8 @@ msgid "Dein Geschlecht (optional)"
 msgstr "Your gender (optional)"
 
 #: offers/forms.py:22
-#, fuzzy
-#| msgid "Gesendete Nachricht"
 msgid "Nachricht"
-msgstr "Sent message"
+msgstr "Message"
 
 #: offers/forms.py:23
 msgid "Captcha"
@@ -262,31 +259,35 @@ msgid "Suche"
 msgstr "Search"
 
 #: offers/templates/offers/base.html:50
+msgid "Nachrichten"
+msgstr "Messages"
+
+#: offers/templates/offers/base.html:51
 msgid "Dein Profil"
 msgstr "Your Profile"
 
-#: offers/templates/offers/base.html:51
+#: offers/templates/offers/base.html:52
 msgid "Deine Zeiten"
 msgstr "Your Times"
 
-#: offers/templates/offers/base.html:53
+#: offers/templates/offers/base.html:54
 msgid "Anmelden"
 msgstr "Login"
 
-#: offers/templates/offers/base.html:54
+#: offers/templates/offers/base.html:55
 msgid "Biete deine Hilfe an"
 msgstr "Offer your help"
 
-#: offers/templates/offers/base.html:79
+#: offers/templates/offers/base.html:80
 #: offers/templates/offers/safety_information.html:6
 msgid "Sicherheits-Informationen"
 msgstr "Safety Information"
 
-#: offers/templates/offers/base.html:85
+#: offers/templates/offers/base.html:86
 msgid "Switch language:"
 msgstr "Sprache ändern:"
 
-#: offers/templates/offers/base.html:96
+#: offers/templates/offers/base.html:97
 msgid "Sprache ändern"
 msgstr "Switch language"
 
@@ -347,8 +348,6 @@ msgid "Ihr Browser unterstützt keine Ortung."
 msgstr "Your browser is not capable of locating you."
 
 #: offers/templates/offers/message_error.html:6
-#, fuzzy
-#| msgid "Gesendete Nachricht"
 msgid "Fehler beim Versenden der Nachricht!"
 msgstr "Error sending the message!"
 
@@ -373,6 +372,22 @@ msgstr "Message sent!"
 #: offers/templates/offers/message_sent.html:8
 msgid "Bestimmt erhältst du bald eine Rückmeldung."
 msgstr "You'll get an answer soon."
+
+#: offers/templates/offers/messages.html:7
+msgid "Empfangene Nachrichten"
+msgstr "Received messages"
+
+#: offers/templates/offers/messages.html:11
+msgid ""
+"Hier siehst du die Nachrichten, die du von Menschen erhalten hast die Hilfe "
+"suchen. Melde dich bitte möglichst schnell bei ihnen zurück."
+msgstr ""
+"These are the messages you received from people looking for help. Please contact "
+"them as soon as possible."
+
+#: offers/templates/offers/messages.html:23
+msgid "Du hast bisher keine Nachrichten erhalten."
+msgstr "You didn't receive any messages yet."
 
 #: offers/templates/offers/offers_list.html:8
 #: offers/templates/offers/providerprofile.html:54

@@ -171,6 +171,14 @@ class OffersView(FormView):
         return self.get_queryset().exists()
 
 
+class MessagesView(ListView):
+    model = Message
+    template_name = 'offers/messages.html'
+
+    def get_queryset(self):
+        return Message.objects.filter(recipient=self.request.user).order_by('-date')
+
+
 class OfferSearchView(FormView):
     form_class = OfferSearchForm
     template_name = 'offers/home.html'

@@ -47,6 +47,7 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">{% trans "Abmelden" %}</a></li>
                     <li class="nav-item"><a href="{% url 'search' %}" class="nav-link">{% trans "Suche" %}</a></li>
+                    <li class="nav-item"><a href="{% url 'messages' %}" class="nav-link">{% trans "Nachrichten" %}</a></li>
                     <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">{% trans "Dein Profil" %}</a></li>
                     <li class="nav-item"><a href="{% url 'offers' %}" class="btn btn-primary">{% trans "Deine Zeiten" %}</a></li>
                 {% else %}
