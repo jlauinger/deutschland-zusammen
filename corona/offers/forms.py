@@ -1,25 +1,26 @@
 from captcha.fields import CaptchaField
 from django import forms
 from django.contrib.auth.models import User
-from django.forms import formset_factory, modelformset_factory
+from django.forms import modelformset_factory
+from django.utils.translation import gettext as _
 
 from offers.models import Offer, ProviderProfile, GENDERS
 
 
 class OfferSearchForm(forms.Form):
     where = forms.CharField(label='where', max_length=100,
-                            widget=forms.TextInput(attrs={'placeholder': 'Wo? (Straße und Ort)', 'autocomplete':'off'}))
+                            widget=forms.TextInput(attrs={'placeholder': _('Wo? (Straße und Ort)'), 'autocomplete':'off'}))
     when = forms.DateTimeField(label='when', input_formats=['%d.%m.%Y'],
-                               widget=forms.TextInput(attrs={'placeholder': 'Wann?', 'autocomplete': 'off'}))
+                               widget=forms.TextInput(attrs={'placeholder': _('Wann?'), 'autocomplete': 'off'}))
 
 
 class SendMessageForm(forms.ModelForm):
-    sender = forms.CharField(label='Dein Name', max_length=100, required=False)
-    email = forms.EmailField(label='Deine E-Mail-Adresse', max_length=100, required=False)
-    phone = forms.CharField(label='Deine Telefonnummer (optional)', max_length=100, required=False)
-    gender = forms.ChoiceField(label='Dein Geschlecht (optional)', choices=GENDERS, required=False)
-    message = forms.CharField(label='Nachricht', max_length=1000, widget=forms.Textarea())
-    captcha = CaptchaField(label='Captcha')
+    sender = forms.CharField(label=_('Dein Name'), max_length=100, required=False)
+    email = forms.EmailField(label=_('Deine E-Mail-Adresse'), max_length=100, required=False)
+    phone = forms.CharField(label=_('Deine Telefonnummer (optional)'), max_length=100, required=False)
+    gender = forms.ChoiceField(label=_('Dein Geschlecht (optional)'), choices=GENDERS, required=False)
+    message = forms.CharField(label=_('Nachricht'), max_length=1000, widget=forms.Textarea())
+    captcha = CaptchaField(label=_('Captcha'))
 
     class Meta:
         model = User
@@ -27,10 +28,10 @@ class SendMessageForm(forms.ModelForm):
 
 
 class ProviderProfileForm(forms.ModelForm):
-    first_name = forms.CharField(label='Vorname', max_length=100)
-    last_name = forms.CharField(label='Nachname', max_length=100)
-    email = forms.EmailField(label='E-Mail-Adresse', disabled=True, required=False)
-    address = forms.CharField(label='Adresse (Straße, Stadt. Nicht öffentlich)', max_length=200,
+    first_name = forms.CharField(label=_('Vorname'), max_length=100)
+    last_name = forms.CharField(label=_('Nachname'), max_length=100)
+    email = forms.EmailField(label=_('E-Mail-Adresse'), disabled=True, required=False)
+    address = forms.CharField(label=_('Adresse (Straße, Stadt. Nicht öffentlich)'), max_length=200,
                               widget=forms.TextInput(attrs={'autocomplete': 'off'}))
 
     class Meta:

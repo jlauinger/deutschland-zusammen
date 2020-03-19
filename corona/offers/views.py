@@ -12,6 +12,7 @@ from django.urls import reverse_lazy
 from django.utils.timezone import now
 from django.views import View
 from django.views.generic import FormView, ListView, UpdateView, TemplateView, DeleteView
+from django.utils.translation import gettext as _
 
 from offers.forms import OfferSearchForm, UserForm, ProviderProfileForm, SendMessageForm, OfferFormSet
 from offers.helper import location_from_address, address_from_location, address_autocomplete
@@ -46,7 +47,7 @@ class ActivateAccountView(View):
     def get(self, request, **kwargs):
         success = self.activate_account(**kwargs)
         if success:
-            messages.add_message(request, messages.SUCCESS, 'Dein Account wurde aktiviert!')
+            messages.add_message(request, messages.SUCCESS, _('Dein Account wurde aktiviert!'))
             return HttpResponseRedirect(reverse_lazy('profile'))
         else:
             return render(self.request, 'registration/account_activation_failure.html')
@@ -71,7 +72,7 @@ class ResendActivationMailView(View):
     def get(self, request):
         profile = ProviderProfile.objects.filter(user=request.user).first()
         profile.send_activation_mail()
-        messages.add_message(request, messages.SUCCESS, 'Wir haben dir die Aktivierungs-Mail erneut gesendet!')
+        messages.add_message(request, messages.SUCCESS, _('Wir haben dir die Aktivierungs-Mail erneut gesendet!'))
         return HttpResponseRedirect(reverse_lazy('profile'))
 
 

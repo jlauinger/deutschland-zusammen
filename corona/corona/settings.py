@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from django.utils.translation import gettext_lazy as _
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -144,8 +145,8 @@ EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
 
 CONTACT_MAIL_FROM = 'noreply@deutschlandzusammen.de'
-CONTACT_MAIL_SUBJECT = 'Neue Nachricht von Corona-Hilfsangebote'
-CONTACT_MAIL_BODY = """Hallo {}!
+CONTACT_MAIL_SUBJECT = _('Neue Nachricht von Corona-Hilfsangebote')
+CONTACT_MAIL_BODY = _("""Hallo {}!
 
 Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!
 
@@ -162,11 +163,11 @@ Melde dich doch wenn du kannst schnellstmöglich zurück.
 
 Liebe Grüße
 dein Team von deutschlandzusammen.de
-"""
+""")
 
 ACTIVATION_MAIL_FROM = 'noreply@deutschlandzusammen.de'
-ACTIVATION_MAIL_SUBJECT = 'Aktiviere deinen Account bei deutschlandzusammen.de'
-ACTIVATION_MAIL_BODY = """
+ACTIVATION_MAIL_SUBJECT = _('Aktiviere deinen Account bei deutschlandzusammen.de')
+ACTIVATION_MAIL_BODY = _("""
 Hallo {}!
 
 Bitte bestätige deine E-Mail-Adresse und aktiviere deinen Account bei deutschlandzusammen.de. Klicke dazu einfach
@@ -178,4 +179,4 @@ Bis du deinen Account aktiviert hast können deine Angebote nicht gefunden werde
 
 Liebe Grüße
 dein Team von deutschlandzusammen.de
-"""
+""")

@@ -1,6 +1,7 @@
 from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
 
 class OffersConfig(AppConfig):
     name = 'offers'
-    verbose_name = 'Angebote'
+    verbose_name = _('Angebote')
