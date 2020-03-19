@@ -3,9 +3,9 @@ from datetime import timedelta
 from smtplib import SMTPException
 
 from django.conf import settings
-from django.contrib.auth import login
+from django.contrib import messages
+from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -37,8 +37,42 @@ class AccountRegistrationView(FormView):
     @classmethod
     def register_user(cls, request, **kwargs):
         user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'])
-        ProviderProfile.objects.create(user=user)
+        profile = ProviderProfile.objects.create(user=user)
+        profile.send_activation_mail()
         return user
+
+
+class ActivateAccountView(View):
+    def get(self, request, **kwargs):
+        success = self.activate_account(**kwargs)
+        if success:
+            messages.add_message(request, messages.SUCCESS, 'Dein Account wurde aktiviert!')
+            return HttpResponseRedirect(reverse_lazy('profile'))
+        else:
+            return render(self.request, 'registration/account_activation_failure.html')
+
+    def activate_account(self, **kwargs):
+        queryset = ProviderProfile.objects.filter(id=kwargs['pk'], activation_token=kwargs['token'])
+
+        if not queryset.exists():
+            logout(self.request)
+            return False
+
+        profile = queryset[0]
+        profile.activated = True
+        profile.save()
+
+        login(self.request, profile.user)
+
+        return True
+
+
+class ResendActivationMailView(View):
+    def get(self, request):
+        profile = ProviderProfile.objects.filter(user=request.user).first()
+        profile.send_activation_mail()
+        messages.add_message(request, messages.SUCCESS, 'Wir haben dir die Aktivierungs-Mail erneut gesendet!')
+        return HttpResponseRedirect(reverse_lazy('profile'))
 
 
 class DeleteUserView(DeleteView):

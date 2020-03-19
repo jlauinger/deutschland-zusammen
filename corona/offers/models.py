@@ -6,10 +6,12 @@ from django.contrib.gis.db import models
 from django.contrib.gis.db.models.functions import Distance
 from django.core.mail import send_mail
 from django.db.models import F
+from django.urls import reverse_lazy
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import now, make_aware
+from django.utils.translation import gettext as _
 
-from offers.helper import location_from_address
+from offers.helper import location_from_address, create_activation_token
 
 
 def next_hour():
@@ -70,6 +72,10 @@ class ProviderProfile(models.Model):
 
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
+    activation_token = models.CharField(max_length=64, default=create_activation_token,
+                                        verbose_name='Aktivierungsschlüssel')
+    activated = models.BooleanField(default=False, verbose_name='Aktiviert')
+
     location = models.PointField(null=True, default=None)
     radius = models.IntegerField(choices=RADIUS_CHOICES, default=2000,
                                  verbose_name='Umkreis (nicht öffentlich)')
@@ -93,13 +99,13 @@ class ProviderProfile(models.Model):
     name_visibility = models.CharField(choices=NAME_VISIBILITY_CHOICES, default='FIRST_NAME', max_length=50,
                                        verbose_name='Öffentlichkeit deines Namens')
 
+    def __str__(self):
+        return 'Profil für {}, {}'.format(self.user.username, self.address)
+
     def save(self, *args, **kwargs):
         if self.address:
             self.location = location_from_address(self.address)
         super().save(*args, **kwargs)
-
-    def __str__(self):
-        return 'Profil für {}, {}'.format(self.user.username, self.address)
 
     def get_display_name(self):
         if self.name_visibility == 'FULL':
@@ -108,6 +114,13 @@ class ProviderProfile(models.Model):
             return self.user.first_name
         else:
             return ""
+
+    def send_activation_mail(self):
+        activation_link = "{}{}".format(settings.HOST_NAME, reverse_lazy('activate_account',
+                                                                         args=[self.id, self.activation_token]))
+        body = settings.ACTIVATION_MAIL_BODY.format(self.user.first_name, activation_link)
+        send_mail(settings.ACTIVATION_MAIL_FROM, body, settings.ACTIVATION_MAIL_FROM, [self.user.email],
+                  fail_silently=False)
 
 
 class Offer(models.Model):
@@ -137,6 +150,7 @@ class Offer(models.Model):
     @staticmethod
     def offers_in_range(query_location):
         return Offer.objects.annotate(distance=Distance('user__profile__location', query_location))\
+            .filter(user__profile__activated=True)\
             .filter(distance__lte=F('user__profile__radius')).order_by('-distance')
 
     @staticmethod
@@ -153,8 +167,8 @@ class Message(models.Model):
     """
 
     class Meta:
-        verbose_name = 'Gesendete Nachricht'
-        verbose_name_plural = 'Gesendete Nachrichten'
+        verbose_name = _('Gesendete Nachricht')
+        verbose_name_plural = _('Gesendete Nachrichten')
 
     recipient = models.ForeignKey(User, related_name='received_messages', on_delete=models.CASCADE)
 

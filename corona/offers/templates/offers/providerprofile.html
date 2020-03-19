@@ -2,6 +2,18 @@
 {% load template_tags %}
 
 {% block content %}
+    {% if not user.profile.activated %}
+        <div class="messages">
+            <div class="message error">
+                <div class="container">
+                    Dein Account ist noch nicht aktiviert. Bis du auf den Bestätigungslink, den wir dir per Mail geschickt haben
+                    geklickt hast, sind deine Angebote nicht öffentlich sichtbar.
+                    <a href="{% url 'resend_activation_mail' %}">E-Mail erneut senden</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
     <div class="container">
         <div class="row">
             <div class="col-sm">

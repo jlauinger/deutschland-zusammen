@@ -1,0 +1,14 @@
+{% extends 'offers/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Accountaktivierung fehlgeschlagen</h2>
+
+        <p>
+            Dieser Accountaktivierungslink war nicht korrekt. Hast du den Link aus der Mail vollständig kopiert oder
+            direkt angeklickt?
+        </p>
+
+        <a href="{% url 'search' %}" class="btn btn-primary">Zur Startseite</a>
+    </div>
+{% endblock %}

@@ -41,6 +41,29 @@ body.bg-image {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+.messages {
+    width: 100%;
+    padding-bottom: 1rem;
+}
+.message {
+    padding: 5px 0;
+    background-color: #bbc4c8;
+}
+.message.success {
+    background-color: #79dd50;
+}
+.message.error {
+    background-color: red;
+    color: white;
+}
+.message.error a {
+    color: white;
+    text-decoration: underline;
+}
+.message.error a:hover {
+    text-decoration: none;
+}
+
 .search-form {
     text-align: center;
     padding-top: 100px;
@@ -110,7 +133,7 @@ body.bg-image {
     margin-top: 1rem;
     padding-bottom: 1rem;
 }
-.search-results li .message {
+.search-results li .send-message {
     padding-top: 1rem;
 }
 

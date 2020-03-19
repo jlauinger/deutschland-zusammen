@@ -57,6 +57,18 @@
     </div>
 </nav>
 
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                <div class="container">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 {% block content %}
 {% endblock %}
 

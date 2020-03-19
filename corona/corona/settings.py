@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'de-de'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -179,6 +179,23 @@ Nachricht:
 {}
 
 Melde dich doch wenn du kannst schnellstmöglich zurück.
+
+Liebe Grüße
+dein Team von deutschlandzusammen.de
+"""
+
+HOST_NAME = 'http://localhost:8000' if DEBUG else 'https://www.deutschlandzusammen.de'
+ACTIVATION_MAIL_FROM = 'noreply@deutschlandzusammen.de'
+ACTIVATION_MAIL_SUBJECT = 'Aktiviere deinen Account bei deutschlandzusammen.de'
+ACTIVATION_MAIL_BODY = """
+Hallo {}!
+
+Bitte bestätige deine E-Mail-Adresse und aktiviere deinen Account bei deutschlandzusammen.de. Klicke dazu einfach
+auf den folgenden Link oder kopiere ihn in die Adressleiste deines Browsers:
+
+{}
+
+Bis du deinen Account aktiviert hast können deine Angebote nicht gefunden werden.
 
 Liebe Grüße
 dein Team von deutschlandzusammen.de

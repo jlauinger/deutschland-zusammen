@@ -1,4 +1,6 @@
 import json
+import random
+import string
 
 import requests
 from django.conf import settings
@@ -48,3 +50,8 @@ def address_autocomplete(query):
         return list(suggestions)
     else:
         return [query]
+
+
+def create_activation_token():
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(64))

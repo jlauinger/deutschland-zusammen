@@ -21,9 +21,9 @@ class OfferTestCase(TestCase):
         self.big_radius_user = User.objects.create_user('big_radius_user', first_name='Vorname Nachname')
         self.small_radius_user = User.objects.create_user('small_radius_user')
         self.big_radius_profile = ProviderProfile.objects.create(location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
-                                                                 user=self.big_radius_user)
+                                                                 user=self.big_radius_user, activated=True)
         self.small_radius_profile = ProviderProfile.objects.create(location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=1,
-                                                                   user=self.small_radius_user)
+                                                                   user=self.small_radius_user, activated=True)
 
     def test_offers_in_reach_are_found(self):
         offer_big_radius = Offer.objects.create(user=self.big_radius_user)
@@ -42,6 +42,18 @@ class OfferTestCase(TestCase):
 
         self.assertIn(offer_thursday, offers)
         self.assertNotIn(offer_friday, offers)
+
+    def test_only_activated_profiles_are_found(self):
+        user_not_activated = User.objects.create_user('not_activated_user')
+        profile_not_activated = ProviderProfile.objects.create(location=self.DARMSTADT_HOCHSCHULSTRASSE, radius=10000,
+                                                               user=user_not_activated, activated=False)
+        offer_activated = Offer.objects.create(user=self.big_radius_user)
+        offer_not_activated = Offer.objects.create(user=user_not_activated)
+
+        offers = Offer.offers_in_range(self.DARMSTADT_SMARAGDWEG)
+
+        self.assertIn(offer_activated, offers)
+        self.assertNotIn(offer_not_activated, offers)
 
     def test_address_to_point_resolution(self):
         location = location_from_address('Smaragdweg 9, 64287 Darmstadt')
