@@ -2,34 +2,47 @@
 {% load bootstrap4 %}
 {% load static %}
 
-{% block bodyclass %}bg-image{% endblock %}
-
 {% block content %}
-    <div class="container padding-top-1">
-        <div class="search-form">
-            <div class="inner-search">
-                <h2>Deutschland steht zusammen. Finde Hilfe in der Corona-Krise</h2>
+    <div class="bg-image">
+        <div class="container padding-top-1">
+            <div class="search-form">
+                <div class="inner-search">
+                    <h2>Deutschland steht zusammen. Finde Hilfe in der Corona-Krise</h2>
 
-                <form method="POST" action="">
-                    {% csrf_token %}
+                    <form method="POST" action="">
+                        {% csrf_token %}
 
-                    {{ form.where }}
-                    <a href="#" id="locate">
-                        <img src="{% static 'offers/images/crosshair.png' %}" alt="Versuche mich zu orten"
-                             title="Versuche mich zu orten" />
-                    </a>
+                        {{ form.where }}
+                        <a href="#" id="locate">
+                            <img src="{% static 'offers/images/crosshair.png' %}" alt="Versuche mich zu orten"
+                                 title="Versuche mich zu orten" />
+                        </a>
 
-                    <div class="hidden-sm-up padding-top-1"></div>
+                        <div class="hidden-sm-up padding-top-1"></div>
 
-                    {{ form.when }}
-                    <a href="#" id="today">
-                        <img src="{% static 'offers/images/today-icon.png' %}" alt="Heute" title="Heute" />
-                    </a>
+                        {{ form.when }}
+                        <a href="#" id="today">
+                            <img src="{% static 'offers/images/today-icon.png' %}" alt="Heute" title="Heute" />
+                        </a>
 
-                    <div class="hidden-sm-up padding-top-1"></div>
-                    <input type="submit" value="Suchen!" class="btn btn-primary">
-                </form>
+                        <div class="hidden-sm-up padding-top-1"></div>
+                        <input type="submit" value="Suchen!" class="btn btn-primary">
+                    </form>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <div class="content-below-fold">
+        <div class="container">
+            <h2>Deutschland Zusammen</h2>
+
+            <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
         </div>
     </div>
 
@@ -54,7 +67,7 @@
 
             var cycle = function() {
                 index = (index + 1) % images.length;
-                $('body').css({'background-image': 'url("'+images[index]+'")'});
+                $('.bg-image').css({'background-image': 'url("'+images[index]+'")'});
                 setTimeout(cycle, period);
             };
 

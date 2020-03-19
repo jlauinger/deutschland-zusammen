@@ -16,10 +16,6 @@ footer {
     margin-top: 1rem;
     background-color: #ddd;
 }
-body.bg-image footer {
-    position: absolute;
-    bottom: -120px;
-}
 
 .navbar {
     width: 100%;
@@ -30,11 +26,19 @@ body {
     position: relative;
 }
 
-body.bg-image {
+.bg-image {
+    min-height: 100%;
+    margin-top: -126px;
+    padding-top: 126px;
+    padding-bottom: 2rem;
     background-image: url('images/bild-1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.content-below-fold {
+    padding: 2rem 0 1rem 0;
 }
 
 .navbar-light {
