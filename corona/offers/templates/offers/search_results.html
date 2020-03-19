@@ -9,7 +9,7 @@
                 {% if object_list %}
                     <h2>{% trans "Deine Hilfe ist fast organisiert!" %}</h2>
                     <p>
-                        {% blocktrans %}
+                        {% blocktrans trimmed %}
                             Die folgenden Menschen in deiner Nähe sind bereit, dir zu helfen! Du musst nur noch anrufen
                             oder eine Nachricht schreiben.
                         {% endblocktrans %}
@@ -61,7 +61,7 @@
                 {% else %}
                     <h2>{% trans "Leider nichts gefunden..." %}</h2>
                     <p>
-                        {% blocktrans %}
+                        {% blocktrans trimmed %}
                             Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner Adresse Straße und
                             Stadt eingegeben? Schau doch rechts auf der Karte mal ob der Standort passt.
                         {% endblocktrans %}
