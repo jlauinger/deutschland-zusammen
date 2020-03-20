@@ -11,6 +11,6 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     path('webpush/', include('webpush.urls')),
-    path('prometheus/' + settings.PROMETHEUS_PATH_SECRET + '/', include('django_prometheus.urls')),
+    path('metrics/' + settings.PROMETHEUS_PATH_SECRET + '/', include('django_prometheus.urls')),
     path('', include('offers.urls')),
 ]
