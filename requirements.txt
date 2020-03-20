@@ -1,6 +1,7 @@
 django
 psycopg2-binary
 geopy
-django-bootstrap4
 requests
+django-bootstrap4
 django-simple-captcha
+django-webpush

@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from django.utils.translation import gettext_lazy as _
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'tm4nzh33&pt64sp_wsmir02w7j1da=jf+6f$i2xpnn+m8or948'
@@ -23,7 +22,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 HOST_NAME = 'http://localhost:8000'
-
 
 # Application definition
 
@@ -37,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'bootstrap4',
     'captcha',
+    'webpush',
     'offers',
 ]
 
@@ -64,13 +63,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'offers.context_preprocessors.vapid_key',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'corona.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -85,7 +84,6 @@ DATABASES = {
         'PORT': '5432'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -105,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -124,12 +121,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
 
 # Geography settings
 
@@ -138,12 +133,10 @@ SRID = 4326
 NOMINATIM_USER_AGENT = "corona-hilfsangebote"
 MAPBOX_API_TOKEN = "pk.eyJ1IjoiamxhdWluZ2VyIiwiYSI6ImNrN3RzMWcyNjB3Z3IzbXFyZmZianRkZzAifQ.P0LQjvZ7G0dB9uNqs2r3YQ"
 
-
 # Auth settings
 
 LOGIN_REDIRECT_URL = '/profile'
 LOGOUT_REDIRECT_URL = '/'
-
 
 # Contact mail settings
 
@@ -186,3 +179,11 @@ Bis du deinen Account aktiviert hast können deine Angebote nicht gefunden werde
 Liebe Grüße
 dein Team von deutschlandzusammen.de
 """)
+
+# Webpush
+
+WEBPUSH_SETTINGS = {
+    'VAPID_PUBLIC_KEY': 'BGLF2Ic8PYGm0syvEMoryf8z0tEvb5M3z0xgLiWuvdvG1oP7A_OXBcSGjPMycg__5Ex1xEGHy_CiQYwRniiJB-g',
+    'VAPID_PRIVATE_KEY': 'ey-8QaP5B4nyMlbNpYKDw55TJ1AGfhMeXLbMMyMrISA',
+    'VAPID_ADMIN_EMAIL': 'support@deutschlandzusammen.de'
+}

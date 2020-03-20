@@ -276,6 +276,11 @@ class SafetyInformationView(TemplateView):
     template_name = 'offers/safety_information.html'
 
 
+class PushNotificationServiceWorkerView(TemplateView):
+    template_name = 'offers/sw.js'
+    content_type = 'application/x-javascript'
+
+
 class AddressFromLocationAjaxView(View):
     def get(self, request):
         lat = request.GET.get('lat')

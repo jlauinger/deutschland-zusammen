@@ -28,6 +28,9 @@
 
     <!-- Custom styles -->
     <link rel="stylesheet" href="{% static 'offers/styles.css' %}" />
+
+    <!-- Webpush -->
+    <meta name="vapid-key" content="{{ vapid_key }}">
 </head>
 <body class="{% block bodyclass %}{% endblock %}">
 

@@ -1,5 +1,6 @@
 {% extends 'offers/base.html' %}
 {% load template_tags %}
+{% load static %}
 {% load i18n %}
 
 {% block content %}
@@ -8,8 +9,8 @@
             <div class="message error">
                 <div class="container">
                     {% blocktrans trimmed %}
-                    Dein Account ist noch nicht aktiviert. Bis du auf den Bestätigungslink, den wir dir per Mail geschickt haben
-                    geklickt hast, sind deine Angebote nicht öffentlich sichtbar.
+                        Dein Account ist noch nicht aktiviert. Bis du auf den Bestätigungslink, den wir dir per Mail geschickt haben
+                        geklickt hast, sind deine Angebote nicht öffentlich sichtbar.
                     {% endblocktrans %}
                     <a href="{% url 'resend_activation_mail' %}">{% trans "E-Mail erneut senden" %}</a>
                 </div>
@@ -42,8 +43,17 @@
                 <h4>{% trans "So erreichen dich Hilfesuchende" %}</h4>
                 <p>
                     <b>{% trans "Telefonnummer:" %}</b> {{ user.profile.phone }} ({% trans "öffentlich" %}: <b>{{ user.profile.show_phone|yesno }})</b><br />
-                    <b>{% trans "E-Mail-Adresse:" %}</b> {{ user.email }} ({% trans "öffentlich" %}: <b>{{ user.profile.show_email|yesno }})</b>
+                    <b>{% trans "E-Mail-Adresse:" %}</b> {{ user.email }} ({% trans "öffentlich" %}: <b>{{ user.profile.show_email|yesno }})</b><br /><br />
+                    <b>{% trans 'Direktnachrichten:' %}</b><br />
+                    {% blocktrans trimmed %}
+                        Über deutschlandzusammen.de können Suchende dir eine Nachricht senden. Du siehst sie dann auf
+                        der Nachrichten-Seite. Wir können die Nachrichten auch direkt als Push-Nachricht zu dir senden!
+                    {% endblocktrans %}
                 </p>
+                <button class="btn btn-primary btn-sm" id="register_push">
+                    {% trans 'Push-Nachrichten aktivieren' %}
+                </button>
+                <div class="padding-top-1"></div>
 
                 <h4>{% trans "Zusätzliche Angaben zu dir" %}</h4>
                 <p>
@@ -106,6 +116,14 @@
                 fillOpacity: 0.5,
                 radius: {{ user.profile.radius }}
             }).addTo(map);
+        });
+    </script>
+
+    <!-- Webpush -->
+    <script src="{% static 'offers/registerSw.js' %}"></script>
+    <script>
+        $('#register_push').click(function() {
+            registerSw().then(r => console.log('subscribed!'));
         });
     </script>
 {% endblock %}

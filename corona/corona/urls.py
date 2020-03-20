@@ -9,5 +9,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('captcha/', include('captcha.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('webpush/', include('webpush.urls')),
     path('', include('offers.urls')),
 ]
