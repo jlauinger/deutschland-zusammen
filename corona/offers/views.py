@@ -25,7 +25,7 @@ class AccountRegistrationView(FormView):
     success_url = reverse_lazy('profile')
 
     def form_valid(self, form):
-        user = AccountRegistrationView.register_user(self.request, **form.cleaned_data)
+        user = self.register_user(self.request, **form.cleaned_data)
         login(self.request, user)
         return super().form_valid(form)
 
@@ -35,8 +35,8 @@ class AccountRegistrationView(FormView):
         else:
             return super().dispatch(request, *args, **kwargs)
 
-    @classmethod
-    def register_user(cls, request, **kwargs):
+    @staticmethod
+    def register_user(self, request, **kwargs):
         user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'])
         profile = ProviderProfile.objects.create(user=user)
         profile.send_activation_mail()
@@ -188,8 +188,31 @@ class OfferSearchView(FormView):
     def get_location_and_objects(form):
         location = location_from_address(form.cleaned_data['where'])
         date = form.cleaned_data['when']
+        mobility = form.cleaned_data['mobility']
+        daytime = form.cleaned_data['daytime']
 
-        return location, Offer.offers_in_range_and_date(location, date)
+        print(mobility)
+        print(daytime)
+
+        offers = Offer.offers_in_range_and_date(location, date)
+
+        if mobility != '' and mobility != 'NA':
+            offers = offers.filter(user__profile__mobility=mobility)
+
+        if daytime == 'MORNING':
+            offers = offers.filter(morning=True)
+        elif daytime == 'NOON':
+            offers = offers.filter(noon=True)
+        elif daytime == 'AFTERNOON':
+            offers = offers.filter(afternoon=True)
+        elif daytime == 'EVENING':
+            offers = offers.filter(evening=True)
+
+        return location, offers
+
+    @staticmethod
+    def is_filter_active(form):
+        return form.cleaned_data['mobility'] or form.cleaned_data['daytime']
 
     def get_initial(self):
         initial = super().get_initial()
@@ -200,6 +223,8 @@ class OfferSearchView(FormView):
         location, objects = self.get_location_and_objects(form)
 
         return render(self.request, 'offers/search_results.html', {
+            'form': form,
+            'filter_active': self.is_filter_active(form),
             'location': location,
             'object_list': objects,
             'mapbox_api_token': settings.MAPBOX_API_TOKEN

@@ -31,6 +31,15 @@ GENDERS = (
 )
 
 
+DAYTIME_CHOICES = (
+    ('', _('-- Zeit filtern --')),
+    ('MORNING', _('Morgens')),
+    ('NOON', _('Mittags')),
+    ('AFTERNOON', _('Nachmittags')),
+    ('EVENING', _('Abends')),
+)
+
+
 class ProviderProfile(models.Model):
     """
     A provider profile is in a one-to-one relationship with a user. It extends the user profile with some settings that

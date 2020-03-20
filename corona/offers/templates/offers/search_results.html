@@ -1,6 +1,7 @@
 {% extends 'offers/base.html' %}
 {% load template_tags %}
 {% load i18n %}
+{% load bootstrap4 %}
 
 {% block content %}
     <div class="container">
@@ -14,6 +15,20 @@
                             oder eine Nachricht schreiben.
                         {% endblocktrans %}
                     </p>
+                    <div class="filter">
+                        <p><b>Filtere die Ergebnisse:</b></p>
+                        <form method="POST" action="" class="form-inline">
+                            {% csrf_token %}
+
+                            <div class="display-none">
+                                {{ form.where }}
+                                {{ form.when }}
+                            </div>
+                            {% bootstrap_field form.daytime show_label=False bound_css_class='' field_class='padding-right-1' %}
+                            {% bootstrap_field form.mobility show_label=False bound_css_class='' field_class='padding-right-1' %}
+                            <input type="submit" value="{% trans "Suchen!" %}" class="btn btn-primary">
+                        </form>
+                    </div>
                     <ul class="search-results">
                         {% for offer in object_list %}
                             <li>
@@ -60,14 +75,38 @@
                     </ul>
                 {% else %}
                     <h2>{% trans "Leider nichts gefunden..." %}</h2>
-                    <p>
-                        {% blocktrans trimmed %}
-                            Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner Adresse Straße und
-                            Stadt eingegeben? Schau doch rechts auf der Karte mal ob der Standort passt.
-                        {% endblocktrans %}
-                    </p>
+                    {% if filter_active %}
+                        <p>
+                            {% blocktrans trimmed %}
+                                Leider wurden keine Angebote gefunden. Entferne vielleicht die Filter oder versuche später
+                                eine neue Suche.
+                            {% endblocktrans %}
+                        </p>
+                        <div class="filter">
+                            <p><b>Filtere die Ergebnisse:</b></p>
+                            <form method="POST" action="" class="form-inline">
+                                {% csrf_token %}
+
+                                <div class="display-none">
+                                    {{ form.where }}
+                                    {{ form.when }}
+                                </div>
+                                {% bootstrap_field form.daytime show_label=False bound_css_class='' field_class='padding-right-1' %}
+                                {% bootstrap_field form.mobility show_label=False bound_css_class='' field_class='padding-right-1' %}
+                                <input type="submit" value="{% trans "Suchen!" %}" class="btn btn-primary">
+                            </form>
+                        </div>
+                    {% else %}
+                        <p>
+                            {% blocktrans trimmed %}
+                                Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner Adresse Straße und
+                                Stadt eingegeben? Schau doch rechts auf der Karte mal ob der Standort passt.
+                            {% endblocktrans %}
+                        </p>
+                    {% endif %}
                 {% endif %}
 
+                <hr />
                 <a href="{% url 'search' %}" class="btn btn-primary">{% trans "Neue Suche" %}</a>
                 <div class="padding-top-1"></div>
             </div>

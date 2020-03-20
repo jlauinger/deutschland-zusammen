@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 from django.utils.translation import gettext_lazy as _
 
-from offers.models import Offer, ProviderProfile, GENDERS
+from offers.models import Offer, ProviderProfile, GENDERS, DAYTIME_CHOICES
 
 
 class OfferSearchForm(forms.Form):
@@ -12,6 +12,10 @@ class OfferSearchForm(forms.Form):
                             widget=forms.TextInput(attrs={'placeholder': _('Wo? (Straße und Ort)'), 'autocomplete':'off'}))
     when = forms.DateTimeField(label='when', input_formats=['%d.%m.%Y'],
                                widget=forms.TextInput(attrs={'placeholder': _('Wann?'), 'autocomplete': 'off'}))
+
+    mobility = forms.ChoiceField(choices=[('', _('-- Mobilität filtern --'))]+list(ProviderProfile.MOBILITY_CHOICES),
+                                 required=False, initial='')
+    daytime = forms.ChoiceField(choices=DAYTIME_CHOICES, required=False, initial='')
 
 
 class SendMessageForm(forms.ModelForm):
