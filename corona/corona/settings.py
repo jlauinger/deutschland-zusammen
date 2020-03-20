@@ -36,10 +36,12 @@ INSTALLED_APPS = [
     'bootstrap4',
     'captcha',
     'webpush',
+    'django_prometheus',
     'offers',
 ]
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
 ]
 
 ROOT_URLCONF = 'corona.urls'
@@ -187,3 +190,8 @@ WEBPUSH_SETTINGS = {
     'VAPID_PRIVATE_KEY': 'ey-8QaP5B4nyMlbNpYKDw55TJ1AGfhMeXLbMMyMrISA',
     'VAPID_ADMIN_EMAIL': 'support@deutschlandzusammen.de'
 }
+
+
+# Prometheus
+
+PROMETHEUS_PATH_SECRET = 'pass'

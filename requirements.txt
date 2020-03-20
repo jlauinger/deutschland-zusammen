@@ -5,3 +5,4 @@ requests
 django-bootstrap4
 django-simple-captcha
 django-webpush
+django-prometheus

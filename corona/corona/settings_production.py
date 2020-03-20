@@ -45,3 +45,5 @@ WEBPUSH_SETTINGS = {
     'VAPID_PRIVATE_KEY': secrets.VAPID_PRIVATE_KEY,
     'VAPID_ADMIN_EMAIL': 'support@deutschlandzusammen.de'
 }
+
+PROMETHEUS_PATH_SECRET = secrets.PROMETHEUS_PATH_SECRET

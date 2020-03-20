@@ -10,6 +10,7 @@ from django.urls import reverse_lazy, reverse
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import now, make_aware
 from django.utils.translation import gettext_lazy as _
+from django_prometheus.models import ExportModelOperationsMixin
 from webpush import send_user_notification
 
 from offers.helper import location_from_address, create_activation_token, create_profile_slug
@@ -41,7 +42,7 @@ DAYTIME_CHOICES = (
 )
 
 
-class ProviderProfile(models.Model):
+class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     """
     A provider profile is in a one-to-one relationship with a user. It extends the user profile with some settings that
     are shared among the user's offers.
@@ -134,7 +135,7 @@ class ProviderProfile(models.Model):
                   fail_silently=False)
 
 
-class Offer(models.Model):
+class Offer(ExportModelOperationsMixin('offer'), models.Model):
     """
     An offer object is an offer by a logged-in user, offering some help.
 
@@ -169,7 +170,7 @@ class Offer(models.Model):
         return Offer.offers_in_range(query_location).filter(date=date)
 
 
-class Message(models.Model):
+class Message(ExportModelOperationsMixin('message'), models.Model):
     """
     A message is an (e-mail) message that an anonymous user sent to a logged-in user who put in an offer.
 
