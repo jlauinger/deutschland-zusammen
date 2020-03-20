@@ -17,6 +17,7 @@ from django.utils.translation import gettext as _
 from offers.forms import OfferSearchForm, UserForm, ProviderProfileForm, SendMessageForm, OfferFormSet
 from offers.helper import location_from_address, address_from_location, address_autocomplete
 from offers.models import Offer, ProviderProfile, Message
+import offers.metrics
 
 
 class AccountRegistrationView(FormView):
