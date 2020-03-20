@@ -17,12 +17,14 @@ from django.views.generic import FormView, ListView, UpdateView, TemplateView, D
 from offers.forms import OfferSearchForm, UserForm, ProviderProfileForm, SendMessageForm, OfferFormSet
 from offers.helper import location_from_address, address_from_location, address_autocomplete
 from offers.models import Offer, ProviderProfile, Message
+from offers.metrics import DUMMY
 
 
 class AccountRegistrationView(FormView):
     form_class = UserForm
     template_name = 'registration/registration.html'
     success_url = reverse_lazy('profile')
+    metrics_import_dummy = DUMMY
 
     def form_valid(self, form):
         user = self.register_user(self.request, **form.cleaned_data)
