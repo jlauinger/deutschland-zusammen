@@ -77,4 +77,38 @@ const sendSubData = async (subscription) => {
     handleResponse(res);
 };
 
-const handleResponse = (res) => {};
+const handleResponse = (res) => console.log(res);
+
+const unregisterSw = async () => {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+        registrations.forEach(reg => unsubscribe(reg));
+    });
+};
+
+const unsubscribe = async (reg) => {
+    const subscription = await reg.pushManager.getSubscription();
+    await reg.unregister();
+    if (subscription) {
+        await sendUnsubData(subscription);
+    }
+};
+
+const sendUnsubData = async (subscription) => {
+    const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
+    const data = {
+        status_type: 'unsubscribe',
+        subscription: subscription.toJSON(),
+        browser: browser,
+    };
+
+    const res = await fetch('/webpush/save_information', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'content-type': 'application/json'
+        },
+        credentials: "include"
+    });
+
+    handleResponse(res);
+};

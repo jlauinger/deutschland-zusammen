@@ -122,8 +122,38 @@
     <!-- Webpush -->
     <script src="{% static 'offers/registerSw.js' %}"></script>
     <script>
-        $('#register_push').click(function() {
-            registerSw().then(r => console.log('subscribed!'));
+        $(function() {
+            var registered = false;
+
+            $('#register_push').click(function() {
+                if (registered) {
+                    unregisterSw().then(r => {
+                        $('#register_push')
+                            .html('{% trans 'Push-Nachrichten aktivieren' %}')
+                            .removeClass('btn-secondary')
+                            .addClass('btn-primary');
+                        registered = false;
+                    });
+                } else {
+                    registerSw().then(r => {
+                        $('#register_push')
+                            .html('{% trans 'Push-Nachrichten deaktivieren' %}')
+                            .removeClass('btn-primary')
+                            .addClass('btn-secondary');
+                        registered = true;
+                    });
+                }
+            });
+
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                if (registrations.length) {
+                    $('#register_push')
+                        .html('{% trans 'Push-Nachrichten deaktivieren' %}')
+                        .removeClass('btn-primary')
+                        .addClass('btn-secondary');
+                    registered = true;
+                }
+            });
         });
     </script>
 {% endblock %}

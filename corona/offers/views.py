@@ -36,7 +36,7 @@ class AccountRegistrationView(FormView):
             return super().dispatch(request, *args, **kwargs)
 
     @staticmethod
-    def register_user(self, request, **kwargs):
+    def register_user(request, **kwargs):
         user = User.objects.create_user(username=kwargs['username'], email=kwargs['email'], password=kwargs['password'])
         profile = ProviderProfile.objects.create(user=user)
         profile.send_activation_mail()

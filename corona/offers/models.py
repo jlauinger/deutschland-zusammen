@@ -6,7 +6,7 @@ from django.contrib.gis.db import models
 from django.contrib.gis.db.models.functions import Distance
 from django.core.mail import send_mail
 from django.db.models import F
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import now, make_aware
 from django.utils.translation import gettext_lazy as _
@@ -199,5 +199,10 @@ class Message(models.Model):
         send_mail(settings.CONTACT_MAIL_SUBJECT, self.message, settings.CONTACT_MAIL_FROM, [self.recipient.email],
                   fail_silently=False)
 
-        payload = {'head': settings.CONTACT_MAIL_SUBJECT.__str__(), 'body': self.message}
+        payload = {
+            'head': settings.CONTACT_MAIL_SUBJECT.__str__(),
+            'body': self.message,
+            'url': settings.HOST_NAME + reverse('messages')
+        }
+
         send_user_notification(user=self.recipient, payload=payload, ttl=1000)
