@@ -10,14 +10,13 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.timezone import now
+from django.utils.translation import gettext as _
 from django.views import View
 from django.views.generic import FormView, ListView, UpdateView, TemplateView, DeleteView
-from django.utils.translation import gettext as _
 
 from offers.forms import OfferSearchForm, UserForm, ProviderProfileForm, SendMessageForm, OfferFormSet
 from offers.helper import location_from_address, address_from_location, address_autocomplete
 from offers.models import Offer, ProviderProfile, Message
-import offers.metrics
 
 
 class AccountRegistrationView(FormView):
