@@ -283,6 +283,14 @@ class PushNotificationServiceWorkerView(TemplateView):
     content_type = 'application/x-javascript'
 
 
+class ImprintView(TemplateView):
+    template_name = 'offers/imprint.html'
+
+
+class PrivacyDeclarationView(TemplateView):
+    template_name = 'offers/privacy.html'
+
+
 class AddressFromLocationAjaxView(View):
     def get(self, request):
         lat = request.GET.get('lat')
