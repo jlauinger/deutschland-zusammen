@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="{% static 'offers/jquery-ui.min.css' %}" />
     <script src="{% static 'offers/jquery-ui.min.js' %}"></script>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'offers/fontawesome/css/all.min.css' %}" />
+
     <!-- Custom styles -->
     <link rel="stylesheet" href="{% static 'offers/styles.css' %}" />
 
@@ -93,12 +96,16 @@
 {% block content %}
 {% endblock %}
 
+{% block footerpadding %}
+<div class="padding-top-1"></div>
+{% endblock %}
+
 <footer>
     <div class="container">
         &copy; 2020 mach2media &middot;
-        <a href="{% url 'imprint' %}">{% trans "Impressum" %}</a> &middot;
-        <a href="{% url 'privacy' %}">{% trans "Datenschutz" %}</a> &middot;
-        <a href="{% url 'safety_information' %}">{% trans "Sicherheits-Informationen" %}</a> &middot;
+        <a class="text-link" href="{% url 'imprint' %}">{% trans "Impressum" %}</a> &middot;
+        <a class="text-link" href="{% url 'privacy' %}">{% trans "Datenschutz" %}</a> &middot;
+        <a class="text-link" href="{% url 'safety_information' %}">{% trans "Sicherheits-Informationen" %}</a> &middot;
 
         <div class="language-switcher">
             <form action="{% url 'set_language' %}" method="post" class="form-inline" name="language-form">
