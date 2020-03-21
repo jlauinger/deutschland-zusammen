@@ -281,11 +281,12 @@ body {
     color: white;
 }
 .social-media-link {
-    display: inline-block;
+    display: block;
     padding: 0 0 1rem 0;
 }
 @media(min-width: 576px) {
     .social-media-link {
+        display: inline-block;
         padding-right: 2rem;
     }
 }
