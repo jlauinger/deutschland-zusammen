@@ -282,7 +282,12 @@ body {
 }
 .social-media-link {
     display: inline-block;
-    padding: 0 2rem 1rem 0;
+    padding: 0 0 1rem 0;
+}
+@media(min-width: 576px) {
+    .social-media-link {
+        padding-right: 2rem;
+    }
 }
 .social-media-link i {
     font-size: 3rem;
