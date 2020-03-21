@@ -37,7 +37,7 @@ class ProviderProfileForm(forms.ModelForm):
     email = forms.EmailField(label=_('E-Mail-Adresse'), disabled=True, required=False)
     street = forms.CharField(label=_('Straße (nicht öffentlich)'), max_length=200)
     city = forms.CharField(label=_('Stadt (nicht öffentlich)'), max_length=200)
-    address = forms.CharField(max_length=400, widget=forms.HiddenInput())
+    address = forms.CharField(max_length=400, widget=forms.HiddenInput(), required=False)
 
     class Meta:
         model = ProviderProfile
