@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{% trans "Hilfsangebote während der Corona-Krise" %}</title>
+    <title>{% trans "Deutschland steht zusammen - Finde Hilfe in der Corona Krise" %}</title>
 
     <!-- Bootstrap -->
     {% bootstrap_css %}
@@ -53,13 +53,11 @@
 </head>
 <body class="{% block bodyclass %}{% endblock %}">
 
-<div class="prototype-note">{% trans "Nicht-offizieller Prototyp, nicht vom BMG angeboten!" %}</div>
-
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{% url 'search' %}">
-            <img src="{% static 'offers/images/BMG_Logo.png' %}" height="100"
-                 class="d-inline-block align-top" alt={% trans "Bundesministerium für Gesundheit" %}>
+            <img src="{% static 'offers/images/logo_deutschlandzusammen.png' %}" height="100"
+                 class="d-inline-block align-top" alt="{% trans 'Deutschland zusammen' %}">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
