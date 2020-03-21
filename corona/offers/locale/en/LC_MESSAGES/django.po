@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-20 15:39+0000\n"
+"POT-Creation-Date: 2020-03-21 20:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,297 +69,301 @@ msgstr "Last name"
 msgid "E-Mail-Adresse"
 msgstr "E-mail address"
 
-#: offers/forms.py:38 offers/models.py:94
-msgid "Adresse (Straße, Stadt. Nicht öffentlich)"
-msgstr "Address (Street, city. Not public)"
+#: offers/forms.py:38
+#, fuzzy
+#| msgid "Umkreis (nicht öffentlich)"
+msgid "Straße (nicht öffentlich)"
+msgstr "Offer radius (not public)"
 
-#: offers/models.py:28
+#: offers/forms.py:39
+#, fuzzy
+#| msgid "Umkreis (nicht öffentlich)"
+msgid "Stadt (nicht öffentlich)"
+msgstr "Offer radius (not public)"
+
+#: offers/models.py:29
 msgid "Männlich"
 msgstr "Male"
 
-#: offers/models.py:29
+#: offers/models.py:30
 msgid "Weiblich"
 msgstr "Female"
 
-#: offers/models.py:30
+#: offers/models.py:31
 msgid "Andere"
 msgstr "Other"
 
-#: offers/models.py:31
+#: offers/models.py:32
 msgid "Keine Angabe"
 msgstr "Prefer not to say"
 
-#: offers/models.py:36
+#: offers/models.py:37
 msgid "-- Zeit filtern --"
 msgstr "-- Filter daytime --"
 
-#: offers/models.py:37 offers/models.py:153
+#: offers/models.py:38 offers/models.py:154
 #: offers/templates/offers/offers_list.html:25
 #: offers/templates/offers/providerprofile.html:69
 #: offers/templates/offers/search_results.html:38
 msgid "Morgens"
 msgstr "Morning"
 
-#: offers/models.py:38 offers/models.py:154
+#: offers/models.py:39 offers/models.py:155
 #: offers/templates/offers/offers_list.html:26
 #: offers/templates/offers/providerprofile.html:70
 #: offers/templates/offers/search_results.html:39
 msgid "Mittags"
 msgstr "Noon"
 
-#: offers/models.py:39 offers/models.py:155
+#: offers/models.py:40 offers/models.py:156
 #: offers/templates/offers/offers_list.html:27
 #: offers/templates/offers/providerprofile.html:71
 #: offers/templates/offers/search_results.html:40
 msgid "Nachmittags"
 msgstr "Afternoon"
 
-#: offers/models.py:40 offers/models.py:156
+#: offers/models.py:41 offers/models.py:157
 #: offers/templates/offers/offers_list.html:28
 #: offers/templates/offers/providerprofile.html:72
 #: offers/templates/offers/search_results.html:41
 msgid "Abends"
 msgstr "Evening"
 
-#: offers/models.py:55
+#: offers/models.py:56
 msgid "Anbieterprofil"
 msgstr "Provider profile"
 
-#: offers/models.py:56
+#: offers/models.py:57
 msgid "Anbieterprofile"
 msgstr "Provider profiles"
 
-#: offers/models.py:70
+#: offers/models.py:71
 msgid "keine Angabe"
 msgstr "Prefer not to say"
 
-#: offers/models.py:71
+#: offers/models.py:72
 msgid "zu Fuß / ÖPNV"
 msgstr "Walking or public transport"
 
-#: offers/models.py:72
+#: offers/models.py:73
 msgid "Fahrrad"
 msgstr "Bike"
 
-#: offers/models.py:73
+#: offers/models.py:74
 msgid "Motorroller"
 msgstr "Motorbike"
 
-#: offers/models.py:74
+#: offers/models.py:75
 msgid "Auto"
 msgstr "Car"
 
-#: offers/models.py:78
+#: offers/models.py:79
 msgid "Vor- und Nachname öffentlich"
 msgstr "First and last name public"
 
-#: offers/models.py:79
+#: offers/models.py:80
 msgid "Nur Vorname öffentlich"
 msgstr "Only first name public"
 
-#: offers/models.py:80
+#: offers/models.py:81
 msgid "Weder Vor- noch Nachname öffentlich"
 msgstr "Neither first nor last name public"
 
-#: offers/models.py:87
+#: offers/models.py:88
 msgid "Aktivierungsschlüssel"
 msgstr "Activation token"
 
-#: offers/models.py:88
+#: offers/models.py:89
 msgid "Aktiviert"
 msgstr "Activated"
 
-#: offers/models.py:92
+#: offers/models.py:93
 msgid "Umkreis (nicht öffentlich)"
 msgstr "Offer radius (not public)"
 
-#: offers/models.py:97
+#: offers/models.py:95
+msgid "Adresse (Straße, Stadt. Nicht öffentlich)"
+msgstr "Address (Street, city. Not public)"
+
+#: offers/models.py:98
 msgid "Fortbewegungsmittel (öffentlich sichtbar)"
 msgstr "Mobility (public)"
 
-#: offers/models.py:98 offers/templates/offers/providerprofile.html:35
+#: offers/models.py:99 offers/templates/offers/providerprofile.html:35
 #: offers/templates/offers/search_results.html:56
 msgid "Einkaufen"
 msgstr "Shopping"
 
-#: offers/models.py:99 offers/templates/offers/providerprofile.html:36
+#: offers/models.py:100 offers/templates/offers/providerprofile.html:36
 #: offers/templates/offers/search_results.html:57
 msgid "Gassi gehen"
 msgstr "Petsitting"
 
-#: offers/models.py:100 offers/templates/offers/providerprofile.html:37
+#: offers/models.py:101 offers/templates/offers/providerprofile.html:37
 #: offers/templates/offers/search_results.html:58
 msgid "Medikamente abholen"
 msgstr "Fetch medicine"
 
-#: offers/models.py:101 offers/templates/offers/providerprofile.html:38
+#: offers/models.py:102 offers/templates/offers/providerprofile.html:38
 #: offers/templates/offers/search_results.html:59
 msgid "Briefe einwerfen"
 msgstr "Submit mail"
 
-#: offers/models.py:102 offers/templates/offers/providerprofile.html:39
+#: offers/models.py:103 offers/templates/offers/providerprofile.html:39
 #: offers/templates/offers/search_results.html:60
 msgid "Kurierdienste"
 msgstr "Courier services"
 
-#: offers/models.py:103
+#: offers/models.py:104
 msgid "Sonstige Hilfestellungen oder Kommentare"
 msgstr "Other offers for help or comments"
 
-#: offers/models.py:105
+#: offers/models.py:106
 msgid "Telefonnummer"
 msgstr "Phone number"
 
-#: offers/models.py:106
+#: offers/models.py:107
 msgid "Geschlecht"
 msgstr "Gender"
 
-#: offers/models.py:107
+#: offers/models.py:108
 msgid "Telefonnummer öffentlich anzeigen"
 msgstr "Show phone number publicly"
 
-#: offers/models.py:108
+#: offers/models.py:109
 msgid "E-Mail-Adresse öffentlich anzeigen"
 msgstr "Show e-mail address publicly"
 
-#: offers/models.py:109
+#: offers/models.py:110
 msgid "Geschlecht öffentlich anzeigen"
 msgstr "Show gender publicly"
 
-#: offers/models.py:111
+#: offers/models.py:112
 msgid "Öffentlichkeit deines Namens"
 msgstr "Public visiblity of your name"
 
-#: offers/models.py:146
+#: offers/models.py:147
 msgid "Hilfsangebot"
 msgstr "Offer for help"
 
-#: offers/models.py:147
+#: offers/models.py:148
 msgid "Hilfsangebote"
 msgstr "Offers for help"
 
-#: offers/models.py:151 offers/templates/offers/offers_list.html:24
+#: offers/models.py:152 offers/templates/offers/offers_list.html:24
 msgid "Datum"
 msgstr "Date"
 
-#: offers/models.py:181
+#: offers/models.py:182
 msgid "Gesendete Nachricht"
 msgstr "Sent message"
 
-#: offers/models.py:182
+#: offers/models.py:183
 msgid "Gesendete Nachrichten"
 msgstr "Sent messages"
 
 #: offers/templates/offers/base.html:11
-msgid "Hilfsangebote während der Corona-Krise"
-msgstr "Offers for help during the Corona crisis"
+#, fuzzy
+#| msgid "Deutschland steht zusammen. Finde Hilfe in der Corona-Krise"
+msgid "Deutschland steht zusammen - Finde Hilfe in der Corona Krise"
+msgstr "Germany stands united. Find help in the Corona crisis"
 
-#: offers/templates/offers/base.html:37
-msgid "Nicht-offizieller Prototyp, nicht vom BMG angeboten!"
-msgstr "Unofficial prototype. Not affiliated with BMG."
+#: offers/templates/offers/base.html:60
+#, fuzzy
+#| msgid "Deutschland Zusammen"
+msgid "Deutschland zusammen"
+msgstr "Germany United"
 
-#: offers/templates/offers/base.html:43
-msgid "Bundesministerium für Gesundheit"
-msgstr "Federal Ministry of Health"
-
-#: offers/templates/offers/base.html:51
+#: offers/templates/offers/base.html:68
 msgid "Abmelden"
 msgstr "Logout"
 
-#: offers/templates/offers/base.html:52
+#: offers/templates/offers/base.html:69
 msgid "Suche"
 msgstr "Search"
 
-#: offers/templates/offers/base.html:53
+#: offers/templates/offers/base.html:70
 msgid "Nachrichten"
 msgstr "Messages"
 
-#: offers/templates/offers/base.html:54
+#: offers/templates/offers/base.html:71
 msgid "Dein Profil"
 msgstr "Your Profile"
 
-#: offers/templates/offers/base.html:55
+#: offers/templates/offers/base.html:72
 msgid "Deine Zeiten"
 msgstr "Your Times"
 
-#: offers/templates/offers/base.html:57
+#: offers/templates/offers/base.html:74
 msgid "Anmelden"
 msgstr "Login"
 
-#: offers/templates/offers/base.html:58
+#: offers/templates/offers/base.html:75
 msgid "Biete deine Hilfe an"
 msgstr "Offer your help"
 
-#: offers/templates/offers/base.html:83
+#: offers/templates/offers/base.html:104 offers/templates/offers/imprint.html:7
+msgid "Impressum"
+msgstr ""
+
+#: offers/templates/offers/base.html:105
+msgid "Datenschutz"
+msgstr ""
+
+#: offers/templates/offers/base.html:106
 #: offers/templates/offers/safety_information.html:6
 msgid "Sicherheits-Informationen"
 msgstr "Safety Information"
 
-#: offers/templates/offers/base.html:89
+#: offers/templates/offers/base.html:112
 msgid "Switch language:"
 msgstr "Sprache ändern:"
 
-#: offers/templates/offers/base.html:100
+#: offers/templates/offers/base.html:123
 msgid "Sprache ändern"
 msgstr "Switch language"
 
-#: offers/templates/offers/home.html:11
+#: offers/templates/offers/home.html:13
 msgid "Deutschland steht zusammen. Finde Hilfe in der Corona-Krise"
 msgstr "Germany stands united. Find help in the Corona crisis"
 
-#: offers/templates/offers/home.html:19 offers/templates/offers/home.html:20
+#: offers/templates/offers/home.html:21 offers/templates/offers/home.html:22
 msgid "Versuche mich zu orten"
 msgstr "Try to locate me"
 
-#: offers/templates/offers/home.html:27 offers/templates/offers/home.html:28
+#: offers/templates/offers/home.html:29 offers/templates/offers/home.html:30
 msgid "Heute"
 msgstr "Today"
 
-#: offers/templates/offers/home.html:37
+#: offers/templates/offers/home.html:39
 #: offers/templates/offers/search_results.html:29
 #: offers/templates/offers/search_results.html:96
 msgid "Suchen!"
 msgstr "Search!"
 
-#: offers/templates/offers/home.html:46
-msgid "Deutschland Zusammen"
-msgstr "Germany United"
-
-#: offers/templates/offers/home.html:49
-msgid ""
-"Mit diesem Portal möchten wir helfenden und hilfesuchende Menschen die "
-"Möglichkeit geben einander zu finden. In Zeiten wie diesen ist es besonders "
-"wichtig, dass wir alle ein Stück zusammenrücken, um uns gegenseitig zu "
-"helfen. Wenn du Hilfe benötigst, gib oben einfach deinen Straßennamen und "
-"deinen Ort (z.B. \"Musterstraße Beispielstadt\") an, sowie das Datum an dem "
-"du suchst. Sofern du in der Lage bist, anderen Menschen deine Hilfe "
-"anzubieten,"
-msgstr ""
-"With this portal, we try to help people who are offering and looking for "
-"help to meet. In times like these it is even more important that we all work "
-"together to help ourselves as best as we can. If you need help, enter your "
-"street and city into the field above and fill out the date on which you are "
-"searching. If you are able to offer your help,"
-
-#: offers/templates/offers/home.html:56
-msgid "erstelle dir hier einen Account"
-msgstr "create an account here"
-
-#: offers/templates/offers/home.html:119
+#: offers/templates/offers/home.html:209
 msgid "Standortdaten sind nicht verfügbar."
 msgstr "Location data unavailable."
 
-#: offers/templates/offers/home.html:122
+#: offers/templates/offers/home.html:212
 msgid "Die Standortabfrage dauerte zu lange (Time-out)."
 msgstr "Getting your location took too long (timeout)."
 
-#: offers/templates/offers/home.html:125
+#: offers/templates/offers/home.html:215
 msgid "Unbekannter Fehler."
 msgstr "Unknown error."
 
-#: offers/templates/offers/home.html:131
+#: offers/templates/offers/home.html:221
 msgid "Ihr Browser unterstützt keine Ortung."
 msgstr "Your browser is not capable of locating you."
+
+#: offers/templates/offers/imprint.html:104
+#: offers/templates/offers/message_error.html:15
+#: offers/templates/offers/message_sent.html:10
+#: offers/templates/offers/privacy.html:49
+#: offers/templates/offers/safety_information.html:25
+msgid "Zurück zur Startseite"
+msgstr "Back to the search"
 
 #: offers/templates/offers/message_error.html:6
 msgid "Fehler beim Versenden der Nachricht!"
@@ -373,11 +377,6 @@ msgid ""
 msgstr ""
 "Sorry, your message could not be sent. Please try again in a few minutes, or "
 "contact us at support (at) deutschlandzusammen (punkt) de."
-
-#: offers/templates/offers/message_error.html:15
-#: offers/templates/offers/message_sent.html:10
-msgid "Zurück zur Startseite"
-msgstr "Back to the search"
 
 #: offers/templates/offers/message_sent.html:6
 msgid "Nachricht gesendet!"
@@ -435,6 +434,10 @@ msgstr "Update"
 #: offers/templates/offers/offers_list.html:72
 msgid "Los geht's!"
 msgstr "Let's go!"
+
+#: offers/templates/offers/privacy.html:6
+msgid "Datenschutzerklärung"
+msgstr ""
 
 #: offers/templates/offers/providerprofile.html:11
 msgid ""
@@ -494,8 +497,8 @@ msgid ""
 "direkt als Push-Nachricht zu dir senden!"
 msgstr ""
 "People looking for help can send you a direct message through the portal. "
-"You can read the message on the messages page. We can also send it to you "
-"by push notification!"
+"You can read the message on the messages page. We can also send it to you by "
+"push notification!"
 
 #: offers/templates/offers/providerprofile.html:54
 #: offers/templates/offers/providerprofile.html:132
@@ -545,10 +548,6 @@ msgstr "Step 2: Tell us some more details about you"
 #: offers/templates/offers/providerprofile_form.html:17
 msgid "Speichern!"
 msgstr "Save!"
-
-#: offers/templates/offers/safety_information.html:18
-msgid "Nach Hilfe suchen"
-msgstr "Search for help"
 
 #: offers/templates/offers/search_results.html:11
 msgid "Deine Hilfe ist fast organisiert!"
@@ -657,10 +656,40 @@ msgstr "Are you sure you want to delete your profile?"
 msgid "Ja, endgültig löschen!"
 msgstr "Yes, delete it!"
 
-#: offers/views.py:50
+#: offers/views.py:52
 msgid "Dein Account wurde aktiviert!"
 msgstr "Your account has been activated!"
 
-#: offers/views.py:75
+#: offers/views.py:77
 msgid "Wir haben dir die Aktivierungs-Mail erneut gesendet!"
 msgstr "We have sent you the activation mail again!"
+
+#~ msgid "Hilfsangebote während der Corona-Krise"
+#~ msgstr "Offers for help during the Corona crisis"
+
+#~ msgid "Nicht-offizieller Prototyp, nicht vom BMG angeboten!"
+#~ msgstr "Unofficial prototype. Not affiliated with BMG."
+
+#~ msgid "Bundesministerium für Gesundheit"
+#~ msgstr "Federal Ministry of Health"
+
+#~ msgid ""
+#~ "Mit diesem Portal möchten wir helfenden und hilfesuchende Menschen die "
+#~ "Möglichkeit geben einander zu finden. In Zeiten wie diesen ist es "
+#~ "besonders wichtig, dass wir alle ein Stück zusammenrücken, um uns "
+#~ "gegenseitig zu helfen. Wenn du Hilfe benötigst, gib oben einfach deinen "
+#~ "Straßennamen und deinen Ort (z.B. \"Musterstraße Beispielstadt\") an, "
+#~ "sowie das Datum an dem du suchst. Sofern du in der Lage bist, anderen "
+#~ "Menschen deine Hilfe anzubieten,"
+#~ msgstr ""
+#~ "With this portal, we try to help people who are offering and looking for "
+#~ "help to meet. In times like these it is even more important that we all "
+#~ "work together to help ourselves as best as we can. If you need help, "
+#~ "enter your street and city into the field above and fill out the date on "
+#~ "which you are searching. If you are able to offer your help,"
+
+#~ msgid "erstelle dir hier einen Account"
+#~ msgstr "create an account here"
+
+#~ msgid "Nach Hilfe suchen"
+#~ msgstr "Search for help"
