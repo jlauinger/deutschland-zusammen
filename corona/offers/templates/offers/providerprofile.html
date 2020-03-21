@@ -79,7 +79,7 @@
 
                 <a href="{% url 'edit_profile' user.profile.slug %}" class="btn btn-primary">{% trans "Bearbeite dein Profil" %}</a>
                 <a href="{% url 'offers' %}" class="btn btn-primary">{% trans "Bearbeite deine Zeiten" %}</a>
-                <a href="{% url 'delete_user' user.id %}" class="btn btn-danger">{% trans "Profil löschen" %}</a>
+                <a href="{% url 'delete_user' user.id %}" class="btn btn-secondary">{% trans "Profil löschen" %}</a>
 
                 <div class="padding-top-1"></div>
                 <div class="padding-top-1"></div>
@@ -111,8 +111,8 @@
             L.marker([lat, lon]).addTo(map);
 
             var circle = L.circle([lat, lon], {
-                color: 'blue',
-                fillColor: '#30f',
+                color: '#dd0000',
+                fillColor: '#d98282',
                 fillOpacity: 0.5,
                 radius: {{ user.profile.radius }}
             }).addTo(map);

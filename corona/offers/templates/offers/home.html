@@ -48,15 +48,13 @@
             <h2>Das ist "Deutschland Zusammen":</h2>
 
             <p class="text">
-                Mit diesem Portal möchten wir helfenden und hilfesuchende Menschen die Möglichkeit geben einander zu
-                finden. In Zeiten wie diesen ist es besonders wichtig, dass wir alle aufeinander Acht geben und uns
-                gegenseitig helfen. deutschlandzusammen.de bringt Menschen, die Nachbarschaftshilfe suchen mit Menschen,
-                die Hilfe anbieten in Kontakt.
+                Mit diesem Portal möchten wir hilfsbereite und hilfesuchende Menschen zusammenbringen. In Zeiten wie
+                diesen ist es wichtig, dass wir zusammen stehen.
             </p>
             <p class="text">
-                Wenn du Hilfe benötigst, gib oben deinen Straßennamen und deinen Ort (z.B. "Lessingstraße, Hannover")
-                an, sowie das Datum an dem du suchst. Wir suchen dann automatisch in deinem Umkreis nach Menschen, die
-                bereit sind dir zu helfen.
+                Wenn du Hilfe benötigst, gib oben deinen Straßennamen und deinen Ort (z.B. Lessingstraße, Hannover) an,
+                sowie das Datum, an dem du suchst. Wir finden dann automatisch Menschen in deinem Umkreis, die bereit
+                sind, dir zu helfen.
             </p>
             <p>
                 <a href="#" class="btn btn-primary btn-lg">Jetzt nach Hilfe suchen</a>
@@ -65,27 +63,30 @@
             <div class="padding-top-1"></div>
             <h2>So funktioniert's:</h2>
             <p class="text">
-                Kannst du dir vorstellen, deinen Nachbar*innen z.B. beim Einkaufen, beim Abholen von Medikamenten,
-                beim Einwerfen ihrer Post, beim Gassi gehen, oder was auch immer dir einfällt, zu helfen? Super,
-                Menschen wie du sind in Zeiten wie der Corona-Krise Held*innen deiner Nachbarschaft!
+                Kannst du dir vorstellen, deinen Nachbarn z.B. beim Einkaufen, beim Abholen von Medikamenten, beim
+                Gassi gehen, oder was auch immer dir einfällt, zu helfen? Super!
             </p>
+            <ol class="how-it-works">
+                <li>
+                    Du erstellst ein Profil und gibst an, wo du wohnst und welche Hilfe du wann anbieten kannst.
+                    Außerdem einen Umkreis um deinen Wohnort, in dem du Hilfesuchende erreichen kannst. Keine Angst,
+                    deine Adresse wird niemals öffentlich angezeigt.
+                </li>
+                <li>
+                    Sobald du gefunden wurdest, kann der oder die Hilfesuchende dir eine Nachricht direkt über
+                    deutschlandzusammen.de schreiben. Du erhältst sie per E-Mail und in deinem Profil. Wir können dir
+                    auch eine Push-Nachricht direkt aufs Handy schicken.<br /><br />
+                    Damit es noch schneller geht, kannst du auch deine Telefonnummer in dein Profil stellen, aber
+                    bedenke dabei, dass sie dann öffentlich angezeigt wird. Wichtige Hinweise, wie du auf deine
+                    Privatsphäre und Sicherheit achten kannst, haben wir
+                    <a href="{% url 'safety_information' %}" class="text-link">hier</a> zusammen gestellt.
+                </li>
+                <li>
+                    Du machst einen Termin aus und hilfst deinem Nachbar oder deiner Nachbarin.
+                </li>
+            </ol>
             <p class="text">
-                Du estellst ein Profil, in dem du uns verrätst wie du heißt, wo du wohnst und welche Art von Hilfe du
-                anbieten kannst. Du gibst auch einen Umkreis um deinen Wohnort an, in dem du Hilfesuchende erreichen
-                kannst, z.B. 2 Kilometer. Keine Angst, deine Adresse wird niemals öffentlich angezeigt.
-            </p>
-            <p class="text">
-                Sobald du über die Suche gefunden wurdest, kann die suchende Person dir eine Nachricht direkt über
-                deutschlandzusammen.de schreiben. Du erhältst sie per E-Mail und in dein Profil. Wir können sie dir
-                auch über eine Push-Nachricht direkt an dein Handy senden, wenn du möchtest! Damit es noch schneller
-                geht kannst du auch deine E-Mail-Adresse oder Telefonnummer in dein Profil stellen, aber bedenke dabei
-                dass sie dann öffentlich im Internet sichtbar ist. Weitere Hinweise wie du auf deine Privatsphäre und
-                Sicherheit achten kannst haben wir dir
-                <a href="{% url 'safety_information' %}" class="text-link">hier</a> zusammengestellt.
-            </p>
-            <p class="text">
-                Bist du überzeugt? Dann erstellen dir gleich deinen Account! Gemeinsam sind wir stärker als das
-                Corona-Virus!
+                Willst du helfen? Dann erstelle gleich deinen Account. Gemeinsam sind wir stärker als das Virus!
             </p>
             <p>
                 <a href="{% url 'register' %}" class="btn btn-primary btn-lg">Jetzt Hilfe anbieten</a>
@@ -95,9 +96,9 @@
             <h2>Achte auf Dich!</h2>
             <p class="text">
                 Das Coronavirus kann von Mensch zu Mensch übertragen werden. Wenn du anderen Menschen helfen möchtest,
-                sei also bitte besonders vorsichtig. Achte auch unbedingt auf gute
+                sei bitte besonders vorsichtig. Achte unbedingt auf
                 <a href="https://www.infektionsschutz.de/haendewaschen/" target="_blank" rel="" class="text-link"
-                   title="Internetseite der Bundeszentrale für gesundheitliche Aufklärung">Handhygiene</a>,
+                   title="Internetseite der Bundeszentrale für gesundheitliche Aufklärung">gute Handhygiene</a>,
                 <a href="https://www.infektionsschutz.de/hygienetipps/hygiene-beim-husten-und-niesen/" target="_blank"
                    class="text-link" title="Internetseite der Bundeszentrale für gesundheitliche Aufklärung">
                     Husten- und Nies-Etikette
@@ -105,7 +106,7 @@
                 sowie
                 <a href="https://www.infektionsschutz.de/hygienetipps/barrieremassnahmen/" class="text-link"
                    target="_blank" title="Internetseite der Bundeszentrale für gesundheitliche Aufklärung">
-                    Abstand zu Erkrankten.
+                    Abstand zu deinen Mitmenschen.
                 </a><br /><br />
                 <a href="https://www.infektionsschutz.de/coronavirus/verhalten.html" target="_blank" class="text-link">
                     Allgemeine Verhaltenshinweise der Bundesregierung

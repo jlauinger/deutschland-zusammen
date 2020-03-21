@@ -29,7 +29,7 @@ a.text-link:hover {
 p.text {
     display: inline-block;
     line-height: 1.85rem;
-    max-width: 800px;
+    max-width: 700px;
     padding: 1rem 0 1rem 0;
 }
 
@@ -170,8 +170,8 @@ body {
     padding: 0;
 }
 .search-results li {
-    border: 1px solid #00dd1c;
-    background-color: #d9ffdd;
+    border: 1px solid #ffce00;
+    background-color: #fff0b3;
     padding: 1rem;
     margin-bottom: 1rem;
 }
@@ -231,7 +231,7 @@ body {
     border-bottom: 2px solid black;
 }
 .timetable .heading th {
-    background-color: #f7d100;
+    background-color: #ffce00;
 }
 .timetable .date {
     text-align: right;
@@ -263,7 +263,7 @@ body {
 }
 
 .received-message {
-    border: 1px solid #00dd1c;
+    border: 1px solid #ffce00;
     padding: 10px;
     margin-bottom: 1rem;
 }
@@ -319,4 +319,27 @@ body {
 }
 .hashtag a:hover {
     color: white;
+}
+
+.how-it-works {
+    display: table;
+    max-width: 700px;
+    margin: auto;
+    list-style: none;
+    counter-reset: how-it-works;
+}
+.how-it-works li {
+    display: table-row;
+    text-align: left;
+    counter-increment: how-it-works;
+    position: relative;
+}
+.how-it-works li::before {
+    display: table-cell;
+    text-align: right;
+    content: counter(how-it-works) ". ";
+    color: #ffce00;
+    font-weight: bold;
+    font-size: 3.5rem;
+    padding-right: 1rem;
 }
