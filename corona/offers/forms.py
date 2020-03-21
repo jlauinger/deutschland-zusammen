@@ -35,15 +35,20 @@ class ProviderProfileForm(forms.ModelForm):
     first_name = forms.CharField(label=_('Vorname'), max_length=100)
     last_name = forms.CharField(label=_('Nachname'), max_length=100)
     email = forms.EmailField(label=_('E-Mail-Adresse'), disabled=True, required=False)
-    address = forms.CharField(label=_('Adresse (Straße, Stadt. Nicht öffentlich)'), max_length=200,
-                              widget=forms.TextInput(attrs={'autocomplete': 'off'}))
+    street = forms.CharField(label=_('Straße (nicht öffentlich)'), max_length=200)
+    city = forms.CharField(label=_('Stadt (nicht öffentlich)'), max_length=200)
+    address = forms.CharField(max_length=400, widget=forms.HiddenInput())
 
     class Meta:
         model = ProviderProfile
-        fields = ['first_name', 'last_name', 'name_visibility', 'address', 'radius', 'mobility', 'offers_shopping',
-                  'offers_petsitting', 'offers_fetching_drugs', 'offers_sending_mail', 'offers_courier',
-                  'phone', 'show_phone', 'email', 'show_email', 'gender', 'show_gender',
-                  'comment']
+        fields = ['first_name', 'last_name', 'name_visibility', 'street', 'city', 'email', 'radius', 'mobility',
+                  'offers_shopping', 'offers_petsitting', 'offers_fetching_drugs', 'offers_sending_mail',
+                  'offers_courier', 'phone', 'show_phone', 'email', 'show_email', 'gender', 'show_gender',
+                  'comment', 'address']
+
+    def clean(self):
+        super().clean()
+        self.cleaned_data['address'] = "{}, {}".format(self.cleaned_data['street'], self.cleaned_data['city'])
 
 
 class UserForm(forms.ModelForm):
