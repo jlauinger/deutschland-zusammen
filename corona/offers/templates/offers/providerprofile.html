@@ -74,6 +74,9 @@
 
                 <a href="{% url 'edit_profile' user.profile.slug %}" class="btn btn-primary">{% trans "Bearbeite dein Profil" %}</a>
                 <a href="{% url 'offers' %}" class="btn btn-primary">{% trans "Bearbeite deine Zeiten" %}</a>
+
+                <div class="padding-top-1"></div>
+                <a href="{% url 'change_password' %}" class="btn btn-secondary">{% trans "Passwort ändern" %}</a>
                 <a href="{% url 'delete_user' user.id %}" class="btn btn-secondary">{% trans "Profil löschen" %}</a>
 
                 <div class="padding-top-1"></div>

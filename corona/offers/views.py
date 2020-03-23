@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
+from django.contrib.auth.views import PasswordChangeView
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -123,6 +124,11 @@ class EditProfileView(UpdateView):
         initial = super().get_initial()
         initial['email'] = self.request.user.email
         return initial
+
+
+class ChangePasswordView(PasswordChangeView):
+    template_name = 'registration/my_password_change_form.html'
+    success_url = reverse_lazy('profile')
 
 
 class OffersView(FormView):
