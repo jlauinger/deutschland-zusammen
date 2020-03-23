@@ -34,7 +34,7 @@
                             <li>
                                 <div class="name">{{ offer.user.profile.display_name }}</div>
                                 <div class="time">
-                                    {{ offer.date }}
+                                    {{ offer.date|date:'l, d. F Y' }}
                                     {% if offer.morning %}<br />{% trans "Morgens" %}{% endif %}
                                     {% if offer.noon %}<br />{% trans "Mittags" %}{% endif %}
                                     {% if offer.afternoon %}<br />{% trans "Nachmittags" %}{% endif %}

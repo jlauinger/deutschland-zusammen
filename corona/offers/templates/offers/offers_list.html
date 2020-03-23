@@ -32,7 +32,7 @@
                 <tbody>
                 {% for form in form %}
                     <tr>
-                        <td class="date">{{ form.id }}{{ form.date }}{{ form.date.value|date:'d. F' }}</td>
+                        <td class="date">{{ form.id }}{{ form.date }}{{ form.date.value|date:'l, d. F' }}</td>
                         <td>
                             {{ form.morning }}
                             <label for="{{ form.morning.id_for_label }}"></label>

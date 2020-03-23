@@ -60,7 +60,7 @@
                 {% if object_list %}
                     <p>
                         {% for offer in object_list %}
-                            {{ offer.date }}:
+                            {{ offer.date|date:'l, d. F Y' }}:
                             {% if offer.morning %}{% trans "Morgens" %} {% endif %}
                             {% if offer.noon %}{% trans "Mittags" %} {% endif %}
                             {% if offer.afternoon %}{% trans "Nachmittags" %} {% endif %}
