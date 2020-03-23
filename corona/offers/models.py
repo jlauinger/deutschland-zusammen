@@ -105,7 +105,7 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     def send_activation_mail(self):
         activation_link = "{}{}".format(settings.HOST_NAME, reverse_lazy('activate_account',
                                                                          args=[self.slug, self.activation_token]))
-        body = settings.ACTIVATION_MAIL_BODY.format(self.display_name, activation_link)
+        body = settings.ACTIVATION_MAIL_BODY.format(self.user.username, activation_link)
         send_mail(settings.ACTIVATION_MAIL_SUBJECT, body, settings.ACTIVATION_MAIL_FROM, [self.user.email],
                   fail_silently=False)
 
