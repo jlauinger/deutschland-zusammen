@@ -25,14 +25,6 @@ def next_plus_1_hour():
     return next_hour() + timedelta(hours=1)
 
 
-GENDERS = (
-    ('M', _('Männlich')),
-    ('F', _('Weiblich')),
-    ('D', _('Andere')),
-    ('X', _('Keine Angabe')),
-)
-
-
 DAYTIME_CHOICES = (
     ('', _('-- Zeit filtern --')),
     ('MORNING', _('Morgens')),
@@ -104,10 +96,8 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     comment = models.TextField(blank=True, verbose_name=_('Sonstige Hilfestellungen oder Kommentare'))
 
     phone = models.CharField(max_length=50, blank=True, verbose_name=_('Telefonnummer'))
-    gender = models.CharField(choices=GENDERS, default='X', max_length=50, verbose_name=_('Geschlecht'))
     show_phone = models.BooleanField(default=False, verbose_name=_('Telefonnummer öffentlich anzeigen'))
     show_email = models.BooleanField(default=False, verbose_name=_('E-Mail-Adresse öffentlich anzeigen'))
-    show_gender = models.BooleanField(default=False, verbose_name=_('Geschlecht öffentlich anzeigen'))
     name_visibility = models.CharField(choices=NAME_VISIBILITY_CHOICES, default='FIRST_NAME', max_length=50,
                                        verbose_name=_('Öffentlichkeit deines Namens'))
 
@@ -187,7 +177,6 @@ class Message(ExportModelOperationsMixin('message'), models.Model):
     sender_name = models.CharField(max_length=100, blank=True)
     sender_email = models.CharField(max_length=100, blank=True)
     sender_phone = models.CharField(max_length=100, blank=True)
-    sender_gender = models.CharField(choices=GENDERS, max_length=50, default='X')
 
     message = models.TextField(blank=True)
 

@@ -157,7 +157,6 @@ Daten zur suchenden Person:
 Name: {}
 E-Mail: {}
 Telefon: {}
-Geschlecht: {}
 
 Nachricht:
 {}

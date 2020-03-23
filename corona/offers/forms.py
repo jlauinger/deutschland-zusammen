@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 from django.utils.translation import gettext_lazy as _
 
-from offers.models import Offer, ProviderProfile, GENDERS, DAYTIME_CHOICES
+from offers.models import Offer, ProviderProfile, DAYTIME_CHOICES
 
 
 class OfferSearchForm(forms.Form):
@@ -22,13 +22,12 @@ class SendMessageForm(forms.ModelForm):
     sender = forms.CharField(label=_('Dein Name'), max_length=100, required=False)
     email = forms.EmailField(label=_('Deine E-Mail-Adresse'), max_length=100, required=False)
     phone = forms.CharField(label=_('Deine Telefonnummer (optional)'), max_length=100, required=False)
-    gender = forms.ChoiceField(label=_('Dein Geschlecht (optional)'), choices=GENDERS, required=False)
     message = forms.CharField(label=_('Nachricht'), max_length=1000, widget=forms.Textarea())
     captcha = CaptchaField(label=_('Captcha'))
 
     class Meta:
         model = User
-        fields = ['sender', 'email', 'phone', 'gender', 'message']
+        fields = ['sender', 'email', 'phone', 'message']
 
 
 class ProviderProfileForm(forms.ModelForm):
@@ -43,7 +42,7 @@ class ProviderProfileForm(forms.ModelForm):
         model = ProviderProfile
         fields = ['first_name', 'last_name', 'name_visibility', 'street', 'city', 'email', 'radius', 'mobility',
                   'offers_shopping', 'offers_petsitting', 'offers_fetching_drugs', 'offers_sending_mail',
-                  'offers_courier', 'phone', 'show_phone', 'email', 'show_email', 'gender', 'show_gender',
+                  'offers_courier', 'phone', 'show_phone', 'email', 'show_email',
                   'comment', 'address']
 
     def clean(self):

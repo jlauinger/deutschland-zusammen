@@ -45,11 +45,6 @@
                                     {% trans "Fortbewegungsmittel:" %}
                                     <b>{{ offer.user.profile.get_mobility_display }}</b>
                                 </div>
-                                {% if offer.user.profile.show_gender %}
-                                    <div class="gender">
-                                        {% trans "Geschlecht:" %} {{ offer.user.profile.get_gender_display }}
-                                    </div>
-                                {% endif %}
 
                                 <div class="offer">
                                     <b>{{ offer.user.first_name }} {% trans "bietet an:" %}</b><br />

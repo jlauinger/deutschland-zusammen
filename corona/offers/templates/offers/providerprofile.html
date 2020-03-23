@@ -27,7 +27,8 @@
                 <h4>{% trans "Dein Standort" %}</h4>
                 <p>
                     {{ user.profile.address }}<br />
-                    <b>{% trans "Umkreis" %}:</b> {{ user.profile.get_radius_display }}
+                    <b>{% trans "Umkreis" %}:</b> {{ user.profile.get_radius_display }}<br />
+                    <b>{% trans "Fortbewegungsmittel:" %}</b> {{ user.profile.get_mobility_display }}
                 </p>
 
                 <h4>{% trans "Dein Angebot" %}</h4>
@@ -54,12 +55,6 @@
                     {% trans 'Push-Nachrichten aktivieren' %}
                 </button>
                 <div class="padding-top-1"></div>
-
-                <h4>{% trans "Zusätzliche Angaben zu dir" %}</h4>
-                <p>
-                    <b>{% trans "Fortbewegungsmittel:" %}</b> {{ user.profile.get_mobility_display }}<br />
-                    <b>{% trans "Geschlecht:" %}</b> {{ user.profile.get_gender_display }} ({% trans "öffentlich" %}: <b>{{ user.profile.show_gender|yesno }})</b>
-                </p>
 
                 <h4>{% trans "Zu diesen Zeiten kannst du Hilfe anbieten" %}</h4>
                 {% if object_list %}
