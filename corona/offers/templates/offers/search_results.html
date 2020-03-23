@@ -78,8 +78,15 @@
                     {% if filter_active %}
                         <p>
                             {% blocktrans trimmed %}
-                                Leider wurden keine Angebote gefunden. Entferne vielleicht die Filter oder versuche später
-                                eine neue Suche.
+                                Leider wurden keine Angebote gefunden. Entferne vielleicht die Filter oder versuche
+                                später eine neue Suche.
+                            {% endblocktrans %}
+                        </p>
+                        <p>
+                            {% blocktrans trimmed %}
+                                Wir sind gerade erst gestartet, daher gibt es zur Zeit noch nicht überall Angebote.
+                                Du kannst uns sehr helfen, indem du deinen Freund*innen und Bekannten von dieser
+                                Plattform erzählst und die sie in den sozialen Netzen teilst!
                             {% endblocktrans %}
                         </p>
                         <div class="filter">
@@ -101,6 +108,13 @@
                             {% blocktrans trimmed %}
                                 Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner Adresse Straße und
                                 Stadt eingegeben? Schau doch rechts auf der Karte mal ob der Standort passt.
+                            {% endblocktrans %}
+                        </p>
+                        <p>
+                            {% blocktrans trimmed %}
+                                Wir sind gerade erst gestartet, daher gibt es zur Zeit noch nicht überall Angebote.
+                                Du kannst uns sehr helfen, indem du deinen Freund*innen und Bekannten von dieser
+                                Plattform erzählst und die sie in den sozialen Netzen teilst!
                             {% endblocktrans %}
                         </p>
                     {% endif %}
