@@ -127,7 +127,6 @@ class EditProfileView(UpdateView):
 
 
 class ChangePasswordView(PasswordChangeView):
-    template_name = 'registration/my_password_change_form.html'
     success_url = reverse_lazy('profile')
 
 
