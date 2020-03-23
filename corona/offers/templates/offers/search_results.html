@@ -32,7 +32,7 @@
                     <ul class="search-results">
                         {% for offer in object_list %}
                             <li>
-                                <div class="name">{{ offer.user.profile.get_display_name }}</div>
+                                <div class="name">{{ offer.user.profile.display_name }}</div>
                                 <div class="time">
                                     {{ offer.date }}
                                     {% if offer.morning %}<br />{% trans "Morgens" %}{% endif %}
@@ -47,7 +47,7 @@
                                 </div>
 
                                 <div class="offer">
-                                    <b>{{ offer.user.first_name }} {% trans "bietet an:" %}</b><br />
+                                    <b>{{ offer.user.profile.display_name }} {% trans "bietet an:" %}</b><br />
                                     {% if offer.user.profile.offers_shopping %}{% trans "Einkaufen" %}<br />{% endif %}
                                     {% if offer.user.profile.offers_petsitting %}{% trans "Gassi gehen" %}<br />{% endif %}
                                     {% if offer.user.profile.offers_fetching_drugs %}{% trans "Medikamente abholen" %}<br />{% endif %}

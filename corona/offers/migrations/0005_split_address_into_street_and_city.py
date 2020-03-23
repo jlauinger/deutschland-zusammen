@@ -8,8 +8,12 @@ def split_address(apps, schema_editor):
     ProviderProfile = apps.get_model('offers', 'ProviderProfile')
 
     for profile in ProviderProfile.objects.all():
-        profile.street = ", ".join(profile.address.split(", ")[:-1])
-        profile.city = profile.address.split(", ")[-1]
+        if len(profile.address.split(", ")) > 1:
+            profile.street = ", ".join(profile.address.split(", ")[:-1])
+            profile.city = profile.address.split(", ")[-1]
+        else:
+            profile.street = profile.address
+            profile.city = ''
         profile.save()
 
 

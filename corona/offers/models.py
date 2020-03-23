@@ -67,14 +67,9 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
         ('CAR', _('Auto')),
     )
 
-    NAME_VISIBILITY_CHOICES = (
-        ('FULL', _('Vor- und Nachname öffentlich')),
-        ('FIRST_NAME', _('Nur Vorname öffentlich')),
-        ('HIDDEN', _('Weder Vor- noch Nachname öffentlich')),
-    )
-
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
+    display_name = models.CharField(max_length=100, blank=True, verbose_name=_('Anzeigename (öffentlich)'))
     slug = models.CharField(max_length=20, default=create_profile_slug, unique=True, verbose_name='ID-Token')
     activation_token = models.CharField(max_length=64, default=create_activation_token,
                                         verbose_name=_('Aktivierungsschlüssel'))
@@ -100,8 +95,6 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     phone = models.CharField(max_length=50, blank=True,
                              verbose_name=_('Telefonnummer (öffentlich wenn du sie angibst)'))
     show_email = models.BooleanField(default=False, verbose_name=_('E-Mail-Adresse öffentlich anzeigen'))
-    name_visibility = models.CharField(choices=NAME_VISIBILITY_CHOICES, default='FIRST_NAME', max_length=50,
-                                       verbose_name=_('Öffentlichkeit deines Namens'))
 
     def __str__(self):
         return 'Profil für {}, {}, {}'.format(self.user.username, self.street, self.city)
@@ -111,18 +104,10 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
             self.location = location_from_address("{}, {}".format(self.street, self.city))
         super().save(*args, **kwargs)
 
-    def get_display_name(self):
-        if self.name_visibility == 'FULL':
-            return self.user.get_full_name()
-        elif self.name_visibility == 'FIRST_NAME':
-            return self.user.first_name
-        else:
-            return ""
-
     def send_activation_mail(self):
         activation_link = "{}{}".format(settings.HOST_NAME, reverse_lazy('activate_account',
                                                                          args=[self.slug, self.activation_token]))
-        body = settings.ACTIVATION_MAIL_BODY.format(self.user.first_name, activation_link)
+        body = settings.ACTIVATION_MAIL_BODY.format(self.display_name, activation_link)
         send_mail(settings.ACTIVATION_MAIL_SUBJECT, body, settings.ACTIVATION_MAIL_FROM, [self.user.email],
                   fail_silently=False)
 

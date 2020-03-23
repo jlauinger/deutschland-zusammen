@@ -31,15 +31,13 @@ class SendMessageForm(forms.ModelForm):
 
 
 class ProviderProfileForm(forms.ModelForm):
-    first_name = forms.CharField(label=_('Vorname'), max_length=100)
-    last_name = forms.CharField(label=_('Nachname'), max_length=100)
     email = forms.EmailField(label=_('E-Mail-Adresse'), disabled=True, required=False)
     street = forms.CharField(label=_('Straße (nicht öffentlich)'), max_length=200)
     city = forms.CharField(label=_('Stadt (nicht öffentlich)'), max_length=200)
 
     class Meta:
         model = ProviderProfile
-        fields = ['first_name', 'last_name', 'name_visibility', 'street', 'city', 'radius', 'mobility',
+        fields = ['display_name', 'street', 'city', 'radius', 'mobility',
                   'offers_shopping', 'offers_petsitting', 'offers_fetching_drugs', 'offers_sending_mail',
                   'offers_courier', 'phone', 'email', 'show_email', 'comment']
 

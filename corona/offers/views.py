@@ -121,16 +121,8 @@ class EditProfileView(UpdateView):
 
     def get_initial(self):
         initial = super().get_initial()
-        initial['first_name'] = self.request.user.first_name
-        initial['last_name'] = self.request.user.last_name
         initial['email'] = self.request.user.email
         return initial
-
-    def form_valid(self, form):
-        self.request.user.first_name = form.cleaned_data['first_name']
-        self.request.user.last_name = form.cleaned_data['last_name']
-        self.request.user.save()
-        return super().form_valid(form)
 
 
 class OffersView(FormView):
@@ -239,7 +231,7 @@ class SendMessageView(UpdateView):
     template_name = 'offers/send_message.html'
 
     def form_valid(self, form):
-        body = settings.CONTACT_MAIL_BODY.format(form.instance.user.first_name,
+        body = settings.CONTACT_MAIL_BODY.format(form.instance.display_name,
                                                  form.cleaned_data['sender'],
                                                  form.cleaned_data['email'],
                                                  form.cleaned_data['phone'],
