@@ -24,7 +24,10 @@
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="{% static 'offers/leaflet.css' %}" />
+    <link rel="stylesheet" href="{% static 'offers/MarkerCluster.css' %}" />
+    <link rel="stylesheet" href="{% static 'offers/MarkerCluster.Default.css' %}" />
     <script src="{% static 'offers/leaflet.js' %}"></script>
+    <script src="{% static 'offers/leaflet.markercluster.js' %}"></script>
 
     <!-- jQuery UI -->
     <link rel="stylesheet" href="{% static 'offers/jquery-ui.min.css' %}" />
@@ -71,10 +74,12 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">{% trans "Abmelden" %}</a></li>
                     <li class="nav-item"><a href="{% url 'search' %}" class="nav-link">{% trans "Suche" %}</a></li>
+                    <li class="nav-item"><a href="{% url 'overview_map' %}" class="nav-link">{% trans "Angebote" %}</a></li>
                     <li class="nav-item"><a href="{% url 'messages' %}" class="nav-link">{% trans "Nachrichten" %}</a></li>
                     <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">{% trans "Dein Profil" %}</a></li>
                     <li class="nav-item"><a href="{% url 'offers' %}" class="btn btn-primary">{% trans "Deine Zeiten" %}</a></li>
                 {% else %}
+                    <li class="nav-item"><a href="{% url 'overview_map' %}" class="nav-link">{% trans "Angebote" %}</a></li>
                     <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">{% trans "Anmelden" %}</a></li>
                     <li class="nav-item"><a href="{% url 'register' %}" class="btn btn-primary">{% trans "Biete deine Hilfe an" %}</a></li>
                 {% endif %}

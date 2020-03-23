@@ -195,3 +195,9 @@ WEBPUSH_SETTINGS = {
 # Prometheus
 
 PROMETHEUS_PATH_SECRET = 'pass'
+
+
+# Overview map
+
+# radius is in degrees (lat/lng)
+BLUR_RADIUS = 0.0075

@@ -256,6 +256,16 @@ class SendMessageView(UpdateView):
         return HttpResponseRedirect(reverse_lazy('message_sent'))
 
 
+class OverviewMapView(ListView):
+    model = ProviderProfile
+    template_name = 'offers/overview_map.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['mapbox_api_token'] = settings.MAPBOX_API_TOKEN
+        return context_data
+
+
 class MessageSentView(TemplateView):
     template_name = 'offers/message_sent.html'
 

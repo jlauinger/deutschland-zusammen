@@ -1,0 +1,46 @@
+{% extends 'offers/base.html' %}
+{% load template_tags %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <h2>Angebotsübersicht</h2>
+
+        <p>
+            Hier kannst du sehen, wo bereits überall Hilfe angeboten wird. Die Standorte der Helfer*innen auf der Karte
+            sind allerdings ungenau, um die Adresse zu schützen. Nutze unsere Suche auf der Startseite, um in deiner
+            Gegend Hilfe zu finden.
+        </p>
+
+        <div id="map" style="height: 800px; width: 100%;"></div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            var map = L.map('map').setView(["51.296433", "10.669401"], 6);
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: '{{ mapbox_api_token }}'
+            }).addTo(map);
+
+            var markers = L.markerClusterGroup();
+
+            {% for profile in object_list %}
+                {% if profile.location %}
+                    markers.addLayer(L.marker([
+                        "{{ profile.get_blurred_location.x|stringformat:"f" }}",
+                        "{{ profile.get_blurred_location.y|stringformat:"f" }}"
+                    ]));
+                {% endif %}
+            {% endfor %}
+
+            map.addLayer(markers);
+        });
+    </script>
+{% endblock %}

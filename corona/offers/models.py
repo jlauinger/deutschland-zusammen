@@ -1,4 +1,5 @@
-from datetime import timedelta
+import hashlib
+import random
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -7,23 +8,12 @@ from django.contrib.gis.db.models.functions import Distance
 from django.core.mail import send_mail
 from django.db.models import F
 from django.urls import reverse_lazy, reverse
-from django.utils.datetime_safe import datetime
-from django.utils.timezone import now, make_aware
+from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from django_prometheus.models import ExportModelOperationsMixin
 from webpush import send_user_notification
 
 from offers.helper import location_from_address, create_activation_token, create_profile_slug
-
-
-def next_hour():
-    n = now() + timedelta(hours=1)
-    return make_aware(datetime(year=n.year, month=n.month, day=n.day, hour=n.hour))
-
-
-def next_plus_1_hour():
-    return next_hour() + timedelta(hours=1)
-
 
 DAYTIME_CHOICES = (
     ('', _('-- Zeit filtern --')),
@@ -109,6 +99,14 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
         send_mail(settings.ACTIVATION_MAIL_SUBJECT, body, settings.ACTIVATION_MAIL_FROM, [self.user.email],
                   fail_silently=False)
 
+    def get_blurred_location(self):
+        # deterministic blurring is important to prevent information disclosure by averaging many requests
+        random.seed(hashlib.sha256(self.slug.encode('UTF-8')).hexdigest())
+        return {
+            'x': self.location.x + random.random()*settings.BLUR_RADIUS - settings.BLUR_RADIUS/2,
+            'y': self.location.y + random.random()*settings.BLUR_RADIUS - settings.BLUR_RADIUS/2
+        }
+
 
 class Offer(ExportModelOperationsMixin('offer'), models.Model):
     """
@@ -136,8 +134,8 @@ class Offer(ExportModelOperationsMixin('offer'), models.Model):
 
     @staticmethod
     def offers_in_range(query_location):
-        return Offer.objects.annotate(distance=Distance('user__profile__location', query_location))\
-            .filter(user__profile__activated=True)\
+        return Offer.objects.annotate(distance=Distance('user__profile__location', query_location)) \
+            .filter(user__profile__activated=True) \
             .filter(distance__lte=F('user__profile__radius')).order_by('-distance')
 
     @staticmethod
