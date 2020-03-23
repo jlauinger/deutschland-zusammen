@@ -354,3 +354,10 @@ body {
     background-color: #ffce00;
     margin: 2rem 0 1rem 0;
 }
+
+.tasks {
+    margin: auto;
+    text-align: left;
+    max-width: 300px;
+    padding-bottom: 2rem;
+}
