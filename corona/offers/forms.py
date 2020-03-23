@@ -41,7 +41,7 @@ class ProviderProfileForm(forms.ModelForm):
         model = ProviderProfile
         fields = ['first_name', 'last_name', 'name_visibility', 'street', 'city', 'radius', 'mobility',
                   'offers_shopping', 'offers_petsitting', 'offers_fetching_drugs', 'offers_sending_mail',
-                  'offers_courier', 'phone', 'show_phone', 'email', 'show_email', 'comment']
+                  'offers_courier', 'phone', 'email', 'show_email', 'comment']
 
 
 class UserForm(forms.ModelForm):

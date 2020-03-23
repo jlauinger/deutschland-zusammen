@@ -95,10 +95,10 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     offers_fetching_drugs= models.BooleanField(default=False, verbose_name=_('Medikamente abholen'))
     offers_sending_mail = models.BooleanField(default=False, verbose_name=_('Briefe einwerfen'))
     offers_courier = models.BooleanField(default=False, verbose_name=_('Kurierdienste'))
-    comment = models.TextField(blank=True, verbose_name=_('Sonstige Hilfestellungen oder Kommentare'))
+    comment = models.TextField(blank=True, verbose_name=_('Sonstige Hilfestellungen oder Kommentare (öffentlich)'))
 
-    phone = models.CharField(max_length=50, blank=True, verbose_name=_('Telefonnummer'))
-    show_phone = models.BooleanField(default=False, verbose_name=_('Telefonnummer öffentlich anzeigen'))
+    phone = models.CharField(max_length=50, blank=True,
+                             verbose_name=_('Telefonnummer (öffentlich wenn du sie angibst)'))
     show_email = models.BooleanField(default=False, verbose_name=_('E-Mail-Adresse öffentlich anzeigen'))
     name_visibility = models.CharField(choices=NAME_VISIBILITY_CHOICES, default='FIRST_NAME', max_length=50,
                                        verbose_name=_('Öffentlichkeit deines Namens'))

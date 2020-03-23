@@ -43,7 +43,7 @@
 
                 <h4>{% trans "So erreichen dich Hilfesuchende" %}</h4>
                 <p>
-                    <b>{% trans "Telefonnummer:" %}</b> {{ user.profile.phone }} ({% trans "öffentlich" %}: <b>{{ user.profile.show_phone|yesno }})</b><br />
+                    <b>{% trans "Telefonnummer:" %}</b> {% if user.profile.phone %}{{ user.profile.phone }} (öffentlich){% else %}nicht angegeben{% endif %}<br />
                     <b>{% trans "E-Mail-Adresse:" %}</b> {{ user.email }} ({% trans "öffentlich" %}: <b>{{ user.profile.show_email|yesno }})</b><br /><br />
                     <b>{% trans 'Direktnachrichten:' %}</b><br />
                     {% blocktrans trimmed %}
