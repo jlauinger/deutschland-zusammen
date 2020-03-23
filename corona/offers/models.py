@@ -78,8 +78,6 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     location = models.PointField(null=True, default=None)
     radius = models.IntegerField(choices=RADIUS_CHOICES, default=2000,
                                  verbose_name=_('Umkreis (nicht öffentlich)'))
-    address = models.CharField(max_length=200, blank=True,
-                               verbose_name=_('Adresse (Straße, Stadt. Nicht öffentlich)'))
     street = models.CharField(max_length=200, blank=True, verbose_name=_('Straße (nicht öffentlich)'))
     city = models.CharField(max_length=200, blank=True, verbose_name=_('Stadt (nicht öffentlich)'))
 
