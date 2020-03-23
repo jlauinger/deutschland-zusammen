@@ -36,18 +36,12 @@ class ProviderProfileForm(forms.ModelForm):
     email = forms.EmailField(label=_('E-Mail-Adresse'), disabled=True, required=False)
     street = forms.CharField(label=_('Straße (nicht öffentlich)'), max_length=200)
     city = forms.CharField(label=_('Stadt (nicht öffentlich)'), max_length=200)
-    address = forms.CharField(max_length=400, widget=forms.HiddenInput(), required=False)
 
     class Meta:
         model = ProviderProfile
-        fields = ['first_name', 'last_name', 'name_visibility', 'street', 'city', 'email', 'radius', 'mobility',
+        fields = ['first_name', 'last_name', 'name_visibility', 'street', 'city', 'radius', 'mobility',
                   'offers_shopping', 'offers_petsitting', 'offers_fetching_drugs', 'offers_sending_mail',
-                  'offers_courier', 'phone', 'show_phone', 'email', 'show_email',
-                  'comment', 'address']
-
-    def clean(self):
-        super().clean()
-        self.cleaned_data['address'] = "{}, {}".format(self.cleaned_data['street'], self.cleaned_data['city'])
+                  'offers_courier', 'phone', 'show_phone', 'email', 'show_email', 'comment']
 
 
 class UserForm(forms.ModelForm):

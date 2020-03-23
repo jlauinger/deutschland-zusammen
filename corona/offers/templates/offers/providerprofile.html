@@ -26,7 +26,7 @@
 
                 <h4>{% trans "Dein Standort" %}</h4>
                 <p>
-                    {{ user.profile.address }}<br />
+                    {{ user.profile.street }}, {{ user.profile.city }}<br />
                     <b>{% trans "Umkreis" %}:</b> {{ user.profile.get_radius_display }}<br />
                     <b>{% trans "Fortbewegungsmittel:" %}</b> {{ user.profile.get_mobility_display }}
                 </p>

@@ -85,6 +85,8 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
                                  verbose_name=_('Umkreis (nicht öffentlich)'))
     address = models.CharField(max_length=200, blank=True,
                                verbose_name=_('Adresse (Straße, Stadt. Nicht öffentlich)'))
+    street = models.CharField(max_length=200, blank=True, verbose_name=_('Straße (nicht öffentlich)'))
+    city = models.CharField(max_length=200, blank=True, verbose_name=_('Stadt (nicht öffentlich)'))
 
     mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA',
                                 verbose_name=_('Fortbewegungsmittel (öffentlich sichtbar)'))
@@ -102,11 +104,11 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
                                        verbose_name=_('Öffentlichkeit deines Namens'))
 
     def __str__(self):
-        return 'Profil für {}, {}'.format(self.user.username, self.address)
+        return 'Profil für {}, {}, {}'.format(self.user.username, self.street, self.city)
 
     def save(self, *args, **kwargs):
-        if self.address:
-            self.location = location_from_address(self.address)
+        if self.street and self.city:
+            self.location = location_from_address("{}, {}".format(self.street, self.city))
         super().save(*args, **kwargs)
 
     def get_display_name(self):
