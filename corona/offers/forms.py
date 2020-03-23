@@ -31,6 +31,7 @@ class SendMessageForm(forms.ModelForm):
 
 
 class ProviderProfileForm(forms.ModelForm):
+    display_name = forms.CharField(label=_('Anzeigename (öffentlich)'), max_length=100, required=True)
     email = forms.EmailField(label=_('E-Mail-Adresse'), disabled=True, required=False)
     street = forms.CharField(label=_('Straße (nicht öffentlich)'), max_length=200)
     city = forms.CharField(label=_('Stadt (nicht öffentlich)'), max_length=200)
