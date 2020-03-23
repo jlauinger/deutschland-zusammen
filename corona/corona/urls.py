@@ -8,7 +8,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/register', AccountRegistrationView.as_view(), name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('captcha/', include('captcha.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     path('webpush/', include('webpush.urls')),
     path('metrics/' + settings.PROMETHEUS_PATH_SECRET + '/', include('django_prometheus.urls')),

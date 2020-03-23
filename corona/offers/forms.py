@@ -1,4 +1,5 @@
-from captcha.fields import CaptchaField
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory
@@ -23,7 +24,7 @@ class SendMessageForm(forms.ModelForm):
     email = forms.EmailField(label=_('Deine E-Mail-Adresse'), max_length=100, required=False)
     phone = forms.CharField(label=_('Deine Telefonnummer (optional)'), max_length=100, required=False)
     message = forms.CharField(label=_('Nachricht'), max_length=1000, widget=forms.Textarea())
-    captcha = CaptchaField(label=_('Captcha'))
+    captcha = ReCaptchaField()
 
     class Meta:
         model = User

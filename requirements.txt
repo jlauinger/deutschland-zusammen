@@ -3,6 +3,6 @@ psycopg2-binary
 geopy
 requests
 django-bootstrap4
-django-simple-captcha
+django-recaptcha
 django-webpush
 django-prometheus
