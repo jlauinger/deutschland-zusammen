@@ -30,7 +30,7 @@ p.text {
     display: inline-block;
     line-height: 1.85rem;
     max-width: 700px;
-    padding: 1rem 0 1rem 0;
+    padding: 0rem 0 1rem 0;
 }
 
 footer {
