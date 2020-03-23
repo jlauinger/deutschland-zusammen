@@ -1,5 +1,4 @@
 from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV3
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory

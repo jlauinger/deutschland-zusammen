@@ -16,7 +16,7 @@
                         {% endblocktrans %}
                     </p>
                     <div class="filter">
-                        <p><b>Filtere die Ergebnisse:</b></p>
+                        <p><b>{% trans 'Filtere die Ergebnisse:' %}</b></p>
                         <form method="POST" action="" class="form-inline">
                             {% csrf_token %}
 
@@ -36,7 +36,7 @@
                                     {% if offer.user.profile.display_name %}
                                         {{ offer.user.profile.display_name }}
                                     {% else %}
-                                        Anonym
+                                        {% trans 'Anonym' %}
                                     {% endif %}
                                 </div>
                                 <div class="time">
@@ -91,7 +91,7 @@
                             {% endblocktrans %}
                         </p>
                         <div class="filter">
-                            <p><b>Filtere die Ergebnisse:</b></p>
+                            <p><b>{% trans 'Filtere die Ergebnisse:' %}</b></p>
                             <form method="POST" action="" class="form-inline">
                                 {% csrf_token %}
 

@@ -6,20 +6,26 @@
         <h2>{% trans "Sicherheits-Informationen" %}</h2>
 
         <p>
-            Deutschlandzusammen.de ist ein Portal, das Menschen zusammenbringt. Ob dein Gegenüber sich für denjenigen
-            ausgibt, der er wirklich ist, weißt du erst, wenn du dich mit der anderen Person triffst - wie bei allen
-            Diensten im Internet.
+            {% blocktrans trimmed %}
+                Deutschlandzusammen.de ist ein Portal, das Menschen zusammenbringt. Ob dein Gegenüber sich für denjenigen
+                ausgibt, der er wirklich ist, weißt du erst, wenn du dich mit der anderen Person triffst - wie bei allen
+                Diensten im Internet.
+            {% endblocktrans %}
         </p>
         <p>
-            Halte als Helfender deine private Adresse geheim. Als Anbieter gibst du zwar deine Adresse in deinem Profil
-            an, diese wird aber nur für die Umkreissuche verwendet und nie öffentlich angezeigt. Tauscht die Adresse nur
-            über private Nachrichten aus, am besten über die Nachrichtenfunktion von deutschlandzusammen.de.
+            {% blocktrans trimmed %}
+                Halte als Helfender deine private Adresse geheim. Als Anbieter gibst du zwar deine Adresse in deinem Profil
+                an, diese wird aber nur für die Umkreissuche verwendet und nie öffentlich angezeigt. Tauscht die Adresse nur
+                über private Nachrichten aus, am besten über die Nachrichtenfunktion von deutschlandzusammen.de.
+            {% endblocktrans %}
         </p>
         <p>
-            Wenn du deine Telefonnummer oder E-Mail-Adresse über dein Profil öffentlich machst, können dich
-            Hilfesuchende deutlich schneller erreichen. Aber deine Daten sind dann öffentlich im Internet zu finden.
-            Sei dir bitte dessen bewusst, und nutze im Zweifel lieber die integrierte Nachrichtenfunktion von
-            deutschlandzusammen.de.
+            {% blocktrans trimmed %}
+                Wenn du deine Telefonnummer oder E-Mail-Adresse über dein Profil öffentlich machst, können dich
+                Hilfesuchende deutlich schneller erreichen. Aber deine Daten sind dann öffentlich im Internet zu finden.
+                Sei dir bitte dessen bewusst, und nutze im Zweifel lieber die integrierte Nachrichtenfunktion von
+                deutschlandzusammen.de.
+            {% endblocktrans %}
         </p>
 
         <a href="{% url 'search' %}" class="btn btn-primary">{% trans "Zurück zur Startseite" %}</a>

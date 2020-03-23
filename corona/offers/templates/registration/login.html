@@ -12,6 +12,6 @@
                 <input type="submit" value="{% trans "Login" %}" class="btn btn-primary">
             {% endbuttons %}
         </form>
-        <a href="{% url 'password_reset' %}" class="text-link">Passwort vergessen?</a>
+        <a href="{% url 'password_reset' %}" class="text-link">{% trans 'Passwort vergessen?' %}</a>
     </div>
 {% endblock %}

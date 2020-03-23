@@ -5,12 +5,14 @@
 
 {% block content %}
     <div class="container">
-        <h2>Angebotsübersicht</h2>
+        <h2>{% trans 'Angebotsübersicht' %}</h2>
 
         <p>
-            Hier kannst du sehen, wo bereits überall Hilfe angeboten wird. Die Standorte der Helfer*innen auf der Karte
-            sind allerdings ungenau, um die Adresse zu schützen. Nutze unsere Suche auf der Startseite, um in deiner
-            Gegend Hilfe zu finden.
+            {% blocktrans trimmed %}
+                Hier kannst du sehen, wo bereits überall Hilfe angeboten wird. Die Standorte der Helfer*innen auf der Karte
+                sind allerdings ungenau, um die Adresse zu schützen. Nutze unsere Suche auf der Startseite, um in deiner
+                Gegend Hilfe zu finden.
+            {% endblocktrans %}
         </p>
 
         <div id="map" style="height: 800px; width: 100%;"></div>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-21 20:02+0000\n"
+"POT-Creation-Date: 2020-03-23 17:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: offers/apps.py:7
+#: offers/apps.py:7 offers/templates/offers/base.html:77
+#: offers/templates/offers/base.html:82
 msgid "Angebote"
 msgstr "Offers"
 
@@ -46,219 +47,171 @@ msgid "Deine Telefonnummer (optional)"
 msgstr "Your phone number (optional)"
 
 #: offers/forms.py:25
-msgid "Dein Geschlecht (optional)"
-msgstr "Your gender (optional)"
-
-#: offers/forms.py:26
 msgid "Nachricht"
 msgstr "Message"
 
-#: offers/forms.py:27
-msgid "Captcha"
-msgstr "Captcha"
+#: offers/forms.py:34 offers/models.py:62
+#, fuzzy
+#| msgid "Nur Vorname öffentlich"
+msgid "Anzeigename (öffentlich)"
+msgstr "Only first name public"
 
 #: offers/forms.py:35
-msgid "Vorname"
-msgstr "First name"
-
-#: offers/forms.py:36
-msgid "Nachname"
-msgstr "Last name"
-
-#: offers/forms.py:37
 msgid "E-Mail-Adresse"
 msgstr "E-mail address"
 
-#: offers/forms.py:38
+#: offers/forms.py:36 offers/models.py:71
 #, fuzzy
 #| msgid "Umkreis (nicht öffentlich)"
 msgid "Straße (nicht öffentlich)"
 msgstr "Offer radius (not public)"
 
-#: offers/forms.py:39
+#: offers/forms.py:37 offers/models.py:72
 #, fuzzy
 #| msgid "Umkreis (nicht öffentlich)"
 msgid "Stadt (nicht öffentlich)"
 msgstr "Offer radius (not public)"
 
-#: offers/models.py:29
-msgid "Männlich"
-msgstr "Male"
-
-#: offers/models.py:30
-msgid "Weiblich"
-msgstr "Female"
-
-#: offers/models.py:31
-msgid "Andere"
-msgstr "Other"
-
-#: offers/models.py:32
-msgid "Keine Angabe"
-msgstr "Prefer not to say"
-
-#: offers/models.py:37
+#: offers/models.py:19
 msgid "-- Zeit filtern --"
 msgstr "-- Filter daytime --"
 
-#: offers/models.py:38 offers/models.py:154
+#: offers/models.py:20 offers/models.py:127
 #: offers/templates/offers/offers_list.html:25
-#: offers/templates/offers/providerprofile.html:69
-#: offers/templates/offers/search_results.html:38
+#: offers/templates/offers/providerprofile.html:64
+#: offers/templates/offers/search_results.html:44
 msgid "Morgens"
 msgstr "Morning"
 
-#: offers/models.py:39 offers/models.py:155
+#: offers/models.py:21 offers/models.py:128
 #: offers/templates/offers/offers_list.html:26
-#: offers/templates/offers/providerprofile.html:70
-#: offers/templates/offers/search_results.html:39
+#: offers/templates/offers/providerprofile.html:65
+#: offers/templates/offers/search_results.html:45
 msgid "Mittags"
 msgstr "Noon"
 
-#: offers/models.py:40 offers/models.py:156
+#: offers/models.py:22 offers/models.py:129
 #: offers/templates/offers/offers_list.html:27
-#: offers/templates/offers/providerprofile.html:71
-#: offers/templates/offers/search_results.html:40
+#: offers/templates/offers/providerprofile.html:66
+#: offers/templates/offers/search_results.html:46
 msgid "Nachmittags"
 msgstr "Afternoon"
 
-#: offers/models.py:41 offers/models.py:157
+#: offers/models.py:23 offers/models.py:130
 #: offers/templates/offers/offers_list.html:28
-#: offers/templates/offers/providerprofile.html:72
-#: offers/templates/offers/search_results.html:41
+#: offers/templates/offers/providerprofile.html:67
+#: offers/templates/offers/search_results.html:47
 msgid "Abends"
 msgstr "Evening"
 
-#: offers/models.py:56
+#: offers/models.py:38
 msgid "Anbieterprofil"
 msgstr "Provider profile"
 
-#: offers/models.py:57
+#: offers/models.py:39
 msgid "Anbieterprofile"
 msgstr "Provider profiles"
 
-#: offers/models.py:71
+#: offers/models.py:53
 msgid "keine Angabe"
 msgstr "Prefer not to say"
 
-#: offers/models.py:72
+#: offers/models.py:54
 msgid "zu Fuß / ÖPNV"
 msgstr "Walking or public transport"
 
-#: offers/models.py:73
+#: offers/models.py:55
 msgid "Fahrrad"
 msgstr "Bike"
 
-#: offers/models.py:74
+#: offers/models.py:56
 msgid "Motorroller"
 msgstr "Motorbike"
 
-#: offers/models.py:75
+#: offers/models.py:57
 msgid "Auto"
 msgstr "Car"
 
-#: offers/models.py:79
-msgid "Vor- und Nachname öffentlich"
-msgstr "First and last name public"
+#: offers/models.py:63
+msgid "ID-Token"
+msgstr ""
 
-#: offers/models.py:80
-msgid "Nur Vorname öffentlich"
-msgstr "Only first name public"
-
-#: offers/models.py:81
-msgid "Weder Vor- noch Nachname öffentlich"
-msgstr "Neither first nor last name public"
-
-#: offers/models.py:88
+#: offers/models.py:65
 msgid "Aktivierungsschlüssel"
 msgstr "Activation token"
 
-#: offers/models.py:89
+#: offers/models.py:66
 msgid "Aktiviert"
 msgstr "Activated"
 
-#: offers/models.py:93
+#: offers/models.py:70
 msgid "Umkreis (nicht öffentlich)"
 msgstr "Offer radius (not public)"
 
-#: offers/models.py:95
-msgid "Adresse (Straße, Stadt. Nicht öffentlich)"
-msgstr "Address (Street, city. Not public)"
-
-#: offers/models.py:98
-msgid "Fortbewegungsmittel (öffentlich sichtbar)"
+#: offers/models.py:75
+#, fuzzy
+#| msgid "Fortbewegungsmittel (öffentlich sichtbar)"
+msgid "Fortbewegungsmittel (öffentlich)"
 msgstr "Mobility (public)"
 
-#: offers/models.py:99 offers/templates/offers/providerprofile.html:35
-#: offers/templates/offers/search_results.html:56
+#: offers/models.py:76 offers/templates/offers/providerprofile.html:36
+#: offers/templates/offers/search_results.html:57
 msgid "Einkaufen"
 msgstr "Shopping"
 
-#: offers/models.py:100 offers/templates/offers/providerprofile.html:36
-#: offers/templates/offers/search_results.html:57
+#: offers/models.py:77 offers/templates/offers/providerprofile.html:37
+#: offers/templates/offers/search_results.html:58
 msgid "Gassi gehen"
 msgstr "Petsitting"
 
-#: offers/models.py:101 offers/templates/offers/providerprofile.html:37
-#: offers/templates/offers/search_results.html:58
+#: offers/models.py:78 offers/templates/offers/providerprofile.html:38
+#: offers/templates/offers/search_results.html:59
 msgid "Medikamente abholen"
 msgstr "Fetch medicine"
 
-#: offers/models.py:102 offers/templates/offers/providerprofile.html:38
-#: offers/templates/offers/search_results.html:59
+#: offers/models.py:79 offers/templates/offers/providerprofile.html:39
+#: offers/templates/offers/search_results.html:60
 msgid "Briefe einwerfen"
 msgstr "Submit mail"
 
-#: offers/models.py:103 offers/templates/offers/providerprofile.html:39
-#: offers/templates/offers/search_results.html:60
+#: offers/models.py:80 offers/templates/offers/providerprofile.html:40
+#: offers/templates/offers/search_results.html:61
 msgid "Kurierdienste"
 msgstr "Courier services"
 
-#: offers/models.py:104
-msgid "Sonstige Hilfestellungen oder Kommentare"
+#: offers/models.py:81
+#, fuzzy
+#| msgid "Sonstige Hilfestellungen oder Kommentare"
+msgid "Sonstige Hilfestellungen oder Kommentare (öffentlich)"
 msgstr "Other offers for help or comments"
 
-#: offers/models.py:106
-msgid "Telefonnummer"
-msgstr "Phone number"
-
-#: offers/models.py:107
-msgid "Geschlecht"
-msgstr "Gender"
-
-#: offers/models.py:108
-msgid "Telefonnummer öffentlich anzeigen"
+#: offers/models.py:84
+#, fuzzy
+#| msgid "Telefonnummer öffentlich anzeigen"
+msgid "Telefonnummer (öffentlich wenn du sie angibst)"
 msgstr "Show phone number publicly"
 
-#: offers/models.py:109
+#: offers/models.py:85
 msgid "E-Mail-Adresse öffentlich anzeigen"
 msgstr "Show e-mail address publicly"
 
-#: offers/models.py:110
-msgid "Geschlecht öffentlich anzeigen"
-msgstr "Show gender publicly"
-
-#: offers/models.py:112
-msgid "Öffentlichkeit deines Namens"
-msgstr "Public visiblity of your name"
-
-#: offers/models.py:147
+#: offers/models.py:120
 msgid "Hilfsangebot"
 msgstr "Offer for help"
 
-#: offers/models.py:148
+#: offers/models.py:121
 msgid "Hilfsangebote"
 msgstr "Offers for help"
 
-#: offers/models.py:152 offers/templates/offers/offers_list.html:24
+#: offers/models.py:125 offers/templates/offers/offers_list.html:24
 msgid "Datum"
 msgstr "Date"
 
-#: offers/models.py:182
+#: offers/models.py:155
 msgid "Gesendete Nachricht"
 msgstr "Sent message"
 
-#: offers/models.py:183
+#: offers/models.py:156
 msgid "Gesendete Nachrichten"
 msgstr "Sent messages"
 
@@ -268,58 +221,58 @@ msgstr "Sent messages"
 msgid "Deutschland steht zusammen - Finde Hilfe in der Corona Krise"
 msgstr "Germany stands united. Find help in the Corona crisis"
 
-#: offers/templates/offers/base.html:60
+#: offers/templates/offers/base.html:67
 #, fuzzy
 #| msgid "Deutschland Zusammen"
 msgid "Deutschland zusammen"
 msgstr "Germany United"
 
-#: offers/templates/offers/base.html:68
+#: offers/templates/offers/base.html:75
 msgid "Abmelden"
 msgstr "Logout"
 
-#: offers/templates/offers/base.html:69
+#: offers/templates/offers/base.html:76
 msgid "Suche"
 msgstr "Search"
 
-#: offers/templates/offers/base.html:70
+#: offers/templates/offers/base.html:78
 msgid "Nachrichten"
 msgstr "Messages"
 
-#: offers/templates/offers/base.html:71
+#: offers/templates/offers/base.html:79
 msgid "Dein Profil"
 msgstr "Your Profile"
 
-#: offers/templates/offers/base.html:72
+#: offers/templates/offers/base.html:80
 msgid "Deine Zeiten"
 msgstr "Your Times"
 
-#: offers/templates/offers/base.html:74
+#: offers/templates/offers/base.html:83
 msgid "Anmelden"
 msgstr "Login"
 
-#: offers/templates/offers/base.html:75
+#: offers/templates/offers/base.html:84
 msgid "Biete deine Hilfe an"
 msgstr "Offer your help"
 
-#: offers/templates/offers/base.html:104 offers/templates/offers/imprint.html:7
+#: offers/templates/offers/base.html:113 offers/templates/offers/imprint.html:7
 msgid "Impressum"
 msgstr ""
 
-#: offers/templates/offers/base.html:105
+#: offers/templates/offers/base.html:114
 msgid "Datenschutz"
 msgstr ""
 
-#: offers/templates/offers/base.html:106
+#: offers/templates/offers/base.html:115
 #: offers/templates/offers/safety_information.html:6
 msgid "Sicherheits-Informationen"
 msgstr "Safety Information"
 
-#: offers/templates/offers/base.html:112
+#: offers/templates/offers/base.html:121
 msgid "Switch language:"
 msgstr "Sprache ändern:"
 
-#: offers/templates/offers/base.html:123
+#: offers/templates/offers/base.html:132
 msgid "Sprache ändern"
 msgstr "Switch language"
 
@@ -337,23 +290,23 @@ msgstr "Today"
 
 #: offers/templates/offers/home.html:39
 #: offers/templates/offers/search_results.html:29
-#: offers/templates/offers/search_results.html:96
+#: offers/templates/offers/search_results.html:104
 msgid "Suchen!"
 msgstr "Search!"
 
-#: offers/templates/offers/home.html:209
+#: offers/templates/offers/home.html:226
 msgid "Standortdaten sind nicht verfügbar."
 msgstr "Location data unavailable."
 
-#: offers/templates/offers/home.html:212
+#: offers/templates/offers/home.html:229
 msgid "Die Standortabfrage dauerte zu lange (Time-out)."
 msgstr "Getting your location took too long (timeout)."
 
-#: offers/templates/offers/home.html:215
+#: offers/templates/offers/home.html:232
 msgid "Unbekannter Fehler."
 msgstr "Unknown error."
 
-#: offers/templates/offers/home.html:221
+#: offers/templates/offers/home.html:238
 msgid "Ihr Browser unterstützt keine Ortung."
 msgstr "Your browser is not capable of locating you."
 
@@ -361,7 +314,7 @@ msgstr "Your browser is not capable of locating you."
 #: offers/templates/offers/message_error.html:15
 #: offers/templates/offers/message_sent.html:10
 #: offers/templates/offers/privacy.html:49
-#: offers/templates/offers/safety_information.html:25
+#: offers/templates/offers/safety_information.html:31
 msgid "Zurück zur Startseite"
 msgstr "Back to the search"
 
@@ -403,7 +356,7 @@ msgid "Du hast bisher keine Nachrichten erhalten."
 msgstr "You didn't receive any messages yet."
 
 #: offers/templates/offers/offers_list.html:8
-#: offers/templates/offers/providerprofile.html:64
+#: offers/templates/offers/providerprofile.html:59
 msgid "Zu diesen Zeiten kannst du Hilfe anbieten"
 msgstr "You are offering help at these times"
 
@@ -435,6 +388,20 @@ msgstr "Update"
 msgid "Los geht's!"
 msgstr "Let's go!"
 
+#: offers/templates/offers/overview_map.html:8
+#, fuzzy
+#| msgid "Angebote"
+msgid "Angebotsübersicht"
+msgstr "Offers"
+
+#: offers/templates/offers/overview_map.html:11
+msgid ""
+"Hier kannst du sehen, wo bereits überall Hilfe angeboten wird. Die Standorte "
+"der Helfer*innen auf der Karte sind allerdings ungenau, um die Adresse zu "
+"schützen. Nutze unsere Suche auf der Startseite, um in deiner Gegend Hilfe "
+"zu finden."
+msgstr ""
+
 #: offers/templates/offers/privacy.html:6
 msgid "Datenschutzerklärung"
 msgstr ""
@@ -460,37 +427,40 @@ msgstr "Your location"
 msgid "Umkreis"
 msgstr "Perimeter radius"
 
-#: offers/templates/offers/providerprofile.html:33
+#: offers/templates/offers/providerprofile.html:31
+#: offers/templates/offers/search_results.html:51
+msgid "Fortbewegungsmittel:"
+msgstr "Mobility:"
+
+#: offers/templates/offers/providerprofile.html:34
 msgid "Dein Angebot"
 msgstr "Your offer"
 
-#: offers/templates/offers/providerprofile.html:40
+#: offers/templates/offers/providerprofile.html:41
 msgid "Sonstiges"
 msgstr "Other"
 
-#: offers/templates/offers/providerprofile.html:43
+#: offers/templates/offers/providerprofile.html:44
 msgid "So erreichen dich Hilfesuchende"
 msgstr "People looking for help can reach you via"
 
-#: offers/templates/offers/providerprofile.html:45
+#: offers/templates/offers/providerprofile.html:46
 msgid "Telefonnummer:"
 msgstr "Phone number:"
 
-#: offers/templates/offers/providerprofile.html:45
-#: offers/templates/offers/providerprofile.html:46
-#: offers/templates/offers/providerprofile.html:61
-msgid "öffentlich"
-msgstr "public"
-
-#: offers/templates/offers/providerprofile.html:46
+#: offers/templates/offers/providerprofile.html:47
 msgid "E-Mail-Adresse:"
 msgstr "E-mail address:"
 
 #: offers/templates/offers/providerprofile.html:47
+msgid "öffentlich"
+msgstr "public"
+
+#: offers/templates/offers/providerprofile.html:48
 msgid "Direktnachrichten:"
 msgstr "Direct messages:"
 
-#: offers/templates/offers/providerprofile.html:48
+#: offers/templates/offers/providerprofile.html:49
 msgid ""
 "Über deutschlandzusammen.de können Suchende dir eine Nachricht senden. Du "
 "siehst sie dann auf der Nachrichten-Seite. Wir können die Nachrichten auch "
@@ -500,44 +470,36 @@ msgstr ""
 "You can read the message on the messages page. We can also send it to you by "
 "push notification!"
 
-#: offers/templates/offers/providerprofile.html:54
-#: offers/templates/offers/providerprofile.html:132
+#: offers/templates/offers/providerprofile.html:55
+#: offers/templates/offers/providerprofile.html:130
 msgid "Push-Nachrichten aktivieren"
 msgstr "Enable push notifications"
 
-#: offers/templates/offers/providerprofile.html:58
-msgid "Zusätzliche Angaben zu dir"
-msgstr "Additional information"
-
-#: offers/templates/offers/providerprofile.html:60
-#: offers/templates/offers/search_results.html:45
-msgid "Fortbewegungsmittel:"
-msgstr "Mobility:"
-
-#: offers/templates/offers/providerprofile.html:61
-#: offers/templates/offers/search_results.html:50
-msgid "Geschlecht:"
-msgstr "Gender:"
-
-#: offers/templates/offers/providerprofile.html:77
+#: offers/templates/offers/providerprofile.html:72
 msgid "Du hast bisher keine Angebote erstellt."
 msgstr "You didn't create any offer times yet."
 
-#: offers/templates/offers/providerprofile.html:80
+#: offers/templates/offers/providerprofile.html:75
 #: offers/templates/offers/providerprofile_form.html:8
 msgid "Bearbeite dein Profil"
 msgstr "Edit your profile"
 
-#: offers/templates/offers/providerprofile.html:81
+#: offers/templates/offers/providerprofile.html:76
 msgid "Bearbeite deine Zeiten"
 msgstr "Edit your times"
 
-#: offers/templates/offers/providerprofile.html:82
+#: offers/templates/offers/providerprofile.html:79
+#: offers/templates/registration/password_change_form.html:7
+#: offers/templates/registration/password_reset_confirm.html:12
+msgid "Passwort ändern"
+msgstr ""
+
+#: offers/templates/offers/providerprofile.html:80
 msgid "Profil löschen"
 msgstr "Delete profile"
 
-#: offers/templates/offers/providerprofile.html:140
-#: offers/templates/offers/providerprofile.html:151
+#: offers/templates/offers/providerprofile.html:138
+#: offers/templates/offers/providerprofile.html:149
 msgid "Push-Nachrichten deaktivieren"
 msgstr "Disable push notifications"
 
@@ -548,6 +510,32 @@ msgstr "Step 2: Tell us some more details about you"
 #: offers/templates/offers/providerprofile_form.html:17
 msgid "Speichern!"
 msgstr "Save!"
+
+#: offers/templates/offers/safety_information.html:9
+msgid ""
+"Deutschlandzusammen.de ist ein Portal, das Menschen zusammenbringt. Ob dein "
+"Gegenüber sich für denjenigen ausgibt, der er wirklich ist, weißt du erst, "
+"wenn du dich mit der anderen Person triffst - wie bei allen Diensten im "
+"Internet."
+msgstr ""
+
+#: offers/templates/offers/safety_information.html:16
+msgid ""
+"Halte als Helfender deine private Adresse geheim. Als Anbieter gibst du zwar "
+"deine Adresse in deinem Profil an, diese wird aber nur für die Umkreissuche "
+"verwendet und nie öffentlich angezeigt. Tauscht die Adresse nur über private "
+"Nachrichten aus, am besten über die Nachrichtenfunktion von "
+"deutschlandzusammen.de."
+msgstr ""
+
+#: offers/templates/offers/safety_information.html:23
+msgid ""
+"Wenn du deine Telefonnummer oder E-Mail-Adresse über dein Profil öffentlich "
+"machst, können dich Hilfesuchende deutlich schneller erreichen. Aber deine "
+"Daten sind dann öffentlich im Internet zu finden. Sei dir bitte dessen "
+"bewusst, und nutze im Zweifel lieber die integrierte Nachrichtenfunktion von "
+"deutschlandzusammen.de."
+msgstr ""
 
 #: offers/templates/offers/search_results.html:11
 msgid "Deine Hilfe ist fast organisiert!"
@@ -561,27 +549,36 @@ msgstr ""
 "The following people in your area offer to help you! You only need to call "
 "them or write a message."
 
-#: offers/templates/offers/search_results.html:55
+#: offers/templates/offers/search_results.html:19
+#: offers/templates/offers/search_results.html:94
+msgid "Filtere die Ergebnisse:"
+msgstr ""
+
+#: offers/templates/offers/search_results.html:39
+msgid "Anonym"
+msgstr ""
+
+#: offers/templates/offers/search_results.html:56
 msgid "bietet an:"
 msgstr "offers:"
 
-#: offers/templates/offers/search_results.html:65
+#: offers/templates/offers/search_results.html:66
 msgid "Telefon:"
 msgstr "Phone:"
 
-#: offers/templates/offers/search_results.html:68
+#: offers/templates/offers/search_results.html:69
 msgid "E-Mail:"
 msgstr "E-mail:"
 
-#: offers/templates/offers/search_results.html:71
+#: offers/templates/offers/search_results.html:72
 msgid "Direkt eine Nachricht schreiben"
 msgstr "Send a direct message"
 
-#: offers/templates/offers/search_results.html:77
+#: offers/templates/offers/search_results.html:78
 msgid "Leider nichts gefunden..."
 msgstr "Sorry, we didn't find anything..."
 
-#: offers/templates/offers/search_results.html:80
+#: offers/templates/offers/search_results.html:81
 msgid ""
 "Leider wurden keine Angebote gefunden. Entferne vielleicht die Filter oder "
 "versuche später eine neue Suche."
@@ -589,7 +586,16 @@ msgstr ""
 "Unfortunately we were unable to find any offers. Try removing some filters "
 "or try to search again later."
 
-#: offers/templates/offers/search_results.html:101
+#: offers/templates/offers/search_results.html:87
+#: offers/templates/offers/search_results.html:115
+msgid ""
+"Wir sind gerade erst gestartet, daher gibt es zur Zeit noch nicht überall "
+"Angebote. Du kannst uns sehr helfen, indem du deinen Freund*innen und "
+"Bekannten von dieser Plattform erzählst und die sie in den sozialen Netzen "
+"teilst!"
+msgstr ""
+
+#: offers/templates/offers/search_results.html:109
 msgid ""
 "Leider wurden keine Angebote in deiner Nähe gefunden. Hast du bei deiner "
 "Adresse Straße und Stadt eingegeben? Schau doch rechts auf der Karte mal ob "
@@ -599,7 +605,7 @@ msgstr ""
 "enterboth street and city? Have a look at the map on the right and check "
 "whetherthe location is correct."
 
-#: offers/templates/offers/search_results.html:110
+#: offers/templates/offers/search_results.html:125
 msgid "Neue Suche"
 msgstr "New Search"
 
@@ -640,6 +646,53 @@ msgstr "Back to the search"
 msgid "Login"
 msgstr "Login"
 
+#: offers/templates/registration/login.html:15
+msgid "Passwort vergessen?"
+msgstr ""
+
+#: offers/templates/registration/password_change_form.html:12
+msgid "Ändern!"
+msgstr ""
+
+#: offers/templates/registration/password_reset_complete.html:7
+msgid "Passwort zurückgesetzt"
+msgstr ""
+
+#: offers/templates/registration/password_reset_complete.html:8
+msgid "Du kannst dich jetzt mit dem neuen Passwort einloggen."
+msgstr ""
+
+#: offers/templates/registration/password_reset_confirm.html:8
+msgid "Neues Passwort setzen"
+msgstr ""
+
+#: offers/templates/registration/password_reset_confirm.html:16
+msgid ""
+"Der Passwort-Zurücksetzen-Link war ungültig, möglicherweise wurde er schon "
+"benutzt. Setze dein Passwort bitte erneut zurück."
+msgstr ""
+
+#: offers/templates/registration/password_reset_done.html:7
+#, fuzzy
+#| msgid "Wir haben dir die Aktivierungs-Mail erneut gesendet!"
+msgid "Wir haben dir eine E-Mail geschickt."
+msgstr "We have sent you the activation mail again!"
+
+#: offers/templates/registration/password_reset_done.html:8
+msgid ""
+"Klicke bitte auf den Link in der E-Mail, um dein Passwort zurückzusetzen."
+msgstr ""
+
+#: offers/templates/registration/password_reset_form.html:7
+msgid "Passwort zurücksetzen"
+msgstr ""
+
+#: offers/templates/registration/password_reset_form.html:12
+#, fuzzy
+#| msgid "E-Mail erneut senden"
+msgid "E-Mail mit Anweisungen senden"
+msgstr "Send the e-mail again"
+
 #: offers/templates/registration/registration.html:7
 msgid "Schritt 1: Erstelle jetzt deinen Account"
 msgstr "Step 1: Create you account now"
@@ -656,13 +709,64 @@ msgstr "Are you sure you want to delete your profile?"
 msgid "Ja, endgültig löschen!"
 msgstr "Yes, delete it!"
 
-#: offers/views.py:52
+#: offers/views.py:53
 msgid "Dein Account wurde aktiviert!"
 msgstr "Your account has been activated!"
 
-#: offers/views.py:77
+#: offers/views.py:78
 msgid "Wir haben dir die Aktivierungs-Mail erneut gesendet!"
 msgstr "We have sent you the activation mail again!"
+
+#~ msgid "Dein Geschlecht (optional)"
+#~ msgstr "Your gender (optional)"
+
+#~ msgid "Captcha"
+#~ msgstr "Captcha"
+
+#~ msgid "Vorname"
+#~ msgstr "First name"
+
+#~ msgid "Nachname"
+#~ msgstr "Last name"
+
+#~ msgid "Männlich"
+#~ msgstr "Male"
+
+#~ msgid "Weiblich"
+#~ msgstr "Female"
+
+#~ msgid "Andere"
+#~ msgstr "Other"
+
+#~ msgid "Keine Angabe"
+#~ msgstr "Prefer not to say"
+
+#~ msgid "Vor- und Nachname öffentlich"
+#~ msgstr "First and last name public"
+
+#~ msgid "Weder Vor- noch Nachname öffentlich"
+#~ msgstr "Neither first nor last name public"
+
+#~ msgid "Adresse (Straße, Stadt. Nicht öffentlich)"
+#~ msgstr "Address (Street, city. Not public)"
+
+#~ msgid "Telefonnummer"
+#~ msgstr "Phone number"
+
+#~ msgid "Geschlecht"
+#~ msgstr "Gender"
+
+#~ msgid "Geschlecht öffentlich anzeigen"
+#~ msgstr "Show gender publicly"
+
+#~ msgid "Öffentlichkeit deines Namens"
+#~ msgstr "Public visiblity of your name"
+
+#~ msgid "Zusätzliche Angaben zu dir"
+#~ msgstr "Additional information"
+
+#~ msgid "Geschlecht:"
+#~ msgstr "Gender:"
 
 #~ msgid "Hilfsangebote während der Corona-Krise"
 #~ msgstr "Offers for help during the Corona crisis"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-21 20:02+0000\n"
+"POT-Creation-Date: 2020-03-23 17:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: corona/settings.py:115
+#: corona/settings.py:116
 msgid "German"
 msgstr "Deutsch"
 
-#: corona/settings.py:116
+#: corona/settings.py:117
 msgid "English"
 msgstr "Englisch"
 
-#: corona/settings.py:150
+#: corona/settings.py:151
 msgid "Neue Nachricht von deutschlandzusammen.de"
 msgstr "New message from deutschlandzusammen.de"
 
-#: corona/settings.py:151
+#: corona/settings.py:152
+#, fuzzy
+#| msgid ""
+#| "Hallo {}!\n"
+#| "\n"
+#| "Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!\n"
+#| "\n"
+#| "Daten zur suchenden Person:\n"
+#| "Name: {}\n"
+#| "E-Mail: {}\n"
+#| "Telefon: {}\n"
+#| "Geschlecht: {}\n"
+#| "\n"
+#| "Nachricht:\n"
+#| "{}\n"
+#| "\n"
+#| "Melde dich doch wenn du kannst schnellstmöglich zurück.\n"
+#| "\n"
+#| "Liebe Grüße\n"
+#| "dein Team von deutschlandzusammen.de\n"
 msgid ""
 "Hallo {}!\n"
 "\n"
@@ -40,7 +59,6 @@ msgid ""
 "Name: {}\n"
 "E-Mail: {}\n"
 "Telefon: {}\n"
-"Geschlecht: {}\n"
 "\n"
 "Nachricht:\n"
 "{}\n"

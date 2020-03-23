@@ -60,7 +60,7 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
     display_name = models.CharField(max_length=100, blank=True, verbose_name=_('Anzeigename (öffentlich)'))
-    slug = models.CharField(max_length=20, default=create_profile_slug, unique=True, verbose_name='ID-Token')
+    slug = models.CharField(max_length=20, default=create_profile_slug, unique=True, verbose_name=_('ID-Token'))
     activation_token = models.CharField(max_length=64, default=create_activation_token,
                                         verbose_name=_('Aktivierungsschlüssel'))
     activated = models.BooleanField(default=False, verbose_name=_('Aktiviert'))
@@ -72,7 +72,7 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     city = models.CharField(max_length=200, blank=True, verbose_name=_('Stadt (nicht öffentlich)'))
 
     mobility = models.TextField(choices=MOBILITY_CHOICES, default='NA',
-                                verbose_name=_('Fortbewegungsmittel (öffentlich sichtbar)'))
+                                verbose_name=_('Fortbewegungsmittel (öffentlich)'))
     offers_shopping = models.BooleanField(default=False, verbose_name=_('Einkaufen'))
     offers_petsitting = models.BooleanField(default=False, verbose_name=_('Gassi gehen'))
     offers_fetching_drugs= models.BooleanField(default=False, verbose_name=_('Medikamente abholen'))
