@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-23 17:32+0000\n"
+"POT-Creation-Date: 2020-03-23 17:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,26 +51,20 @@ msgid "Nachricht"
 msgstr "Message"
 
 #: offers/forms.py:34 offers/models.py:62
-#, fuzzy
-#| msgid "Nur Vorname öffentlich"
 msgid "Anzeigename (öffentlich)"
-msgstr "Only first name public"
+msgstr "Name (public)"
 
 #: offers/forms.py:35
 msgid "E-Mail-Adresse"
 msgstr "E-mail address"
 
 #: offers/forms.py:36 offers/models.py:71
-#, fuzzy
-#| msgid "Umkreis (nicht öffentlich)"
 msgid "Straße (nicht öffentlich)"
-msgstr "Offer radius (not public)"
+msgstr "Street (not public)"
 
 #: offers/forms.py:37 offers/models.py:72
-#, fuzzy
-#| msgid "Umkreis (nicht öffentlich)"
 msgid "Stadt (nicht öffentlich)"
-msgstr "Offer radius (not public)"
+msgstr "City (not public)"
 
 #: offers/models.py:19
 msgid "-- Zeit filtern --"
@@ -134,7 +128,7 @@ msgstr "Car"
 
 #: offers/models.py:63
 msgid "ID-Token"
-msgstr ""
+msgstr "ID-Token"
 
 #: offers/models.py:65
 msgid "Aktivierungsschlüssel"
@@ -149,8 +143,6 @@ msgid "Umkreis (nicht öffentlich)"
 msgstr "Offer radius (not public)"
 
 #: offers/models.py:75
-#, fuzzy
-#| msgid "Fortbewegungsmittel (öffentlich sichtbar)"
 msgid "Fortbewegungsmittel (öffentlich)"
 msgstr "Mobility (public)"
 
@@ -164,12 +156,14 @@ msgstr "Shopping"
 msgid "Gassi gehen"
 msgstr "Petsitting"
 
-#: offers/models.py:78 offers/templates/offers/providerprofile.html:38
+#: offers/models.py:78 offers/templates/offers/home.html:78
+#: offers/templates/offers/providerprofile.html:38
 #: offers/templates/offers/search_results.html:59
 msgid "Medikamente abholen"
 msgstr "Fetch medicine"
 
-#: offers/models.py:79 offers/templates/offers/providerprofile.html:39
+#: offers/models.py:79 offers/templates/offers/home.html:79
+#: offers/templates/offers/providerprofile.html:39
 #: offers/templates/offers/search_results.html:60
 msgid "Briefe einwerfen"
 msgstr "Submit mail"
@@ -180,16 +174,12 @@ msgid "Kurierdienste"
 msgstr "Courier services"
 
 #: offers/models.py:81
-#, fuzzy
-#| msgid "Sonstige Hilfestellungen oder Kommentare"
 msgid "Sonstige Hilfestellungen oder Kommentare (öffentlich)"
-msgstr "Other offers for help or comments"
+msgstr "Other offers for help or comments (public)"
 
 #: offers/models.py:84
-#, fuzzy
-#| msgid "Telefonnummer öffentlich anzeigen"
 msgid "Telefonnummer (öffentlich wenn du sie angibst)"
-msgstr "Show phone number publicly"
+msgstr "Phone number (public if you enter it)"
 
 #: offers/models.py:85
 msgid "E-Mail-Adresse öffentlich anzeigen"
@@ -216,14 +206,10 @@ msgid "Gesendete Nachrichten"
 msgstr "Sent messages"
 
 #: offers/templates/offers/base.html:11
-#, fuzzy
-#| msgid "Deutschland steht zusammen. Finde Hilfe in der Corona-Krise"
 msgid "Deutschland steht zusammen - Finde Hilfe in der Corona Krise"
-msgstr "Germany stands united. Find help in the Corona crisis"
+msgstr "Germany stands united - Find help in the Corona crisis"
 
 #: offers/templates/offers/base.html:67
-#, fuzzy
-#| msgid "Deutschland Zusammen"
 msgid "Deutschland zusammen"
 msgstr "Germany United"
 
@@ -257,11 +243,11 @@ msgstr "Offer your help"
 
 #: offers/templates/offers/base.html:113 offers/templates/offers/imprint.html:7
 msgid "Impressum"
-msgstr ""
+msgstr "Imprint"
 
 #: offers/templates/offers/base.html:114
 msgid "Datenschutz"
-msgstr ""
+msgstr "Privacy"
 
 #: offers/templates/offers/base.html:115
 #: offers/templates/offers/safety_information.html:6
@@ -294,19 +280,168 @@ msgstr "Today"
 msgid "Suchen!"
 msgstr "Search!"
 
-#: offers/templates/offers/home.html:226
+#: offers/templates/offers/home.html:48
+msgid "Das ist \"Deutschland Zusammen\":"
+msgstr "This is \"Deutschland Zusammen\":"
+
+#: offers/templates/offers/home.html:58
+msgid ""
+"Mit diesem Portal möchten wir hilfsbereite und hilfesuchende Menschen "
+"zusammenbringen. In Zeiten wie diesen ist es wichtig, dass wir zusammen "
+"stehen."
+msgstr ""
+"We want to bring together people offering help and people looking for "
+"help with this website. In times like these it is important that we stand "
+"together."
+
+#: offers/templates/offers/home.html:64
+msgid ""
+"Wenn du Hilfe benötigst, gib oben deinen Straßennamen und deinen Ort (z.B. "
+"Lessingstraße, Hannover) an, sowie das Datum, an dem du suchst. Wir finden "
+"dann automatisch Menschen in deinem Umkreis, die bereit sind, dir zu helfen."
+msgstr ""
+"If you need help, enter your street and city (e.g. Lessingstraße, Hannover) "
+"as well as the date for which you are searching into the fields above. We "
+"automatically find people in your area who are offering help."
+
+
+#: offers/templates/offers/home.html:71
+msgid ""
+"Für die folgenden Aufgaben haben wir hilfsbereite Menschen gefunden, die "
+"hier ihre Dienste anbieten:"
+msgstr ""
+"We have already found people offering help for the following tasks:"
+
+#: offers/templates/offers/home.html:76
+msgid "Lebensmittel einkaufen"
+msgstr "Grocery shopping"
+
+#: offers/templates/offers/home.html:77
+msgid "Mit deinem Haustier Gassi gehen"
+msgstr "Walking your pet"
+
+#: offers/templates/offers/home.html:80
+msgid "Boten- bzw. Kurierdienste"
+msgstr "Courier services"
+
+#: offers/templates/offers/home.html:83
+msgid "Jetzt nach Hilfe suchen"
+msgstr "Search for help now"
+
+#: offers/templates/offers/home.html:91
+msgid "So funktioniert es:"
+msgstr "This is how it works:"
+
+#: offers/templates/offers/home.html:93
+msgid ""
+"Kannst du dir vorstellen, deinen Nachbarn z.B. beim Einkaufen, beim Abholen "
+"von Medikamenten, beim Gassi gehen, oder was auch immer dir einfällt, zu "
+"helfen? Super!"
+msgstr ""
+"Are you able and willing to help your neighbor with e.g grocery shopping, "
+"walking their pet, getting medicine for them, or any other thing you might "
+"think of? Great!"
+
+#: offers/templates/offers/home.html:100
+msgid ""
+"Du erstellst ein Profil und gibst an, wo du wohnst und welche Hilfe du wann "
+"anbieten kannst. Außerdem einen Umkreis um deinen Wohnort, in dem du "
+"Hilfesuchende erreichen kannst. Keine Angst, deine Adresse wird niemals "
+"öffentlich angezeigt."
+msgstr ""
+"You create a profile and tell us where you live and when and what kind of help "
+"you can offer. You also give us a radius around your location wherein you "
+"can reach people looking for help. Don't worry, your address will never be "
+"shown publicly."
+
+#: offers/templates/offers/home.html:107
+msgid ""
+"Sobald du gefunden wurdest, kann der oder die Hilfesuchende dir eine "
+"Nachricht direkt über deutschlandzusammen.de schreiben. Du erhältst sie per "
+"E-Mail und in deinem Profil. Wir können dir auch eine Push-Nachricht direkt "
+"aufs Handy schicken.<br /><br /> Damit es noch schneller geht, kannst du "
+"auch deine Telefonnummer in dein Profil stellen, aber bedenke dabei, dass "
+"sie dann öffentlich angezeigt wird. Wichtige Hinweise, wie du auf deine "
+"Privatsphäre und Sicherheit achten kannst, haben wir"
+msgstr ""
+"When somebody finds your profile, they can send you a message directly through "
+"deutschlandzusammen.de. You receive it by e-mail and into your profile. We can "
+"also send you a push notification directly to your phone.<br /><br />You can "
+"even put your phone number into your profile so people can reach you even faster, "
+"but remember that it is public then. We have put together some important advice "
+"about how to secure your privacy and safety "
+
+#: offers/templates/offers/home.html:115
+msgid "hier"
+msgstr "here"
+
+#: offers/templates/offers/home.html:116
+msgid "zusammen gestellt."
+msgstr "." # sentence structure different in English
+
+#: offers/templates/offers/home.html:119
+msgid ""
+"Du machst einen Termin aus und hilfst deinem Nachbar oder deiner Nachbarin."
+msgstr ""
+"You agree on a date and time and help your neighbor."
+
+#: offers/templates/offers/home.html:125
+msgid ""
+"Willst du helfen? Dann erstelle gleich deinen Account. Gemeinsam sind wir "
+"stärker als das Virus!"
+msgstr ""
+"Do you want to help? Create your account now. Together we are stronger than "
+"the virus!"
+
+#: offers/templates/offers/home.html:130
+msgid "Jetzt Hilfe anbieten"
+msgstr "Offer help now"
+
+#: offers/templates/offers/home.html:138
+msgid "Achte auf Dich!"
+msgstr "Take care of yourself!"
+
+#: offers/templates/offers/home.html:140
+msgid ""
+"Das Coronavirus kann von Mensch zu Mensch übertragen werden. Wenn du anderen "
+"Menschen helfen möchtest, sei bitte besonders vorsichtig. Achte unbedingt auf"
+msgstr ""
+"The Corona virus can spread from human to human. If you want to help other "
+"people, be extra careful. Especially take care of "
+
+#: offers/templates/offers/home.html:146
+msgid "gute Handhygiene"
+msgstr "good hand hygiene"
+
+#: offers/templates/offers/home.html:150
+msgid "Husten- und Nies-Etikette"
+msgstr "rules for coughing and sneezing"
+
+#: offers/templates/offers/home.html:152
+msgid "sowie"
+msgstr "as well as"
+
+#: offers/templates/offers/home.html:155
+msgid "Abstand zu deinen Mitmenschen"
+msgstr "distance to other people"
+
+#: offers/templates/offers/home.html:158
+msgid "Allgemeine Verhaltenshinweise der Bundesregierung"
+msgstr "General advisory from the government"
+
+#: offers/templates/offers/home.html:247
 msgid "Standortdaten sind nicht verfügbar."
 msgstr "Location data unavailable."
 
-#: offers/templates/offers/home.html:229
+#: offers/templates/offers/home.html:250
 msgid "Die Standortabfrage dauerte zu lange (Time-out)."
 msgstr "Getting your location took too long (timeout)."
 
-#: offers/templates/offers/home.html:232
+#: offers/templates/offers/home.html:253
 msgid "Unbekannter Fehler."
 msgstr "Unknown error."
 
-#: offers/templates/offers/home.html:238
+#: offers/templates/offers/home.html:259
 msgid "Ihr Browser unterstützt keine Ortung."
 msgstr "Your browser is not capable of locating you."
 
@@ -389,10 +524,8 @@ msgid "Los geht's!"
 msgstr "Let's go!"
 
 #: offers/templates/offers/overview_map.html:8
-#, fuzzy
-#| msgid "Angebote"
 msgid "Angebotsübersicht"
-msgstr "Offers"
+msgstr "Overview map of offers"
 
 #: offers/templates/offers/overview_map.html:11
 msgid ""
@@ -401,10 +534,13 @@ msgid ""
 "schützen. Nutze unsere Suche auf der Startseite, um in deiner Gegend Hilfe "
 "zu finden."
 msgstr ""
+"Here you can see where help is already offered. The locations of people "
+"offering help have been changed slightly to keep them private. Use our "
+"search on the home page to find help in your area."
 
 #: offers/templates/offers/privacy.html:6
 msgid "Datenschutzerklärung"
-msgstr ""
+msgstr "Privacy declaration"
 
 #: offers/templates/offers/providerprofile.html:11
 msgid ""
@@ -492,7 +628,7 @@ msgstr "Edit your times"
 #: offers/templates/registration/password_change_form.html:7
 #: offers/templates/registration/password_reset_confirm.html:12
 msgid "Passwort ändern"
-msgstr ""
+msgstr "Change password"
 
 #: offers/templates/offers/providerprofile.html:80
 msgid "Profil löschen"
@@ -518,6 +654,9 @@ msgid ""
 "wenn du dich mit der anderen Person triffst - wie bei allen Diensten im "
 "Internet."
 msgstr ""
+"Deutschlandzusammen.de is a website which brings people together. You can't "
+"know if your conversation partner is the one they claim to be until you meet "
+"them - just like with any other internet service."
 
 #: offers/templates/offers/safety_information.html:16
 msgid ""
@@ -527,6 +666,10 @@ msgid ""
 "Nachrichten aus, am besten über die Nachrichtenfunktion von "
 "deutschlandzusammen.de."
 msgstr ""
+"Keep your private address safe when offering help. You tell us your address "
+"when creating your profile, but it is only used for the radius-based search "
+"and never shown publicly. Exchange addresses only via private messages, "
+"ideally using the integrated messages on deutschlandzusammen.de."
 
 #: offers/templates/offers/safety_information.html:23
 msgid ""
@@ -536,6 +679,10 @@ msgid ""
 "bewusst, und nutze im Zweifel lieber die integrierte Nachrichtenfunktion von "
 "deutschlandzusammen.de."
 msgstr ""
+"If you make your phone number or e-mail address public through your profile, "
+"people looking for help can find you a lot faster. But keep in mind that "
+"your data is published on the internet then. When in doubt, better use the "
+"integrated messages on deutschlandzusammen.de."
 
 #: offers/templates/offers/search_results.html:11
 msgid "Deine Hilfe ist fast organisiert!"
@@ -552,11 +699,11 @@ msgstr ""
 #: offers/templates/offers/search_results.html:19
 #: offers/templates/offers/search_results.html:94
 msgid "Filtere die Ergebnisse:"
-msgstr ""
+msgstr "Filter the results:"
 
 #: offers/templates/offers/search_results.html:39
 msgid "Anonym"
-msgstr ""
+msgstr "Anonymous person"
 
 #: offers/templates/offers/search_results.html:56
 msgid "bietet an:"
@@ -594,6 +741,9 @@ msgid ""
 "Bekannten von dieser Plattform erzählst und die sie in den sozialen Netzen "
 "teilst!"
 msgstr ""
+"We just launched this website, therefore there isn't help available "
+"everywhere yet. You can help us a lot by sharing this platform with your "
+"friends and posting about it in social media!"
 
 #: offers/templates/offers/search_results.html:109
 msgid ""
@@ -648,50 +798,48 @@ msgstr "Login"
 
 #: offers/templates/registration/login.html:15
 msgid "Passwort vergessen?"
-msgstr ""
+msgstr "Forgot your password?"
 
 #: offers/templates/registration/password_change_form.html:12
 msgid "Ändern!"
-msgstr ""
+msgstr "Change!"
 
 #: offers/templates/registration/password_reset_complete.html:7
 msgid "Passwort zurückgesetzt"
-msgstr ""
+msgstr "Password has been reset"
 
 #: offers/templates/registration/password_reset_complete.html:8
 msgid "Du kannst dich jetzt mit dem neuen Passwort einloggen."
-msgstr ""
+msgstr "You can now log in with the new password."
 
 #: offers/templates/registration/password_reset_confirm.html:8
 msgid "Neues Passwort setzen"
-msgstr ""
+msgstr "Set a new password"
 
 #: offers/templates/registration/password_reset_confirm.html:16
 msgid ""
 "Der Passwort-Zurücksetzen-Link war ungültig, möglicherweise wurde er schon "
 "benutzt. Setze dein Passwort bitte erneut zurück."
 msgstr ""
+"This password reset link is invalid, maybe it has been used already. Please "
+"reset your password again."
 
 #: offers/templates/registration/password_reset_done.html:7
-#, fuzzy
-#| msgid "Wir haben dir die Aktivierungs-Mail erneut gesendet!"
 msgid "Wir haben dir eine E-Mail geschickt."
-msgstr "We have sent you the activation mail again!"
+msgstr "We have sent you an e-mail."
 
 #: offers/templates/registration/password_reset_done.html:8
 msgid ""
 "Klicke bitte auf den Link in der E-Mail, um dein Passwort zurückzusetzen."
-msgstr ""
+msgstr "Please click on the link in the e-mail to reset your password."
 
 #: offers/templates/registration/password_reset_form.html:7
 msgid "Passwort zurücksetzen"
-msgstr ""
+msgstr "Reset password"
 
 #: offers/templates/registration/password_reset_form.html:12
-#, fuzzy
-#| msgid "E-Mail erneut senden"
 msgid "E-Mail mit Anweisungen senden"
-msgstr "Send the e-mail again"
+msgstr "Send e-mail with instructions"
 
 #: offers/templates/registration/registration.html:7
 msgid "Schritt 1: Erstelle jetzt deinen Account"
@@ -716,84 +864,3 @@ msgstr "Your account has been activated!"
 #: offers/views.py:78
 msgid "Wir haben dir die Aktivierungs-Mail erneut gesendet!"
 msgstr "We have sent you the activation mail again!"
-
-#~ msgid "Dein Geschlecht (optional)"
-#~ msgstr "Your gender (optional)"
-
-#~ msgid "Captcha"
-#~ msgstr "Captcha"
-
-#~ msgid "Vorname"
-#~ msgstr "First name"
-
-#~ msgid "Nachname"
-#~ msgstr "Last name"
-
-#~ msgid "Männlich"
-#~ msgstr "Male"
-
-#~ msgid "Weiblich"
-#~ msgstr "Female"
-
-#~ msgid "Andere"
-#~ msgstr "Other"
-
-#~ msgid "Keine Angabe"
-#~ msgstr "Prefer not to say"
-
-#~ msgid "Vor- und Nachname öffentlich"
-#~ msgstr "First and last name public"
-
-#~ msgid "Weder Vor- noch Nachname öffentlich"
-#~ msgstr "Neither first nor last name public"
-
-#~ msgid "Adresse (Straße, Stadt. Nicht öffentlich)"
-#~ msgstr "Address (Street, city. Not public)"
-
-#~ msgid "Telefonnummer"
-#~ msgstr "Phone number"
-
-#~ msgid "Geschlecht"
-#~ msgstr "Gender"
-
-#~ msgid "Geschlecht öffentlich anzeigen"
-#~ msgstr "Show gender publicly"
-
-#~ msgid "Öffentlichkeit deines Namens"
-#~ msgstr "Public visiblity of your name"
-
-#~ msgid "Zusätzliche Angaben zu dir"
-#~ msgstr "Additional information"
-
-#~ msgid "Geschlecht:"
-#~ msgstr "Gender:"
-
-#~ msgid "Hilfsangebote während der Corona-Krise"
-#~ msgstr "Offers for help during the Corona crisis"
-
-#~ msgid "Nicht-offizieller Prototyp, nicht vom BMG angeboten!"
-#~ msgstr "Unofficial prototype. Not affiliated with BMG."
-
-#~ msgid "Bundesministerium für Gesundheit"
-#~ msgstr "Federal Ministry of Health"
-
-#~ msgid ""
-#~ "Mit diesem Portal möchten wir helfenden und hilfesuchende Menschen die "
-#~ "Möglichkeit geben einander zu finden. In Zeiten wie diesen ist es "
-#~ "besonders wichtig, dass wir alle ein Stück zusammenrücken, um uns "
-#~ "gegenseitig zu helfen. Wenn du Hilfe benötigst, gib oben einfach deinen "
-#~ "Straßennamen und deinen Ort (z.B. \"Musterstraße Beispielstadt\") an, "
-#~ "sowie das Datum an dem du suchst. Sofern du in der Lage bist, anderen "
-#~ "Menschen deine Hilfe anzubieten,"
-#~ msgstr ""
-#~ "With this portal, we try to help people who are offering and looking for "
-#~ "help to meet. In times like these it is even more important that we all "
-#~ "work together to help ourselves as best as we can. If you need help, "
-#~ "enter your street and city into the field above and fill out the date on "
-#~ "which you are searching. If you are able to offer your help,"
-
-#~ msgid "erstelle dir hier einen Account"
-#~ msgstr "create an account here"
-
-#~ msgid "Nach Hilfe suchen"
-#~ msgstr "Search for help"
