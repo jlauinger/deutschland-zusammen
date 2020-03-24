@@ -24,7 +24,7 @@ msgstr "Offers"
 
 #: offers/forms.py:12
 msgid "Wo? (Straße und Ort)"
-msgstr "Where? (Street and city)"
+msgstr "Where? (Street and Town)"
 
 #: offers/forms.py:14
 msgid "Wann?"
@@ -40,7 +40,7 @@ msgstr "Your name"
 
 #: offers/forms.py:23
 msgid "Deine E-Mail-Adresse"
-msgstr "Your e-mail address"
+msgstr "Your email address"
 
 #: offers/forms.py:24
 msgid "Deine Telefonnummer (optional)"
@@ -56,7 +56,7 @@ msgstr "Name (public)"
 
 #: offers/forms.py:35
 msgid "E-Mail-Adresse"
-msgstr "E-mail address"
+msgstr "Email"
 
 #: offers/forms.py:36 offers/models.py:71
 msgid "Straße (nicht öffentlich)"
@@ -64,7 +64,7 @@ msgstr "Street (not public)"
 
 #: offers/forms.py:37 offers/models.py:72
 msgid "Stadt (nicht öffentlich)"
-msgstr "City (not public)"
+msgstr "Town (not public)"
 
 #: offers/mail_templates.py:4
 #, python-brace-format
@@ -97,7 +97,7 @@ msgstr ""
 "\n"
 "Details about the person looking for help:\n"
 "Name: {sender_name}\n"
-"E-Mail: {sender_email}\n"
+"Email: {sender_email}\n"
 "Phone: {sender_phone}\n"
 "\n"
 "Message:\n"
@@ -135,7 +135,7 @@ msgstr ""
 "\n"
 "Hello {name}!\n"
 "\n"
-"Please confirm your e-mail address and activate your account at {domain}. To "
+"Please confirm your email and activate your account at {domain}. To "
 "do this, simply click on the following\n"
 "link or copy the address into the address bar of your web browser:\n"
 "\n"
@@ -188,11 +188,11 @@ msgstr "Provider profiles"
 
 #: offers/models.py:53
 msgid "keine Angabe"
-msgstr "Prefer not to say"
+msgstr "No specification"
 
 #: offers/models.py:54
 msgid "zu Fuß / ÖPNV"
-msgstr "Walking or public transport"
+msgstr "Afoot / public transportation"
 
 #: offers/models.py:55
 msgid "Fahrrad"
@@ -200,7 +200,7 @@ msgstr "Bike"
 
 #: offers/models.py:56
 msgid "Motorroller"
-msgstr "Motorbike"
+msgstr "Scooter"
 
 #: offers/models.py:57
 msgid "Auto"
@@ -220,31 +220,31 @@ msgstr "Activated"
 
 #: offers/models.py:70
 msgid "Umkreis (nicht öffentlich)"
-msgstr "Offer radius (not public)"
+msgstr "Within a distance of (not public)"
 
 #: offers/models.py:75
 msgid "Fortbewegungsmittel (öffentlich)"
-msgstr "Mobility (public)"
+msgstr "Means of transportation (public)"
 
 #: offers/models.py:76 offers/templates/offers/providerprofile.html:36
 #: offers/templates/offers/search_results.html:57
 msgid "Einkaufen"
-msgstr "Shopping"
+msgstr "Grocery shopping"
 
 #: offers/models.py:77 offers/templates/offers/providerprofile.html:37
 #: offers/templates/offers/search_results.html:58
 msgid "Gassi gehen"
-msgstr "Petsitting"
+msgstr "Walking a pet"
 
 #: offers/models.py:78 offers/templates/offers/providerprofile.html:38
 #: offers/templates/offers/search_results.html:59
 msgid "Medikamente abholen"
-msgstr "Fetch medicine"
+msgstr "Picking up medicine"
 
 #: offers/models.py:79 offers/templates/offers/providerprofile.html:39
 #: offers/templates/offers/search_results.html:60
 msgid "Briefe einwerfen"
-msgstr "Submit mail"
+msgstr "Dropping off letters"
 
 #: offers/models.py:80 offers/templates/offers/providerprofile.html:40
 #: offers/templates/offers/search_results.html:61
@@ -261,7 +261,7 @@ msgstr "Phone number (public if you enter it)"
 
 #: offers/models.py:85
 msgid "E-Mail-Adresse öffentlich anzeigen"
-msgstr "Show e-mail address publicly"
+msgstr "Show email publicly on website"
 
 #: offers/models.py:124
 msgid "Hilfsangebot"
@@ -436,7 +436,7 @@ msgstr "You didn't receive any messages yet."
 #: offers/templates/offers/offers_list.html:8
 #: offers/templates/offers/providerprofile.html:59
 msgid "Zu diesen Zeiten kannst du Hilfe anbieten"
-msgstr "You are offering help at these times"
+msgstr "Your availability"
 
 #: offers/templates/offers/offers_list.html:10
 msgid "Schritt 3: Wann kannst du Hilfe anbieten?"
@@ -492,11 +492,11 @@ msgid ""
 "öffentlich sichtbar."
 msgstr ""
 "Your account has not yet been activated. Until you click the activation link "
-"that we sent you by e-mail, your offers can not be found publicly."
+"that we sent you by email, your offers can not be found publicly."
 
 #: offers/templates/offers/providerprofile.html:15
 msgid "E-Mail erneut senden"
-msgstr "Send the e-mail again"
+msgstr "Send the email again"
 
 #: offers/templates/offers/providerprofile.html:27
 msgid "Dein Standort"
@@ -504,12 +504,12 @@ msgstr "Your location"
 
 #: offers/templates/offers/providerprofile.html:30
 msgid "Umkreis"
-msgstr "Perimeter radius"
+msgstr "Within a distance of"
 
 #: offers/templates/offers/providerprofile.html:31
 #: offers/templates/offers/search_results.html:51
 msgid "Fortbewegungsmittel:"
-msgstr "Mobility:"
+msgstr "Means of transportation:"
 
 #: offers/templates/offers/providerprofile.html:34
 msgid "Dein Angebot"
@@ -529,7 +529,7 @@ msgstr "Phone number:"
 
 #: offers/templates/offers/providerprofile.html:47
 msgid "E-Mail-Adresse:"
-msgstr "E-mail address:"
+msgstr "Email:"
 
 #: offers/templates/offers/providerprofile.html:47
 msgid "öffentlich"
@@ -584,7 +584,7 @@ msgstr "Disable push notifications"
 
 #: offers/templates/offers/providerprofile_form.html:10
 msgid "Schritt 2: Verrate uns noch ein paar Details über dich"
-msgstr "Step 2: Tell us some more details about you"
+msgstr "Step 2: Please add the following information about you"
 
 #: offers/templates/offers/providerprofile_form.html:17
 msgid "Speichern!"
@@ -599,8 +599,8 @@ msgid ""
 "Die folgenden Menschen in deiner Nähe sind bereit, dir zu helfen! Du musst "
 "nur noch anrufen oder eine Nachricht schreiben."
 msgstr ""
-"The following people in your area offer to help you! You only need to call "
-"them or write a message."
+"The following people in your area are happy to help you! You only need to contact "
+"them via phone or message."
 
 #: offers/templates/offers/search_results.html:19
 #: offers/templates/offers/search_results.html:94
@@ -621,7 +621,7 @@ msgstr "Phone:"
 
 #: offers/templates/offers/search_results.html:69
 msgid "E-Mail:"
-msgstr "E-mail:"
+msgstr "Email:"
 
 #: offers/templates/offers/search_results.html:72
 msgid "Direkt eine Nachricht schreiben"
@@ -636,8 +636,8 @@ msgid ""
 "Leider wurden keine Angebote gefunden. Entferne vielleicht die Filter oder "
 "versuche später eine neue Suche."
 msgstr ""
-"Unfortunately we were unable to find any offers. Try removing some filters "
-"or try to search again later."
+"Unfortunately there isn't anyone able to help close by. Please try again "
+"later."
 
 #: offers/templates/offers/search_results.html:87
 #: offers/templates/offers/search_results.html:115
@@ -658,7 +658,7 @@ msgid ""
 "der Standort passt."
 msgstr ""
 "Unfortunately we were unable to find any offers in your area. Did you "
-"enterboth street and city? Have a look at the map on the right and check "
+"enter both street and town? Have a look at the map on the right and check "
 "whetherthe location is correct."
 
 #: offers/templates/offers/search_results.html:125
@@ -732,12 +732,12 @@ msgstr ""
 
 #: offers/templates/registration/password_reset_done.html:7
 msgid "Wir haben dir eine E-Mail geschickt."
-msgstr "We have sent you an e-mail."
+msgstr "We have sent you an email."
 
 #: offers/templates/registration/password_reset_done.html:8
 msgid ""
 "Klicke bitte auf den Link in der E-Mail, um dein Passwort zurückzusetzen."
-msgstr "Please click on the link in the e-mail to reset your password."
+msgstr "Please click on the link in the email to reset your password."
 
 #: offers/templates/registration/password_reset_form.html:7
 msgid "Passwort zurücksetzen"
@@ -745,7 +745,7 @@ msgstr "Reset password"
 
 #: offers/templates/registration/password_reset_form.html:12
 msgid "E-Mail mit Anweisungen senden"
-msgstr "Send e-mail with instructions"
+msgstr "Send email with instructions"
 
 #: offers/templates/registration/registration.html:7
 msgid "Schritt 1: Erstelle jetzt deinen Account"
