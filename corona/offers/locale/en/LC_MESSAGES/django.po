@@ -213,7 +213,7 @@ msgstr "Website contents"
 
 #: offers/models.py:198
 msgid "Startseite"
-msgstr "Back to the search"
+msgstr "Homepage"
 
 #: offers/models.py:199 offers/templates/offers/base.html:115
 #: offers/templates/offers/safety_information.html:7
