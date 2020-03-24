@@ -1,4 +1,8 @@
 from django import template
+from django.utils.safestring import mark_safe
+from django.utils.translation import get_language
+
+from offers.models import Website
 
 register = template.Library()
 
@@ -23,3 +27,9 @@ def get_zoom(radius):
         return 9
     else:
         return 13
+
+
+@register.simple_tag
+def cms_page(name):
+    website = Website.objects.filter(name=name, language=get_language()).first()
+    return mark_safe(website.content) if website else ""

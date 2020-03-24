@@ -2,6 +2,7 @@
 {% load bootstrap4 %}
 {% load static %}
 {% load i18n %}
+{% load template_tags %}
 
 {% block footerpadding %}{% endblock %}
 
@@ -43,150 +44,7 @@
         </div>
     </div>
 
-    <div class="content-below-fold">
-        <div class="container centering">
-            <h2>{% trans 'Das ist "Deutschland Zusammen":' %}</h2>
-
-            <div class="padding-top-1"></div>
-            <iframe style="max-width: 100%" width="853" height="480" src="https://www.youtube.com/embed/v16WknaMZwk"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            </iframe>
-
-            <div class="padding-top-1"></div>
-            <p class="text">
-                {% blocktrans trimmed %}
-                    Mit diesem Portal möchten wir hilfsbereite und hilfesuchende Menschen zusammenbringen. In Zeiten wie
-                    diesen ist es wichtig, dass wir zusammen stehen.
-                {% endblocktrans %}
-            </p>
-            <p class="text">
-                {% blocktrans trimmed %}
-                    Wenn du Hilfe benötigst, gib oben deinen Straßennamen und deinen Ort (z.B. Lessingstraße, Hannover) an,
-                    sowie das Datum, an dem du suchst. Wir finden dann automatisch Menschen in deinem Umkreis, die bereit
-                    sind, dir zu helfen.
-                {% endblocktrans %}
-            </p>
-            <p class="text">
-                {% blocktrans trimmed %}
-                    Für die folgenden Aufgaben haben wir hilfsbereite Menschen gefunden, die hier ihre Dienste anbieten:
-                {% endblocktrans %}
-            </p>
-            <ul class="tasks">
-                <li>{% trans 'Lebensmittel einkaufen' %}</li>
-                <li>{% trans 'Mit deinem Haustier Gassi gehen' %}</li>
-                <li>{% trans 'Medikamente abholen' %}</li>
-                <li>{% trans 'Briefe einwerfen' %}</li>
-                <li>{% trans 'Boten- bzw. Kurierdienste' %}</li>
-            </ul>
-            <p>
-                <a href="#" class="btn btn-primary btn-lg">{% trans 'Jetzt nach Hilfe suchen' %}</a>
-            </p>
-        </div>
-
-        <div class="separator"></div>
-
-        <div class="container centering">
-            <div class="padding-top-1"></div>
-            <h2>{% trans 'So funktioniert es:' %}</h2>
-            <p class="text">
-                {% blocktrans trimmed %}
-                    Kannst du dir vorstellen, deinen Nachbarn z.B. beim Einkaufen, beim Abholen von Medikamenten, beim
-                    Gassi gehen, oder was auch immer dir einfällt, zu helfen? Super!
-                {% endblocktrans %}
-            </p>
-            <ol class="how-it-works">
-                <li>
-                    {% blocktrans trimmed %}
-                        Du erstellst ein Profil und gibst an, wo du wohnst und welche Hilfe du wann anbieten kannst.
-                        Außerdem einen Umkreis um deinen Wohnort, in dem du Hilfesuchende erreichen kannst. Keine Angst,
-                        deine Adresse wird niemals öffentlich angezeigt.
-                    {% endblocktrans %}
-                </li>
-                <li>
-                    {% blocktrans trimmed %}
-                        Sobald du gefunden wurdest, kann der oder die Hilfesuchende dir eine Nachricht direkt über
-                        deutschlandzusammen.de schreiben. Du erhältst sie per E-Mail und in deinem Profil. Wir können dir
-                        auch eine Push-Nachricht direkt aufs Handy schicken.<br /><br />
-                        Damit es noch schneller geht, kannst du auch deine Telefonnummer in dein Profil stellen, aber
-                        bedenke dabei, dass sie dann öffentlich angezeigt wird. Wichtige Hinweise, wie du auf deine
-                        Privatsphäre und Sicherheit achten kannst, haben wir
-                    {% endblocktrans %}
-                    <a href="{% url 'safety_information' %}" class="text-link">{% trans 'hier' %}</a>
-                    {% trans 'zusammen gestellt.' %}
-                </li>
-                <li>
-                    {% blocktrans trimmed %}
-                        Du machst einen Termin aus und hilfst deinem Nachbar oder deiner Nachbarin.
-                    {% endblocktrans %}
-                </li>
-            </ol>
-            <p class="text">
-                {% blocktrans trimmed %}
-                    Willst du helfen? Dann erstelle gleich deinen Account. Gemeinsam sind wir stärker als das Virus!
-                {% endblocktrans %}
-            </p>
-            <p>
-                <a href="{% url 'register' %}" class="btn btn-primary btn-lg">{% trans 'Jetzt Hilfe anbieten' %}</a>
-            </p>
-        </div>
-
-        <div class="separator"></div>
-
-        <div class="container centering">
-            <div class="padding-top-1"></div>
-            <h2>{% trans 'Achte auf Dich!' %}</h2>
-            <p class="text">
-                {% blocktrans trimmed %}
-                    Das Coronavirus kann von Mensch zu Mensch übertragen werden. Wenn du anderen Menschen helfen möchtest,
-                    sei bitte besonders vorsichtig. Achte unbedingt auf
-                {% endblocktrans %}
-                <a href="https://www.infektionsschutz.de/haendewaschen/" target="_blank" rel="" class="text-link"
-                   title="Internetseite der Bundeszentrale für gesundheitliche Aufklärung">
-                    {% trans 'gute Handhygiene' %}
-                </a>,
-                <a href="https://www.infektionsschutz.de/hygienetipps/hygiene-beim-husten-und-niesen/" target="_blank"
-                   class="text-link" title="Internetseite der Bundeszentrale für gesundheitliche Aufklärung">
-                    {% trans 'Husten- und Nies-Etikette' %}
-                </a>
-                {% trans 'sowie' %}
-                <a href="https://www.infektionsschutz.de/hygienetipps/barrieremassnahmen/" class="text-link"
-                   target="_blank" title="Internetseite der Bundeszentrale für gesundheitliche Aufklärung">
-                    {% trans 'Abstand zu deinen Mitmenschen' %}
-                </a>.<br /><br />
-                <a href="https://www.infektionsschutz.de/coronavirus/verhalten.html" target="_blank" class="text-link">
-                    {% trans 'Allgemeine Verhaltenshinweise der Bundesregierung' %}
-                </a>
-            </p>
-        </div>
-    </div>
-
-    <div class="bg-primary">
-        <div class="container centering social-media-links">
-            <div class="social-media-link">
-                <a href="https://www.instagram.com/deutschlandzusammen/" target="_blank">
-                    <i class="fab fa-instagram"></i><br />
-                    @deutschlandzusammen
-                </a>
-            </div>
-            <div class="social-media-link">
-                <a href="https://www.twitter.com/deutschlandzus" target="_blank">
-                    <i class="fab fa-twitter"></i><br />
-                    @deutschlandzus
-                </a>
-            </div>
-            <div class="social-media-link">
-                <a href="https://www.facebook.com/deutschlandzus/" target="_blank">
-                    <i class="fab fa-facebook"></i><br />
-                    Deutschland Zusammen
-                </a>
-            </div>
-        </div>
-        <div class="container centering hashtag">
-            <div>#DeutschlandZusammen</div><br />
-            <a href="mailto:hallo@deutschlandzusammen.de" class="text-link">hallo@deutschlandzusammen.de</a>
-        </div>
-    </div>
+    {% cms_page 'HOME' %}
 
     <script>
         $(function () {

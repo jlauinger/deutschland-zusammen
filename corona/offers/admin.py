@@ -1,6 +1,6 @@
 from django.contrib.gis import admin
 
-from offers.models import Offer, ProviderProfile, Message
+from offers.models import Offer, ProviderProfile, Message, Website
 
 
 @admin.register(Offer)
@@ -16,3 +16,8 @@ class ProviderProfileAdmin(admin.OSMGeoAdmin):
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
     list_display = ('recipient', 'sender_name', 'sender_email', 'sender_phone', 'date')
+
+
+@admin.register(Website)
+class WebsiteAdmin(admin.ModelAdmin):
+    list_display = ('name', 'language')

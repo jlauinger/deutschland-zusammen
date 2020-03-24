@@ -179,3 +179,28 @@ class Message(ExportModelOperationsMixin('message'), models.Model):
         }
 
         send_user_notification(user=self.recipient, payload=payload, ttl=1000)
+
+
+class Website(models.Model):
+    """
+    A website is a small-CMS-style website content.
+
+    It is used by template pages and referenced by a name.
+    We use it to provide different content on e.g. the homepage for different deployments of the app.
+    """
+
+    class Meta:
+        verbose_name = _('Webseiten-Inhalt')
+        verbose_name_plural = _('Webseiten-Inhalte')
+        unique_together = ['name', 'language']
+
+    SITE_NAMES = (
+        ('HOME', _('Startseite')),
+        ('SAFETY', _('Sicherheits-Informationen')),
+        ('IMPRINT', _('Impressum')),
+        ('PRIVACY', _('Datenschutz')),
+    )
+
+    name = models.CharField(choices=SITE_NAMES, max_length=100)
+    language = models.CharField(choices=settings.LANGUAGES, max_length=100)
+    content = models.TextField(blank=True)
