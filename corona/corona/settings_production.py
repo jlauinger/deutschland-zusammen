@@ -13,8 +13,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['deutschlandzusammen.de', 'www.deutschlandzusammen.de']
 
-HOST_NAME = 'https://www.deutschlandzusammen.de'
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
@@ -50,3 +48,7 @@ PROMETHEUS_PATH_SECRET = secrets.PROMETHEUS_PATH_SECRET
 
 RECAPTCHA_PUBLIC_KEY = secrets.RECAPTCHA_PUBLIC_KEY
 RECAPTCHA_PRIVATE_KEY = secrets.RECAPTCHA_PRIVATE_KEY
+
+HOST_NAME = 'https://www.deutschlandzusammen.de'
+DOMAIN_TEXT = 'deutschlandzusammen.de'
+LOGO = '/static/offers/images/logo_deutschlandzusammen.png'
