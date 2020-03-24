@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-24 17:40+0000\n"
+"POT-Creation-Date: 2020-03-24 17:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,15 +205,13 @@ msgstr "Sent messages"
 
 #: offers/models.py:193
 msgid "Webseiten-Inhalt"
-msgstr ""
+msgstr "Website content"
 
 #: offers/models.py:194
 msgid "Webseiten-Inhalte"
-msgstr ""
+msgstr "Website contents"
 
 #: offers/models.py:198
-#, fuzzy
-#| msgid "Zur Startseite"
 msgid "Startseite"
 msgstr "Back to the search"
 
@@ -232,16 +230,12 @@ msgid "Datenschutz"
 msgstr "Privacy"
 
 #: offers/templates/offers/base.html:11
-#, fuzzy
-#| msgid "Deutschland steht zusammen - Finde Hilfe in der Corona Krise"
 msgid "Wir stehen zusammen - Finde Hilfe in der Corona Krise"
-msgstr "Germany stands united - Find help in the Corona crisis"
+msgstr "We stand united - Find help in the Corona crisis"
 
 #: offers/templates/offers/base.html:67
-#, fuzzy
-#| msgid "Deutschland zusammen"
 msgid "Wir stehen zusammen"
-msgstr "Germany United"
+msgstr "We stand united"
 
 #: offers/templates/offers/base.html:75
 msgid "Abmelden"
@@ -280,10 +274,8 @@ msgid "Sprache ändern"
 msgstr "Switch language"
 
 #: offers/templates/offers/home.html:14
-#, fuzzy
-#| msgid "Deutschland steht zusammen. Finde Hilfe in der Corona-Krise"
 msgid "Wir stehen zusammen. Finde Hilfe in der Corona-Krise"
-msgstr "Germany stands united. Find help in the Corona crisis"
+msgstr "We stand united. Find help in the Corona crisis"
 
 #: offers/templates/offers/home.html:22 offers/templates/offers/home.html:23
 msgid "Versuche mich zu orten"
@@ -328,18 +320,13 @@ msgid "Fehler beim Versenden der Nachricht!"
 msgstr "Error sending the message!"
 
 #: offers/templates/offers/message_error.html:9
-#, fuzzy, python-format
-#| msgid ""
-#| "Tut uns Leid, deine Nachricht konnte leider nicht versendet werden. "
-#| "Versuche es doch gleich nochmal, oder kontaktiere uns unter support (at) "
-#| "deutschlandzusammen (punkt) de."
 msgid ""
 "Tut uns Leid, deine Nachricht konnte leider nicht versendet werden. Versuche "
 "es doch gleich nochmal, oder kontaktiere uns unter support (at) "
 "%(domain_text)s."
 msgstr ""
 "Sorry, your message could not be sent. Please try again in a few minutes, or "
-"contact us at support (at) deutschlandzusammen (punkt) de."
+"contact us at support (at) %(domain_text)s de."
 
 #: offers/templates/offers/message_sent.html:6
 msgid "Nachricht gesendet!"
@@ -472,11 +459,6 @@ msgid "Direktnachrichten:"
 msgstr "Direct messages:"
 
 #: offers/templates/offers/providerprofile.html:49
-#, fuzzy
-#| msgid ""
-#| "Über deutschlandzusammen.de können Suchende dir eine Nachricht senden. Du "
-#| "siehst sie dann auf der Nachrichten-Seite. Wir können die Nachrichten "
-#| "auch direkt als Push-Nachricht zu dir senden!"
 msgid ""
 "Suchende können dir direkt über dieses Portal eine Nachricht senden. Du "
 "siehst sie dann auf der Nachrichten-Seite. Wir können die Nachrichten auch "
@@ -707,165 +689,3 @@ msgstr "Your account has been activated!"
 #: offers/views.py:78
 msgid "Wir haben dir die Aktivierungs-Mail erneut gesendet!"
 msgstr "We have sent you the activation mail again!"
-
-#~ msgid "Das ist \"Deutschland Zusammen\":"
-#~ msgstr "This is \"Deutschland Zusammen\":"
-
-#~ msgid ""
-#~ "Mit diesem Portal möchten wir hilfsbereite und hilfesuchende Menschen "
-#~ "zusammenbringen. In Zeiten wie diesen ist es wichtig, dass wir zusammen "
-#~ "stehen."
-#~ msgstr ""
-#~ "We want to bring together people offering help and people looking for "
-#~ "help with this website. In times like these it is important that we stand "
-#~ "together."
-
-#~ msgid ""
-#~ "Wenn du Hilfe benötigst, gib oben deinen Straßennamen und deinen Ort (z."
-#~ "B. Lessingstraße, Hannover) an, sowie das Datum, an dem du suchst. Wir "
-#~ "finden dann automatisch Menschen in deinem Umkreis, die bereit sind, dir "
-#~ "zu helfen."
-#~ msgstr ""
-#~ "If you need help, enter your street and city (e.g. Lessingstraße, "
-#~ "Hannover) as well as the date for which you are searching into the fields "
-#~ "above. We automatically find people in your area who are offering help."
-
-#~ msgid ""
-#~ "Für die folgenden Aufgaben haben wir hilfsbereite Menschen gefunden, die "
-#~ "hier ihre Dienste anbieten:"
-#~ msgstr "We have already found people offering help for the following tasks:"
-
-#~ msgid "Lebensmittel einkaufen"
-#~ msgstr "Grocery shopping"
-
-#~ msgid "Mit deinem Haustier Gassi gehen"
-#~ msgstr "Walking your pet"
-
-#~ msgid "Boten- bzw. Kurierdienste"
-#~ msgstr "Courier services"
-
-#~ msgid "Jetzt nach Hilfe suchen"
-#~ msgstr "Search for help now"
-
-#~ msgid "So funktioniert es:"
-#~ msgstr "This is how it works:"
-
-#~ msgid ""
-#~ "Kannst du dir vorstellen, deinen Nachbarn z.B. beim Einkaufen, beim "
-#~ "Abholen von Medikamenten, beim Gassi gehen, oder was auch immer dir "
-#~ "einfällt, zu helfen? Super!"
-#~ msgstr ""
-#~ "Are you able and willing to help your neighbor with e.g grocery shopping, "
-#~ "walking their pet, getting medicine for them, or any other thing you "
-#~ "might think of? Great!"
-
-#~ msgid ""
-#~ "Du erstellst ein Profil und gibst an, wo du wohnst und welche Hilfe du "
-#~ "wann anbieten kannst. Außerdem einen Umkreis um deinen Wohnort, in dem du "
-#~ "Hilfesuchende erreichen kannst. Keine Angst, deine Adresse wird niemals "
-#~ "öffentlich angezeigt."
-#~ msgstr ""
-#~ "You create a profile and tell us where you live and when and what kind of "
-#~ "help you can offer. You also give us a radius around your location "
-#~ "wherein you can reach people looking for help. Don't worry, your address "
-#~ "will never be shown publicly."
-
-#~ msgid ""
-#~ "Sobald du gefunden wurdest, kann der oder die Hilfesuchende dir eine "
-#~ "Nachricht direkt über deutschlandzusammen.de schreiben. Du erhältst sie "
-#~ "per E-Mail und in deinem Profil. Wir können dir auch eine Push-Nachricht "
-#~ "direkt aufs Handy schicken.<br /><br /> Damit es noch schneller geht, "
-#~ "kannst du auch deine Telefonnummer in dein Profil stellen, aber bedenke "
-#~ "dabei, dass sie dann öffentlich angezeigt wird. Wichtige Hinweise, wie du "
-#~ "auf deine Privatsphäre und Sicherheit achten kannst, haben wir"
-#~ msgstr ""
-#~ "When somebody finds your profile, they can send you a message directly "
-#~ "through deutschlandzusammen.de. You receive it by e-mail and into your "
-#~ "profile. We can also send you a push notification directly to your phone."
-#~ "<br /><br />You can even put your phone number into your profile so "
-#~ "people can reach you even faster, but remember that it is public then. We "
-#~ "have put together some important advice about how to secure your privacy "
-#~ "and safety "
-
-#~ msgid "hier"
-#~ msgstr "here"
-
-#~ msgid "zusammen gestellt."
-#~ msgstr "."
-
-# sentence structure different in English
-#~ msgid ""
-#~ "Du machst einen Termin aus und hilfst deinem Nachbar oder deiner "
-#~ "Nachbarin."
-#~ msgstr "You agree on a date and time and help your neighbor."
-
-#~ msgid ""
-#~ "Willst du helfen? Dann erstelle gleich deinen Account. Gemeinsam sind wir "
-#~ "stärker als das Virus!"
-#~ msgstr ""
-#~ "Do you want to help? Create your account now. Together we are stronger "
-#~ "than the virus!"
-
-#~ msgid "Jetzt Hilfe anbieten"
-#~ msgstr "Offer help now"
-
-#~ msgid "Achte auf Dich!"
-#~ msgstr "Take care of yourself!"
-
-#~ msgid ""
-#~ "Das Coronavirus kann von Mensch zu Mensch übertragen werden. Wenn du "
-#~ "anderen Menschen helfen möchtest, sei bitte besonders vorsichtig. Achte "
-#~ "unbedingt auf"
-#~ msgstr ""
-#~ "The Corona virus can spread from human to human. If you want to help "
-#~ "other people, be extra careful. Especially take care of "
-
-#~ msgid "gute Handhygiene"
-#~ msgstr "good hand hygiene"
-
-#~ msgid "Husten- und Nies-Etikette"
-#~ msgstr "rules for coughing and sneezing"
-
-#~ msgid "sowie"
-#~ msgstr "as well as"
-
-#~ msgid "Abstand zu deinen Mitmenschen"
-#~ msgstr "distance to other people"
-
-#~ msgid "Allgemeine Verhaltenshinweise der Bundesregierung"
-#~ msgstr "General advisory from the government"
-
-#~ msgid ""
-#~ "Deutschlandzusammen.de ist ein Portal, das Menschen zusammenbringt. Ob "
-#~ "dein Gegenüber sich für denjenigen ausgibt, der er wirklich ist, weißt du "
-#~ "erst, wenn du dich mit der anderen Person triffst - wie bei allen "
-#~ "Diensten im Internet."
-#~ msgstr ""
-#~ "Deutschlandzusammen.de is a website which brings people together. You "
-#~ "can't know if your conversation partner is the one they claim to be until "
-#~ "you meet them - just like with any other internet service."
-
-#~ msgid ""
-#~ "Halte als Helfender deine private Adresse geheim. Als Anbieter gibst du "
-#~ "zwar deine Adresse in deinem Profil an, diese wird aber nur für die "
-#~ "Umkreissuche verwendet und nie öffentlich angezeigt. Tauscht die Adresse "
-#~ "nur über private Nachrichten aus, am besten über die Nachrichtenfunktion "
-#~ "von deutschlandzusammen.de."
-#~ msgstr ""
-#~ "Keep your private address safe when offering help. You tell us your "
-#~ "address when creating your profile, but it is only used for the radius-"
-#~ "based search and never shown publicly. Exchange addresses only via "
-#~ "private messages, ideally using the integrated messages on "
-#~ "deutschlandzusammen.de."
-
-#~ msgid ""
-#~ "Wenn du deine Telefonnummer oder E-Mail-Adresse über dein Profil "
-#~ "öffentlich machst, können dich Hilfesuchende deutlich schneller "
-#~ "erreichen. Aber deine Daten sind dann öffentlich im Internet zu finden. "
-#~ "Sei dir bitte dessen bewusst, und nutze im Zweifel lieber die integrierte "
-#~ "Nachrichtenfunktion von deutschlandzusammen.de."
-#~ msgstr ""
-#~ "If you make your phone number or e-mail address public through your "
-#~ "profile, people looking for help can find you a lot faster. But keep in "
-#~ "mind that your data is published on the internet then. When in doubt, "
-#~ "better use the integrated messages on deutschlandzusammen.de."
