@@ -53,3 +53,4 @@ RECAPTCHA_PRIVATE_KEY = secrets.RECAPTCHA_PRIVATE_KEY
 HOST_NAME = 'https://www.deutschlandzusammen.de'
 DOMAIN_TEXT = 'deutschlandzusammen.de'
 LOGO = '/static/offers/images/logo_deutschlandzusammen.png'
+DEFAULT_POINT = Point(49.877212, 8.655164, srid=SRID)

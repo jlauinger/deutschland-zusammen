@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+
+from django.contrib.gis.geos import Point
 from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,7 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'offers.context_preprocessors.vapid_key',
-                'offers.context_preprocessors.hostname',
+                'offers.context_preprocessors.multi_site',
             ],
         },
     },
@@ -214,3 +216,4 @@ RECAPTCHA_PRIVATE_KEY = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
 HOST_NAME = 'http://localhost:8000'
 DOMAIN_TEXT = 'deutschlandzusammen.de'
 LOGO = '/static/offers/images/logo_deutschlandzusammen.png'
+DEFAULT_POINT = Point(49.877212, 8.655164, srid=SRID)
