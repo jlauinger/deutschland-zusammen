@@ -14,6 +14,8 @@ from django_prometheus.models import ExportModelOperationsMixin
 from webpush import send_user_notification
 
 from offers.helper import location_from_address, create_activation_token, create_profile_slug
+from offers.mail_templates import CONTACT_MAIL_FROM, CONTACT_MAIL_SUBJECT, ACTIVATION_MAIL_SUBJECT, \
+    ACTIVATION_MAIL_FROM, ACTIVATION_MAIL_BODY
 
 DAYTIME_CHOICES = (
     ('', _('-- Zeit filtern --')),
@@ -95,11 +97,11 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     def send_activation_mail(self):
         activation_link = "{}{}".format(settings.HOST_NAME,
                                         reverse_lazy('activate_account', args=[self.slug, self.activation_token]))
-        body = gettext(settings.ACTIVATION_MAIL_BODY).format(name=self.user.username,
+        body = ACTIVATION_MAIL_BODY.format(name=self.user.username,
                                                              link=activation_link,
                                                              domain=settings.DOMAIN_TEXT)
-        subject = gettext(settings.ACTIVATION_MAIL_SUBJECT).format(domain=settings.DOMAIN_TEXT)
-        from_email = gettext(settings.ACTIVATION_MAIL_FROM).format(domain=settings.DOMAIN_TEXT)
+        subject = ACTIVATION_MAIL_SUBJECT.format(domain=settings.DOMAIN_TEXT)
+        from_email = ACTIVATION_MAIL_FROM.format(domain=settings.DOMAIN_TEXT)
 
         send_mail(subject, body, from_email, [self.user.email], fail_silently=False)
 
@@ -173,13 +175,13 @@ class Message(ExportModelOperationsMixin('message'), models.Model):
         return "Nachricht am {} von {} an {}".format(self.date, self.sender_name, self.recipient.get_full_name())
 
     def send(self):
-        subject = gettext(settings.CONTACT_MAIL_SUBJECT).format(domain=settings.DOMAIN_TEXT)
-        from_email = gettext(settings.CONTACT_MAIL_FROM).format(domain=settings.DOMAIN_TEXT)
+        subject = CONTACT_MAIL_SUBJECT.format(domain=settings.DOMAIN_TEXT)
+        from_email = CONTACT_MAIL_FROM.format(domain=settings.DOMAIN_TEXT)
 
         send_mail(subject, self.message, from_email, [self.recipient.email], fail_silently=False)
 
         payload = {
-            'head': settings.CONTACT_MAIL_SUBJECT.__str__(),
+            'head': CONTACT_MAIL_SUBJECT.__str__(),
             'body': self.message,
             'url': settings.HOST_NAME + reverse('messages')
         }

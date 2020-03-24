@@ -17,6 +17,7 @@ from django.views.generic import FormView, ListView, UpdateView, TemplateView, D
 
 from offers.forms import OfferSearchForm, UserForm, ProviderProfileForm, SendMessageForm, OfferFormSet
 from offers.helper import location_from_address, address_from_location, address_autocomplete
+from offers.mail_templates import CONTACT_MAIL_BODY
 from offers.models import Offer, ProviderProfile, Message
 from offers.metrics import DUMMY
 
@@ -246,7 +247,7 @@ class SendMessageView(UpdateView):
     template_name = 'offers/send_message.html'
 
     def form_valid(self, form):
-        body = _(settings.CONTACT_MAIL_BODY).format(name=form.instance.display_name,
+        body = _(CONTACT_MAIL_BODY).format(name=form.instance.display_name,
                                                     sender_name=form.cleaned_data['sender'],
                                                     sender_email=form.cleaned_data['email'],
                                                     sender_phone=form.cleaned_data['phone'],
