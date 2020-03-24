@@ -58,7 +58,7 @@
             });
 
             // image slideshow
-            var images = ['{% static 'offers/images/bild-1.jpg' %}', '{% static 'offers/images/bild-2.jpg' %}',
+            var images = ['{{ slideshow_first_image }}', '{% static 'offers/images/bild-2.jpg' %}',
                 '{% static 'offers/images/bild-3.jpg' %}','{% static 'offers/images/bild-4.jpg' %}'];
             var index = 0;
             var period = 10000;

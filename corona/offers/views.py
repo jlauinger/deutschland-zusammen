@@ -285,6 +285,11 @@ class PushNotificationServiceWorkerView(TemplateView):
     content_type = 'application/x-javascript'
 
 
+class CssView(TemplateView):
+    template_name = 'offers/styles.css'
+    content_type = 'text/css'
+
+
 class ImprintView(TemplateView):
     template_name = 'offers/imprint.html'
 

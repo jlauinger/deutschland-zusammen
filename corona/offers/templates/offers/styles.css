@@ -64,7 +64,7 @@ body {
     margin-top: -126px;
     padding-top: 126px;
     padding-bottom: 2rem;
-    background-image: url('images/bild-1.jpg');
+    background-image: url('{{ slideshow_first_image }}');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

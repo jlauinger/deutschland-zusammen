@@ -4,7 +4,7 @@ from django.urls import path
 from offers.views import OfferSearchView, ProfileView, EditProfileView, \
     SendMessageView, MessageSentView, SafetyInformationView, AddressFromLocationAjaxView, AddressAutocompleteAjaxView, \
     OffersView, DeleteUserView, MessageErrorView, ActivateAccountView, ResendActivationMailView, MessagesView, \
-    PushNotificationServiceWorkerView, ImprintView, PrivacyDeclarationView, ChangePasswordView, OverviewMapView
+    PushNotificationServiceWorkerView, ImprintView, PrivacyDeclarationView, ChangePasswordView, OverviewMapView, CssView
 
 urlpatterns = [
     path('offers/', login_required(OffersView.as_view()), name='offers'),
@@ -25,6 +25,7 @@ urlpatterns = [
     path('imprint/', ImprintView.as_view(), name='imprint'),
     path('privacy/', PrivacyDeclarationView.as_view(), name='privacy'),
     path('sw.js', PushNotificationServiceWorkerView.as_view(), name='push_service_worker'),
+    path('styles.css', CssView.as_view(), name='css_styles'),
     path('', OfferSearchView.as_view(), name='search'),
 ]
 

@@ -12,6 +12,7 @@ def multi_site(request):
         'hostname': settings.HOST_NAME,
         'domain_text': settings.DOMAIN_TEXT,
         'logo_url': settings.LOGO,
+        'slideshow_first_image': settings.SLIDESHOW_FIRST_IMAGE,
         'default_point_lat': settings.DEFAULT_POINT_LAT,
         'default_point_lng': settings.DEFAULT_POINT_LNG,
     }
