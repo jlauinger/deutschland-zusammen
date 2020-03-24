@@ -9,5 +9,7 @@ def vapid_key(request):
 
 def hostname(request):
     return {
-        'hostname': settings.HOST_NAME
+        'hostname': settings.HOST_NAME,
+        'domain_text': settings.DOMAIN_TEXT,
+        'logo_url': settings.LOGO
     }

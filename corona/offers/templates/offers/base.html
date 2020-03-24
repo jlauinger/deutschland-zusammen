@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{% trans "Deutschland steht zusammen - Finde Hilfe in der Corona Krise" %}</title>
+    <title>{% trans "Wir stehen zusammen - Finde Hilfe in der Corona Krise" %}</title>
 
     <!-- Social Graph -->
     <meta property="og:image" content="{{ hostname }}{% static 'offers/images/screenshot.png' %}">
@@ -46,11 +46,11 @@
     <script type="text/javascript">
         var _paq = window._paq || [];
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(["setCookieDomain", "*.www.deutschlandzusammen.de"]);
+        _paq.push(["setCookieDomain", "*.www.{{ domain_text }}"]);
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
-            var u="//www.deutschlandzusammen.de/matomo/";
+            var u="//www.{{ domain_text }}/matomo/";
             _paq.push(['setTrackerUrl', u+'matomo.php']);
             _paq.push(['setSiteId', '1']);
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
@@ -63,8 +63,8 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{% url 'search' %}">
-            <img src="{% static 'offers/images/logo_deutschlandzusammen.png' %}" height="100"
-                 class="d-inline-block align-top" alt="{% trans 'Deutschland zusammen' %}">
+            <img src="{{ logo_url }}" height="100"
+                 class="d-inline-block align-top" alt="{% trans 'Wir stehen zusammen' %}">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

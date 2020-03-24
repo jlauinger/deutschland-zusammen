@@ -21,7 +21,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-HOST_NAME = 'http://localhost:8000'
 
 # Application definition
 
@@ -207,3 +206,10 @@ BLUR_RADIUS = 0.0075
 
 RECAPTCHA_PUBLIC_KEY = '6Ld16d4SAAAAALUBBZHoH1o-_6jzTKGJLA4Dj0pB'
 RECAPTCHA_PRIVATE_KEY = '6Ld16d4SAAAAAImlyzbFnyu6PrHRBJaF4vZQUrR8'
+
+
+# Multisite
+
+HOST_NAME = 'http://localhost:8000'
+DOMAIN_TEXT = 'deutschlandzusammen.de'
+LOGO = '/static/offers/images/logo_deutschlandzusammen.png'
