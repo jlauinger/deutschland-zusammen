@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 from django.db.models import F
 from django.urls import reverse_lazy, reverse
 from django.utils.timezone import now
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, gettext
 from django_prometheus.models import ExportModelOperationsMixin
 from webpush import send_user_notification
 
@@ -95,11 +95,11 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
     def send_activation_mail(self):
         activation_link = "{}{}".format(settings.HOST_NAME,
                                         reverse_lazy('activate_account', args=[self.slug, self.activation_token]))
-        body = settings.ACTIVATION_MAIL_BODY.format(name=self.user.username,
-                                                    link=activation_link,
-                                                    domain=settings.DOMAIN_TEXT)
-        subject = settings.ACTIVATION_MAIL_SUBJECT.format(domain=settings.DOMAIN_TEXT)
-        from_email = settings.ACTIVATION_MAIL_FROM.format(domain=settings.DOMAIN_TEXT)
+        body = gettext(settings.ACTIVATION_MAIL_BODY).format(name=self.user.username,
+                                                             link=activation_link,
+                                                             domain=settings.DOMAIN_TEXT)
+        subject = gettext(settings.ACTIVATION_MAIL_SUBJECT).format(domain=settings.DOMAIN_TEXT)
+        from_email = gettext(settings.ACTIVATION_MAIL_FROM).format(domain=settings.DOMAIN_TEXT)
 
         send_mail(subject, body, from_email, [self.user.email], fail_silently=False)
 
@@ -173,8 +173,8 @@ class Message(ExportModelOperationsMixin('message'), models.Model):
         return "Nachricht am {} von {} an {}".format(self.date, self.sender_name, self.recipient.get_full_name())
 
     def send(self):
-        subject = settings.CONTACT_MAIL_SUBJECT.__str__().format(domain=settings.DOMAIN_TEXT)
-        from_email = settings.CONTACT_MAIL_FROM.__str__().format(domain=settings.DOMAIN_TEXT)
+        subject = gettext(settings.CONTACT_MAIL_SUBJECT).format(domain=settings.DOMAIN_TEXT)
+        from_email = gettext(settings.CONTACT_MAIL_FROM).format(domain=settings.DOMAIN_TEXT)
 
         send_mail(subject, self.message, from_email, [self.recipient.email], fail_silently=False)
 

@@ -246,12 +246,12 @@ class SendMessageView(UpdateView):
     template_name = 'offers/send_message.html'
 
     def form_valid(self, form):
-        body = settings.CONTACT_MAIL_BODY.format(name=form.instance.display_name,
-                                                 sender_name=form.cleaned_data['sender'],
-                                                 sender_email=form.cleaned_data['email'],
-                                                 sender_phone=form.cleaned_data['phone'],
-                                                 message=form.cleaned_data['message'],
-                                                 domain=settings.DOMAIN_TEXT)
+        body = _(settings.CONTACT_MAIL_BODY).format(name=form.instance.display_name,
+                                                    sender_name=form.cleaned_data['sender'],
+                                                    sender_email=form.cleaned_data['email'],
+                                                    sender_phone=form.cleaned_data['phone'],
+                                                    message=form.cleaned_data['message'],
+                                                    domain=settings.DOMAIN_TEXT)
 
         message = Message.objects.create(recipient=form.instance.user, sender_name=form.cleaned_data['sender'],
                                          sender_email=form.cleaned_data['email'],
