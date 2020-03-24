@@ -99,9 +99,9 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
                                                     link=activation_link,
                                                     domain=settings.DOMAIN_TEXT)
         subject = settings.ACTIVATION_MAIL_SUBJECT.format(domain=settings.DOMAIN_TEXT)
+        from_email = settings.ACTIVATION_MAIL_FROM.format(domain=settings.DOMAIN_TEXT)
 
-        send_mail(subject, body, settings.ACTIVATION_MAIL_FROM, [self.user.email],
-                  fail_silently=False)
+        send_mail(subject, body, from_email, [self.user.email], fail_silently=False)
 
     def get_blurred_location(self):
         # deterministic blurring is important to prevent information disclosure by averaging many requests
@@ -174,9 +174,9 @@ class Message(ExportModelOperationsMixin('message'), models.Model):
 
     def send(self):
         subject = settings.CONTACT_MAIL_SUBJECT.__str__().format(domain=settings.DOMAIN_TEXT)
+        from_email = settings.CONTACT_MAIL_FROM.__str__().format(domain=settings.DOMAIN_TEXT)
 
-        send_mail(subject, self.message, settings.CONTACT_MAIL_FROM, [self.recipient.email],
-                  fail_silently=False)
+        send_mail(subject, self.message, from_email, [self.recipient.email], fail_silently=False)
 
         payload = {
             'head': settings.CONTACT_MAIL_SUBJECT.__str__(),

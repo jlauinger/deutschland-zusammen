@@ -184,7 +184,7 @@ LOGO = '/static/offers/images/logo_deutschlandzusammen.png'
 DEFAULT_POINT_LAT = 49.877212
 DEFAULT_POINT_LNG = 8.655164
 
-CONTACT_MAIL_FROM = 'noreply@' + DOMAIN_TEXT
+CONTACT_MAIL_FROM = 'noreply@{domain}'
 CONTACT_MAIL_SUBJECT = _('Neue Nachricht von {domain}')
 CONTACT_MAIL_BODY = _("""Hallo {name}!
 
@@ -204,7 +204,7 @@ Liebe Grüße
 dein Team von {domain}
 """)
 
-ACTIVATION_MAIL_FROM = 'noreply@' + DOMAIN_TEXT
+ACTIVATION_MAIL_FROM = 'noreply@{domain}'
 ACTIVATION_MAIL_SUBJECT = _('Aktiviere deinen Account bei {domain}')
 ACTIVATION_MAIL_BODY = _("""
 Hallo {name}!
