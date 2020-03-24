@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-24 17:54+0000\n"
+"POT-Creation-Date: 2020-03-24 18:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,28 +70,28 @@ msgstr "City (not public)"
 msgid "-- Zeit filtern --"
 msgstr "-- Filter daytime --"
 
-#: offers/models.py:20 offers/models.py:127
+#: offers/models.py:20 offers/models.py:131
 #: offers/templates/offers/offers_list.html:25
 #: offers/templates/offers/providerprofile.html:64
 #: offers/templates/offers/search_results.html:44
 msgid "Morgens"
 msgstr "Morning"
 
-#: offers/models.py:21 offers/models.py:128
+#: offers/models.py:21 offers/models.py:132
 #: offers/templates/offers/offers_list.html:26
 #: offers/templates/offers/providerprofile.html:65
 #: offers/templates/offers/search_results.html:45
 msgid "Mittags"
 msgstr "Noon"
 
-#: offers/models.py:22 offers/models.py:129
+#: offers/models.py:22 offers/models.py:133
 #: offers/templates/offers/offers_list.html:27
 #: offers/templates/offers/providerprofile.html:66
 #: offers/templates/offers/search_results.html:46
 msgid "Nachmittags"
 msgstr "Afternoon"
 
-#: offers/models.py:23 offers/models.py:130
+#: offers/models.py:23 offers/models.py:134
 #: offers/templates/offers/offers_list.html:28
 #: offers/templates/offers/providerprofile.html:67
 #: offers/templates/offers/search_results.html:47
@@ -183,49 +183,49 @@ msgstr "Phone number (public if you enter it)"
 msgid "E-Mail-Adresse öffentlich anzeigen"
 msgstr "Show e-mail address publicly"
 
-#: offers/models.py:120
+#: offers/models.py:124
 msgid "Hilfsangebot"
 msgstr "Offer for help"
 
-#: offers/models.py:121
+#: offers/models.py:125
 msgid "Hilfsangebote"
 msgstr "Offers for help"
 
-#: offers/models.py:125 offers/templates/offers/offers_list.html:24
+#: offers/models.py:129 offers/templates/offers/offers_list.html:24
 msgid "Datum"
 msgstr "Date"
 
-#: offers/models.py:155
+#: offers/models.py:159
 msgid "Gesendete Nachricht"
 msgstr "Sent message"
 
-#: offers/models.py:156
+#: offers/models.py:160
 msgid "Gesendete Nachrichten"
 msgstr "Sent messages"
 
-#: offers/models.py:193
+#: offers/models.py:199
 msgid "Webseiten-Inhalt"
 msgstr "Website content"
 
-#: offers/models.py:194
+#: offers/models.py:200
 msgid "Webseiten-Inhalte"
 msgstr "Website contents"
 
-#: offers/models.py:198
+#: offers/models.py:204
 msgid "Startseite"
 msgstr "Homepage"
 
-#: offers/models.py:199 offers/templates/offers/base.html:115
+#: offers/models.py:205 offers/templates/offers/base.html:115
 #: offers/templates/offers/safety_information.html:7
 msgid "Sicherheits-Informationen"
 msgstr "Safety Information"
 
-#: offers/models.py:200 offers/templates/offers/base.html:113
+#: offers/models.py:206 offers/templates/offers/base.html:113
 #: offers/templates/offers/imprint.html:8
 msgid "Impressum"
 msgstr "Imprint"
 
-#: offers/models.py:201 offers/templates/offers/base.html:114
+#: offers/models.py:207 offers/templates/offers/base.html:114
 msgid "Datenschutz"
 msgstr "Privacy"
 
@@ -320,6 +320,7 @@ msgid "Fehler beim Versenden der Nachricht!"
 msgstr "Error sending the message!"
 
 #: offers/templates/offers/message_error.html:9
+#, python-format
 msgid ""
 "Tut uns Leid, deine Nachricht konnte leider nicht versendet werden. Versuche "
 "es doch gleich nochmal, oder kontaktiere uns unter support (at) "

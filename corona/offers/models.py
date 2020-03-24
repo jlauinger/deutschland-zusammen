@@ -93,10 +93,14 @@ class ProviderProfile(ExportModelOperationsMixin('profile'), models.Model):
         super().save(*args, **kwargs)
 
     def send_activation_mail(self):
-        activation_link = "{}{}".format(settings.HOST_NAME, reverse_lazy('activate_account',
-                                                                         args=[self.slug, self.activation_token]))
-        body = settings.ACTIVATION_MAIL_BODY.format(self.user.username, activation_link)
-        send_mail(settings.ACTIVATION_MAIL_SUBJECT, body, settings.ACTIVATION_MAIL_FROM, [self.user.email],
+        activation_link = "{}{}".format(settings.HOST_NAME,
+                                        reverse_lazy('activate_account', args=[self.slug, self.activation_token]))
+        body = settings.ACTIVATION_MAIL_BODY.format(name=self.user.username,
+                                                    link=activation_link,
+                                                    domain=settings.DOMAIN_TEXT)
+        subject = settings.ACTIVATION_MAIL_SUBJECT.format(domain=settings.DOMAIN_TEXT)
+
+        send_mail(subject, body, settings.ACTIVATION_MAIL_FROM, [self.user.email],
                   fail_silently=False)
 
     def get_blurred_location(self):
@@ -169,7 +173,9 @@ class Message(ExportModelOperationsMixin('message'), models.Model):
         return "Nachricht am {} von {} an {}".format(self.date, self.sender_name, self.recipient.get_full_name())
 
     def send(self):
-        send_mail(settings.CONTACT_MAIL_SUBJECT, self.message, settings.CONTACT_MAIL_FROM, [self.recipient.email],
+        subject = settings.CONTACT_MAIL_SUBJECT.__str__().format(domain=settings.DOMAIN_TEXT)
+
+        send_mail(subject, self.message, settings.CONTACT_MAIL_FROM, [self.recipient.email],
                   fail_silently=False)
 
         payload = {

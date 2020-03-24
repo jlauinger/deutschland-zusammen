@@ -142,46 +142,11 @@ MAPBOX_API_TOKEN = "pk.eyJ1IjoiamxhdWluZ2VyIiwiYSI6ImNrN3RzMWcyNjB3Z3IzbXFyZmZia
 LOGIN_REDIRECT_URL = '/profile'
 LOGOUT_REDIRECT_URL = '/'
 
-# Contact mail settings
+# Mail
 
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
 
-CONTACT_MAIL_FROM = 'noreply@deutschlandzusammen.de'
-CONTACT_MAIL_SUBJECT = _('Neue Nachricht von deutschlandzusammen.de')
-CONTACT_MAIL_BODY = _("""Hallo {}!
-
-Du hast eine neue Anfrage nach Hilfe über deutschlandzusammen.de!
-
-Daten zur suchenden Person:
-Name: {}
-E-Mail: {}
-Telefon: {}
-
-Nachricht:
-{}
-
-Melde dich doch wenn du kannst schnellstmöglich zurück.
-
-Liebe Grüße
-dein Team von deutschlandzusammen.de
-""")
-
-ACTIVATION_MAIL_FROM = 'noreply@deutschlandzusammen.de'
-ACTIVATION_MAIL_SUBJECT = _('Aktiviere deinen Account bei deutschlandzusammen.de')
-ACTIVATION_MAIL_BODY = _("""
-Hallo {}!
-
-Bitte bestätige deine E-Mail-Adresse und aktiviere deinen Account bei deutschlandzusammen.de. Klicke dazu einfach
-auf den folgenden Link oder kopiere ihn in die Adressleiste deines Browsers:
-
-{}
-
-Bis du deinen Account aktiviert hast können deine Angebote nicht gefunden werden.
-
-Liebe Grüße
-dein Team von deutschlandzusammen.de
-""")
 
 # Webpush
 
@@ -210,10 +175,47 @@ RECAPTCHA_PUBLIC_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
 RECAPTCHA_PRIVATE_KEY = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
 
 
-# Multisite
+# Multi site
 
 HOST_NAME = 'http://localhost:8000'
 DOMAIN_TEXT = 'deutschlandzusammen.de'
 LOGO = '/static/offers/images/logo_deutschlandzusammen.png'
+
 DEFAULT_POINT_LAT = 49.877212
 DEFAULT_POINT_LNG = 8.655164
+
+CONTACT_MAIL_FROM = 'noreply@' + DOMAIN_TEXT
+CONTACT_MAIL_SUBJECT = _('Neue Nachricht von {domain}')
+CONTACT_MAIL_BODY = _("""Hallo {name}!
+
+Du hast eine neue Anfrage nach Hilfe über {domain}!
+
+Daten zur suchenden Person:
+Name: {sender_name}
+E-Mail: {sender_email}
+Telefon: {sender_phone}
+
+Nachricht:
+{message}
+
+Melde dich doch wenn du kannst schnellstmöglich zurück.
+
+Liebe Grüße
+dein Team von {domain}
+""")
+
+ACTIVATION_MAIL_FROM = 'noreply@' + DOMAIN_TEXT
+ACTIVATION_MAIL_SUBJECT = _('Aktiviere deinen Account bei {domain}')
+ACTIVATION_MAIL_BODY = _("""
+Hallo {name}!
+
+Bitte bestätige deine E-Mail-Adresse und aktiviere deinen Account bei {domain}. Klicke dazu einfach
+auf den folgenden Link oder kopiere ihn in die Adressleiste deines Browsers:
+
+{link}
+
+Bis du deinen Account aktiviert hast können deine Angebote nicht gefunden werden.
+
+Liebe Grüße
+dein Team von {domain}
+""")

@@ -230,17 +230,28 @@ class OfferSearchView(FormView):
         })
 
 
+class OverviewMapView(ListView):
+    model = ProviderProfile
+    template_name = 'offers/overview_map.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['mapbox_api_token'] = settings.MAPBOX_API_TOKEN
+        return context_data
+
+
 class SendMessageView(UpdateView):
     model = ProviderProfile
     form_class = SendMessageForm
     template_name = 'offers/send_message.html'
 
     def form_valid(self, form):
-        body = settings.CONTACT_MAIL_BODY.format(form.instance.display_name,
-                                                 form.cleaned_data['sender'],
-                                                 form.cleaned_data['email'],
-                                                 form.cleaned_data['phone'],
-                                                 form.cleaned_data['message'])
+        body = settings.CONTACT_MAIL_BODY.format(name=form.instance.display_name,
+                                                 sender_name=form.cleaned_data['sender'],
+                                                 sender_email=form.cleaned_data['email'],
+                                                 sender_phone=form.cleaned_data['phone'],
+                                                 message=form.cleaned_data['message'],
+                                                 domain=settings.DOMAIN_TEXT)
 
         message = Message.objects.create(recipient=form.instance.user, sender_name=form.cleaned_data['sender'],
                                          sender_email=form.cleaned_data['email'],
@@ -254,16 +265,6 @@ class SendMessageView(UpdateView):
             return HttpResponseRedirect(reverse_lazy('message_error'))
 
         return HttpResponseRedirect(reverse_lazy('message_sent'))
-
-
-class OverviewMapView(ListView):
-    model = ProviderProfile
-    template_name = 'offers/overview_map.html'
-
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        context_data['mapbox_api_token'] = settings.MAPBOX_API_TOKEN
-        return context_data
 
 
 class MessageSentView(TemplateView):
