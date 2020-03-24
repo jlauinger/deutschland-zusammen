@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-23 17:53+0000\n"
+"POT-Creation-Date: 2020-03-24 17:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: corona/settings.py:116
+#: corona/settings.py:115
 msgid "German"
 msgstr "Deutsch"
 
-#: corona/settings.py:117
+#: corona/settings.py:116
 msgid "English"
 msgstr "Englisch"
 
-#: corona/settings.py:151
+#: corona/settings.py:150
 msgid "Neue Nachricht von deutschlandzusammen.de"
 msgstr "New message from deutschlandzusammen.de"
 
-#: corona/settings.py:152
+#: corona/settings.py:151
 msgid ""
 "Hallo {}!\n"
 "\n"
@@ -67,11 +67,11 @@ msgstr ""
 "Best regards,\n"
 "The deutschlandzusammen.de Team\n"
 
-#: corona/settings.py:171
+#: corona/settings.py:170
 msgid "Aktiviere deinen Account bei deutschlandzusammen.de"
 msgstr "Activate your account at deutschlandzusammen.de"
 
-#: corona/settings.py:172
+#: corona/settings.py:171
 msgid ""
 "\n"
 "Hallo {}!\n"
