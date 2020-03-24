@@ -13,6 +13,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['deutschlandzusammen.de', 'www.deutschlandzusammen.de']
 
+LANGUAGE_CODE = 'de'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
