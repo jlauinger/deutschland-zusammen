@@ -8,6 +8,8 @@ from django.contrib.gis.geos import Point
 from geopy import Nominatim
 from geopy.exc import GeocoderQueryError
 
+DEFAULT_POINT = Point(settings.DEFAULT_POINT_LAT, settings.DEFAULT_POINT_LNG, srid=settings.SRID)
+
 
 def location_from_address(address):
     locator = Nominatim(user_agent=settings.NOMINATIM_USER_AGENT)
@@ -15,12 +17,12 @@ def location_from_address(address):
     try:
         location = locator.geocode(address)
     except GeocoderQueryError:
-        return settings.DEFAULT_POINT
+        return DEFAULT_POINT
 
     if location:
         return Point(location.latitude, location.longitude, srid=settings.SRID)
     else:
-        return settings.DEFAULT_POINT
+        return DEFAULT_POINT
 
 
 def address_from_location(lat, lng):

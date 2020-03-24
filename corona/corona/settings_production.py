@@ -4,9 +4,6 @@ First, it imports all default settings, then overrides respective ones.
 Secrets are stored in and imported from an additional file, not set under version control.
 """
 
-GDAL_LIBRARY_PATH = '/home/korona/lib/libgdal.so'
-GEOS_LIBRARY_PATH = '/home/korona/lib/libgeos_c.so'
-
 from corona import settings_secrets as secrets
 from corona.settings import *
 
@@ -26,6 +23,9 @@ DATABASES = {
         'PORT': '5432'
     }
 }
+
+GDAL_LIBRARY_PATH = '/home/korona/lib/libgdal.so'
+GEOS_LIBRARY_PATH = '/home/korona/lib/libgeos_c.so'
 
 STATIC_ROOT = '/var/www/virtual/korona/html/static'
 
@@ -53,4 +53,5 @@ RECAPTCHA_PRIVATE_KEY = secrets.RECAPTCHA_PRIVATE_KEY
 HOST_NAME = 'https://www.deutschlandzusammen.de'
 DOMAIN_TEXT = 'deutschlandzusammen.de'
 LOGO = '/static/offers/images/logo_deutschlandzusammen.png'
-DEFAULT_POINT = Point(49.877212, 8.655164, srid=SRID)
+DEFAULT_POINT_LAT = 49.877212
+DEFAULT_POINT_LNG = 8.655164
