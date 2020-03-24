@@ -4,6 +4,9 @@ First, it imports all default settings, then overrides respective ones.
 Secrets are stored in and imported from an additional file, not set under version control.
 """
 
+GDAL_LIBRARY_PATH = '/home/korona/lib/libgdal.so'
+GEOS_LIBRARY_PATH = '/home/korona/lib/libgeos_c.so'
+
 from corona import settings_secrets as secrets
 from corona.settings import *
 
@@ -25,9 +28,6 @@ DATABASES = {
 }
 
 STATIC_ROOT = '/var/www/virtual/korona/html/static'
-
-GDAL_LIBRARY_PATH = '/home/korona/lib/libgdal.so'
-GEOS_LIBRARY_PATH = '/home/korona/lib/libgeos_c.so'
 
 MAPBOX_API_TOKEN = secrets.MAPBOX_API_TOKEN
 
