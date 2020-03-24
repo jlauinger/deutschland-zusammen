@@ -212,3 +212,6 @@ class Website(models.Model):
     name = models.CharField(choices=SITE_NAMES, max_length=100)
     language = models.CharField(choices=settings.LANGUAGES, max_length=100)
     content = models.TextField(blank=True)
+
+    def __str__(self):
+        return "{} auf {}".format(self.get_name_display(), self.get_language_display())
