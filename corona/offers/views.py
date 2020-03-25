@@ -238,6 +238,7 @@ class OverviewMapView(ListView):
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
         context_data['mapbox_api_token'] = settings.MAPBOX_API_TOKEN
+        context_data['initial_zoom'] = settings.OVERVIEW_MAP_INITIAL_ZOOM
         return context_data
 
 
