@@ -24,7 +24,7 @@ msgstr "Offers"
 
 #: offers/forms.py:12
 msgid "Wo? (Straße und Ort)"
-msgstr "Where? (Street and Town)"
+msgstr "Where? (Street and town)"
 
 #: offers/forms.py:14
 msgid "Wann?"
@@ -32,7 +32,7 @@ msgstr "When?"
 
 #: offers/forms.py:16
 msgid "-- Mobilität filtern --"
-msgstr "-- Filter mobility --"
+msgstr "-- Filter means of transportation --"
 
 #: offers/forms.py:22
 msgid "Dein Name"
@@ -103,7 +103,7 @@ msgstr ""
 "Message:\n"
 "{message}\n"
 "\n"
-"Please contact the person as soon as you can.\n"
+"Please contact the person as soon as possible.\n"
 "\n"
 "Best regards,\n"
 "The {domain} Team\n"
@@ -141,7 +141,7 @@ msgstr ""
 "\n"
 "{link}\n"
 "\n"
-"Your offers for help will not be visible until you activate your account.\n"
+"Your offer for help will not be visible until you activate your account.\n"
 "\n"
 "Best regards\n"
 "The {domain} team\n"
@@ -192,7 +192,7 @@ msgstr "No specification"
 
 #: offers/models.py:54
 msgid "zu Fuß / ÖPNV"
-msgstr "Afoot / public transportation"
+msgstr "Walking / public transport"
 
 #: offers/models.py:55
 msgid "Fahrrad"
@@ -346,12 +346,12 @@ msgid "Biete deine Hilfe an"
 msgstr "Offer your help"
 
 #: offers/templates/offers/base.html:121
-msgid "Switch language:"
+msgid "Select language:"
 msgstr "Sprache ändern:"
 
 #: offers/templates/offers/base.html:132
 msgid "Sprache ändern"
-msgstr "Switch language"
+msgstr "Select language"
 
 #: offers/templates/offers/home.html:14
 msgid "Wir stehen zusammen. Finde Hilfe in der Corona-Krise"
@@ -436,7 +436,7 @@ msgstr "You didn't receive any messages yet."
 #: offers/templates/offers/offers_list.html:8
 #: offers/templates/offers/providerprofile.html:59
 msgid "Zu diesen Zeiten kannst du Hilfe anbieten"
-msgstr "Your availability"
+msgstr "You are offering help at these time slots"
 
 #: offers/templates/offers/offers_list.html:10
 msgid "Schritt 3: Wann kannst du Hilfe anbieten?"
@@ -444,7 +444,7 @@ msgstr "Step 3: When can you offer help?"
 
 #: offers/templates/offers/offers_list.html:15
 msgid "Kreuze bitte mindestens eine Zeit an."
-msgstr "Please tick at least one time."
+msgstr "Please tick at least one time slot."
 
 #: offers/templates/offers/offers_list.html:29
 msgid "Ganzer Tag"
@@ -455,7 +455,7 @@ msgid ""
 "Komm für spätere Zeiten bitte einfach demnächst wieder auf diese Seite, du "
 "kannst immer maximal zwei Wochen im Voraus angeben dass du Zeit hast."
 msgstr ""
-"For more days, please come back soon. You can offer your help for at most "
+"To add more days, please come back soon. You can offer your help for "
 "two weeks in advance."
 
 #: offers/templates/offers/offers_list.html:72
@@ -477,8 +477,8 @@ msgid ""
 "schützen. Nutze unsere Suche auf der Startseite, um in deiner Gegend Hilfe "
 "zu finden."
 msgstr ""
-"Here you can see where help is already offered. The locations of people "
-"offering help have been changed slightly to keep them private. Use our "
+"Here you can see where help is already offered. The exact location of registered "
+"people has been changed slightly to keep them safe. Use our "
 "search on the home page to find help in your area."
 
 #: offers/templates/offers/privacy.html:7
@@ -491,8 +491,8 @@ msgid ""
 "wir dir per Mail geschickt haben geklickt hast, sind deine Angebote nicht "
 "öffentlich sichtbar."
 msgstr ""
-"Your account has not yet been activated. Until you click the activation link "
-"that we sent you by email, your offers can not be found publicly."
+"Your account has not been activated quite yet. Please click on the link "
+"we have sent to you by e-mail, your offers cannot be seen publicly."
 
 #: offers/templates/offers/providerprofile.html:15
 msgid "E-Mail erneut senden"
@@ -546,8 +546,8 @@ msgid ""
 "direkt als Push-Nachricht zu dir senden!"
 msgstr ""
 "People looking for help can send you a direct message through the portal. "
-"You can read the message on the messages page. We can also send it to you by "
-"push notification!"
+"You can read messages on our messages page. If you like we can also send "
+"you push notifications!"
 
 #: offers/templates/offers/providerprofile.html:55
 #: offers/templates/offers/providerprofile.html:130
@@ -556,7 +556,7 @@ msgstr "Enable push notifications"
 
 #: offers/templates/offers/providerprofile.html:72
 msgid "Du hast bisher keine Angebote erstellt."
-msgstr "You didn't create any offer times yet."
+msgstr "You haven't created any offers yet."
 
 #: offers/templates/offers/providerprofile.html:75
 #: offers/templates/offers/providerprofile_form.html:8
@@ -565,7 +565,7 @@ msgstr "Edit your profile"
 
 #: offers/templates/offers/providerprofile.html:76
 msgid "Bearbeite deine Zeiten"
-msgstr "Edit your times"
+msgstr "Edit your available times"
 
 #: offers/templates/offers/providerprofile.html:79
 #: offers/templates/registration/password_change_form.html:7
@@ -584,7 +584,7 @@ msgstr "Disable push notifications"
 
 #: offers/templates/offers/providerprofile_form.html:10
 msgid "Schritt 2: Verrate uns noch ein paar Details über dich"
-msgstr "Step 2: Please add the following information about you"
+msgstr "Step 2: Tell us some more details about you"
 
 #: offers/templates/offers/providerprofile_form.html:17
 msgid "Speichern!"
@@ -636,8 +636,8 @@ msgid ""
 "Leider wurden keine Angebote gefunden. Entferne vielleicht die Filter oder "
 "versuche später eine neue Suche."
 msgstr ""
-"Unfortunately there isn't anyone able to help close by. Please try again "
-"later."
+"Unfortunately there isn't anyone able to help close by. Please delete some "
+"filters or try again later."
 
 #: offers/templates/offers/search_results.html:87
 #: offers/templates/offers/search_results.html:115
@@ -647,9 +647,9 @@ msgid ""
 "Bekannten von dieser Plattform erzählst und die sie in den sozialen Netzen "
 "teilst!"
 msgstr ""
-"We just launched this website, therefore there isn't help available "
+"We only just launched this website, therefore there isn't help available "
 "everywhere yet. You can help us a lot by sharing this platform with your "
-"friends and posting about it in social media!"
+"friends and posting about it on social media!"
 
 #: offers/templates/offers/search_results.html:109
 msgid ""
@@ -658,8 +658,8 @@ msgid ""
 "der Standort passt."
 msgstr ""
 "Unfortunately we were unable to find any offers in your area. Did you "
-"enter both street and town? Have a look at the map on the right and check "
-"whetherthe location is correct."
+"enter both street and town? Please have a look at the map on the right and check "
+"whether your location is correct."
 
 #: offers/templates/offers/search_results.html:125
 msgid "Neue Suche"
@@ -674,8 +674,8 @@ msgid ""
 "Denke daran, mindestens eine Kontaktmöglichkeit anzugeben, sonst kann dich "
 "dein*e Helfer*in nicht erreichen!"
 msgstr ""
-"Remember to provide at least one way of contacting you, otherwise your "
-"helper can not write back to you!"
+"Remember to provide at least one way of contact information, otherwise your "
+"helper will not be able to get back to you!"
 
 #: offers/templates/offers/send_message.html:20
 msgid "Senden!"
@@ -769,4 +769,4 @@ msgstr "Your account has been activated!"
 
 #: offers/views.py:78
 msgid "Wir haben dir die Aktivierungs-Mail erneut gesendet!"
-msgstr "We have sent you the activation mail again!"
+msgstr "We have sent you the activation email again!"
