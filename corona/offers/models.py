@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 from django.db.models import F
 from django.urls import reverse_lazy, reverse
 from django.utils.timezone import now
-from django.utils.translation import gettext_lazy as _, gettext
+from django.utils.translation import gettext_lazy as _
 from django_prometheus.models import ExportModelOperationsMixin
 from webpush import send_user_notification
 

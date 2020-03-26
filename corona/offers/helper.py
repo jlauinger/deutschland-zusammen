@@ -58,5 +58,13 @@ def create_activation_token():
 
 
 def create_profile_slug():
+    from offers.models import ProviderProfile
+    
     letters = string.ascii_lowercase
-    return ''.join(random.choice(letters) for i in range(20))
+
+    while True:
+        slug = ''.join(random.choice(letters) for i in range(20))
+        if not ProviderProfile.objects.filter(slug=slug).exists():
+            break
+
+    return slug
